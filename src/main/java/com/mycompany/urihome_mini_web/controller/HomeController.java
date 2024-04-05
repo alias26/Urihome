@@ -1,4 +1,4 @@
-package com.mycompany.urihome_mini_web;
+package com.mycompany.urihome_mini_web.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
