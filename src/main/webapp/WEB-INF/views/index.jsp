@@ -120,7 +120,7 @@
 			</div>
 		</div>
 	</div>
-	<h2 class="mb-3" style="text-align: center">B E S T</h2>
+	<h2 class="mb-5" style="text-align: center">B E S T</h2>
 	<!-- css icon -->
 	<div id="carouselExampleControls" class="carousel carousel-dark slide"
 		data-bs-ride="carousel">
@@ -193,7 +193,7 @@
 
 		</div>
 	</div>
-	<div class="mb-3" style="text-align: center">
+	<div class="mb-5" style="text-align: center">
 		<h2 class="title">MD 추천템</h2>
 	</div>
 	<div class="container" id="recommendItem">

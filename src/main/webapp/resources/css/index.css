@@ -3,7 +3,7 @@
 *{ font-family: 'Nanum Gothic', sans-serif;}
 
 #wrapper{
-	height:auto;
+	height:100%;
 	min-height:100%;
 	padding-bottom:200px;
 }
@@ -21,11 +21,10 @@
 }
 
 #recommendItem{
-	width: 1200px;
+	width: 100%;
 	display:grid;
 	grid-template-columns: repeat(4, 1fr);
-	margin-left: auto;
-	margin-right: auto;
+	margin: 0 auto;
 }
 
 #box{
