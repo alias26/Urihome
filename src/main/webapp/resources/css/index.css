@@ -1,37 +1,75 @@
-@charset "UTF-8";
-.navbar{
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	padding: 8px 12px;
-} 
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&display=swap');
 
-.dropdown:hover .dropdown-menu{
-	display:block;
+*{ font-family: 'Nanum Gothic', sans-serif;}
+
+#wrapper{
+	height:auto;
+	min-height:100%;
+	padding-bottom:200px;
 }
 
-.dropdown button:after{
-	display:block;
-	width:100%;
-	content:'';
-	border-bottom:solid 2px #111;
-	transform: scaleX(0);
-	transition:transform 320ms ease-in-out;
+#circleCategory {
+	text-align: center; /* 부모 요소인 body에 적용되어 있는 경우, 이미지를 가운데 정렬합니다. */
+	display: inline-block; /* 이 부분이 사진을 옆으로 출력하는 열쇠입니다. */
+	margin-left: 30px; /* 사진 간 간격을 조절합니다. */
+	margin-right: 30px;
+	font-size: 14px;
 }
 
-.dropdown button:hover:after{
-	transform: scaleX(1);
+#circleCategory:hover {
+	filter: grayscale(100%)
 }
 
-#navbarDropdownEnd{
-	padding-right: 0;
+#recommendItem{
+	width: 1200px;
+	display:grid;
+	grid-template-columns: repeat(4, 1fr);
+	margin-left: auto;
+	margin-right: auto;
 }
 
-#cartMoveButton{
-	text-align:center;
+#box{
+	margin-bottom : 50px;
+	margin-right: 10px;
+    margin-left: 10px;
 }
 
-#cartInfo{
-	font-size:12px;
-	text-align: center;
+#content-img{
+	 width:295px;
+	 border-radius: 3%;
+}
+
+#info{
+	margin-top : 30px;
+}
+
+#title{
+	font-weight:bolder;
+	margin-top : 30px;
+	margin-bottom : 50px;
+}
+
+#name{
+	font-weight:bolder;
+}
+
+#price{
+	font-weight:bold;
+	
+}
+
+div[name~="cart"]{
+	  position: absolute;
+	  transform: translate(-120%, 640%);
+	  background-color:black;
+	  opacity : 0.5;
+	  border-radius: 50%;
+}
+
+#more-btn {
+	  background-color: #ffffff; /* 버튼 배경색 */
+	  color: black; 
+	  padding: 10px 50px; 
+	  border: solid; 
+	  border-radius: 2em;
 }
