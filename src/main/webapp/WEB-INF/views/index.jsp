@@ -1,4 +1,4 @@
-										<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -65,62 +65,7 @@
 		</button>
 	</div>
 
-	<div class="mt-5 mb-5">
-		<div class="d-flex justify-content-center">
-			<div id="circleCategory">
-				<img class="rounded-circle"
-					src="/htmlcssjs/resources/image/photos/photo4.jpg" width="100"
-					height="100" />
-				<div>EVENT</div>
-			</div>
-
-			<div id="circleCategory">
-				<img class="rounded-circle"
-					src="/htmlcssjs/resources/image/photos/photo4.jpg" width="100"
-					height="100" />
-				<div>홈세트</div>
-			</div>
-
-			<div id="circleCategory">
-				<img class="rounded-circle"
-					src="/htmlcssjs/resources/image/photos/photo4.jpg" width="100"
-					height="100" />
-				<div>면기</div>
-			</div>
-
-
-
-			<div id="circleCategory">
-				<img class="rounded-circle"
-					src="/htmlcssjs/resources/image/photos/photo4.jpg" width="100"
-					height="100" />
-				<div>수저/커트러리</div>
-			</div>
-
-			<div id="circleCategory">
-				<img class="rounded-circle"
-					src="/htmlcssjs/resources/image/photos/photo4.jpg" width="100"
-					height="100" />
-				<div>파스타/찜기</div>
-			</div>
-
-
-			<div id="circleCategory">
-				<img class="rounded-circle"
-					src="/htmlcssjs/resources/image/photos/photo4.jpg" width="100"
-					height="100" />
-				<div>머그</div>
-			</div>
-
-			<div id="circleCategory">
-				<img class="rounded-circle"
-					src="/htmlcssjs/resources/image/photos/photo4.jpg" width="100"
-					height="100" />
-				<div>한정수량 리퍼</div>
-			</div>
-		</div>
-	</div>
-	<h2 class="mb-5" style="text-align: center">B E S T</h2>
+	<h2 class="mt-5 mb-5" style="text-align: center">B E S T</h2>
 	<!-- css icon -->
 	<div id="carouselExampleControls" class="carousel carousel-dark slide"
 		data-bs-ride="carousel">
@@ -131,24 +76,24 @@
 					class="card-wrapper container-md d-flex  justify-content-around">
 					<div class="card border-0 p-3">
 						<img id="bestseller"
-							src="/resources/image/chair.jpg"
+							src="${pageContext.request.contextPath}/resources/image/chair.jpg"
 							class="card-img-top" alt="...">
 					</div>
 					<div class="card border-0 p-3">
 						<img id="bestseller"
-							src="/resources/image/chair2.jpg"
+							src="${pageContext.request.contextPath}/resources/image/chair2.jpg"
 							class="card-img-top" alt="...">
 						<div class="card-body"></div>
 					</div>
 					<div class="card border-0 p-3">
 						<img id="bestseller"
-							src="/resources/image/chair10.jpg"
+							src="${pageContext.request.contextPath}/resources/image/chair10.jpg"
 							class="card-img-top " alt="...">
 						<div class="card-body"></div>
 					</div>
 					<div class="card border-0 p-3">
 						<img id="bestseller"
-							src="/resources/image/chair11.jpg"
+							src="${pageContext.request.contextPath}/resources/image/chair11.jpg"
 							class="card-img-top" alt="...">
 						<div class="card-body"></div>
 					</div>
@@ -157,22 +102,22 @@
 			<div class="carousel-item">
 				<div class="card-wrapper container-md d-flex justify-content-around">
 					<div class="card border-0 p-3 ">
-						<img id="bestseller" src="/resources/image/chair5.jpg"
+						<img id="bestseller" src="${pageContext.request.contextPath}/resources/image/chair5.jpg"
 							class="card-img-top" alt="...">
 						<div class="card-body"></div>
 					</div>
 					<div class="card border-0 p-3">
-						<img id="bestseller" src="/resources/image/chair6.jpg"
+						<img id="bestseller" src="${pageContext.request.contextPath}/resources/image/chair6.jpg"
 							class="card-img-top" alt="...">
 						<div class="card-body"></div>
 					</div>
 					<div class="card border-0 p-3">
-						<img id="bestseller" src="/resources/image/chair7.jpg"
+						<img id="bestseller" src="${pageContext.request.contextPath}/resources/image/chair7.jpg"
 							class="card-img-top" alt="...">
 						<div class="card-body"></div>
 					</div>
 					<div class="card border-0 p-3">
-						<img id="bestseller" src="/resources/image/chair8.jpg"
+						<img id="bestseller" src="${pageContext.request.contextPath}/resources/image/chair8.jpg"
 							class="card-img-top" alt="...">
 						<div class="card-body"></div>
 					</div>

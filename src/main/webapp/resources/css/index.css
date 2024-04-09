@@ -8,18 +8,6 @@
 	padding-bottom:200px;
 }
 
-#circleCategory {
-	text-align: center; /* 부모 요소인 body에 적용되어 있는 경우, 이미지를 가운데 정렬합니다. */
-	display: inline-block; /* 이 부분이 사진을 옆으로 출력하는 열쇠입니다. */
-	margin-left: 30px; /* 사진 간 간격을 조절합니다. */
-	margin-right: 30px;
-	font-size: 14px;
-}
-
-#circleCategory:hover {
-	filter: grayscale(100%)
-}
-
 #recommendItem{
 	width: 100%;
 	display:grid;

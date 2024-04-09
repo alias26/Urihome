@@ -5,7 +5,7 @@
 <div id="header" class="header">
 	<nav class="navbar navbar-expand-lg fixed-top bg-light">
 		<div class="logo">
-			<a class="navbar-brand" href="/">우리집</a>
+			<a class="navbar-brand" href="${pageContext.request.contextPath}">우리집</a>
 		</div>
 		<button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarDropdownCenter,#navbarDropdownEnd">
                 <span class="navbar-toggler-icon"></span>
@@ -17,7 +17,13 @@
 					<button class="btn" aria-expanded="false">전체</button>
 				</li>
 				<li class="nav-item dropdown ms-3 me-3">
-					<button class="btn" aria-expanded="false">소파</button>
+					<button class="btn" aria-expanded="false">신상품</button>
+				</li>
+				<li class="nav-item dropdown ms-3 me-3">
+					<button class="btn" aria-expanded="false">BEST</button>
+				</li>
+				<li class="nav-item dropdown ms-3 me-3">
+					<button class="btn" aria-expanded="false">그릇</button>
 					<ul class="dropdown-menu">
 						<li><a class="dropdown-item" href="#">소파 전체</a></li>
 						<li><a class="dropdown-item" href="#">다인용 소파</a></li>
@@ -25,7 +31,7 @@
 					</ul>
 				</li>
 				<li class="nav-item dropdown ms-3 me-3">
-					<button class="btn" aria-expanded="false">테이블</button>
+					<button class="btn" aria-expanded="false">접시</button>
 					<ul class="dropdown-menu">
 						<li><a class="dropdown-item" href="#">테이블 전체</a></li>
 						<li><a class="dropdown-item" href="#">식탁</a></li>
@@ -35,7 +41,7 @@
 					</ul>
 				</li>
 				<li class="nav-item dropdown ms-3 me-3">
-					<button class="btn" aria-expanded="false">의자</button>
+					<button class="btn" aria-expanded="false">수저세트</button>
 					<ul class="dropdown-menu">
 						<li><a class="dropdown-item" href="#">의자 전체</a></li>
 						<li><a class="dropdown-item" href="#">인테리어 의자</a></li>
@@ -43,33 +49,6 @@
 						<li><a class="dropdown-item" href="#">라운지체어</a></li>
 						<li><a class="dropdown-item" href="#">스톨</a></li>
 						<li><a class="dropdown-item" href="#">벤치</a></li>
-					</ul>
-				</li>
-				<li class="nav-item dropdown ms-3 me-3">
-					<button class="btn" aria-expanded="false">수납, 선반장</button>
-					<ul class="dropdown-menu">
-						<li><a class="dropdown-item" href="#">수납, 선반장 전체</a></li>
-						<li><a class="dropdown-item" href="#">수납, 선랍장</a></li>
-						<li><a class="dropdown-item" href="#">선반장, 진열장</a></li>
-						<li><a class="dropdown-item" href="#">TV장, 거실장</a></li>
-						<li><a class="dropdown-item" href="#">행거</a></li>
-						<li><a class="dropdown-item" href="#">이동선반, 트롤리</a></li>
-					</ul>
-				</li>
-				<li class="nav-item dropdown ms-3 me-3">
-					<button class="btn" aria-expanded="false">조명</button>
-					<ul class="dropdown-menu">
-						<li><a class="dropdown-item" href="#">조명 전체</a></li>
-						<li><a class="dropdown-item" href="#">단스탠드</a></li>
-						<li><a class="dropdown-item" href="#">장스탠드</a></li>
-						<li><a class="dropdown-item" href="#">펜던트 조명</a></li>
-						<li><a class="dropdown-item" href="#">벽 조명</a></li>
-					</ul>
-				</li>
-				<li class="nav-item dropdown ms-3">
-					<button class="btn" aria-expanded="false">침대</button>
-					<ul class="dropdown-menu">
-						<li><a class="dropdown-item" href="#">침대 전체</a></li>
 					</ul>
 				</li>
 			</ul>
