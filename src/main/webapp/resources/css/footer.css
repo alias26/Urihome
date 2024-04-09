@@ -5,10 +5,17 @@
   width: 100%;
   position:relative;
   background: #E2E2E2;
-  height:200px;
+  height:500px;
   bottom:0;
   /* transform :translateY(30%); */
 }
+
+.footer .d-flex{
+	display:inline-block;
+	border-bottom: 3px solid rgba(191, 191, 191, .4);
+}
+
+
 .footer .col {
   float: left;
   padding: 0px 20px 20px 20px;
@@ -44,4 +51,12 @@
 }
 .clearfix {
   clear: both;
+}
+
+#line{
+	display:block;
+}
+
+span, p{
+	font-size:12px;
 }
