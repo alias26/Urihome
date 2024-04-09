@@ -131,24 +131,24 @@
 					class="card-wrapper container-md d-flex  justify-content-around">
 					<div class="card border-0 p-3">
 						<img id="bestseller"
-							src="/urihome_mini_web/resources/image/chair.jpg"
+							src="/resources/image/chair.jpg"
 							class="card-img-top" alt="...">
 					</div>
 					<div class="card border-0 p-3">
 						<img id="bestseller"
-							src="/urihome_mini_web/resources/image/chair2.jpg"
+							src="/resources/image/chair2.jpg"
 							class="card-img-top" alt="...">
 						<div class="card-body"></div>
 					</div>
 					<div class="card border-0 p-3">
 						<img id="bestseller"
-							src="/urihome_mini_web/resources/image/chair10.jpg"
+							src="/resources/image/chair10.jpg"
 							class="card-img-top " alt="...">
 						<div class="card-body"></div>
 					</div>
 					<div class="card border-0 p-3">
 						<img id="bestseller"
-							src="/urihome_mini_web/resources/image/chair11.jpg"
+							src="/resources/image/chair11.jpg"
 							class="card-img-top" alt="...">
 						<div class="card-body"></div>
 					</div>
