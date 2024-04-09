@@ -5,11 +5,14 @@
 <div id="header" class="header">
 	<nav class="navbar navbar-expand-lg fixed-top bg-light">
 		<div class="logo">
-			<a class="navbar-brand" href="${pageContext.request.contextPath}">우리집</a>
+			<a class="navbar-brand" href="${pageContext.request.contextPath}">
+			<img src="${pageContext.request.contextPath}/resources/image/common/LOGO.png" width="90" height="50"></a>
 		</div>
-		<button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarDropdownCenter,#navbarDropdownEnd">
-                <span class="navbar-toggler-icon"></span>
-        </button>
+		<button class="navbar-toggler ms-auto" type="button"
+			data-bs-toggle="collapse"
+			data-bs-target="#navbarDropdownCenter,#navbarDropdownEnd">
+			<span class="navbar-toggler-icon"></span>
+		</button>
 		<div class="collapse navbar-collapse justify-content-center"
 			id="navbarDropdownCenter">
 			<ul class="navbar-nav">
@@ -56,10 +59,12 @@
 		<div class="d-flex">
 			<div class="collapse navbar-collapse justify-content-end"
 				id="navbarDropdownEnd">
-	
+
 				<ul class="navbar-nav">
 					<li class="nav-item dropdown">
-						<button class="btn" aria-expanded="false">마이페이지</button>
+						<button class="btn" aria-expanded="false">
+							<i class="bi bi-person-circle fs-5"></i>
+						</button>
 						<ul class="dropdown-menu">
 							<li><a class="dropdown-item" href="#">주문조회</a></li>
 							<li><a class="dropdown-item" href="#">관심상품</a></li>
@@ -68,28 +73,30 @@
 							<li><a class="dropdown-item" href="#">쿠폰</a></li>
 							<li><a class="dropdown-item" href="#">쓰임포인트</a></li>
 							<li><a class="dropdown-item" href="#">나의정보</a></li>
-							<li class="text-center d-grid m-2"><button class="btn btn-dark btn-sm" aria-expanded="false">
-									로그인
+							<li class="text-center d-grid m-2"><button
+									class="btn btn-dark btn-sm" aria-expanded="false">로그인
 								</button></li>
-							<li class="text-center d-grid m-2"><button class="btn btn-sm" aria-expanded="false">
-									회원가입
-								</button></li>
+							<li class="text-center d-grid m-2"><button
+									class="btn btn-sm" aria-expanded="false">회원가입</button></li>
 						</ul>
 					</li>
 					<li class="nav-item dropdown">
-						<button class="btn" aria-expanded="false">장바구니</button>
+						<button class="btn" aria-expanded="false">
+							<i class="bi bi-bag fs-5"></i>
+						</button>
 						<ul class="dropdown-menu">
 							<li><p id="cartInfo">장바구니가 비어있습니다.</p></li>
 							<hr>
 							<li id="cartMoveButton" class="text-center">
 								<button class="btn btn-dark btn-sm" aria-expanded="false">
-									장바구니로 이동
-								</button>
+									장바구니로 이동</button>
 							</li>
 						</ul>
 					</li>
 					<li class="nav-item dropdown">
-						<button class="btn" aria-expanded="false">검색</button>
+						<button class="btn" aria-expanded="false">
+							<i class="bi bi-search fs-5"></i>
+						</button>
 						<ul class="dropdown-menu">
 							<li>
 								<form class="form-inline">

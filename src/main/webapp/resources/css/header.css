@@ -2,11 +2,20 @@
 
 .navbar{
 	display: flex;
+	height: 50px;
 	justify-content: space-between;
 	align-items: center;
 	padding: 8px 12px;
 } 
 
+/* .navbar-brand{
+	position: relative;
+	background: url(../image/common/LOGO.png);
+	width: 80px;
+	height: 80px;
+	background-size:contain;
+}
+ */
 
 .dropdown:hover .dropdown-menu{
 	display:block;
@@ -37,6 +46,11 @@
 	font-size:12px;
 	text-align: center;
 }
+/* 
+#cartButtonImage, #personButtonImage{
+	font-size:100px;
+} */
+
 
 @media screen and (max-width:768px){
 	.navbar{
