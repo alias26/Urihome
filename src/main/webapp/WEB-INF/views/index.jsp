@@ -68,7 +68,7 @@
 	<h2 class="mt-5 mb-5" style="text-align: center">B E S T</h2>
 	<!-- css icon -->
 	<div id="carouselExampleControls" class="carousel carousel-dark slide"
-		data-bs-ride="carousel">
+		data-bs-ride="carousel" data-interval="5000">
 
 		<div class="carousel-inner">
 			<div class="carousel-item active">
