@@ -2,20 +2,11 @@
 
 .navbar{
 	display: flex;
-	height: 50px;
+	height: 60px;
 	justify-content: space-between;
 	align-items: center;
 	padding: 8px 12px;
 } 
-
-/* .navbar-brand{
-	position: relative;
-	background: url(../image/common/LOGO.png);
-	width: 80px;
-	height: 80px;
-	background-size:contain;
-}
- */
 
 .dropdown:hover .dropdown-menu{
 	display:block;
@@ -46,11 +37,6 @@
 	font-size:12px;
 	text-align: center;
 }
-/* 
-#cartButtonImage, #personButtonImage{
-	font-size:100px;
-} */
-
 
 @media screen and (max-width:768px){
 	.navbar{
@@ -58,17 +44,6 @@
 		align-items:flex-start;
 	}
 	
-/* 	.navbar-collapse{
-		flex-direction: column;
-		align-items:center;
-		width:100%
-	}
-	
-	.navbar-collapse ul li{
-		text-align:center;
-		width:100%
-	}
- */
 	.navbar-toggler{
 		display: block;
 	}

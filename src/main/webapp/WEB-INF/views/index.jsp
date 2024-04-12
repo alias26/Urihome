@@ -18,7 +18,7 @@
 	src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
 <!-- user script-->
 </head>
-<body>
+<body class="pt-5">
 	<%@ include file="/WEB-INF/views/common/header.jsp"%>
 	<!-- Carousel -->
 	<div id="wrapper">

@@ -5,7 +5,7 @@
 <div id="header" class="header">
 	<nav class="navbar navbar-expand-lg fixed-top bg-light">
 		<div class="logo">
-			<a class="navbar-brand" href="${pageContext.request.contextPath}">
+			<a class="navbar-brand" href="${pageContext.request.contextPath}/">
 			<img src="${pageContext.request.contextPath}/resources/image/common/LOGO.png" width="90" height="50"></a>
 		</div>
 		<button class="navbar-toggler ms-auto" type="button"

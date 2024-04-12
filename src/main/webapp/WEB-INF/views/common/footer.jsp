@@ -3,7 +3,7 @@
 
 <link rel="stylesheet" href="/resources/css/footer.css" type="text/css">
 
-<div class="footer">
+<div class="footer mt-5">
 	<div
 		class="d-flex">
 		<div class="col">
