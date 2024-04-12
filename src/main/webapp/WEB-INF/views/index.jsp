@@ -67,17 +67,17 @@
 
 
 
-	<div class="d-flex justify-content-center mt-5 mb-5">	
+	<div class="d-flex justify-content-center mt-5 mb-5" >	
 		<div class="box-1">
-			<img src="resources/image/tableware1.jpg" alt="이미지1"/>
+			<img src="resources/image/tableware1.jpg"  alt="이미지1" style="border-radius:30px;"/>
 		</div>
 
-		<div class="box-2">
-			<div id="box-top">
-				<img src="resources/image/tableware2.jpg" alt="이미지2"/>
+		<div class="photo-big"  >
+			<div id="boxtop" style="border-radius:30%; margin-left:30px; margin-bottom:20px;">
+				<img src="resources/image/tableware2.jpg" alt="이미지2" style="border-radius:30px;"/>
 			</div>
 			<div id="box-down">
-				<img src="resources/image/tableware3.jpg" alt="이미지3"/>
+				<img src="resources/image/tableware3.jpg" alt="이미지3" style="border-radius:30px; margin-left:30px;"/>
 			</div>
 		</div>
 	</div>
