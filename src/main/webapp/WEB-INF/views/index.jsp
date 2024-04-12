@@ -8,7 +8,7 @@
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
 	rel="stylesheet">
-<link href="/resources/css/index.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/resources/css/index.css" rel="stylesheet">
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
 <script
@@ -21,7 +21,7 @@
 <body class="pt-5">
 	<%@ include file="/WEB-INF/views/common/header.jsp"%>
 	<!-- Carousel -->
-	<div id="wrapper">
+  <div id="wrapper">
 	<div id="demo" class="carousel slide" data-bs-ride="carousel">
 
 		<!-- Indicators/dots -->
@@ -67,17 +67,17 @@
 
 
 
-		<div class="d-flex justify-content-center mt-5 mb-5" >	
+	<div class="d-flex justify-content-center mt-5 mb-5">	
 		<div class="box-1">
-			<img src="resources/image/tableware1.jpg"  alt="이미지1" style="border-radius:30px;"/>
+			<img src="resources/image/tableware1.jpg" alt="이미지1"/>
 		</div>
 
-		<div class="photo-big"  >
-			<div id="boxtop" style="border-radius:30%; margin-left:30px; margin-bottom:20px;">
-				<img src="resources/image/tableware2.jpg" alt="이미지2" style="border-radius:30px;"/>
+		<div class="box-2">
+			<div id="box-top">
+				<img src="resources/image/tableware2.jpg" alt="이미지2"/>
 			</div>
 			<div id="box-down">
-				<img src="resources/image/tableware3.jpg" alt="이미지3" style="border-radius:30px; margin-left:30px;"/>
+				<img src="resources/image/tableware3.jpg" alt="이미지3"/>
 			</div>
 		</div>
 	</div>
@@ -161,168 +161,108 @@
 				<span class="carousel-control-next-icon" aria-hidden="true"></span>
 				<span class="visually-hidden">Next</span>
 			</button>
-
-
 		</div>
 	</div>
-	<div class="mb-5" style="text-align: center">
-		<h2 class="title">MD 추천템</h2>
-	</div>
-	<div class="container" id="recommendItem">
-		<div id="box">
+    <div>
+		<div class="d-flex">
+		<div style="margin-left:auto;">
+			<div id="text-box" style="text-align: center;">
+			<h1 id="title" style="margin-right:120px">인기 키워드</h1>
+			</div>
+		</div>
+		
+		<div class="image-box" style="margin-right:auto;">
+		  <div class="container" id="recommendItem">
+			<div id="box">
+	
+				<img id="content-img"
+					src="https://ssueim.com/web/product/big/202404/9d011e8c1884aaa631376cbd9caf024b.jpg">
+				<div class="btn" name="cart"
+					style="background-color: black; border-radius: 50%;">
+					<i class="bi bi-bag" style="color: white"></i>
+				</div>
+	
+				<!-- 인기 키워드 사진 -->
+				<div id="info">
+					<div id="name">블랑 4인 홈세트 27P</div>
+					<div id="price">199,000원</div>
+				</div>
+			</div>
+			<div id="box">
+	
+				<img id="content-img"
+					src="https://ssueim.com/web/product/big/202309/09642480b50e05fc3fe0013d865de602.jpg">
+				<div class="btn" name="cart"
+					style="background-color: black; border-radius: 50%">
+					<i class="bi bi-bag" style="color: white"></i>
+				</div>
+	
+				<div id="info">
+					<div id="name">[4월18일 발송예정] 보담 6인 홈세트</div>
+					<div id="price">159,000원</div>
+				</div>
+			</div>
+			<div id="box">
+				<img id="content-img"
+					src="https://ssueim.com/web/product/big/202009/53645479796c9e0bc493ae269a609516.jpg">
+				<div class="btn" name="cart"
+					style="background-color: black; border-radius: 50%">
+					<i class="bi bi-bag" style="color: white"></i>
+				</div>
+				<div id="info">
+					<div id="name">키엘로 2인 홈세트 13P (크림화이트)</div>
+					<div id="price">69,000원</div>
+				</div>
+			</div>
+			<div id="box">
+				<img id="content-img"
+					src="https://ssueim.com/web/product/big/202010/ab0d0f8d3c21e5cbe9cc151285a3dff7.jpg">
+				<div class="btn" name="cart"
+					style="background-color: black; border-radius: 50%">
+					<i class="bi bi-bag" style="color: white"></i>
+				</div>
+				<div id="info">
+					<div id="name">마일드 화이트 계란찜기(중)</div>
+					<div id="price">10,900원</div>
+				</div>
+			</div>
+			<div id="box">
+				<img id="content-img"
+					src="https://ssueim.com/web/product/big/202401/1c1f10690bf5301ee503b4fbbab8f0da.jpg">
+				<div class="btn" name="cart"
+					style="background-color: black; border-radius: 50%">
+					<i class="bi bi-bag" style="color: white"></i>
+				</div>
+				<div id="info">
+					<div id="name">테르 그레이베이지 2인 홈세트 14P</div>
+					<div id="price">79,000원</div>
+				</div>
+			</div>
+			<div id="box">
+				<img id="content-img"
+					src="https://ssueim.com/web/product/big/202009/11e358bac5feeaf86e36ea99c7b04af2.jpg">
+				<div class="btn" name="cart"
+					style="background-color: black; border-radius: 50%">
+					<i class="bi bi-bag" style="color: white"></i>
+				</div>
+				<div id="info">
+					<div id="name">키엘로 면기 대 (2color)</div>
+					<div id="price">9,900원</div>
+				</div>
+			</div>
+			
+		 </div>		
+			<div style="text-align: center;">
+		<button id="more-btn" style="font-weight: bolder;">더보기 +</button>
+		</div>		
+		</div>
+	 </div>
+  </div>
+</div>  
+		
+		
 
-			<img id="content-img"
-				src="https://ssueim.com/web/product/big/202404/9d011e8c1884aaa631376cbd9caf024b.jpg">
-			<div class="btn" name="cart"
-				style="background-color: black; border-radius: 50%;">
-				<i class="bi bi-bag" style="color: white"></i>
-			</div>
 
-
-			<div id="info">
-				<div id="name">블랑 4인 홈세트 27P</div>
-				<div id="price">199,000원</div>
-			</div>
-		</div>
-		<div id="box">
-
-			<img id="content-img"
-				src="https://ssueim.com/web/product/big/202309/09642480b50e05fc3fe0013d865de602.jpg">
-			<div class="btn" name="cart"
-				style="background-color: black; border-radius: 50%">
-				<i class="bi bi-bag" style="color: white"></i>
-			</div>
-
-			<div id="info">
-				<div id="name">[4월18일 발송예정] 보담 6인 홈세트</div>
-				<div id="price">159,000원</div>
-			</div>
-		</div>
-		<div id="box">
-			<img id="content-img"
-				src="https://ssueim.com/web/product/big/202009/53645479796c9e0bc493ae269a609516.jpg">
-			<div class="btn" name="cart"
-				style="background-color: black; border-radius: 50%">
-				<i class="bi bi-bag" style="color: white"></i>
-			</div>
-			<div id="info">
-				<div id="name">키엘로 2인 홈세트 13P (크림화이트)</div>
-				<div id="price">69,000원</div>
-			</div>
-		</div>
-		<div id="box">
-			<img id="content-img"
-				src="https://ssueim.com/web/product/big/202010/ab0d0f8d3c21e5cbe9cc151285a3dff7.jpg">
-			<div class="btn" name="cart"
-				style="background-color: black; border-radius: 50%">
-				<i class="bi bi-bag" style="color: white"></i>
-			</div>
-			<div id="info">
-				<div id="name">마일드 화이트 계란찜기(중)</div>
-				<div id="price">10,900원</div>
-			</div>
-		</div>
-		<div id="box">
-			<img id="content-img"
-				src="https://ssueim.com/web/product/big/202401/1c1f10690bf5301ee503b4fbbab8f0da.jpg">
-			<div class="btn" name="cart"
-				style="background-color: black; border-radius: 50%">
-				<i class="bi bi-bag" style="color: white"></i>
-			</div>
-			<div id="info">
-				<div id="name">테르 그레이베이지 2인 홈세트 14P</div>
-				<div id="price">79,000원</div>
-			</div>
-		</div>
-		<div id="box">
-			<img id="content-img"
-				src="https://ssueim.com/web/product/big/202009/11e358bac5feeaf86e36ea99c7b04af2.jpg">
-			<div class="btn" name="cart"
-				style="background-color: black; border-radius: 50%">
-				<i class="bi bi-bag" style="color: white"></i>
-			</div>
-			<div id="info">
-				<div id="name">키엘로 면기 대 (2color)</div>
-				<div id="price">9,900원</div>
-			</div>
-		</div>
-		<div id="box">
-			<img id="content-img"
-				src="https://ssueim.com/web/product/big/202207/3b6d59aa271014997cd388e2623643c2.jpg">
-			<div class="btn" name="cart"
-				style="background-color: black; border-radius: 50%">
-				<i class="bi bi-bag" style="color: white"></i>
-			</div>
-			<div id="info">
-				<div id="name">어라운드 시리얼머그 (3color)</div>
-				<div id="price">13,500원</div>
-			</div>
-		</div>
-		<div id="box">
-			<img id="content-img"
-				src="https://ssueim.com/web/product/big/202110/868fcc2069a8d64c15b43688fe6cefff.jpg">
-			<div class="btn" name="cart"
-				style="background-color: black; border-radius: 50%">
-				<i class="bi bi-bag" style="color: white"></i>
-			</div>
-			<div id="info">
-				<div id="name">스테이블 오벌 접시 (2color)</div>
-				<div id="price">12,900원</div>
-			</div>
-		</div>
-		<div id="box">
-			<img id="content-img"
-				src="https://ssueim.com/web/product/big/202209/4b639ab0916375ccce6b1ddb502f3b97.jpg">
-			<div class="btn" name="cart"
-				style="background-color: black; border-radius: 50%">
-				<i class="bi bi-bag" style="color: white"></i>
-			</div>
-			<div id="info">
-				<div id="name">클래식레이스 4인 홈세트 25P</div>
-				<div id="price">99,000원</div>
-			</div>
-		</div>
-		<div id="box">
-			<img id="content-img"
-				src="https://ssueim.com/web/product/big/202112/bdc6a9bb63646414b21e1c20888c3180.jpg">
-			<div class="btn" name="cart"
-				style="background-color: black; border-radius: 50%">
-				<i class="bi bi-bag" style="color: white"></i>
-			</div>
-			<div id="info">
-				<div id="name">스테이블 커피잔 세트 (2color)</div>
-				<div id="price">8,900원</div>
-			</div>
-		</div>
-		<div id="box">
-			<img id="content-img"
-				src="https://ssueim.com/web/product/big/202111/fe4c8dc3d61cac512a733c6f41fa7775.jpg">
-			<div class="btn" name="cart"
-				style="background-color: black; border-radius: 50%">
-				<i class="bi bi-bag" style="color: white"></i>
-			</div>
-			<div id="info">
-				<div id="name">그레이스 머그</div>
-				<div id="price">7,500원</div>
-			</div>
-		</div>
-		<div id="box">
-			<img id="content-img"
-				src="https://ssueim.com/web/product/big/202211/d731d3417834fd7f73f0da17b6dcb24d.jpg">
-			<div class="btn" name="cart"
-				style="background-color: black; border-radius: 50%">
-				<i class="bi bi-bag" style="color: white"></i>
-			</div>
-			<div id="info">
-				<div id="name">블랑 센터피스 접시</div>
-				<div id="price">33,000원</div>
-			</div>
-		</div>
-	</div>
-	<div style="text-align: center;">
-		<button id="more-btn" style="font-weight: bolder;">더보기</button>
-	</div>
-	</div>
 	<%@ include file="/WEB-INF/views/common/footer.jsp"%>
 </body>
 </html>
