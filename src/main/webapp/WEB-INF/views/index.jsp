@@ -65,6 +65,33 @@
 		</button>
 	</div>
 
+
+
+	<div class="d-flex justify-content-center mt-5 mb-5">	
+		<div class="box-1">
+			<img src="resources/image/tableware1.jpg" alt="이미지1"/>
+		</div>
+
+		<div class="box-2">
+			<div id="box-top">
+				<img src="resources/image/tableware2.jpg" alt="이미지2"/>
+			</div>
+			<div id="box-down">
+				<img src="resources/image/tableware3.jpg" alt="이미지3"/>
+			</div>
+		</div>
+	</div>
+
+
+
+
+
+
+
+
+
+
+
 	<h2 class="mt-5 mb-5" style="text-align: center">B E S T</h2>
 	<!-- css icon -->
 	<div id="carouselExampleControls" class="carousel carousel-dark slide"
