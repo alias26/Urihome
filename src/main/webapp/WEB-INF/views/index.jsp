@@ -92,7 +92,7 @@
 
 
 
-	<h2 class="mt-5 mb-5" style="text-align: center">B E S T</h2>
+	<h2 class="mb-3" style="text-align: center; margin-top:80px" >B E S T</h2>
 	<!-- css icon -->
 	<div id="carouselExampleControls" class="carousel carousel-dark slide"
 		data-bs-ride="carousel" data-interval="5000">
@@ -103,24 +103,24 @@
 					class="card-wrapper container-md d-flex  justify-content-around">
 					<div class="card border-0 p-3">
 						<img id="bestseller"
-							src="${pageContext.request.contextPath}/resources/image/chair.jpg"
+							src="${pageContext.request.contextPath}/resources/image/best.jpg"
 							class="card-img-top" alt="...">
 					</div>
 					<div class="card border-0 p-3">
 						<img id="bestseller"
-							src="${pageContext.request.contextPath}/resources/image/chair2.jpg"
+							src="${pageContext.request.contextPath}/resources/image/best2.jpg"
 							class="card-img-top" alt="...">
 						<div class="card-body"></div>
 					</div>
 					<div class="card border-0 p-3">
 						<img id="bestseller"
-							src="${pageContext.request.contextPath}/resources/image/chair10.jpg"
+							src="${pageContext.request.contextPath}/resources/image/best3.jpg"
 							class="card-img-top " alt="...">
 						<div class="card-body"></div>
 					</div>
 					<div class="card border-0 p-3">
 						<img id="bestseller"
-							src="${pageContext.request.contextPath}/resources/image/chair11.jpg"
+							src="${pageContext.request.contextPath}/resources/image/best4.jpg"
 							class="card-img-top" alt="...">
 						<div class="card-body"></div>
 					</div>
@@ -129,22 +129,22 @@
 			<div class="carousel-item">
 				<div class="card-wrapper container-md d-flex justify-content-around">
 					<div class="card border-0 p-3 ">
-						<img id="bestseller" src="${pageContext.request.contextPath}/resources/image/chair5.jpg"
+						<img id="bestseller" src="${pageContext.request.contextPath}/resources/image/best5.jpg"
 							class="card-img-top" alt="...">
 						<div class="card-body"></div>
 					</div>
 					<div class="card border-0 p-3">
-						<img id="bestseller" src="${pageContext.request.contextPath}/resources/image/chair6.jpg"
+						<img id="bestseller" src="${pageContext.request.contextPath}/resources/image/best6.jpg"
 							class="card-img-top" alt="...">
 						<div class="card-body"></div>
 					</div>
 					<div class="card border-0 p-3">
-						<img id="bestseller" src="${pageContext.request.contextPath}/resources/image/chair7.jpg"
+						<img id="bestseller" src="${pageContext.request.contextPath}/resources/image/best7.jpg"
 							class="card-img-top" alt="...">
 						<div class="card-body"></div>
 					</div>
 					<div class="card border-0 p-3">
-						<img id="bestseller" src="${pageContext.request.contextPath}/resources/image/chair8.jpg"
+						<img id="bestseller" src="${pageContext.request.contextPath}/resources/image/best8.jpg"
 							class="card-img-top" alt="...">
 						<div class="card-body"></div>
 					</div>

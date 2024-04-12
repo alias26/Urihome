@@ -3,7 +3,6 @@
 * {
 	margin: 0px;
 	padding: 0px;
-	
 }
 
 body {
@@ -12,14 +11,14 @@ body {
 }
 
 .cart-title {
-	margin-top: 50px;
+	margin-top: 60px;
 	margin-bottom: 30px;
 	font-weight: bold;
 }
 
 .shopping-cart-layout {
 	height: 500px;
-	margin-top: 2rem;
+	margin-top:20px;
 }
 
 .cart-items {
@@ -38,18 +37,17 @@ body {
 }
 
 .cart-number {
-	width: 50px;
+	width: 40px;
 	text-align: center;
 }
 
 .cart-number-button {
-	width: 40px;
+	width: 30px;
 }
 
 .arrive-info {
 	text-align: right;
 }
-
 
 input[type="checkbox"] {
 	vertical-align: middle;
@@ -57,16 +55,28 @@ input[type="checkbox"] {
 
 .arrive-info {
 	text-align: center;
-	margin:auto;
-
+	margin: auto;
 }
 
 .price-info {
 	text-align: center;
-	margin-right:30px;
+	margin-right: 30px;
 }
-.option-info{
-	width:100px;
-	margin-right:90px;
-	margin-left:10px;
-} 
+
+.option-info {
+	width: 100px;
+	margin-right: 90px;
+	margin-left: 10px;
+}
+.total-price-count{
+	background-color:gray;
+	text-align:center;
+	margin-top:50px;
+	height:70px;
+	border-radius: 25px;
+}
+.final-order{
+
+	margin:30px;
+	text-align:center;
+}
