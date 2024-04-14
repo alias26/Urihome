@@ -70,10 +70,10 @@
 								</span>
 							</div>
 							<div>
-								<span><input type="text" class="form-control" id="normalPhone2" name="normalPhone2"></span>
+								<span><input type="text" class="form-control" onchange="isRightNormalPhone()" id="normalPhone2" name="normalPhone2"></span>
 							</div>
 							<div>
-								<span><input type="text" class="form-control" id="normalPhone3" name="normalPhone3"></span>
+								<span><input type="text" class="form-control" onchange="isRightNormalPhone()" id="normalPhone3" name="normalPhone3"></span>
 							</div>
 							</div>
 							<span class="form-text" id="normalPhoneSpan">&nbsp;</span>
@@ -91,10 +91,10 @@
 							</div>
 							
 							<div>
-								<span><input type="text" class="form-control" id="cellPhone2" name="cellPhone2"></span>
+								<span><input type="text" class="form-control" onchange="isRightCellPhone()" id="cellPhone2" name="cellPhone2"></span>
 							</div>
 							<div>
-								<span><input type="text" class="form-control" id="cellPhone3" name="cellPhone3"></span>
+								<span><input type="text" class="form-control" onchange="isRightCellPhone()" id="cellPhone3" name="cellPhone3"></span>
 							</div>
 							</div>
 							<span class="form-text" id="cellPhoneSpan">&nbsp;</span>

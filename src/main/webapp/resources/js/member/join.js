@@ -128,12 +128,14 @@ function isRightNormalPhone() {
 	
 	if(normalPhone2.val() === "" && normalPhone3.val() === ""){
 		normalPhoneSpan.html("&nbsp;");
+		normalPhone2.removeClass("border-danger");
+		normalPhone3.removeClass("border-danger");
 		normalPhoneSpan.removeClass("text-danger");
 		return true;
 	}
 
 	if (!normalPhoneResult) {
-		normalPhoneSpan.html("전화번호가 틀렸습니다.");
+		normalPhoneSpan.html("일반전화번호가 정확한지 확인해 주세요.");
 		normalPhone2.addClass("border-danger");
 		normalPhone3.addClass("border-danger");
 		normalPhoneSpan.addClass("text-danger");
@@ -160,7 +162,7 @@ function isRightCellPhone() {
 	var cellPhoneSpan = $("#cellPhoneSpan");
 
 	if (!cellPhoneResult) {
-		cellPhoneSpan.html("전화번호가 틀렸습니다.");
+		cellPhoneSpan.html("휴대전화번호가 정확한지 확인해 주세요.");
 		cellPhone2.addClass("border-danger");
 		cellPhone3.addClass("border-danger");
 		cellPhoneSpan.addClass("text-danger");
