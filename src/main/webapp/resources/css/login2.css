@@ -1,0 +1,155 @@
+/*전체부분*/
+*{
+	margin: 0; /*태그가 가지고있는 기본적인 마진과 패딩을 0을 만듭니다.*/
+	padding:0;
+	box-sizing: border-box; /*요소의 전체 너비와 높이를 어떻게 계산하는지 설정*/
+	font-family: "Poppins", sans-serif; /*선택한 요소에 적용할 글꼴을 지정합니다.*/
+	
+}
+
+
+/*로그인과 관련된 모든 부분*/
+.body{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: 100vh; /*최소 세로 크기를 설정합니다.*/
+	/*배경이미지를 가져오기 위한 부분 */
+	background: url('https://johnlewis.scene7.com/is/image/JohnLewis/tableware-block2-010421?resmode=sharp') no-repeat;
+	/* 배경이미지 크기를 전체화면으로 바꿔주는 부분 */
+	background-size: cover;
+	/* 배경이미지의 위치를 정해주는 속성부분 */
+	background-position: center;
+	
+	
+}
+
+/*상단에 Urizip 나오는 부분 */
+.title{
+	text-align:center;
+}
+
+
+/*로그인과 관련된 모든부분*/
+.wrapper {
+	
+	width: 420px;	/*너비 420px*/
+	background: purple;	/* wrapper로 감싼부분 배경색 */
+	color: #fff;	/*#fff는 흰색 */
+	border-radius: 10px; /*경계선부분을 둥글게 */	
+	padding: 30px 40px;	 /*안쪽여백 상하 30px, 좌우 40px */
+}
+
+/* Login 글씨 부분 */
+.wrapper h1{
+	font-size: 50px; /* 글씨크기 */
+	text-align: center;	/* 가운데 정렬 */
+	color: #fff; /* 검정색 */
+}
+
+/*Login글씨 위치조정 부분*/
+.wrapper h1{
+	margin-top: 40px; /* 바깥여백 위쪽 */
+	text-align: center; 
+}
+
+/*아이디입력,패스워드입력 위치조정 부분*/
+.wrapper .input-box{
+	/* position: relative; */ /*자기 자신을 기준으로 이동 */
+	width: 100%;  
+	height: 50px;	
+	margin: 30px 0; 
+}
+
+/*아이디입력,패스워드 입력 박스부분 */
+.input-box input{	
+	width:100%;
+	height:100%; /*부모태그 크기에 높이를 맞춰줍니다. */
+	background:transparent; /*배경색을 투명하게 해줍니다. */
+	border: none;
+	outline: none; /*테두리의 바깥쪽에 그려지는 선 제거*/
+	border: 2px solid rgba(255, 255, 255, .2); /*테두리 흰색 투명도*/
+	border-radius: 40px;
+	font-size: 16px;
+	color: #fff;
+	padding: 20px 45px 20px 20px;
+}
+
+/*아이디입력,패스워드입력 글씨 부분 */
+.input-box input::placeholder{
+	color: #fff;
+}
+ 
+/*아이콘 부분*/
+.input-box i{
+	position: absolute; /*부모요소를 기준으로 배치 */
+	right: 20px; 
+	top: 50%; /*정가운데 위치*/
+	transform: translateY(-50%); /*요소의 높이의 50%만큼 위로 이동 */
+	font-size: 20px;
+} 
+
+/*아이디 기억, 비밀번호 찾기, 아이디 찾기부분*/
+.wrapper .remeber-id{
+	display: flex;
+	font-size: 14.5px;
+	margin: -15px 0 15px;
+}
+
+/*아이디 기억 체크박스 글자색,오른쪽 마진 부분 */
+.remember-id label input{
+ 	accent-color: #fff; 
+	margin-right: 3px;
+	
+}
+
+
+/*비밀번호 찾기, 아이디 찾기   폰트색 부분*/
+.remember-id a{
+	color: #fff;	
+}
+
+/*비밀번호 찾기, 아이디 찾기 부분 */
+.remember-id a:hover{
+	text-decoration: underline;
+}
+
+
+
+/*로그인 버튼 부분 */
+.wrapper .btn{
+	width: 100%;
+	height: 45px;
+	background: #fff;
+	border: none;
+	outline: none;
+	border-radius: 40px;
+	cursor: pointer;
+	font-size: 16px;
+	color: #333;
+	font-weight: 600;
+}
+
+
+/*회원가입 폰트부분 */
+.wrapper .register-link{
+	font-size: 14.5px;	
+	text-align: center;
+	margin:20px 0 15px;
+}
+
+
+/*회원가입 폰트부분 */
+.register-link p a {
+	color: #fff;	
+	font-weight: 600;	
+}
+
+/*회원가입 부분*/
+.register-link p a:hover{
+	text-decoration: underline; /*링크부분에 밑줄*/
+}
+
+
+
+
