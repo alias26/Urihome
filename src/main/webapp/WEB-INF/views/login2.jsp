@@ -19,8 +19,7 @@
 
 	<!-- css적용되도록 login2.css 파일을 연결시킵니다. -->
 	<link href="${pageContext.request.contextPath}/resources/css/login2.css" rel="stylesheet">
-	<!-- boxicons 홈페이지에서 이미지 가져오기위해 사용합니다. -->
-	<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+	
 		<!-- 페이지 상단에 로그인 페이지라고 뜹니다. -->
 		<title>로그인 페이지</title>
 
@@ -55,15 +54,13 @@
 			<!-- id를 입력하는 div부분입니다. -->
 			<div class="input-box">
 				<input type="text" placeholder="Userid" required>
-				<!--boxicons 홈페이지에서 사람모양 이미지를 가져옵니다. -->
-				<i class='bx bxs-user'></i>
+				
 			</div>
 			
 			<!-- password를 입력하는 div부분입니다. -->
 			<div class="input-box">
 				<input type="password" placeholder="Password" required>
-				<!--boxicons 홈페이지에서 자물쇠 이미지를 가져옵니다. -->
-				<i class='bx bxs-lock-alt' ></i>
+				
 			</div>
 			
 			<!-- 아이디기억 체크박스가 있는 div부분 입니다.  -->

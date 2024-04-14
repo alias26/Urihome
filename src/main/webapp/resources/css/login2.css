@@ -80,14 +80,7 @@
 	color: #fff;
 }
  
-/*아이콘 부분*/
-.input-box i{
-	position: absolute; /*부모요소를 기준으로 배치 */
-	right: 20px; 
-	top: 50%; /*정가운데 위치*/
-	transform: translateY(-50%); /*요소의 높이의 50%만큼 위로 이동 */
-	font-size: 20px;
-} 
+
 
 /*아이디 기억, 비밀번호 찾기, 아이디 찾기부분*/
 .wrapper .remeber-id{
