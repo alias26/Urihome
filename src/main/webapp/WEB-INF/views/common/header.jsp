@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <link rel="stylesheet" href="/resources/css/header.css" type="text/css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
 
 <div id="header" class="header">
 	<nav class="navbar navbar-expand-lg fixed-top bg-light">
@@ -13,7 +14,7 @@
 			data-bs-target="#navbarDropdownCenter,#navbarDropdownEnd">
 			<span class="navbar-toggler-icon"></span>
 		</button>
-		<div class="collapse navbar-collapse justify-content-center"
+		<div class="collapse navbar-collapse justify-content-center bg-light"
 			id="navbarDropdownCenter">
 			<ul class="navbar-nav">
 				<li class="nav-item dropdown ms-3 me-3">
@@ -57,7 +58,7 @@
 			</ul>
 		</div>
 		<div class="d-flex">
-			<div class="collapse navbar-collapse justify-content-end"
+			<div class="collapse navbar-collapse justify-content-end bg-light"
 				id="navbarDropdownEnd">
 
 				<ul class="navbar-nav">
@@ -76,7 +77,7 @@
 							<li class="text-center d-grid m-2"><button
 									class="btn btn-dark btn-sm" aria-expanded="false">로그인
 								</button></li>
-							<li class="text-center d-grid m-2"><button
+							<li class="text-center d-grid m-2"><button onclick="location.href = '${pageContext.request.contextPath}/member/join'"
 									class="btn btn-sm" aria-expanded="false">회원가입</button></li>
 						</ul>
 					</li>
