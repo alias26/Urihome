@@ -33,7 +33,7 @@
 						<div class="form-group mt-2">
 							<label class="form-label">비밀번호</label>
 							<input type="password" class="form-control" id="mpassword" name="mpassword">
-							<span class="form-text" id="mpasswordSpan">알파벳 대소문자, 숫자를 혼용해서 8자 이상 15장 이하</span>
+							<span class="form-text" id="mpasswordSpan">알파벳 대소문자, 숫자, 특수문자를 혼용해서 8자 이상 15장 이하</span>
 						</div>
 						<div class="form-group mt-2">
 							<label class="form-label">비밀번호 확인</label>
