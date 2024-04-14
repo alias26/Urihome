@@ -6,6 +6,7 @@ function joinFormCheckData() {
 
 	totalResult &= isRightID();
 	totalResult &= isRightPassword();
+	totalResult &= isRightPasswordCheck();
 	totalResult &= isRightName();
 	totalResult &= isRightNormalPhone();
 	totalResult &= isRightCellPhone();
@@ -33,12 +34,14 @@ function isRightID() {
 	var midSpan = $("#midSpan");
 
 	if (!midResult) {
+		mid.addClass("border-danger");
 		midSpan.addClass("text-danger");
 		result = false;
 	} else {
+		mid.removeClass("border-danger");
 		midSpan.removeClass("text-danger");
 	}
-
+	
 	return result;
 }
 
@@ -53,26 +56,37 @@ function isRightPassword() {
 	var mpasswordSpan = $("#mpasswordSpan");
 
 	if (!mpasswordResult) {
+		mpassword.addClass("border-danger");
 		mpasswordSpan.addClass("text-danger");
 		result = false;
 	} else {
+		mpassword.removeClass("border-danger");
 		mpasswordSpan.removeClass("text-danger");
 	}
 
+	return result;
+}
+
+function isRightPasswordCheck(){
+	var result = true;
+	
 	//passwordCheck 검사
+	var mpassword = $("#mpassword");
+	var mpasswordValue = mpassword.val();
 	var mpasswordCheck = $("#mpasswordCheck");
 	var mpasswordCheckValue = mpasswordCheck.val();
 	var mpasswordCheckSpan = $("#mpasswordCheckSpan");
 
 	if (mpasswordCheckValue !== mpasswordValue || mpasswordValue === "") {
 		mpasswordCheckSpan.html("비밀번호가 맞지 않습니다.");
+		mpasswordCheck.addClass("border-danger");
 		mpasswordCheckSpan.addClass("text-danger");
 		result = false;
 	} else {
 		mpasswordCheckSpan.html("&nbsp;");
+		mpasswordCheck.removeClass("border-danger");
 		mpasswordCheckSpan.removeClass("text-danger");
 	}
-
 	return result;
 }
 
@@ -88,10 +102,12 @@ function isRightName() {
 
 	if (!nameResult) {
 		nameSpan.html("잘못된 형식의 이름입니다.");
+		name.addClass("border-danger");
 		nameSpan.addClass("text-danger");
 		result = false;
 	} else {
 		nameSpan.html("&nbsp;");
+		name.removeClass("border-danger");
 		nameSpan.removeClass("text-danger");
 	}
 
@@ -118,10 +134,14 @@ function isRightNormalPhone() {
 
 	if (!normalPhoneResult) {
 		normalPhoneSpan.html("전화번호가 틀렸습니다.");
+		normalPhone2.addClass("border-danger");
+		normalPhone3.addClass("border-danger");
 		normalPhoneSpan.addClass("text-danger");
 		result = false;
 	} else {
 		normalPhoneSpan.html("&nbsp;");
+		normalPhone2.removeClass("border-danger");
+		normalPhone3.removeClass("border-danger");
 		normalPhoneSpan.removeClass("text-danger");
 	}
 	return result;
@@ -141,10 +161,14 @@ function isRightCellPhone() {
 
 	if (!cellPhoneResult) {
 		cellPhoneSpan.html("전화번호가 틀렸습니다.");
+		cellPhone2.addClass("border-danger");
+		cellPhone3.addClass("border-danger");
 		cellPhoneSpan.addClass("text-danger");
 		result = false;
 	} else {
 		cellPhoneSpan.html("&nbsp;");
+		cellPhone2.removeClass("border-danger");
+		cellPhone3.removeClass("border-danger");
 		cellPhoneSpan.removeClass("text-danger");
 	}
 	return result;
@@ -161,10 +185,12 @@ function isRightEmail() {
 
 	if (!emailResult) {
 		emailSpan.html("잘못된 이메일입니다.");
+		email.addClass("border-danger");
 		emailSpan.addClass("text-danger");
 		result = false;
 	} else {
 		emailSpan.html("&nbsp;");
+		email.removeClass("border-danger");
 		emailSpan.removeClass("text-danger");
 	}
 	return result;

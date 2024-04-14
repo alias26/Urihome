@@ -27,22 +27,22 @@
 					<form action="${pageContext.request.contextPath}/" id="joinForm" name="joinForm" onsubmit="joinFormCheckData()" method="post" class="validation-form" novalidate>
 						<div class="form-group mt-4">
 							<label class="form-label">아이디</label>
-							<input type="text" class="form-control" id="mid" name="mid">
+							<input type="text" class="form-control" onchange="isRightID()" id="mid" name="mid">
 							<span class="form-text" id="midSpan">알파벳, 숫자를 혼용해서 6자 이상 20자 이하</span>
 						</div>
 						<div class="form-group mt-2">
 							<label class="form-label">비밀번호</label>
-							<input type="password" class="form-control" id="mpassword" name="mpassword">
+							<input type="password" class="form-control" onchange="isRightPassword()" id="mpassword" name="mpassword">
 							<span class="form-text" id="mpasswordSpan">알파벳 대소문자, 숫자, 특수문자를 혼용해서 8자 이상 15장 이하</span>
 						</div>
 						<div class="form-group mt-2">
 							<label class="form-label">비밀번호 확인</label>
-							<input type="password" class="form-control" id="mpasswordCheck" name="mpasswordCheck">
+							<input type="password" class="form-control" onchange="isRightPasswordCheck()" id="mpasswordCheck" name="mpasswordCheck">
 							<span class="form-text" id="mpasswordCheckSpan">&nbsp;</span>
 						</div>
 						<div class="form-group mt-2">
 							<label class="form-label">이름</label>
-							<input type="text" class="form-control" id="name" name="name">
+							<input type="text" class="form-control" onchange="isRightName()" id="name" name="name">
 							<span class="form-text" id="nameSpan">&nbsp;</span>
 						</div>
 						<div class="mt-2">
@@ -101,7 +101,7 @@
 						</div>
 							<div class="form-group mt-2">
 							<label class="form-label">이메일</label>
-							<input type="email" class="form-control" id="email" name="email">
+							<input type="email" class="form-control" onchange="isRightEmail()" id="email" name="email">
 							<span class="form-text" id="emailSpan">&nbsp;</span>
 						</div>
 						<div class="mt-2 mb-2">
