@@ -89,7 +89,7 @@
 							<li><p id="cartInfo">장바구니가 비어있습니다.</p></li>
 							<hr>
 							<li id="cartMoveButton" class="text-center">
-								<button onclick="location.href = '${pageContext.request.contextPath}/cart' class="btn btn-dark btn-sm" aria-expanded="false">
+								<button onclick="location.href = '${pageContext.request.contextPath}/cart'" class="btn btn-dark btn-sm" aria-expanded="false">
 									장바구니로 이동</button>
 							</li>
 						</ul>
