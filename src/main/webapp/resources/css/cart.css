@@ -30,11 +30,11 @@ body {
 	float: right;
 	margin-left: 20px;
 }
-
+/* 
 #check1 {
 	margin-right: 20px;
 	margin-left: 10px;
-}
+} */
 
 .cart-number {
 	width: 40px;
@@ -69,8 +69,8 @@ input[type="checkbox"] {
 	margin-left: 10px;
 }
 .total-price-count{
-	background-color:gray;
-	text-align:center;
+	background-color:lightgray;
+	/* text-align:center; */
 	margin-top:50px;
 	height:70px;
 	border-radius: 25px;

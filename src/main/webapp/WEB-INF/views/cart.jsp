@@ -29,8 +29,8 @@
 
 <body class="pt-5">
 	<%@ include file="/WEB-INF/views/common/header.jsp"%>
-
-	<div class="d-flex">
+	<!-- bootstrap의 grid를 이용해 전체 가로비율을 2:8:2로 지정  -->
+	<div class="row">
 		<div class="col-2"></div>
 
 		<div class="col-8 ms-0">
@@ -42,7 +42,9 @@
 						30일 동안 보관됩니다.</div>
 					<div class="d-flex mb-3">
 						<div class="col-2">
-							<input type="checkbox" value="cart-total">
+							<input class="form-check-input" type="checkbox" value=""
+								id="checkAll" checked>
+
 						</div>
 						<div class="col-4 ms-4">상품정보</div>
 						<div class="col-2 ms-4">배송정보</div>
@@ -55,12 +57,13 @@
 
 
 			<div class="shopping-cart-layout">
+				<!-- 장바구니  목록을 보여준다 -->
 				<ul class="list-unstyled">
 					<li class="cart-items">
 						<div class="d-flex">
 							<div class=" col-2">
-								<input class="form-check-input" type="checkbox" id="check1"
-									checked> <img
+								<input class="form-check-input" type="checkbox"
+									id="order-checkbox" value="" checked> <img
 									src="${pageContext.request.contextPath}/resources/image/cart2.jpg"
 									width="120">
 							</div>
@@ -96,12 +99,12 @@
 						</div>
 
 					</li>
-					<hr>
+					<hr />
 					<li class="cart-items">
 						<div class="d-flex">
 							<div class=" col-2">
-								<input class="form-check-input" type="checkbox" id="check1"
-									checked> <img
+								<input class="form-check-input" type="checkbox"
+									id="order-checkbox" value="" checked> <img
 									src="${pageContext.request.contextPath}/resources/image/cart1.jpg"
 									width="120">
 							</div>
@@ -142,7 +145,7 @@
 						<div class="d-flex">
 							<div class=" col-2">
 								<input class="form-check-input" type="checkbox" id="check1"
-									checked> <img
+									value="" checked> <img
 									src="${pageContext.request.contextPath}/resources/image/cart3.jpg"
 									width="120">
 							</div>
@@ -182,14 +185,15 @@
 				</ul>
 			</div>
 			<div class="total-price-count d-flex" style="align-items: center">
-				<div>176,800 + 배송비 0(무료) = 176,800원</div>
+				<div style="margin-left: 350px">176,800 + 배송비 0(무료) = 176,800원</div>
 			</div>
 			<div class="final-order">
-				<button type="button" class="btn btn-secondary btn-md ">선택상품 주문</button>
+				<button type="button" class="btn btn-secondary btn-md ">선택상품
+					주문</button>
 				<button type="button" class="btn btn-dark btn-md ">전체상품 주문</button>
-				
 			</div>
-			<div class="col-2"></div>
 		</div>
+		<div class="col-2"></div>
+	</div>
 </body>
 </html>
