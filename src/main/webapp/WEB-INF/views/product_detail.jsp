@@ -131,7 +131,7 @@
 		    <!-- 상세정보 -->
 		    <div class="tabcontent" style="height:100%; margin-top: 100px;">
 		      <div id="tab01" style="text-align: center;">
-		      	<img alt="info" src="https://ecssueim.imghost.cafe24.com/shop/ssueim/mall-image/03-tableware/good_vibes/good_vibes_mug_01.jpg">
+		      	<img alt="info" src="/urihome_mini_web/resources/image/info.png">
 		      </div>
 		    </div>
 		    <!-- 상세정보 -->
