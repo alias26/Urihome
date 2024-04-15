@@ -10,7 +10,7 @@
 	  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 	  <!-- jQuery 외부 라이브러리 설정 -->
 	  <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
-	  <link href="/htmlcssjs/resources/css/product_detail.css" rel="stylesheet">
+	  <link href="${pageContext.request.contextPath}/resources/css/product_detail.css" rel="stylesheet">
 	  
 	  <!-- 사용자 정의 자바스크립트 -->
 	  <script>
@@ -35,8 +35,9 @@
 	  
    </head>
    	<!-- css 적용 -->
-   	<link href="/urihome_mini_web/resources/css/product_detail.jsp" rel="stylesheet">
+   	<link href="${pageContext.request.contextPath}/resources/css/product_detail.jsp" rel="stylesheet">
    <body>
+   <%@ include file="/WEB-INF/views/common/header.jsp" %>
    <div class ="container">
 	<!-- 상품 상세 페이지 상단 -->
 	   	<div class="d-flex" style="align-items: center;">	
@@ -104,9 +105,11 @@
 		   				
 			   			<!-- 버튼 -->
 			   		<div class="d-flex">
-	   				    <button type="button" class="btn btn-lg me-1" style="border: solid 0.5px; flex:1;"><img src="/urihome_mini_web/resources/image/star.png" width="27px;"></button>
-	   					<button type="button" class="btn btn-lg me-1" style="border: solid 0.5px; flex:3;">장바구니</button>
-	   					<button type="button" class="btn btn-lg btn-dark me-1" style="border: solid 0.5px; flex:3;">구매하기</button>
+	   				    <button type="button" class="btn btn-lg product_btn me-1" style="border: solid 0.5px; flex:1;">
+	   				    	<img src="${pageContext.request.contextPath}/resources/image/star.png" width="27px;">
+	   				    </button>
+	   					<button type="button" class="btn btn-lg product_btn me-1" style="border: solid 0.5px; flex:3;">장바구니</button>
+	   					<button type="button" class="btn btn-lg product_btn btn-dark me-1" style="border: solid 0.5px; flex:3;">구매하기</button>
 		   			</div>	
 		   		 </div>
 		   		</div>
@@ -312,5 +315,6 @@
 			
 			
 		</div>
+		<%@ include file="/WEB-INF/views/common/footer.jsp" %>
    </body>
 </html>

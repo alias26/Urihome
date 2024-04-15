@@ -9,7 +9,6 @@
 }
 
 .image-box {
-	
 
 }
 
@@ -19,9 +18,9 @@
     border-radius: 3%;
 }
 
-.btn {
-    background-color:#fff;
-    color: #fff;
+#product_btn{
+    /* background-color:#fff; */
+    /* color: #fff; */
     border: solid;
     border-radius:3px;
   }
@@ -29,7 +28,6 @@
 #key-product {
 	width: 500px;
 	border-radius: 30%;
-
 }
 
 #name{
@@ -46,7 +44,6 @@
 
 .tab {
 	display: flex;
-	
 }
 
 .tabnav {
