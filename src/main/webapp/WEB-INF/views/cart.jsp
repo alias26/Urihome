@@ -36,7 +36,7 @@
 		<div class="col-8 ms-0">
 			<h2 class="cart-title " style="text-align: center">장바구니</h2>
 
-			<div class="ms-3 border-bottom">
+			<div class=" border-bottom">
 				<div class="totalCheck">
 					<div class="pt-5 mb-2" style="font-size: 15px">장바구니에 담긴 상품은
 						30일 동안 보관됩니다.</div>
@@ -46,10 +46,10 @@
 								id="checkAll" checked>
 
 						</div>
-						<div class="col-4 ms-4">상품정보</div>
-						<div class="col-2 ms-4">배송정보</div>
-						<div class="col-2 ms-4">상품금액</div>
-						<div class="col-2 ms-4">선택</div>
+						<div class="col-4" style="margin-left:30px">상품정보</div>
+						<div class="col-2" style="margin-left:30px">배송정보</div>
+						<div class="col-2" style="margin-left:20px">상품금액</div>
+						<div class="col-2" style="margin-left:10px">선택</div>
 
 					</div>
 				</div>
