@@ -20,6 +20,7 @@
 <!-- jquery 외부라이브러리 설정 -->
 <script
 	src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/cart.js"></script>
 
 
 <!-- 사용자 정의 자바스크립트 -->
@@ -27,8 +28,10 @@
 
 </head>
 
+
 <body class="pt-5">
 	<%@ include file="/WEB-INF/views/common/header.jsp"%>
+
 	<!-- bootstrap의 grid를 이용해 전체 가로비율을 2:8:2로 지정  -->
 	<div class="row">
 		<div class="col-2"></div>
@@ -36,23 +39,24 @@
 		<div class="col-8 ms-0">
 			<h2 class="cart-title " style="text-align: center">장바구니</h2>
 
-			<div class="ms-3 border-bottom">
-				<div class="totalCheck">
-					<div class="pt-5 mb-2" style="font-size: 15px">장바구니에 담긴 상품은
-						30일 동안 보관됩니다.</div>
-					<div class="d-flex mb-3">
-						<div class="col-2">
-							<input class="form-check-input" type="checkbox" value=""
-								id="checkAll" checked>
 
-						</div>
-						<div class="col-4 ms-4">상품정보</div>
-						<div class="col-2 ms-4">배송정보</div>
-						<div class="col-2 ms-4">상품금액</div>
-						<div class="col-2 ms-4">선택</div>
+			<div class="totalCheck ms-3">
+				<div class="pt-5 mb-2" style="font-size: 15px">장바구니에 담긴 상품은
+					30일 동안 보관됩니다.</div>
+			</div>
+			<div class="border-bottom">
+				<div class="d-flex mb-2">
+					<input class="col-2 form-check-input" style="margin-right: 30px" type="checkbox" value=""
+						id="checkAll">
 
-					</div>
+
+					<div class="col-4" style="margin-left: 160px">상품정보</div>
+					<div class="col-2 " style="margin-left: 50px">배송정보</div>
+					<div class="col-2 " style="margin-left: 40px">상품금액</div>
+					<div class="col-2 " style="margin-left: 10px">선택</div>
 				</div>
+
+
 			</div>
 
 
@@ -62,8 +66,8 @@
 					<li class="cart-items">
 						<div class="d-flex">
 							<div class=" col-2">
-								<input class="form-check-input" type="checkbox"
-									id="order-checkbox" value="" checked> <img
+								<input class="form-check-input" type="checkbox" id="check1"
+									name="order-checkbox" value=""> <img
 									src="${pageContext.request.contextPath}/resources/image/cart2.jpg"
 									width="120">
 							</div>
@@ -78,9 +82,9 @@
 								</span>
 								<p class="cart-item-price mt-2 mb-1">33,000원</p>
 								<div class="d-flex">
-									<button class="cart-number-button btn btn-dark btn-sm">-</button>
-									<div class=" cart-number">1</div>
-									<button class="cart-number-button btn btn-dark btn-sm">+</button>
+									<button class="minus btn btn-dark btn-sm" type="submit">-</button>
+									<input class=" cart-number" name="item1" value="1">
+									<button class="plus btn btn-dark btn-sm">+</button>
 								</div>
 
 							</div>
@@ -103,8 +107,8 @@
 					<li class="cart-items">
 						<div class="d-flex">
 							<div class=" col-2">
-								<input class="form-check-input" type="checkbox"
-									id="order-checkbox" value="" checked> <img
+								<input class="form-check-input" type="checkbox" id="check2"
+									name="order-checkbox" value=""> <img
 									src="${pageContext.request.contextPath}/resources/image/cart1.jpg"
 									width="120">
 							</div>
@@ -119,9 +123,9 @@
 								</span>
 								<p class="cart-item-price mt-2 mb-1">22,400원</p>
 								<div class="d-flex">
-									<button class="cart-number-button btn btn-dark btn-sm ">-</button>
-									<div class=" cart-number">2</div>
-									<button class="cart-number-button btn btn-dark btn-sm">+</button>
+									<button class="minus btn btn-dark btn-sm">-</button>
+									<input class=" cart-number" name="item2" value="1">
+									<button class="plus btn btn-dark btn-sm">+</button>
 								</div>
 
 							</div>
@@ -144,8 +148,8 @@
 					<li class="cart-items">
 						<div class="d-flex">
 							<div class=" col-2">
-								<input class="form-check-input" type="checkbox" id="check1"
-									value="" checked> <img
+								<input class="form-check-input" type="checkbox" id="check3"
+									name="order-checkbox" value=""> <img
 									src="${pageContext.request.contextPath}/resources/image/cart3.jpg"
 									width="120">
 							</div>
@@ -160,9 +164,9 @@
 								</span>
 								<p class="cart-item-price mt-2 mb-1">99,000원</p>
 								<div class="d-flex">
-									<button class="cart-number-button btn btn-dark btn-sm">-</button>
-									<div class=" cart-number">1</div>
-									<button class="cart-number-button btn btn-dark btn-sm">+</button>
+									<button class="minus btn btn-dark btn-sm">-</button>
+									<input class=" cart-number" name="item3" value="1">
+									<button class="plus btn btn-dark btn-sm">+</button>
 								</div>
 
 							</div>
