@@ -7,10 +7,10 @@ import lombok.extern.slf4j.Slf4j;
 
 @Controller
 @Slf4j
-@RequestMapping("/")
+@RequestMapping("/member")
 public class LoginController {
-	@RequestMapping("/login2")
+	@RequestMapping("/login")
 	public String index() {
-		return "login2";
+		return "member/login";
 	}
 }
