@@ -26,6 +26,7 @@
 </head>
 
 <body>
+<div class="distance">
 	<div class="title">
 		<a href="http://localhost:8080/urihome_mini_web">
 			<img src="${pageContext.request.contextPath}/resources/image/common/LOGO.png" width="150"/>
@@ -35,7 +36,7 @@
 
 
 	<div class="login-wrapper">
-		<h2>Login</h2>
+		<h2>로그인</h2>
 		<form method="post" action="#" id="login-form">
 			<input type="text" name="userId" placeholder="아이디" required>
 			<input type="password" name="userPassword" placeholder="비밀번호" required>
@@ -46,13 +47,14 @@
 			</label>
 			
 			
-			<input class="loginbutton" type="submit" value="로그인">
+			<button class="loginbutton" type="submit">로그인</button>
 			
 			
 		</form>
 		<div class="login-function">
-			<a href="#">비밀번호 찾기</a>|
-			<a href="#">아이디 찾기</a>|
+			
+			<a href="${pageContext.request.contextPath}/member/idfind">아이디 찾기</a>|
+			<a href="${pageContext.request.contextPath}/member/passwordfind">비밀번호 찾기</a>|
 			<a href="${pageContext.request.contextPath}/member/join">회원 가입</a>
 		</div>		
 		
@@ -65,8 +67,8 @@
 	<div class="footer">
 			<span>Urizip Copyright .All Rights Reserved</span>
 	</div>
-	
-	
+</div>	
+
 
 </body>
 
