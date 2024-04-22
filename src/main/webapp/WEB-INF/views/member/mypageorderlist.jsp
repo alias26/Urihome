@@ -41,6 +41,23 @@
      margin-top:50px;
      margin-left: 250px;
     }
+    
+    .table-container {
+        margin-top: 50px; /* 테이블과 ORDERED를 위로 이동 */
+    }
+    
+    
+    /* 사용자 정보를 담는 박스 스타일 */
+    .user-info-box {
+    	display :block;
+    	float: center;
+    	text-align:left;
+        background-color: #f5f5f5; /* 박스 배경색 */
+        padding:50px; /* 내부 여백 */
+        
+    }
+    
+    
 </style>
 
 
@@ -52,10 +69,10 @@
 
 
 
-<div class="container-fluid">
-    <div class="row">
+<div class="container-fluid"> <!-- 전체 화면의 너비에 맞게 콘텐츠를 확장하는 역할 -->
+	 <div class="row">
         <!-- Left Sidebar -->
-        <div class="col-md-3">
+        <div class="col-md-1">
             <nav class="col-sm-3 sidenav">
     			<h4>MY PAGE</h4>
 		      <ul>
@@ -66,11 +83,37 @@
     		</nav>
         </div>
         <!-- Right Content -->
-        <div class="col-md-9">
-            <h1>ORDERED</h1>
+        
+        <div class="col-md-10 mx-auto page"><!-- 주문내역 제목을 좌측으로 이동 -->
+           <div class="d-flex justify-content-center mt-5 mb-0">
+	            <div class="user-info-box flex-fill">
+	                <p>xxx님은 브론즈 등급입니다</p> <!-- 메시지를 포함하는 박스 -->
+	                <select>
+					    <option value="americano">브론즈 등급</option>
+					    <option value="caffe latte">실버 등급</option>
+					    <option value="cafe au lait">골드 등급</option>
+					   
+					</select>
+	            </div>
+	            <div class="flex-fill">
+	            	<div style="text-align:center"><img src="${pageContext.request.contextPath}/resources/image/coupon.png"></div>
+	            	<p style="text-align:center">쿠폰</p>
+	            	<p style="text-align:center">1장</p>
+	            </div>
+	            <div class="flex-fill">
+	            	<div style="text-align:center"><img src="${pageContext.request.contextPath}/resources/image/mileage.png"></div>
+	            	<p style="text-align:center">마일리지</p>
+	            	<p style="text-align:center">0원</p>
+	            </div>
+           </div>
+           
+           
+           
+            <h1>주문내역</h1>
 
-            <div class="table-container">
-                <table class="table">
+            <div class="table-container mt-3" style="margin-left:0px">     
+            
+                <table class="table" style="text-align:center; margin:0">
                     <thead>
                     <tr>
                         <th>주문번호</th>
@@ -86,23 +129,72 @@
                     <tbody>
                     <tr>
                         <td>001</td>
-                        <td><img src="item1.jpg" alt="아이템 이미지"></td>
+                        <td><img src="${pageContext.request.contextPath}/resources/image/ordernumber1.jpg" alt="아이템 이미지"></td>
                         <td>상품 A</td>
                         <td>10,000원</td>
                         <td>2</td>
                         <td>2024-04-21</td> <!-- 주문날짜를 여기에 입력 -->
-                        <td>배송준비중</td>
-                        <td>배송중</td>
+                        <td style="vertical-align: top;">결제 완료<br>
+                        	<button class="cancel-btn" data-order-id="001">주문 취소</button>
+                        </td>
+                        <td>배송 전</td>
                     </tr>
                     <tr>
                         <td>002</td>
-                        <td><img src="item2.jpg" alt="아이템 이미지"></td>
+                        <td><img src="${pageContext.request.contextPath}/resources/image/ordernumber1.jpg" alt="아이템 이미지"></td>
                         <td>상품 B</td>
                         <td>20,000원</td>
                         <td>1</td>
                         <td>2024-04-20</td> <!-- 주문날짜를 여기에 입력 -->
-                        <td>배송완료</td>
-                        <td>배송완료</td>
+                        <td>결제 전</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>003</td>
+                        <td><img src="${pageContext.request.contextPath}/resources/image/ordernumber1.jpg" alt="아이템 이미지"></td>
+                        <td>상품 C</td>
+                        <td>10,000원</td>
+                        <td>2</td>
+                        <td>2024-04-21</td> <!-- 주문날짜를 여기에 입력 -->
+                        <td style="vertical-align: top;">결제 완료<br>
+                        	<button class="cancel-btn" data-order-id="001">주문 취소</button>
+                        </td>
+                        <td>배송 전</td>
+                    </tr>
+                    <tr>
+                        <td>004</td>
+                        <td><img src="${pageContext.request.contextPath}/resources/image/ordernumber1.jpg" alt="아이템 이미지"></td>
+                        <td>상품 D</td>
+                        <td>10,000원</td>
+                        <td>2</td>
+                        <td>2024-04-21</td> <!-- 주문날짜를 여기에 입력 -->
+                        <td style="vertical-align: top;">결제 완료<br>
+                        	<button class="cancel-btn" data-order-id="001">주문 취소</button>
+                        </td>
+                        <td>배송 완료</td>
+                    </tr>
+                    <tr>
+                        <td>005</td>
+                        <td><img src="${pageContext.request.contextPath}/resources/image/ordernumber1.jpg" alt="아이템 이미지"></td>
+                        <td>상품 E</td>
+                        <td>10,000원</td>
+                        <td>2</td>
+                        <td>2024-04-21</td> <!-- 주문날짜를 여기에 입력 -->
+                        <td style="vertical-align: top;">결제 완료<br>
+                        	
+                        </td>
+                        <td>배송 전</td>
+                    </tr>
+                    <tr>
+                        <td>006</td>
+                        <td><img src="${pageContext.request.contextPath}/resources/image/ordernumber1.jpg" alt="아이템 이미지"></td>
+                        <td>상품 F</td>
+                        <td>10,000원</td>
+                        <td>2</td>
+                        <td>2024-04-21</td> <!-- 주문날짜를 여기에 입력 -->
+                        <td style="vertical-align: top;">결제 완료                        	
+                        </td>
+                        <td>배송중</td>
                     </tr>
                     <!-- 다른 주문 항목들도 이어서 추가할 수 있습니다 -->
                     </tbody>
