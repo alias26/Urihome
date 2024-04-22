@@ -25,6 +25,24 @@
 
 
 
+<style>
+    /* 사이드바 */
+    .sidenav {
+      background-color: #f1f1f1;
+      position: fixed;
+      width: 200px;
+      height: 100%;
+      margin-left: -20px;
+      padding-top:100px
+      
+    }
+    /* 본문 */
+    .page {
+     margin-top:50px;
+     margin-left: 250px;
+    }
+</style>
+
 
 
 </head>
@@ -33,48 +51,68 @@
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
 
 
-<h1>ORDERED</h1>
 
-<div class="table-container">
-<table class="table">
-  <thead>
-    <tr>
-      <th>주문번호</th>
-      <th>이미지</th>
-      <th>상품명</th>
-      <th>가격</th>
-      <th>수량</th>
-      <th>주문날짜</th>
-      <th>주문상태</th>
-      <th>배송상태</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>001</td>
-      <td><img src="item1.jpg" alt="아이템 이미지"></td>
-      <td>상품 A</td>
-      <td>10,000원</td>
-      <td>2</td>
-      <td>2024-04-21</td> <!-- 주문날짜를 여기에 입력 -->
-      <td>배송준비중</td>
-      <td>배송중</td>
-    </tr>
-    <tr>
-      <td>002</td>
-      <td><img src="item2.jpg" alt="아이템 이미지"></td>
-      <td>상품 B</td>
-      <td>20,000원</td>
-      <td>1</td>
-      <td>2024-04-20</td> <!-- 주문날짜를 여기에 입력 -->
-      <td>배송완료</td>
-      <td>배송완료</td>
-    </tr>
-    <!-- 다른 주문 항목들도 이어서 추가할 수 있습니다 -->
-  </tbody>
-</table>
+<div class="container-fluid">
+    <div class="row">
+        <!-- Left Sidebar -->
+        <div class="col-md-3">
+            <nav class="col-sm-3 sidenav">
+    			<h4>MY PAGE</h4>
+		      <ul>
+		        <li><a href="#">회원정보</a></li>    
+		        <li><a href="#">주문내역</a></li>  		        
+		      </ul>
+		      
+    		</nav>
+        </div>
+        <!-- Right Content -->
+        <div class="col-md-9">
+            <h1>ORDERED</h1>
 
+            <div class="table-container">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>주문번호</th>
+                        <th>이미지</th>
+                        <th>상품명</th>
+                        <th>가격</th>
+                        <th>수량</th>
+                        <th>주문날짜</th>
+                        <th>주문상태</th>
+                        <th>배송상태</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>001</td>
+                        <td><img src="item1.jpg" alt="아이템 이미지"></td>
+                        <td>상품 A</td>
+                        <td>10,000원</td>
+                        <td>2</td>
+                        <td>2024-04-21</td> <!-- 주문날짜를 여기에 입력 -->
+                        <td>배송준비중</td>
+                        <td>배송중</td>
+                    </tr>
+                    <tr>
+                        <td>002</td>
+                        <td><img src="item2.jpg" alt="아이템 이미지"></td>
+                        <td>상품 B</td>
+                        <td>20,000원</td>
+                        <td>1</td>
+                        <td>2024-04-20</td> <!-- 주문날짜를 여기에 입력 -->
+                        <td>배송완료</td>
+                        <td>배송완료</td>
+                    </tr>
+                    <!-- 다른 주문 항목들도 이어서 추가할 수 있습니다 -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 </div>
+
+
 
 <div class="footer">
 <%@ include file="/WEB-INF/views/common/footer.jsp" %>
