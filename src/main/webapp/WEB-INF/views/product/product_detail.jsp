@@ -10,32 +10,18 @@
 	  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 	  <!-- jQuery 외부 라이브러리 설정 -->
 	  <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
-	  <link href="${pageContext.request.contextPath}/resources/css/product_detail.css" rel="stylesheet">
+	  <script src="${pageContext.request.contextPath}/resources/js/product/product_detail.js" rel="stylesheet"></script>
 	  
 	  <!-- 사용자 정의 자바스크립트 -->
 	  <script>
-	   // tab-menu
-	  	$(function(){
-		  $('.tabcontent > div').hide();
-		  $('.tabnav a').click(function () {
-		    $('.tabcontent > div').hide().filter(this.hash).fadeIn();
-		    $('.tabnav a').removeClass('active');
-		    $(this).addClass('active');
-		    return false;
-		  }).filter(':eq(0)').click();
-		  });
-	  </script>
-	  <script>
-		  $(".que").click(function() {
-			   $(this).next(".anw").stop().slideToggle(300);
-			  $(this).toggleClass('on').siblings().removeClass('on');
-			  $(this).next(".anw").siblings(".anw").slideUp(300); // 1개씩 펼치기
-			});
+	   
 	  </script>
 	  
    </head>
+   
    	<!-- css 적용 -->
-   	<link href="${pageContext.request.contextPath}/resources/css/product_detail.jsp" rel="stylesheet">
+   	<link href="${pageContext.request.contextPath}/resources/css/product/product_detail.css" rel="stylesheet">
+   	
    <body>
    <%@ include file="/WEB-INF/views/common/header.jsp" %>
    <div class ="container">
