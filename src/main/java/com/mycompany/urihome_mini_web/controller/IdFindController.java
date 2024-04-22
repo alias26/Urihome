@@ -8,9 +8,9 @@ import lombok.extern.slf4j.Slf4j;
 @Controller
 @Slf4j
 @RequestMapping("/member")
-public class LoginController {
-	@RequestMapping("/login")
+public class IdFindController {
+	@RequestMapping("/idfind")
 	public String index() {
-		return "member/login";
+		return "member/idfind";
 	}
 }
