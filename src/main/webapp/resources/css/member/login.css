@@ -4,16 +4,22 @@
 	border: none;
 }
 
+.distance{
+	margin-bottom:50px;
+}
+
 body{
+	
 	font-size: 14px;
 	font-family:'Roboto', sans-serif;   /*글꼴 지정 */
+	
 }
 
 .login-wrapper{
+	margin-top: 30px;
 	width: 600px;
 	height: 500px;
-	padding: 40px;
-	
+	padding: 40px;	
 	box-sizing: border-box;
 	position: absolute; /*부모요소를 기준으로 배치*/
 	top: 40%; /*화면절반만큼 위쪽에서 떨어짐*/
@@ -28,8 +34,7 @@ body{
 	font-weight:bold;
 	color: black;
 	margin-bottom: 30px;
-	text-align:center;
-	
+	text-align:center;	
 }
 
 #login-form > input{
@@ -44,7 +49,15 @@ body{
 }
 
 .loginbutton{
+	display:block;
 	text-align:center;
+	width:50%;
+	height:50px;
+	border-radius:6px;
+	background-color:#007bff;
+	color:#fff;
+	cusor:pointer;	/*마우스커서가 포인터로 변경*/
+	margin:0 auto;	/*수평 가운데 정렬하기위해 */
 }
 
 #login-form > input::placeholer{
@@ -64,6 +77,9 @@ body{
 
 .title{
 	text-align:center;
+	margin-bottom:30px;	
+	
+	
 }
 
 .container {
