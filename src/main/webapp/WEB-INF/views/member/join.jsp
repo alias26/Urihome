@@ -106,7 +106,7 @@
 						</div>
 						<div class="mt-2 mb-2">
 						<div class="form-check mb-2">
-							<input class="form-check-input" type="checkbox" value="" id="checkAll" name="checkAll">
+							<input class="form-check-input" type="checkbox" value="" id="checkAll" onchange="selectCheckbox()" name="checkAll">
 							 <label	class="form-check-label" for="checkAll"> 전체 동의 </label>
 						</div>
 						<div class="form-check mb-2">
