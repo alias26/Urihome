@@ -218,6 +218,7 @@ function checkAgree() {
 	return checkResult;
 }
 
+
 $(function() {
 		var checkAll = $("#checkAll");
 		var checkboxes = $("input[name=check]");

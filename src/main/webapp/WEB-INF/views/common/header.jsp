@@ -74,7 +74,7 @@
 							<li><a class="dropdown-item" href="#">쿠폰</a></li>
 							<li><a class="dropdown-item" href="#">쓰임포인트</a></li>
 							<li><a class="dropdown-item" href="#">나의정보</a></li>
-							<li class="text-center d-grid m-2"><button
+							<li class="text-center d-grid m-2"><button onclick="location.href = '${pageContext.request.contextPath}/member/login'"
 									class="btn btn-dark btn-sm" aria-expanded="false">로그인
 								</button></li>
 							<li class="text-center d-grid m-2"><button onclick="location.href = '${pageContext.request.contextPath}/member/join'"
