@@ -18,7 +18,9 @@
 			id="navbarDropdownCenter">
 			<ul class="navbar-nav">
 				<li class="nav-item dropdown ms-3 me-3">
-					<button class="btn" aria-expanded="false">전체</button>
+					<button class="btn" aria-expanded="false" 
+					onclick="location.href = '${pageContext.request.contextPath}/product/product_list'">전체</button>
+					
 				</li>
 				<li class="nav-item dropdown ms-3 me-3">
 					<button class="btn" aria-expanded="false">신상품</button>
