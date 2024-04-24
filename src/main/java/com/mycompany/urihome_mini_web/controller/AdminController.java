@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
 
 import com.mycompany.urihome_mini_web.dto.ProductInfo;
-import com.mycompany.urihome_mini_web.dto.imageProductInfo;
+
 
 import lombok.extern.slf4j.Slf4j;
 
