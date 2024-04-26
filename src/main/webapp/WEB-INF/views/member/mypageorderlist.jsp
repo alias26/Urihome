@@ -9,14 +9,33 @@
   <!--Font-aweome-->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
-  <!--Custom Css-->  
+  
+  
 <!-- css적용되도록 login.css 파일을 연결시킵니다. -->
 <link href="${pageContext.request.contextPath}/resources/css/member/mypageorderlist.css" rel="stylesheet">
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+<script>
+  $(function() {
+    $("#datepicker").datepicker();
+  });
+</script>
+
+
+
 		<title>마이페이지-주문 목록</title>
 </head>
 
 <body class="pt-5">
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
+
+
+
+
 
 <div class="container-fluid"> <!-- 전체 화면의 너비에 맞게 콘텐츠를 확장하는 역할 -->
 	 <!-- 부트스트랩에서 그리드 시스템을 사용할때 사용 -->
@@ -28,8 +47,9 @@
     			<h4>MY PAGE</h4>
 			      <!-- 순서없는 리스트 -->
 			      <ul>
-			        <li><a href="#">회원정보</a></li>    <!-- 항목 -->
-			        <li><a href="${pageContext.request.contextPath}/member/mypageorderlist">주문내역</a></li>  	<!-- 항목 -->	        
+			        <li><a href="#">회원정보 수정</a></li>    <!-- 항목 -->
+			        <li><a href="${pageContext.request.contextPath}/member/mypageorderlist">주문내역</a></li>  	<!-- 항목 -->	
+			               
 			      </ul>		      
     		</nav>
         </div>
@@ -40,24 +60,36 @@
            <div class="d-flex justify-content-center mt-5" style="align-items:center;  border:3px solid black;">
            		<!-- flex-fill은 부트스트랩에서 제공하는 flexbox속성, 해당요소가 부모 컨테이너의 남은 공간을 모두 차지하도록 설정 -->
 	           <!-- 회원등급과 쿠폰,마일리지 확인가능한 부분 -->
-	            <div class="user-info-box flex-fill" style="border-right:3px solid black;"> 
-	                <p style="font-size:50px;">xxx님은 일반회원 등급입니다</p>	                 
-	                 <p style="font-size:30px">혜택보기</p>
-	                 <!-- 혜택보기  셀렉트박스-->
-	                <select>
-					    <option value="americano">일반회원 등급</option>
-					    <option value="caffe latte">우수회원 등급</option>
-					    <option value="cafe au lait">특별회원 등급</option>					   
-					</select>
-					<div class="grade-benefits">					   
-					    <ul>
-					      <li>할인 쿠폰 발급</li>
-					      <li>무료 배송</li>
-					      <li>마일리지</li>
-					    </ul>
-					 </div>					
+	           
+	               
+	           
+	           
+	           
+	           <div class="flex">
+		           <div>주문내역 검색</div>
+		            <div class="user-info-box flex-fill" style="border-right:3px solid black;"> 
+		                <div>조회기간
+		                	<div></div>~<div></div>
+		                	<div>
+			                	<button>오늘</button>
+			                	<button>1주일</button>
+			                	<button>1개월</button>
+			                	<button>6개월</button>
+			                	<button>1년</button>
+		                	</div>		                	
+		                </div>	                 
+		                 <div>주문상태</div>
+		                 <!-- 혜택보기  셀렉트박스-->
+		                <select>
+						    <option value="total">전체</option>
+						    <option value="paymentpre">결제전</option>
+						    <option value="paymentfinish">결제완료</option>				    					   
+						</select>
+										
+		            </div>
 	            </div>
 	            
+	            <%-- 
 	            <!-- 쿠폰박스 부분 -->
 	            <div class="flex-fill">
 	            	<div style="text-align:center;"> <!-- 쿠폰 이미지 중앙정렬 -->
@@ -75,7 +107,7 @@
 	            	</div>
 	            	<p style="text-align:center; font-size:30px">마일리지</p>
 	            	<p style="text-align:center; font-size:30px">0원</p>
-	            </div>
+	            </div> --%>
            </div>
            
            
