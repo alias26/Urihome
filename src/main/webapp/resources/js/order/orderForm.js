@@ -12,7 +12,7 @@ function orderFormCheckData() {
 	totalResult &= checkAgree();
 
 	if (totalResult) {
-		var elForm = $("#joinForm");
+		var elForm = $("#orderForm");
 
 		//수동으로 action을 수행
 		elForm[0].submit();
