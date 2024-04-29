@@ -57,6 +57,14 @@
 						<li><a class="dropdown-item" href="#">벤치</a></li>
 					</ul>
 				</li>
+				<li class="nav-item dropdown ms-3 me-3">
+					<button class="btn" aria-expanded="false">커뮤니티</button>
+					<ul class="dropdown-menu">
+						<li><a class="dropdown-item" href="#">공지사항</a></li>
+						<li><a class="dropdown-item" href="#">자주 묻는 질문</a></li>
+						<li><a class="dropdown-item" href="#">1대1 문의</a></li>
+					</ul>
+				</li>
 			</ul>
 		</div>
 		<div class="d-flex">
