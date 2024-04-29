@@ -32,10 +32,12 @@ img {
 	margin-bottom:200px;
 }
 
-.sidebar {
+.sidenav {
             background-color: #f1f1f1;
-            padding: 20px;
+            padding: 100px;           
             height: 100%;
+            float: left;
+            width:150px;
         }
 
 .cancle-btn{
