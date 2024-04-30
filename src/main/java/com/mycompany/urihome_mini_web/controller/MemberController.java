@@ -13,4 +13,24 @@ public class MemberController {
 	public String join() {
 		return "member/join";
 	}
+	@RequestMapping("/login")
+	public String login() {
+		return "member/login";
+	}
+	@RequestMapping("/idfind")
+	public String idfind() {
+		return "member/idfind";
+	}
+	@RequestMapping("/passwordfind")
+	public String passwordfind() {
+		return "member/passwordfind";
+	}
+	@RequestMapping("/memberinfo")
+	public String memberinfo() {
+		return "member/memberinfo";			
+	}
+	@RequestMapping("/mypageorderlist")
+	public String mypageorderlist() {
+		return "member/mypageorderlist";
+	}
 }

@@ -11,10 +11,6 @@ import lombok.extern.slf4j.Slf4j;
 public class CartController {
 	@RequestMapping("")
 	public String cart() {
-		return "/cart";
-	}
-	@RequestMapping("/cart_table")
-	public String cart_table() {
-		return "cart/cart_table";
+		return "/cart/cart";
 	}
 }

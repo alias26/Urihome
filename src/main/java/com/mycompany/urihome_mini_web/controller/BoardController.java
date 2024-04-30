@@ -11,9 +11,9 @@ import org.springframework.web.servlet.ModelAndView;
 import com.mycompany.urihome_mini_web.dto.noticeBoard;
 
 @Controller
-@RequestMapping("/")
+@RequestMapping("/board")
 public class BoardController {
-	@RequestMapping("/board")
+	@RequestMapping("/notice")
 	public ModelAndView board() {
 		List<noticeBoard> boardList = new ArrayList<>();
 		for (int i = 1; i <= 8; i++) {
@@ -25,18 +25,18 @@ public class BoardController {
 		modelAndView.addObject("boardList", boardList);
 
 		// viewName을 저장
-		modelAndView.setViewName("/board");
+		modelAndView.setViewName("/board/notice");
 
 		return modelAndView;
 	}
 
 	@RequestMapping("/FAQ")
 	public String FAQboard() {
-		return "FAQ";
+		return "/board/FAQ";
 	}
 	@RequestMapping("/questionBoard")
 	public String questionBoard() {
-		return "/questionBoard";
+		return "board/questionBoard";
 	}
 
 }
