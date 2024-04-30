@@ -53,8 +53,8 @@
 		</form>
 		<div class="login-function">
 			
-			<a href="${pageContext.request.contextPath}/member/idfind">아이디 찾기</a>|
-			<a href="${pageContext.request.contextPath}/member/passwordfind">비밀번호 찾기</a>|
+			<a href="${pageContext.request.contextPath}/member/idFind">아이디 찾기</a>|
+			<a href="${pageContext.request.contextPath}/member/passwordFind">비밀번호 찾기</a>|
 			<a href="${pageContext.request.contextPath}/member/join">회원 가입</a>
 		</div>		
 		

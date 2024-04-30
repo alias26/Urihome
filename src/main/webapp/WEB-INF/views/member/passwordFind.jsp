@@ -18,7 +18,7 @@
 
 
 	<!-- css적용되도록 login.css 파일을 연결시킵니다. -->
-	<link href="${pageContext.request.contextPath}/resources/css/member/passwordfind.css" rel="stylesheet">
+	<link href="${pageContext.request.contextPath}/resources/css/member/passwordFind.css" rel="stylesheet">
 	
 		
 		<title>비밀번호 찾기 페이지</title>
@@ -56,7 +56,7 @@
 			<button class="passwordfindbutton" type="submit">확인</button>
 		</form>
 		<div class="passwordfind-function m-3" >
-			<a href="${pageContext.request.contextPath}/member/idfind">아이디 찾기</a>|
+			<a href="${pageContext.request.contextPath}/member/idFind">아이디 찾기</a>|
 			<a href="${pageContext.request.contextPath}/member/login">로그인 화면이동</a>|
 			<a href="${pageContext.request.contextPath}/member/join">회원 가입</a>
 		</div>		

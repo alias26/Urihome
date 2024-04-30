@@ -87,6 +87,7 @@ body{
     justify-content: center;
     align-items: flex-end;
     height: 80vh;
+    margin-top:30px;
 }
 
 .footer{
