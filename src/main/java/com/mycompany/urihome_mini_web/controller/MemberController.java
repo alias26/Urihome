@@ -17,20 +17,20 @@ public class MemberController {
 	public String login() {
 		return "member/login";
 	}
-	@RequestMapping("/idfind")
+	@RequestMapping("/idFind")
 	public String idfind() {
-		return "member/idfind";
+		return "member/idFind";
 	}
-	@RequestMapping("/passwordfind")
+	@RequestMapping("/passwordFind")
 	public String passwordfind() {
-		return "member/passwordfind";
+		return "member/passwordFind";
 	}
 	@RequestMapping("/memberinfo")
 	public String memberinfo() {
 		return "member/memberinfo";			
 	}
-	@RequestMapping("/mypageorderlist")
+	@RequestMapping("/myPageOrderList")
 	public String mypageorderlist() {
-		return "member/mypageorderlist";
+		return "member/myPageOrderList";
 	}
 }

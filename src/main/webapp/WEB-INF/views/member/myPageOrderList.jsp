@@ -19,11 +19,39 @@
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
 <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
-<script>
-  $(function() {
-    $("#datepicker").datepicker();
-  });
-</script>
+
+
+
+
+
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.3/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.3/jquery-ui.js"></script>
+  <script>
+  $( function() {
+    $( "#datepicker" ).datepicker();
+  } );
+  
+  $( ".selector" ).datepicker({
+	  dateFormat: "yy-mm-dd"
+	});
+  
+
+//Getter
+var dateFormat = $( ".selector" ).datepicker( "option", "dateFormat" );
+
+//Setter
+$( ".selector" ).datepicker( "option", "dateFormat", "yy-mm-dd" );
+
+  
+  
+  </script>
+
 
 
 
@@ -58,59 +86,49 @@
         <div class="col-md-10 mx-auto page"><!--수평방향으로 자동마진 설정, 열을 가운데 정렬할수 있다. -->
         	<!-- justify-content-center:자식 요소들을 수평으로 가운데 정렬, align-items:center:자식요소를 수직으로 가운데 정렬-->
            <div class="d-flex justify-content-center mt-5" style="align-items:center;  border:3px solid black;">
-           		<!-- flex-fill은 부트스트랩에서 제공하는 flexbox속성, 해당요소가 부모 컨테이너의 남은 공간을 모두 차지하도록 설정 -->
-	           <!-- 회원등급과 쿠폰,마일리지 확인가능한 부분 -->
-	           
-	               
-	           
-	           
+           		<!-- flex-fill은 부트스트랩에서 제공하는 flexbox속성, 해당요소가 부모 컨테이너의 남은 공간을 모두 차지하도록 설정 -->           
 	           
 	           <div class="flex">
 		           <div>주문내역 검색</div>
-		            <div class="user-info-box flex-fill" style="border-right:3px solid black;"> 
-		                <div>조회기간
-		                	<div></div>~<div></div>
+		            <div class="user-info-box flex-fill" style="border-right:3px solid black; justify-content: left;"> 
+		                <div class="d-flex justify-content-center">
+		                	조회기간
 		                	<div>
-			                	<button>오늘</button>
-			                	<button>1주일</button>
-			                	<button>1개월</button>
-			                	<button>6개월</button>
-			                	<button>1년</button>
+		                		 <p><input type="text" id="datepicker"></p>
+		                	</div>
+		                	~
+		                	<div>
+		                		<p><input type="text" id="datepicker"></p>
+		                	</div>
+		                	<div>
+			                	<button style="margin:0">오늘</button>
+			                	<button style="margin:0">1주일</button>
+			                	<button style="margin:0">1개월</button>
+			                	<button style="margin:0">6개월</button>
+			                	<button style="margin:0">1년</button>
 		                	</div>		                	
-		                </div>	                 
-		                 <div>주문상태</div>
-		                 <!-- 혜택보기  셀렉트박스-->
-		                <select>
-						    <option value="total">전체</option>
-						    <option value="paymentpre">결제전</option>
-						    <option value="paymentfinish">결제완료</option>				    					   
-						</select>
-										
+		                </div>
+		                	                 
+		                 <div class="d-flex justify-content-center">
+		                 	주문상태
+		                 	 <!-- 혜택보기  셀렉트박스-->
+		                	<select>
+							    <option value="total">전체</option>
+							    <option value="paymentpre">결제전</option>
+							    <option value="paymentfinish">결제완료</option>				    					   
+							</select>
+							<div>
+							상품명
+							<input>
+							</div>
+		                 </div>									
 		            </div>
-	            </div>
-	            
-	            <%-- 
-	            <!-- 쿠폰박스 부분 -->
-	            <div class="flex-fill">
-	            	<div style="text-align:center;"> <!-- 쿠폰 이미지 중앙정렬 -->
-	            		<!-- 쿠폰 이미지 -->
-	            		<img src="${pageContext.request.contextPath}/resources/image/coupon.png" style="width:50%;"> 
-	            	</div>
-		            	<p style="text-align:center; font-size:30px">쿠폰</p>
-		            	<p style="text-align:center; font-size:30px">1장</p>
-	            	</div>
-	            <!-- 마일리지박스 부분 -->
-	            <div class="flex-fill">
-	            	<div style="text-align:center;">
-	            		<!-- 마일리지 이미지 -->
-	            		<img src="${pageContext.request.contextPath}/resources/image/mileage.png" style="width:50%;">
-	            	</div>
-	            	<p style="text-align:center; font-size:30px">마일리지</p>
-	            	<p style="text-align:center; font-size:30px">0원</p>
-	            </div> --%>
+	            </div>          
            </div>
-           
-           
+           <div class="d-flex ">
+	           <button>초기화</button>
+		       <button>검색</button>
+           </div>
            
             <h1>주문내역</h1>
 			<!-- 테이블을 감싸는 div -->
