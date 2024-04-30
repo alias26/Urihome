@@ -15,5 +15,6 @@ public class Product {
 	public Date pdate;
 	public int psellAmount;
 	public int psales;
+	public int productHitcount;
 
 }
