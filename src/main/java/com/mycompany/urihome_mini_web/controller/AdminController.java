@@ -1,15 +1,13 @@
 package com.mycompany.urihome_mini_web.controller;
 
-import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
 import org.json.JSONObject;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,8 +16,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
 
+import com.mycompany.urihome_mini_web.dto.Pager;
+import com.mycompany.urihome_mini_web.dto.Product;
 import com.mycompany.urihome_mini_web.dto.ProductInfo;
-
+import com.mycompany.urihome_mini_web.service.ProductService;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -27,27 +27,29 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @RequestMapping("/admin")
 public class AdminController {
+	@Autowired
+	private ProductService productService;
+	
 	@GetMapping("/productManageView")
-	public String productManageView(int pageNo, Model model, HttpSession session) {
-		List<ProductInfo> productInfoList = (List<ProductInfo>) session.getAttribute("productInfoList");
-		if (productInfoList == null) {
-			productInfoList = new ArrayList<ProductInfo>();
-			session.setAttribute("productInfoList", productInfoList);
-			session.setAttribute("pageNo", 1);
-			for (int i = 1; i <= 20; i++) {
-				String path = "/resources/image/best" + i +".jpg";
-				productInfoList.add(new ProductInfo(path, path, i, "상품" + i, i * 10000, i*1000, 0));
+	public String productManageView(String pageNo, Model model, HttpSession session) {
+		if(pageNo == null) {
+			pageNo = (String) session.getAttribute("pageNo");
+			if(pageNo == null) {
+				pageNo= "1";
 			}
 		}
+		
 		session.setAttribute("pageNo", pageNo);
 		
+		int intPageNo = Integer.parseInt(pageNo);
+		
+		int rowsPagingTarget = productService.getTotalRows();
+		Pager pager = new Pager(10, 10, rowsPagingTarget, intPageNo);
+		
+		List<Product> productList = productService.getProductList(pager);
+		model.addAttribute("pager", pager);
+		model.addAttribute("productList", productList);
 		return "admin/productManageView";
-	}
-	
-	@GetMapping("/productInfoView")
-	public String productInfoView(int pno, Model model) {
-		model.addAttribute("pno", pno);
-		return "admin/productInfoView";
 	}
 	
 	@GetMapping("/addProductInfoView")
@@ -55,73 +57,44 @@ public class AdminController {
 		return "admin/addProductInfoView";
 	}
 	
-	@PostMapping(value="/addProductInfo", produces="application/json; charset=UTF-8")
-	@ResponseBody
-	public String addProductInfo(ProductInfo form, 
-			@SessionAttribute List<ProductInfo> productInfoList,  @SessionAttribute int pageNo) throws IOException{
-		boolean isProductExist = false;
-		for(ProductInfo product : productInfoList) {
-			if(product.getPno() == form.getPno()) {
-				isProductExist = true;
-				break;
-			}
+	@PostMapping("/addProduct")
+	public String addProduct(Product product) {
+		if(product.getPthumbnailImage() != null && !product.getPthumbnailImage().isEmpty() 
+				&& product.getPbodyImage() != null && !product.getPbodyImage().isEmpty()) {
+			product.setPthumbnail(product.getPthumbnailImage().getOriginalFilename());
+			product.setPbody(product.getPbodyImage().getOriginalFilename());
 		}
 		
-		if(!isProductExist) {
-			ProductInfo product = new ProductInfo(form.getThumbnail(), form.getBodyImage(), form.getPno(), 
-					form.getPname(), form.getPprice(), form.getPamount(), 0);
-			productInfoList.add(product);
-		}
+		productService.addProduct(product);
 		
-//		File destDir = new File("/Users/cherrypunch/workspace/KosaCourse/projects/java-web-mac/springframework/temp");
-//		if(!destDir.exists()) destDir.mkdirs();
-//		File destFile = new File(destDir, new Date().getTime() + "-" + form.getThumbnailImage().getOriginalFilename());
-//		form.getThumbnailImage().transferTo(destFile);
-//		destFile = new File(destDir, new Date().getTime() + "-" + form.getBodyImage().getOriginalFilename());
-//		form.getBodyImage().transferTo(destFile);
-		
-		JSONObject jsonObject = new JSONObject();
-		jsonObject.put("result", "success");
-		jsonObject.put("pageNo", pageNo);
-		
-		return jsonObject.toString();
+		return "redirect:/admin/productMangeView";
 	}
 	
-	@PostMapping(value="/updateProductInfo", produces="application/json; charset=UTF-8")
-	@ResponseBody
-	public String updateProductInfo(ProductInfo form, @SessionAttribute List<ProductInfo> productInfoList, @SessionAttribute int pageNo) {
-		for (ProductInfo product : productInfoList) {
-			if (product.getPno() == form.getPno()) {
-				//product 정보 수정
-//				product.setThumbnail(form.getThumbnail());
-//				product.setBodyImage(form.getBodyImage());
-				product.setPno(form.getPno());
-				product.setPname(form.getPname());
-				product.setPamount(form.getPamount());
-				product.setPprice(form.getPprice());
-			}
-		}
+	@GetMapping("/productInfoView")
+	public String productInfoView(String pid, Model model) {
+		Product product = productService.getProduct(pid);
+		model.addAttribute("product", product);
 		
-		JSONObject jsonObject = new JSONObject();
-		jsonObject.put("result", "success");
-		jsonObject.put("pageNo", pageNo);
-		
-		return jsonObject.toString();
+		return "admin/productInfoView";
 	}
 	
-	@RequestMapping("/removeProductInfo")
-	public String updateProductInfo(int pno, @SessionAttribute List<ProductInfo> productInfoList,  @SessionAttribute int pageNo) {
-		Iterator<ProductInfo> iterator = productInfoList.iterator();
-		while(iterator.hasNext()) {
-			ProductInfo product = iterator.next();
-			if (product.getPno() == pno) {
-				//product 정보 수정
-				iterator.remove();
-			}
+	@PostMapping("/updateProduct")
+	public String updateProduct(Product product) {
+		if(product.getPthumbnailImage() != null && !product.getPthumbnailImage().isEmpty() 
+				&& product.getPbodyImage() != null && !product.getPbodyImage().isEmpty()) {
+			product.setPthumbnail(product.getPthumbnailImage().getOriginalFilename());
+			product.setPbody(product.getPbodyImage().getOriginalFilename());
 		}
 		
-		String redirect = "redirect:/admin/productManageView?pageNo=" + pageNo;
+		productService.updateProduct(product);
 		
-		return redirect;
+		return "redirect:/admin/productManageView";
+	}
+	
+	@GetMapping("/removeProduct")
+	public String removeProduct(String pid) {
+		productService.removeProduct(pid);
+		
+		return "redirect:/admin/productManageView";
 	}
 }

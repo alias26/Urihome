@@ -2,5 +2,51 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 
 <mapper namespace="com.mycompany.urihome_mini_web.dao.ProductDao">
-	
+	<select id="count" resultType="int">
+		select count(*) from product
+	</select>
+	<select id="selectByPage" parameterType="Pager" resultType="Product">
+		<![CDATA[
+		select rnum, pid, pname, pthumbnail, pprice, pstock, pdate, psellamount, psales
+		from(
+			select rownum as rnum, pid, pname, pthumbnail, pprice, pstock, pdate, psellamount, psales
+			from(
+				select pid, pname, pthumbnail, pprice, pstock, pdate, psellamount, psales
+				from product
+				order by pdate desc
+			)
+			where rownum <= #{endRowNo}
+		)
+		where rnum >= #{startRowNo}
+		]]>
+	</select>
+	<insert id="insert" parameterType="Product">
+		insert into product(
+			pid, pname, pthumbnail, pbody, pprice, pstock, 
+			pdate, psellamount, psales, producthitcount
+		)
+		values(
+			#{pid}, #{pname}, #{pthumbnail}, #{pbody}, #{pprice}, #{pstock},
+			 sysdate, 0, 0, 0
+		)
+	</insert>
+	<select id="selectByPid" parameterType="String" resultType="Product">
+		select pid, pname, pthumbnail, pbody, pprice, pstock, 
+			pdate, psellamount, psales, producthitcount
+		from product
+		where pid=#{pid}
+	</select>
+	<update id="update" parameterType="product">
+		update product set
+			pid=#{pid}, pname=#{pname}, pprice=#{pprice}, pstock=#{pstock}, psellAmount=#{psellAmount}, psales=#{psales}
+			<if test="pthumbnail != null">
+				,pthumbnail=#{pthumbnail}
+			</if>
+			<if test="pbody != null">
+				,pbody=#{pbody}
+			</if>
+	</update>
+	<delete id="deleteByPid" parameterType="String">
+		delete from product where pid=#{pid}
+	</delete>
 </mapper>

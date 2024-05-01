@@ -53,51 +53,47 @@
 								<th scope="col">상품 가격</th>
 								<th scope="col">상품 재고</th>
 								<th scope="col">상품 판매량</th>
+								<th scope="col">상품 판매 금액</th>
+								<th scope="col">상품 추가 날짜</th>
 								<th></th>
 							</tr>
 						</thead>
 						<tbody>
-							<c:forEach var="productInfo" items="${productInfoList}"
-								varStatus="status">
-								<c:if
-									test="${(pageNo-1)*10<= status.index && status.index < pageNo*10}">
+							<c:forEach var="product" items="${productList}">
 									<tr>
-										<td>${productInfo.pno}</td>
+										<td>${product.pid}</td>
 										<td><img
-											src="${pageContext.request.contextPath}/${productInfo.thumbnail}"
+											src=""
 											width="90px" height="90px"></td>
-										<td>${productInfo.pname}</td>
-										<td>${productInfo.pprice}</td>
-										<td>${productInfo.pamount}</td>
-										<td>${productInfo.psellCount}</td>
-										<td><a href="productInfoView?pno=${productInfo.pno}"
+										<td>${product.pname}</td>
+										<td>${product.pprice}</td>
+										<td>${product.pstock}</td>
+										<td>${product.psellAmount}</td>
+										<td>${product.psales}</td>
+										<td>${product.pdate}</td>
+										<td><a href="productInfoView?pid=${product.pid}"
 											id="updateProductInfo" class="btn btn-info btn-sm">수정</a> <a
-											href="removeProductInfo?pno=${productInfo.pno}"
+											href="removeProduct?pid=${product.pid}"
 											id="removeProductInfo" class="btn btn-danger btn-sm">삭제</a></td>
 									</tr>
-								</c:if>
 							</c:forEach>
 						</tbody>
 					</table>
 					<div class="d-flex justify-content-between">
 						<nav class="ms-auto me-auto" aria-label="">
 							<ul class="pagination pagination-sm">
-								<li class="page-item ${pageNo<=1 ? 'disabled':'' }"><a
-									class="page-link"
-									href="${pageContext.request.contextPath}/admin/productManageView?pageNo=${pageNo-1}"><</a></li>
-								<c:forEach var="productInfo" items="${productInfoList}"
-									varStatus="status">
-									<c:if test="${status.index%10 == 0 }">
-										<li class="page-item"><a
-											class="page-link ${pageNo==(status.index/10+1)?'active' : ''}"
-											href="${pageContext.request.contextPath}/admin/productManageView?pageNo=<fmt:formatNumber value="${status.index/10+1}" minFractionDigits="0"/>"><fmt:formatNumber
-													value="${status.index/10+1}" minFractionDigits="0" /></a></li>
-									</c:if>
+								<c:if test="${pager.groupNo>1}">
+									<li class="page-item"><a class="page-link" href="productList?pageNo=1"><<</a></li>
+									<li class="page-item"><a class="page-link" href="productList?pageNo=${pager.startPageNo-1}"><</a></li>
+								</c:if>
+								<c:forEach var="i" begin="${pager.startPageNo}" end="${pager.endPageNo}">
+									<li class="page-item">
+									<a class="page-link ${pager.pageNo==i ?'active':''}" href="productManageView?pageNo=${i}">${i}</a></li>
 								</c:forEach>
-								<li
-									class="page-item ${(pageNo+1>(fn:length(productInfoList))/10) ? 'disabled':''}"><a
-									class="page-link"
-									href="${pageContext.request.contextPath}/admin/productManageView?pageNo=${pageNo+1}">></a></li>
+								<c:if test="${pager.groupNo<pager.totalGroupNo}">
+									<li class="page-item"><a class="page-link" href="productList?pageNo=1">></a></li>
+									<li class="page-item"><a class="page-link" href="productList?pageNo=${pager.startPageNo-1}">>></a></li>
+								</c:if>
 							</ul>
 						</nav>
 						<a href="addProductInfoView" class="btn btn-info"

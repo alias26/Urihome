@@ -37,47 +37,57 @@
 						class="fas fa-sign-out-alt text-danger fa-lg me-0"></i></a>
 				</div>
 				<div class="card-body">
-					<div class="table-responsive-lg d-flex">
-						<c:forEach var="productInfo" items="${productInfoList}">
-							<c:if test="${productInfo.pno==pno}">
-								<div class="me-2">
-									<img
-										src="${pageContext.request.contextPath}/${productInfo.thumbnail}"
-										width="200px" height="200px">
-								</div>
-								<div>
-									<div class="mb-2">
-										<label class="form-label">상품 번호</label> <input
-											class="form-text" type="text" id="pno"
-											value="${productInfo.pno}" readonly />
-									</div>
-									<div class="mb-2">
-										<label class="form-label">상품 이름</label> <input
-											class="form-text" type="text" id="pname"
-											value="${productInfo.pname}" />
-									</div>
-									<div class="mb-2">
-										<label class="form-label">상품 가격</label> <input
-											class="form-text" type="number" id="pprice"
-											value="${productInfo.pprice}" />
-									</div>
-									<div class="mb-2">
-										<label class="form-label">상품 재고</label> <input
-											class="form-text" type="number" id="pamount"
-											value="${productInfo.pamount}" />
-									</div>
-									<div class="mb-2">
-										<label class="form-label">상품 판매량</label>
-										${productInfo.psellCount}
-									</div>
-									<div style="margin-right: 0px;">
-										<button id="updateProductInfo"
-											class="btn btn-danger btn-sm me-2">수정</button>
-									</div>
-								</div>
-							</c:if>
-						</c:forEach>
+					<form id="updateProduct" method="post" action="updateProduct"
+								enctype="multipart/form-data">
+					<div class=" d-flex">
+						<div class="me-2">
+							<img src="" width="200px" height="200px">
+						</div>
+						<div class="me-2">
+							<img src="" width="200px" height="200px">
+						</div>
+						<div>
+							<div class="form-group mb-2">
+								<label class="form-label">상품 아이디</label> <input class="form-text"
+									type="text" id="pid" name="pid" value="${product.pid}" readonly>
+							</div>
+							<div class="form-group mb-2">
+								<label class="form-label">상품 이름</label> <input class="form-text"
+									type="text" id="pname" name="pname" value="${product.pname}" />
+							</div>
+							<div class="form-group mb-2">
+								<label class="form-label">상품 가격</label> <input class="form-text"
+									type="number" id="pprice" name="pprice" value="${product.pprice}" />
+							</div>
+							<div class="form-group mb-2">
+								<label class="form-label">상품 재고</label> <input class="form-text"
+									type="number" id="pstock" name="pstock" value="${product.pstock}" />
+							</div>
+							<div class="form-group mb-2">
+								<label class="form-label">상품 판매량</label><input class="form-text"
+									type="number" id="psellAmount" name="psellAmount" value="${product.psellAmount}" />
+							</div>
+							<div class="form-group mb-2">
+								<label class="form-label">상품 총 매출</label><input class="form-text"
+									type="number" id="psales" name="psales" value="${product.psales}" />
+							</div>
+							<div class="form-group mb-2">
+								<label class="form-label">상품 조회수</label>
+								${product.productHitcount}
+							</div>
+							<div class="form-group mb-2">
+								<label class="form-label">상품 추가 날짜</label> ${product.pdate}
+							</div>
+							
+							<div style="margin-right: 0px;">
+								<button 
+									class="btn btn-danger btn-sm me-2">수정</button>
+								<a href="productManageView"
+									class="btn btn-primary btn-sm me-2">취소</a>
+							</div>
+						</div>
 					</div>
+					</form>
 				</div>
 			</div>
 		</div>

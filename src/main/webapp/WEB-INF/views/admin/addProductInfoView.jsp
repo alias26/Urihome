@@ -34,34 +34,34 @@
 				</div>
 				<div class="card-body">
 					<form method="post" enctype="multipart/form-data"
-						action="addProductInfo">
+						action="addProduct">
 						<div class="me-2">
-							<label class="form-label">상품 번호</label> <input class="form-text"
-								type="number" id="pno" />
+							<label class="form-label">상품 아이디</label> <input class="form-text"
+								type="text" id="pid" name="pid"/>
 						</div>
 						<div class="me-2">
 							<label class="form-label">상품 이름</label> <input class="form-text"
-								type="text" id="pname" />
+								type="text" id="pname" name="pname" />
 						</div>
 						<div class="me-2">
 							<label class="form-label">상품 가격</label> <input class="form-text"
-								type="number" id="pprice" />
+								type="number" id="pprice" name="pprice" />
 						</div>
 						<div class="me-2">
 							<label class="form-label">상품 재고</label> <input class="form-text"
-								type="number" id="pamount" />
+								type="number" id="pstock" name="pstock" />
 						</div>
 						<div class="me-2">
-							<input type="file" class="form-control-file" id="attachThumbnail"
-								name="attachThumbnail">
+							<input type="file" class="form-control-file"
+								name="pthumbnailImage">
 						</div>
 						<div class="me-2">
-							<input type="file" class="form-control-file" id="attachBody"
-								name="attachBody">
+							<input type="file" class="form-control-file"
+								name="pbodyImage">
 						</div>
 
-						<button type="button" id="addProductInfo"
-							class="btn btn-danger btn-sm">추가</button>
+						<button type="submit" id="addProductInfo" class="btn btn-danger btn-sm">추가</button>
+						<a href="productManageView" class="btn btn-primary btn-sm me-2">취소</a>
 					</form>
 				</div>
 			</div>
