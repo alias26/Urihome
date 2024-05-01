@@ -13,7 +13,7 @@
 	</bean>
 	
 	<!-- MyBatis를 이용하는 DAO(Data Access Object)를 생성하고, 관리 객체로 생성 -->
-	<mybatis-spring:scan base-package="com.mycompany.urizip_mini_web.dao" 
+	<mybatis-spring:scan base-package="com.mycompany.urihome_mini_web.dao" 
 	annotation="org.apache.ibatis.annotations.Mapper"/>
 
 </beans>
