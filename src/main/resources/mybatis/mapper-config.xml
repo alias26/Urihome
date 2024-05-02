@@ -9,6 +9,7 @@
 	<typeAliases>
 		<typeAlias type="com.mycompany.urihome_mini_web.dto.Product" alias="Product"/>
 		<typeAlias type="com.mycompany.urihome_mini_web.dto.Pager" alias="Pager"/>
+		<typeAlias type="com.mycompany.urihome_mini_web.dto.Member" alias="Member"/>
 	</typeAliases>
 
 </configuration>
