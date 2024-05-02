@@ -45,6 +45,7 @@
 			<if test="pbody != null">
 				,pbody=#{pbody}
 			</if>
+		where pid=#{pid}
 	</update>
 	<delete id="deleteByPid" parameterType="String">
 		delete from product where pid=#{pid}
