@@ -38,7 +38,7 @@
 	</select>
 	<update id="update" parameterType="product">
 		update product set
-			pid=#{pid}, pname=#{pname}, pprice=#{pprice}, pstock=#{pstock}, psellAmount=#{psellAmount}, psales=#{psales}
+			pname=#{pname}, pprice=#{pprice}, pstock=#{pstock}, psellAmount=#{psellAmount}, psales=#{psales}
 			<if test="pthumbnail != null">
 				,pthumbnail=#{pthumbnail}
 			</if>
