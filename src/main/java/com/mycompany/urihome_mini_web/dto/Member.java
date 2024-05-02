@@ -13,9 +13,10 @@ public class Member {
 	private String mtel;
 	private String mphone;
 	private Date mdate;
-	private String zip;
+	private String mzip;
+	private String maddress;
 	private String mdetailAddress;
-	private Boolean mpermission;
+	private String mrole;
 	private Boolean agree1;
 
 }
