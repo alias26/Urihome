@@ -29,7 +29,7 @@
 			<div class="card">
 				<div class="content-header mb-5 ms-0" style="height: 65px;">
 					<h4 class="text-light text-uppercase mb-0">상품관리</h4>
-					<a href="#"><i
+					<a href="${pageContext.request.contextPath}/logout"><i
 						class="fas fa-sign-out-alt text-danger fa-lg me-0"></i></a>
 				</div>
 				<div class="card-body">

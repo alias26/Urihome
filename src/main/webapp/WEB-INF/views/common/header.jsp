@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/header.css" type="text/css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
 
@@ -84,11 +85,19 @@
 							<li><a class="dropdown-item" href="#">쿠폰</a></li>
 							<li><a class="dropdown-item" href="#">쓰임포인트</a></li>
 							<li><a class="dropdown-item" href="#">나의정보</a></li>
-							<li class="text-center d-grid m-2"><button onclick="location.href = '${pageContext.request.contextPath}/member/login'"
-									class="btn btn-dark btn-sm" aria-expanded="false">로그인
-								</button></li>
-							<li class="text-center d-grid m-2"><button onclick="location.href = '${pageContext.request.contextPath}/member/join'"
-									class="btn btn-sm" aria-expanded="false">회원가입</button></li>
+							<sec:authorize access="isAnonymous()">
+								<li class="text-center d-grid m-2"><a href="${pageContext.request.contextPath}/member/login" class="btn btn-dark btn-sm" aria-expanded="false">로그인</a></li>
+								<li class="text-center d-grid m-2"><a href="${pageContext.request.contextPath}/member/join"
+									class="btn btn-sm" aria-expanded="false">회원가입</a></li>
+							</sec:authorize>
+							<sec:authorize access="isAuthenticated()">
+								<!-- 사이트간 요청 위조 방지 설정이 비활성화되어 있을 경우 GET 방식으로 요청 가능 -->
+								<!-- <b class="text-white me-2">
+									<sec:authentication property="principal.username"/>
+								</b> -->
+								<li class="text-center d-grid m-2"><a href="${pageContext.request.contextPath}/logout"
+									class="btn btn-sm btn-danger">로그아웃</a></li>
+							</sec:authorize>
 						</ul>
 					</li>
 					<li class="nav-item dropdown">

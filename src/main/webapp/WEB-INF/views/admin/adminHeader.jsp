@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
@@ -30,19 +31,21 @@
 				class="navbar-brand text-white text-center d-block mx-auto py-3 mb-4 bottom-border">AdminPage</a>
 			<div class="bottom-border pb-3">
 				<img src="${pageContext.request.contextPath}/resources/image/admin/admin.png" width="50px" height="50px" class="rounded-circle ms-3 me-3">
-				<span class="text-white">XXX님</span>
+				<b class="text-white me-2">
+						<sec:authentication property="principal.username"/>
+				</b>
 			</div>
 			<ul class="navbar-nav flex-column mt-4">
 				<li class="nav-item"><a href="#"
-					class="nav-link text-white p-3 mb-2 current"> <i
+					class="nav-link text-white p-3 mb-2 ${side=='dashboard'? 'current':'' }"> <i
 						class="fas fa-home text-white fa-lg me-3"></i>대시보드
 				</a></li>
 				<li class="nav-item"><a href="#"
-					class="nav-link text-white p-3 mb-2 sidebar-link"> <i
+					class="nav-link text-white p-3 mb-2 sidebar-link ${side=='productManage'? 'current':'' }"> <i
 						class="fas fa-shopping-cart text-white fa-lg me-3"></i>상품관리
 				</a></li>
 				<li class="nav-item"><a href="#"
-					class="nav-link text-white p-3 mb-2 sidebar-link"> <i
+					class="nav-link text-white p-3 mb-2 sidebar-link ${side=='customerManage'? 'current':'' }"> <i
 						class="fas fa-user text-white fa-lg me-3"></i>고객관리
 				</a></li>
 			</ul>

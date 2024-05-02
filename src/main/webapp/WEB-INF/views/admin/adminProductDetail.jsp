@@ -30,15 +30,13 @@
 		</div>
 		<div class="col-xl-10 col-lg-9 table-responsive-lg"
 			style="padding-left: 8px;">
-			<div class="card">
-				<div class="content-header mb-5 ms-0" style="height: 65px;">
+			<div class="content-header mb-5 ms-0" style="height: 65px;">
 					<h4 class="text-light text-uppercase mb-0">상품관리</h4>
 					<a href="${pageContext.request.contextPath}/logout"><i
 						class="fas fa-sign-out-alt text-danger fa-lg me-0"></i></a>
-				</div>
+			</div>
+			<div class="card" style="width:95%;margin:0 auto;">
 				<div class="card-body">
-					<form id="updateProduct" method="post" action="updateProduct"
-								enctype="multipart/form-data">
 					<div class=" d-flex">
 						<div class="me-2">
 							<img src="" width="200px" height="200px">
@@ -80,14 +78,13 @@
 							</div>
 							
 							<div style="margin-right: 0px;">
-								<button 
-									class="btn btn-danger btn-sm me-2">수정</button>
+								<a href="productInfoView?pid=${product.pid}" 
+									class="btn btn-danger btn-sm me-2">수정</a>
 								<a href="productManageView"
 									class="btn btn-primary btn-sm me-2">취소</a>
 							</div>
 						</div>
 					</div>
-					</form>
 				</div>
 			</div>
 		</div>

@@ -37,9 +37,9 @@
 
 	<div class="login-wrapper">
 		<h2>로그인</h2>
-		<form method="post" action="#" id="login-form">
-			<input type="text" name="userId" placeholder="아이디" required>
-			<input type="password" name="userPassword" placeholder="비밀번호" required>
+		<form method="post" action="${pageContext.request.contextPath}/login" id="login-form">
+			<input type="text" name="mid" placeholder="아이디" required>
+			<input type="password" name="mpassword" placeholder="비밀번호" required>
 			
 			
 			<label for="remember-check">

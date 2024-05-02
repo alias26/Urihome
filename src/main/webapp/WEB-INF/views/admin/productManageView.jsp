@@ -35,13 +35,12 @@
 		<div class="col-xl-10 col-lg-9 table-responsive-lg"
 			style="padding-left: 8px;">
 			<!-- Dashboard 헤더 -->
-
-			<div class="card">
-				<div class="content-header mb-5 ms-0" style="height: 65px;">
+			<div class="content-header mb-5 ms-0" style="height: 65px;">
 					<h4 class="text-light text-uppercase mb-0">상품관리</h4>
-					<a href="#"><i
+					<a href="${pageContext.request.contextPath}/logout"><i
 						class="fas fa-sign-out-alt text-danger fa-lg me-0"></i></a>
-				</div>
+			</div>
+			<div class="card" style="width:95%; margin: 0 auto;">
 				<div class="card-body">
 					<table class="table table-bordered table-striped table-hover"
 						id="productInfoTable">
@@ -65,7 +64,7 @@
 										<td><img
 											src=""
 											width="90px" height="90px"></td>
-										<td>${product.pname}</td>
+										<td><a href="adminProductDetail?pid=${product.pid}">${product.pname}</a></td>
 										<td>${product.pprice}</td>
 										<td>${product.pstock}</td>
 										<td>${product.psellAmount}</td>
