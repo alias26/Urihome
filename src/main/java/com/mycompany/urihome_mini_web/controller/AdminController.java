@@ -24,6 +24,12 @@ public class AdminController {
 	@Autowired
 	private ProductService productService;
 	
+	@GetMapping("/dashBoard")
+	public String dashBoard(Model model) {
+		model.addAttribute("side", "dashBoard");
+		return "admin/dashBoard";
+	}
+	
 	@GetMapping("/productManageView")
 	public String productManageView(String pageNo, Model model, HttpSession session) {
 		if(pageNo == null) {
@@ -43,11 +49,13 @@ public class AdminController {
 		List<Product> productList = productService.getProductList(pager);
 		model.addAttribute("pager", pager);
 		model.addAttribute("productList", productList);
+		model.addAttribute("side", "productManage");
 		return "admin/productManageView";
 	}
 	
 	@GetMapping("/addProductInfoView")
-	public String addProductInfoView() {
+	public String addProductInfoView(Model model) {
+		model.addAttribute("side", "productManage");
 		return "admin/addProductInfoView";
 	}
 	
@@ -60,7 +68,6 @@ public class AdminController {
 		}
 		
 		productService.addProduct(product);
-		
 		return "redirect:/admin/productManageView";
 	}
 	
@@ -68,6 +75,7 @@ public class AdminController {
 	public String adminProductDetail(String pid, Model model) {
 		Product product = productService.getProduct(pid);
 		model.addAttribute("product", product);
+		model.addAttribute("side", "productManage");
 		return "admin/adminProductDetail";
 	}
 	
@@ -75,7 +83,7 @@ public class AdminController {
 	public String productInfoView(String pid, Model model) {
 		Product product = productService.getProduct(pid);
 		model.addAttribute("product", product);
-		
+		model.addAttribute("side", "productManage");
 		return "admin/productInfoView";
 	}
 	
@@ -97,5 +105,11 @@ public class AdminController {
 		productService.removeProduct(pid);
 		
 		return "redirect:/admin/productManageView";
+	}
+	
+	@GetMapping("/customerManageView")
+	public String customerManageView(Model model) {
+		model.addAttribute("side", "customerManage");
+		return "admin/customerManageView";
 	}
 }
