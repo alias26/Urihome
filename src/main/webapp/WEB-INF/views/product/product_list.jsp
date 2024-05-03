@@ -246,7 +246,7 @@
    		<div class = "category">
    			<ul class="nav flex-column" style="margin-top: 20px;" >
    			  <li class="nav-item">
-			    <a class="nav-link disabled" aria-disabled="true" style="font-size: 22px; color: black; margin-bottom: 15px;"><strong>카테고리</strong></a>
+			    <a class="nav-link disabled" aria-disabled="true" style="font-size: 22px; color: black; margin-bottom: 10px;"><strong>카테고리</strong></a>
 			  </li>  
 			  <li class="nav-item">
 			    <a class="nav-link active" aria-current="page" href="#onclick"><strong>전체</strong></a>

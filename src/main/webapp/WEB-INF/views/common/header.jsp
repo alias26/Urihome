@@ -84,7 +84,7 @@
 							<li><a class="dropdown-item" href="#">적립금</a></li>
 							<li><a class="dropdown-item" href="#">쿠폰</a></li>
 							<li><a class="dropdown-item" href="#">쓰임포인트</a></li>
-							<li><a class="dropdown-item" href="#">나의정보</a></li>
+							<li><a class="dropdown-item" href="${pageContext.request.contextPath}/member/mypage">나의정보</a></li>
 							<sec:authorize access="isAnonymous()">
 								<li class="text-center d-grid m-2"><a href="${pageContext.request.contextPath}/member/login" class="btn btn-dark btn-sm" aria-expanded="false">로그인</a></li>
 								<li class="text-center d-grid m-2"><a href="${pageContext.request.contextPath}/member/joinForm"
