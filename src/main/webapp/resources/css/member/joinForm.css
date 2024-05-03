@@ -9,17 +9,17 @@
 	margin: 0 auto;
 }
 
-#address1{
+#mzip{
 	width:70px;
 	display:table-cell;
 }
 
-#normalPhone1, #cellPhone1{
+#mtel1, #mphone1{
 	width:80px;
 	display:table-cell;
 } 
 
-#normalPhone2, #normalPhone3, #cellPhone2, #cellPhone3{
+#mtel2, #mtel3, #mphone2, #mphone3{
 	width:140px;
 	display:table-cell;
 	margin-left:5px;

@@ -94,7 +94,7 @@ function isRightName() {
 	var result = true;
 
 	//한국이름 검사 
-	var name = $("#name");
+	var name = $("#mname");
 	var nameValue = name.val();
 	var namePattern = /^[가-힣]{2,4}$/;
 	var nameResult = namePattern.test(nameValue);
@@ -118,13 +118,13 @@ function isRightNormalPhone() {
 	var result = true;
 
 	//phone 검사 
-	var normalPhone1 = $("#normalPhone1");
-	var normalPhone2 = $("#normalPhone2");
-	var normalPhone3 = $("#normalPhone3");
+	var normalPhone1 = $("#mtel1");
+	var normalPhone2 = $("#mtel2");
+	var normalPhone3 = $("#mtel3");
 	var normalPhoneValue = normalPhone1.val() + "-" + normalPhone2.val() + "-" + normalPhone3.val();
 	var normalPhonePattern = /^(02|032)-\d{3}-\d{4}$/;
 	var normalPhoneResult = normalPhonePattern.test(normalPhoneValue);
-	var normalPhoneSpan = $("#normalPhoneSpan");
+	var normalPhoneSpan = $("#mtelSpan");
 	
 	if(normalPhone2.val() === "" && normalPhone3.val() === ""){
 		normalPhoneSpan.html("&nbsp;");
@@ -153,13 +153,13 @@ function isRightCellPhone() {
 	var result = true;
 
 	//phone 검사 
-	var cellPhone1 = $("#cellPhone1");
-	var cellPhone2 = $("#cellPhone2");
-	var cellPhone3 = $("#cellPhone3");
+	var cellPhone1 = $("#mphone1");
+	var cellPhone2 = $("#mphone2");
+	var cellPhone3 = $("#mphone3");
 	var cellPhoneValue = cellPhone1.val() + "-" + cellPhone2.val() + "-" + cellPhone3.val();
 	var cellPhonePattern = /^(010|011)-\d{3,4}-\d{4}$/;
 	var cellPhoneResult = cellPhonePattern.test(cellPhoneValue);
-	var cellPhoneSpan = $("#cellPhoneSpan");
+	var cellPhoneSpan = $("#mphoneSpan");
 
 	if (!cellPhoneResult) {
 		cellPhoneSpan.html("휴대전화번호가 정확한지 확인해 주세요.");
@@ -180,10 +180,10 @@ function isRightEmail() {
 	var result = true;
 
 	//email 검사
-	var email = $("#email");
+	var email = $("#memail");
 	var emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
 	var emailResult = emailPattern.test(email.val());
-	var emailSpan = $("#emailSpan");
+	var emailSpan = $("#memailSpan");
 
 	if (!emailResult) {
 		emailSpan.html("잘못된 이메일입니다.");
@@ -200,7 +200,7 @@ function isRightEmail() {
 
 function checkAgree() {
 	var checkResult = true;
-	var checkboxes = $("input[name=check]");
+	var checkboxes = $("input[name=agree]");
 	var checkSpan = $("#checkSpan");
 	
 	for(let index = 0; index < checkboxes.length - 1 ; index++){
@@ -220,11 +220,11 @@ function checkAgree() {
 
 
 $(function() {
-		var checkAll = $("#checkAll");
-		var checkboxes = $("input[name=check]");
+		var agreeAll = $("#agreeAll");
+		var checkboxes = $("#agree1, #agree2, #agree3");
 		
-		checkAll.on("click", function(){
-			if($("#checkAll").is(":checked")){
+		agreeAll.on("click", function(){
+			if($("#agreeAll").is(":checked")){
 				checkboxes.prop("checked", true);
 			}else{
 				checkboxes.prop("checked", false);
@@ -232,13 +232,15 @@ $(function() {
 		});
 		
 		checkboxes.on("click", function(){
-			var total = checkboxes.length;
-			var checked = $("input[name=check]:checked").length;
+			var checked = true;
+			checked &= $("input[name=agree1]:checked").length;
+			checked &= $("input[name=agree2]:checked").length;
+			checked &= $("input[name=agree3]:checked").length;
 			
-			if(checked == total){
-				checkAll.prop("checked", true);
+			if(checked){
+				agreeAll.prop("checked", true);
 			}else{
-				checkAll.prop("checked", false);
+				agreeAll.prop("checked", false);
 			}
 			
 		});
