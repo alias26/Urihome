@@ -36,15 +36,15 @@
 				</b>
 			</div>
 			<ul class="navbar-nav flex-column mt-4">
-				<li class="nav-item"><a href="#"
-					class="nav-link text-white p-3 mb-2 ${side=='dashboard'? 'current':'' }"> <i
+				<li class="nav-item"><a href="dashBoard"
+					class="nav-link text-white p-3 mb-2 sidebar-link ${side=='dashBoard'? 'current':'' }"> <i
 						class="fas fa-home text-white fa-lg me-3"></i>대시보드
 				</a></li>
-				<li class="nav-item"><a href="#"
+				<li class="nav-item"><a href="productManageView"
 					class="nav-link text-white p-3 mb-2 sidebar-link ${side=='productManage'? 'current':'' }"> <i
 						class="fas fa-shopping-cart text-white fa-lg me-3"></i>상품관리
 				</a></li>
-				<li class="nav-item"><a href="#"
+				<li class="nav-item"><a href="customerManageView"
 					class="nav-link text-white p-3 mb-2 sidebar-link ${side=='customerManage'? 'current':'' }"> <i
 						class="fas fa-user text-white fa-lg me-3"></i>고객관리
 				</a></li>
