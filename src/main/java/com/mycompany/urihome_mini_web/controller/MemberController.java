@@ -1,6 +1,7 @@
 package com.mycompany.urihome_mini_web.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -44,12 +45,20 @@ public class MemberController {
 		return "member/passwordFind";
 	}
 
-	@GetMapping("/memberinfo")
-	public String memberinfo() {
-		return "member/memberinfo";
+	@GetMapping("/mypage")
+	@Secured("ROLE_USER")
+	public String mypage() {
+		return "member/mypage";
+	}
+	
+	@GetMapping("/memberInfo")
+	@Secured("ROLE_USER")
+	public String memberInfo() {
+		return "member/memberInfo";
 	}
 
 	@GetMapping("/myPageOrderList")
+	@Secured("ROLE_USER")
 	public String mypageorderlist() {
 		return "member/myPageOrderList";
 	}
