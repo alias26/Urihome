@@ -58,7 +58,7 @@
 		<div class="passwordfind-function m-3" >
 			<a href="${pageContext.request.contextPath}/member/idFind">아이디 찾기</a>|
 			<a href="${pageContext.request.contextPath}/member/login">로그인 화면이동</a>|
-			<a href="${pageContext.request.contextPath}/member/join">회원 가입</a>
+			<a href="${pageContext.request.contextPath}/member/joinForm">회원 가입</a>
 		</div>		
 		
 	</div>
