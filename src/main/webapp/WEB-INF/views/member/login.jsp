@@ -59,10 +59,7 @@
 		</div>		
 		
 	</div>
-		
-	<div class="container">
-		<img width="400px" height="200px"src="${pageContext.request.contextPath}/resources/image/loginbt.png">
-	</div>
+			
 	
 	<div class="footer">
 			<span>Urizip Copyright .All Rights Reserved</span>
