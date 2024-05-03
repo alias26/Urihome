@@ -73,28 +73,22 @@
 <title>마이페이지-주문 목록</title>
 </head>
 
-<body class="pt-5">
+<body>
 	<%@ include file="/WEB-INF/views/common/header.jsp"%>
-	
 
 
-
-
-	<div class="container-fluid">
+	<div class="container-fluid" style="margin-top:130px;">
 		<!-- 전체 화면의 너비에 맞게 콘텐츠를 확장하는 역할 -->
 		<!-- 부트스트랩에서 그리드 시스템을 사용할때 사용 -->
 		<div class="row">
 			<!-- 그리드 시스템의 열을 추가하여 그리드를 형성합니다 -->
+			<!-- 왼쪽부분 -->
 			<div class="col-md-2">
-				<!-- 12분의1만큼 열의폭을 지정 -->
-				<!--왼쪽 사이드바 -->
-				<nav class="col-sm-10 sidenav mt-8" style="width:450px;">
-					<%@ include file="/WEB-INF/views/member/mypageTab.jsp"%>
-										
-				</nav>
+				<%@ include file="/WEB-INF/views/member/mypageTab.jsp"%>
 			</div>
-			<!-- Right Content -->
-
+			
+			
+			<!-- 오른쪽 부분 -->
 			<div class="col-md-10 mx-auto page">
 				<!--수평방향으로 자동마진 설정, 열을 가운데 정렬할수 있다. -->
 				<!-- justify-content-center:자식 요소들을 수평으로 가운데 정렬, align-items:center:자식요소를 수직으로 가운데 정렬-->
@@ -107,7 +101,7 @@
 					<div class="flex" style="width:80%; height:350px; text-align:center;">
 						<div style="font-size:30px; font-weight:bold; margin-bottom:30px;">주문내역 검색</div>
 						<div class="user-info-box flex-fill" style="justify-content:left; background-color:#F1F3F5; height:150px;">
-							<div class="d-flex" style="justify-content: space-between; padding-top:30px;">
+							<div class="d-flex" style="justify-content:space-between; padding-top:30px;">
 								<div class="select-time d-flex">
 								<div style="font-weight:bold;">
 								조회기간:

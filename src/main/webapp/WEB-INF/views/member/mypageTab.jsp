@@ -24,7 +24,7 @@
 		<!-- 탭 메뉴 전체 -->
 		<div class="tab-menu">
 			<!-- 카테고리 -->
-			<div class = "category">
+			<div class = "category" style="border: solid;">
 	   			<ul class="nav flex-column">
 				  <!-- 쇼핑 관련 -->
 				  <li class="nav-item">
