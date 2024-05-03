@@ -7,4 +7,10 @@
 		from member
 		where mid=#{mid}
 	</select>
+	<insert id="insert" parameterType="Member">
+		insert into member(mid, mname, mpassword, memail, mtel, mphone, mdate, 
+			mzip, maddress, mdetailAddress, mrole, agree1, agree2, agree3)
+		values(#{mid}, #{mname}, #{mpassword}, #{memail}, #{mtel}, #{mphone}, sysdate, 
+			#{mzip}, #{maddress}, #{mdetailAddress}, #{mrole}, #{agree1}, #{agree2}, #{agree3})
+	</insert>
 </mapper>

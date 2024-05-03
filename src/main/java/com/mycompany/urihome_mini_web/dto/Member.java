@@ -18,5 +18,14 @@ public class Member {
 	private String mdetailAddress;
 	private String mrole;
 	private Boolean agree1;
-
+	private Boolean agree2;
+	private Boolean agree3;
+	
+	private String mtel1;
+	private String mtel2;
+	private String mtel3;
+	
+	private String mphone1;
+	private String mphone2;
+	private String mphone3;
 }

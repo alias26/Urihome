@@ -6,7 +6,6 @@ import com.mycompany.urihome_mini_web.dto.Member;
 
 @Mapper
 public interface MemberDao {
-
 	public Member selectByMid(String username);
-
+	public int insert(Member member);
 }
