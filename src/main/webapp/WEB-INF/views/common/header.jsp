@@ -87,7 +87,7 @@
 							<li><a class="dropdown-item" href="#">나의정보</a></li>
 							<sec:authorize access="isAnonymous()">
 								<li class="text-center d-grid m-2"><a href="${pageContext.request.contextPath}/member/login" class="btn btn-dark btn-sm" aria-expanded="false">로그인</a></li>
-								<li class="text-center d-grid m-2"><a href="${pageContext.request.contextPath}/member/join"
+								<li class="text-center d-grid m-2"><a href="${pageContext.request.contextPath}/member/joinForm"
 									class="btn btn-sm" aria-expanded="false">회원가입</a></li>
 							</sec:authorize>
 							<sec:authorize access="isAuthenticated()">
