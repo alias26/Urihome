@@ -16,10 +16,10 @@ import lombok.extern.slf4j.Slf4j;
 @RequestMapping("/member")
 public class MemberController {
 	@Autowired
-	MemberService memberService;
+	private MemberService memberService;
 	
 	@GetMapping("/joinForm")
-	public String joinForm(Member member) {
+	public String joinForm() {
 		return "member/joinForm";
 	}
 	

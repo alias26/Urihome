@@ -33,11 +33,6 @@ public class MemberService {
 		
 		member.setMphone(member.getMphone1() + "-" + member.getMphone2() + "-" + member.getMphone3());
 		member.setMrole("ROLE_USER");
-		log.info(member.getMtel());
-		log.info(member.getMtel2());
-		log.info(member.getMtel3());
-		log.info(""+member.getMid());
-		log.info(""+member.getAgree1());
 		memberDao.insert(member);
 	}
 
