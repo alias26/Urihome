@@ -35,28 +35,28 @@
 			</div>
 			<div id="joinFormDiv">
 				<form id="joinForm" name="joinForm" onsubmit="joinFormCheckData()" method="post" action="join" class="validation-form" novalidate>
-					<div class="form-group mt-4">
-						<label class="form-label">아이디</label>
+					<div class="form-group mt-4 mb-4">
+						<label class="form-label">아이디 *</label>
 						<input type="text" class="form-control" onchange="isRightID()" id="mid" name="mid">
 						<span class="form-text" id="midSpan">알파벳, 숫자를 혼용해서 6자 이상 20자 이하</span>
 					</div>
-					<div class="form-group mt-2">
-						<label class="form-label">비밀번호</label>
+					<div class="form-group mt-2 mb-4">
+						<label class="form-label">새 비밀번호</label>
 						<input type="password" class="form-control" onchange="isRightPassword()" id="mpassword" name="mpassword">
 						<span class="form-text" id="mpasswordSpan">알파벳 대소문자, 숫자, 특수문자를 혼용해서 8자 이상 15장 이하</span>
 					</div>
 					<div class="form-group mt-2">
-						<label class="form-label">비밀번호 확인</label>
+						<label class="form-label">새 비밀번호 확인</label>
 						<input type="password" class="form-control" onchange="isRightPasswordCheck()" id="mpasswordCheck" name="mpasswordCheck">
 						<span class="form-text" id="mpasswordCheckSpan">&nbsp;</span>
 					</div>
 					<div class="form-group mt-2">
-						<label class="form-label">이름</label>
+						<label class="form-label">이름 *</label>
 						<input type="text" class="form-control" onchange="isRightName()" id="mname" name="mname">
 						<span class="form-text" id="nameSpan">&nbsp;</span>
 					</div>
 					<div class="mt-2">
-						<label class="form-label">주소</label>
+						<label class="form-label">배송지 *</label>
 						<div class="d-flex">
 						<span ><input type="text" class="form-control mb-2" id="mzip" name="mzip" placeholder="우편번호" disabled></span>
 						<span><input type="button" id="addressBtn" name="addressBtn" value="우편번호" class="btn btn-outline-secondary btn-sm ms-1 mt-1"></span>
@@ -68,7 +68,7 @@
 							<span><input type="text" class="form-control" id="mdetailAddress" name="mdetailAddress" placeholder="나머지 주소"></span>
 						</div>
 					</div>
-					<div class="mt-3">
+					<div class="mt-4">
 						<label class="form-label align-middle">일반전화</label>
 						<div class="d-flex">
 						<div>
@@ -89,7 +89,7 @@
 						<span class="form-text" id="mtelSpan">&nbsp;</span>
 					</div>
 					<div class="mt-2">
-						<label class="form-label align-middle">휴대전화</label>
+						<label class="form-label align-middle">휴대전화 *</label>
 						<div class="d-flex">
 						<div>
 							<span>
@@ -109,29 +109,10 @@
 						</div>
 						<span class="form-text" id="mphoneSpan">&nbsp;</span>
 					</div>
-						<div class="form-group mt-2">
-						<label class="form-label">이메일</label>
+						<div class="form-group mt-2 mb-4">
+						<label class="form-label">이메일 *</label>
 						<input type="email" class="form-control" onchange="isRightEmail()" id="memail" name="memail">
 						<span class="form-text" id="memailSpan">&nbsp;</span>
-					</div>
-					<div class="mt-2 mb-2">
-					<div class="form-check mb-2">
-						<input class="form-check-input" type="checkbox" value="1" id="agreeAll" name="agreeAll">
-						 <label	class="form-check-label" for="agreeAll"> 전체 동의 </label>
-					</div>
-					<div class="form-check mb-2">
-						<input class="form-check-input" type="checkbox" value="1" id="agree1" name="agree1"> <label
-							class="form-check-label" for="agree1"> 이용약관 동의(필수) </label>
-					</div>
-					<div class="form-check mb-2">
-						<input class="form-check-input" type="checkbox" value="1" id="agree2" name="agree2"> <label
-							class="form-check-label" for="agree2"> 개인정보처리방침 동의(필수) </label>
-					</div>
-					<div class="form-check">
-						<input class="form-check-input" type="checkbox" value="1" id="agree3" name="agree3">
-						<label class="form-check-label" for="agree3"> 개인정보 처리 위탁 동의(선택) </label>
-					</div>
-					<span class="form-text" id="checkSpan">&nbsp;</span>
 					</div>
 					
 					<button type="submit" class="btn btn-dark">수정하기</button>
