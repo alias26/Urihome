@@ -36,7 +36,7 @@
 				    														font-weight: bold;">쇼핑 관련</a>
 				  </li>
 				  <li class="nav-item">
-				    <a class="nav-link" href="#onclick">주문조회</a>
+				    <a class="nav-link" href='${pageContext.request.contextPath}/member/myPageOrderList'>주문조회</a>
 				  </li>
 				  <li class="nav-item">
 				    <a class="nav-link" href="#onclick" style="margin-bottom: 30px;">적립금</a>

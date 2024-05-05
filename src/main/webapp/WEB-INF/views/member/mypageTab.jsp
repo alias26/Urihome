@@ -12,6 +12,7 @@
 	  <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
 	  <script src="${pageContext.request.contextPath}/resources/js/member/mypage.js" rel="stylesheet"></script>
 	  
+	  
 	  <!-- 사용자 정의 자바스크립트 -->
 	  <script>
 	   
@@ -24,7 +25,7 @@
 		<!-- 탭 메뉴 전체 -->
 		<div class="tab-menu">
 			<!-- 카테고리 -->
-			<div class = "category" style="border: solid;">
+			<div class = "category">
 	   			<ul class="nav flex-column">
 				  <!-- 쇼핑 관련 -->
 				  <li class="nav-item">
@@ -32,7 +33,7 @@
 				    														font-weight: bold;">쇼핑 관련</a>
 				  </li>
 				  <li class="nav-item">
-				    <a class="nav-link" href="#onclick">주문조회</a>
+				    <a class="nav-link" href='${pageContext.request.contextPath}/member/myPageOrderList'>주문조회</a>
 				  </li>
 				  <li class="nav-item">
 				    <a class="nav-link" href="#onclick" style="margin-bottom: 30px;">적립금</a>
