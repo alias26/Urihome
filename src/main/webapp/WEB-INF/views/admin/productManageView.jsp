@@ -90,8 +90,8 @@
 									<a class="page-link ${pager.pageNo==i ?'active':''}" href="productManageView?pageNo=${i}">${i}</a></li>
 								</c:forEach>
 								<c:if test="${pager.groupNo<pager.totalGroupNo}">
-									<li class="page-item"><a class="page-link" href="productList?pageNo=1">></a></li>
-									<li class="page-item"><a class="page-link" href="productList?pageNo=${pager.startPageNo-1}">>></a></li>
+									<li class="page-item"><a class="page-link" href="productList?pageNo=${pager.endPageNo+1}">></a></li>
+									<li class="page-item"><a class="page-link" href="productList?pageNo=${pager.totalPageNo}">>></a></li>
 								</c:if>
 							</ul>
 						</nav>
