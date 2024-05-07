@@ -1,19 +1,25 @@
 package com.mycompany.urihome_mini_web.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import java.util.List;
+
+import javax.annotation.Resource;
+
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.mycompany.urihome_mini_web.dao.MemberDao;
 import com.mycompany.urihome_mini_web.dto.Member;
+import com.mycompany.urihome_mini_web.dto.Pager;
+import com.mycompany.urihome_mini_web.dto.Product;
 
 import lombok.extern.slf4j.Slf4j;
 
 @Service
 @Slf4j
 public class MemberService {
-	@Autowired
+	
+	@Resource
 	private MemberDao memberDao;
 
 	public void join(Member member) {
@@ -35,5 +41,39 @@ public class MemberService {
 		member.setMrole("ROLE_USER");
 		memberDao.insert(member);
 	}
+	
+	
+	
+	public List<Member> getMemberList(Pager pager) {
+		List<Member> memberList=memberDao.selectByPage(pager);
+		return memberList;
+	}
+
+
+
+	public int getTotalRows() {
+		int totalRows = memberDao.count();
+		return totalRows;
+	}	
+
+
+	public void removeMember(String mid) {
+		int rowNum= memberDao.deleteByMid(mid);		
+	}
+
+	public Member getMember(String mid) {
+		Member member = memberDao.selectByMid(mid);
+		return member;
+	}
+
+	
+	
+
+	
+
+
+
+	
+	
 
 }

@@ -11,8 +11,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.mycompany.urihome_mini_web.dto.Member;
 import com.mycompany.urihome_mini_web.dto.Pager;
 import com.mycompany.urihome_mini_web.dto.Product;
+import com.mycompany.urihome_mini_web.service.MemberService;
 import com.mycompany.urihome_mini_web.service.ProductService;
 
 import lombok.extern.slf4j.Slf4j;
@@ -23,6 +25,10 @@ import lombok.extern.slf4j.Slf4j;
 public class AdminController {
 	@Autowired
 	private ProductService productService;
+	
+	@Autowired
+	private MemberService memberService;
+	
 	
 	@GetMapping("/dashBoard")
 	public String dashBoard(Model model) {
@@ -52,6 +58,8 @@ public class AdminController {
 		model.addAttribute("side", "productManage");
 		return "admin/productManageView";
 	}
+	
+	
 	
 	@GetMapping("/addProductInfoView")
 	public String addProductInfoView(Model model) {
@@ -108,8 +116,41 @@ public class AdminController {
 	}
 	
 	@GetMapping("/customerManageView")
-	public String customerManageView(Model model) {
+	public String customerManageView(String pageNo,Model model,HttpSession session) {
+		if(pageNo==null) {
+			pageNo=(String) session.getAttribute("pageNo");
+			if(pageNo==null) {
+				pageNo="1";
+			}
+		}
+		
+		session.setAttribute("pageNo", pageNo);
+		int intPageNo=Integer.parseInt(pageNo);
+		
+		int rowsPagingTarget= memberService.getTotalRows();
+		Pager pager = new Pager(10,10,rowsPagingTarget,intPageNo);
+		
+		List<Member> memberList= memberService.getMemberList(pager);
+		
+		model.addAttribute("pager",pager);
+		model.addAttribute("memberList",memberList);
 		model.addAttribute("side", "customerManage");
 		return "admin/customerManageView";
 	}
+	
+	
+	@GetMapping("/deleteMember")
+	public String deleteMember(String mid) {
+		memberService.removeMember(mid);
+		return "redirect:/admin/customerManageView";
+	}
+	
+	@GetMapping("/userInfoView")
+	public String userInfoView(String mid, Model model) {
+		Member member= memberService.getMember(mid);		
+		model.addAttribute("member", member);
+		model.addAttribute("side", "memberManage");	
+		return "/admin/userInfoView";
+	}
+	
 }
