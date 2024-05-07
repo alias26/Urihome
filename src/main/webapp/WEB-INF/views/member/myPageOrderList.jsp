@@ -83,16 +83,14 @@
 		<div class="row">
 			<!-- 그리드 시스템의 열을 추가하여 그리드를 형성합니다 -->
 			<!-- 왼쪽부분 -->
-			<div class="col-md-2">
-				<%@ include file="/WEB-INF/views/member/mypageTab.jsp"%>
-			</div>
-			
+			<!-- mypage-tab -->
+			<jsp:include page="/WEB-INF/views/member/mypageTab.jsp"></jsp:include>
 			
 			<!-- 오른쪽 부분 -->
 			<div class="col-md-10 mx-auto page">
 				<!--수평방향으로 자동마진 설정, 열을 가운데 정렬할수 있다. -->
 				<!-- justify-content-center:자식 요소들을 수평으로 가운데 정렬, align-items:center:자식요소를 수직으로 가운데 정렬-->
-				<div class="d-flex justify-content-center mt-5 mb-2"
+				<div class="d-flex justify-content-center mt-2 mb-2"
 					style="align-items:center;">
 					<!-- flex-fill은 부트스트랩에서 제공하는 flexbox속성, 해당요소가 부모 컨테이너의 남은 공간을 모두 차지하도록 설정 -->
 					
