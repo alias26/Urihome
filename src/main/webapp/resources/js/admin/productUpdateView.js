@@ -1,30 +1,28 @@
 var thumbnail ={
-	count: 0,
+	count: '${thumbImageCount}',
 	filesList: []
 };
 
 var body ={
-	count: 0,
+	count: '${bodyImageCount}',
 	filesList: []
 };
+
+var thumbDel = [];
+var bodyDel = [];
 
 function imgFilesSelect(event, type, previewId, width, height, topPx, rightPx, totalCnt){
 	var files = event.target.files;
 	var fileInputId = event.target.id;
 	var filesArray = Array.prototype.slice.call(files);
-	var curFileCnt = filesArray.length;
-	var attFileCnt = $(".fileBox").length;
-	var remainFileCnt = totalCnt - attFileCnt;
 	
-	console.log("현재 파일 선택"+curFileCnt);
-	console.log("올라간 파일 개수:"+attFileCnt);
-	console.log("올라갈 수 있는 남은 파일 개수:"+remainFileCnt);
-	
-	if(curFileCnt > remainFileCnt){
+	if(totalCnt < type.count + filesArray.length){
+		return;
+	}else{
+		type.count = type.count + filesArray.length;
 	}
-		
-	for(var i = 0; i < Math.min(remainFileCnt, curFileCnt); i++){
-		var file = filesArray[i];
+	
+	filesArray.forEach(function(file){
 		if(!file.type.match("image.*")){
 			return;
 		}
@@ -33,9 +31,9 @@ function imgFilesSelect(event, type, previewId, width, height, topPx, rightPx, t
 		
 		var reader = new FileReader();
 		reader.onload = function(e) {
-			var imageContainer = $("<div class=\"fileBox\" style=\"position:relative;\"></div>");
+			var imageContainer = $("<div class=\"continer\" style=\"position:relative;\"></div>");
 			var imageElement = $("<img class=\"mt-3 me-2\" src=\"" + e.target.result + "\" width=\""+width+"\" height=\""+ height+"\"/>");
-			var deleteButton = $("<button class=\"delete\" data-index=\"" + file.lastModified+ "\" onclick=\"deleteSelectFile\" class=\"btn btn-light btn-sm\" type=\"button\" style=\"position:absolute;top:"+topPx+";right:"+rightPx+";\"><i class=\"bi bi-x\"></i></button>");
+			var deleteButton = $("<button class=\"delete\"  data-index=\"" + file.lastModified+ "\" onclick=\"deleteSelectFile\" class=\"btn btn-light btn-sm\" type=\"button\" style=\"position:absolute;top:"+topPx+";right:"+rightPx+";\"><i class=\"bi bi-x\"></i></button>");
 			
 			imageContainer.append(imageElement);
 			imageContainer.append(deleteButton);
@@ -46,7 +44,7 @@ function imgFilesSelect(event, type, previewId, width, height, topPx, rightPx, t
 			});
 		}
 		reader.readAsDataURL(file);	
-	}
+	})
 }
 
 function deleteSelectFile(imageContainer, fileInputId, type){
@@ -61,10 +59,23 @@ function deleteSelectFile(imageContainer, fileInputId, type){
     imageContainer.remove();
 }
 
+function deleteSelectImage(element, type){
+	var imageContainer = $(element).closest('div');
+	imageContainer.remove();
+	
+	if(type==='thumbnail'){
+		thumbnail.count -= 1;
+		thumbDel.push($(element).attr('data-index'));
+	}else{
+		body.count -= 1;
+		bodyDel.push($(element).attr('data-index'));
+	}
+}
+
 $(function(){
 	$("#pbodyImage").on("change", (event) => imgFilesSelect(event, body, "#bodyPreview", "500px", "", "18px", "210px", 10));
 	$("#pthumbnailImage").on("change", (event) => imgFilesSelect(event, thumbnail, "#thumbnailPreview", "100px", "100px", "18px", "10px", 4));
-	
+
 	$('#submit').on("click", function () {
 		var formData = new FormData();
 		var pbodyImg = $("#pbodyImage")[0].files;
@@ -74,7 +85,8 @@ $(function(){
 			pname: $("#pname").val(),
 			pprice: parseInt($("#pprice").val()),
 			pstock: parseInt($("#pstock").val()),
-			
+			thumbDel: thumbDel,
+			bodyDel: bodyDel
 		}
 		product = JSON.stringify(product);
 		formData.append("product", product);
@@ -98,7 +110,7 @@ $(function(){
 		/*var jsonData = JSON.stringify(formData);*/
 		
 		$.ajax({
-			url:"addProduct",
+			url:"updateProduct",
 			method:"post",
 			data: formData,
 			cache: false,
@@ -109,5 +121,4 @@ $(function(){
 			}
 		});
     });
-	}
-);
+});

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <!DOCTYPE html>
 <html>
@@ -39,11 +40,8 @@
 				<div class="card-body">
 					<div class=" d-flex">
 						<div class="me-2">
-							<img src="" width="200px" height="200px">
-						</div>
-						<div class="me-2">
-							<img src="" width="200px" height="200px">
-						</div>
+								<img src="thumbnailDownload?pid=${product.pid }" width="200px" height="200px">
+							</div>
 						<div>
 							<div class="form-group mb-2">
 								<label class="form-label">상품 아이디</label> <input class="form-text"
@@ -74,11 +72,16 @@
 								${product.productHitcount}
 							</div>
 							<div class="form-group mb-2">
-								<label class="form-label">상품 추가 날짜</label> ${product.pdate}
+								<label class="form-label">상품 추가 날짜</label> <fmt:formatDate value="${product.pdate}" pattern="yyyy-MM-dd" />
 							</div>
-							
+							<div>
+								<c:forEach var="i" begin="1" end="${bodyImageCount}">
+									<img src="bodyImageDownload?pid=${product.pid}&index=${i}" width="90px"
+										height="90px">
+								</c:forEach>
+							</div>
 							<div style="margin-right: 0px;">
-								<a href="productInfoView?pid=${product.pid}" 
+								<a href="productUpdateView?pid=${product.pid}" 
 									class="btn btn-danger btn-sm me-2">수정</a>
 								<a href="productManageView"
 									class="btn btn-primary btn-sm me-2">취소</a>

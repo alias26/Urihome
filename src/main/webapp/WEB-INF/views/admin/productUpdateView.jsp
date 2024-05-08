@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <!DOCTYPE html>
 <html>
@@ -11,7 +12,7 @@
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
 	rel="stylesheet">
 <link
-	href="${pageContext.request.contextPath}/resources/css/admin/addProductInfoView.css"
+	href="${pageContext.request.contextPath}/resources/css/admin/productUpdateView.css"
 	rel="stylesheet">
 <script
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
@@ -19,7 +20,7 @@
 <script
 	src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
 <!-- user script-->
-<script src="${pageContext.request.contextPath}/resources/js/admin/addProductInfoView.js">
+<script src="${pageContext.request.contextPath}/resources/js/admin/productUpdateView.js">
 </script>
 </head>
 <body id="wrap" style="overflow-x: hidden">
@@ -33,13 +34,12 @@
 				<a href="${pageContext.request.contextPath}/logout"><i
 					class="fas fa-sign-out-alt text-danger fa-lg me-0"></i></a>
 			</div>
-			<form method="post" enctype="multipart/form-data" action="addProduct">
+			<form id="updateForm" method="post" enctype="multipart/form-data" action="updateProduct">
 				<div style="text-align: right; width:98%;">
 					<a href="productManageView" class="btn me-1 border border-dark">취소</a>
-					<button type="button" id="submit"
-						class="btn btn-dark me-2">추가</button>
+					<button id="submit" type="button" class="btn btn-dark me-2">수정</button>
 				</div>
-				<div class="row ms-auto me-auto" style="width:95%;">
+				<div class="row ms-auto me-auto" style="width: 95%;">
 					<div class="col-sm-5 p-2">
 						<div class="card">
 							<div class="card-body">
@@ -54,6 +54,13 @@
 										name="pthumbnailImage" id="pthumbnailImage">
 								</div>
 								<div class="d-flex" id="thumbnailPreview">
+									<c:forEach var="i" begin="1" end="${thumbImageCount}">
+										<div style="position:relative;">
+											<img src="productImageDownload?pid=${product.pid}&index=${i}&pthumbBodyType=thumb"
+												class="mt-3 me-2" width="100px" height="100px">
+											<button data-index="${i}" onclick="deleteSelectImage(this, 'thumbnail')" class="btn btn-light btn-sm" type="button" style="position:absolute;top:18px;right:10px;\"><i class="bi bi-x"></i></button>
+										</div>
+									</c:forEach>
 								</div>
 							</div>
 						</div>
@@ -64,19 +71,35 @@
 								<div class="row">
 									<div class="form-group mt-0">
 										<label class="form-label">상품 아이디</label>
-										<input class="form-control" type="text" id="pid" name="pid">
+										<input class="form-control" type="text" id="pid" name="pid" value="${product.pid}" readonly>
 									</div>
 									<div class="form-group mt-2">
 										<label class="form-label">상품명</label>
-										<input class="form-control" type="text" id="pname" name="pname" />
+										<input class="form-control" type="text" id="pname" name="pname" value="${product.pname}"/>
 									</div>
 									<div class="form-group mt-2">
 										<label class="form-label col-4">상품 가격</label>
-										<input class="form-control" type="number" id="pprice" name="pprice" />
+										<input class="form-control" type="number" id="pprice" name="pprice" value="${product.pprice}"/>
 									</div>
 									<div class="form-group mt-2">
 										<label class="form-label">상품 재고</label>
-										<input class="form-control" type="number" id="pstock" name="pstock" />
+										<input class="form-control" type="number" id="pstock" name="pstock" value="${product.pstock}"/>
+									</div>
+									<div class="form-group mt-2">
+										<label class="form-label">상품 판매량: </label>
+										${product.psellAmount}
+									</div>
+									<div class="form-group mt-2">
+										<label class="form-label">상품 총 매출: </label>
+										${product.psales}
+									</div>
+									<div class="form-group mt-2">
+										<label class="form-label">상품 조회수: </label>
+										${product.productHitcount}
+									</div>
+									<div class="form-group mt-2">
+										<label class="form-label">상품 추가 날짜: </label>
+										<fmt:formatDate value="${product.pdate}" pattern="yyyy-MM-dd" />
 									</div>
 								</div>
 							</div>
@@ -120,10 +143,10 @@
 						</div>
 					</div>
 					<div class="p-2">
-						<div class="card" style="width:98%;margin:0 auto;">
+						<div class="card">
 							<div class="card-body">
 								<div class="d-flex justify-content-between border-bottom">
-									<div class="mt-auto mb-auto">
+									<div class="mt-auto mb-auto" style="width:98%;margin:0 auto;">
 										상품 소개 이미지
 									</div>
 									<div>
@@ -135,6 +158,13 @@
 									</div>
 								</div>
 								<div id="bodyPreview" style="text-align:center;">
+									<c:forEach var="i" begin="1" end="${bodyImageCount}">
+										<div class="container" style="position:relative;">
+											<img src="productImageDownload?pid=${product.pid}&index=${i}&pthumbBodyType=body"
+												class="mt-3" width="500px">
+											<button data-index="${i}" onclick="deleteSelectImage(this, 'body')" class="btn btn-light btn-sm" type="button" style="position:absolute;top:18px;right:210px;\"><i class="bi bi-x"></i></button>
+										</div>
+									</c:forEach>
 								</div>
 							</div>
 						</div>

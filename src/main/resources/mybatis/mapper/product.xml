@@ -5,13 +5,14 @@
 	<select id="count" resultType="int">
 		select count(*) from product
 	</select>
+	
 	<select id="selectByPage" parameterType="Pager" resultType="Product">
 		<![CDATA[
-		select rnum, pid, pname, pthumbnail, pprice, pstock, pdate, psellamount, psales
+		select rnum, pid, pname, pprice, pstock, pdate, psellamount, psales
 		from(
-			select rownum as rnum, pid, pname, pthumbnail, pprice, pstock, pdate, psellamount, psales
+			select rownum as rnum, pid, pname, pprice, pstock, pdate, psellamount, psales
 			from(
-				select pid, pname, pthumbnail, pprice, pstock, pdate, psellamount, psales
+				select pid, pname, pprice, pstock, pdate, psellamount, psales
 				from product
 				order by pdate desc
 			)
@@ -20,34 +21,33 @@
 		where rnum >= #{startRowNo}
 		]]>
 	</select>
+	
 	<insert id="insert" parameterType="Product">
 		insert into product(
-			pid, pname, pthumbnail, pbody, pprice, pstock, 
+			pid, pname, pprice, pstock, 
 			pdate, psellamount, psales, producthitcount
 		)
 		values(
-			#{pid}, #{pname}, #{pthumbnail}, #{pbody}, #{pprice}, #{pstock},
+			#{pid}, #{pname}, #{pprice}, #{pstock},
 			 sysdate, 0, 0, 0
 		)
 	</insert>
+	
 	<select id="selectByPid" parameterType="String" resultType="Product">
-		select pid, pname, pthumbnail, pbody, pprice, pstock, 
-			pdate, psellamount, psales, producthitcount
+		select pid, pname, pprice, pstock, 
+			pdate, psellamount, psales
 		from product
 		where pid=#{pid}
 	</select>
+	
 	<update id="update" parameterType="product">
 		update product set
-			pname=#{pname}, pprice=#{pprice}, pstock=#{pstock}, psellAmount=#{psellAmount}, psales=#{psales}
-			<if test="pthumbnail != null">
-				,pthumbnail=#{pthumbnail}
-			</if>
-			<if test="pbody != null">
-				,pbody=#{pbody}
-			</if>
+			pname=#{pname}, pprice=#{pprice}, pstock=#{pstock}, psellAmount=#{psellAmount}, psales=#{psales}			
 		where pid=#{pid}
 	</update>
+	
 	<delete id="deleteByPid" parameterType="String">
 		delete from product where pid=#{pid}
 	</delete>
+	
 </mapper>

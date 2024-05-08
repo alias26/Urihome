@@ -32,7 +32,7 @@
 			<div class="bottom-border pb-3">
 				<img src="${pageContext.request.contextPath}/resources/image/admin/admin.png" width="50px" height="50px" class="rounded-circle ms-3 me-3">
 				<b class="text-white me-2">
-						<sec:authentication property="principal.username"/>
+					<sec:authentication property="principal.username"/>
 				</b>
 			</div>
 			<ul class="navbar-nav flex-column mt-4">
