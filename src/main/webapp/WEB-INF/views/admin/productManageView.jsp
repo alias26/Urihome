@@ -32,9 +32,7 @@
 			<%@ include file="/WEB-INF/views/admin/adminHeader.jsp"%>
 		</div>
 		<!--  -->
-		<div class="col-xl-10 col-lg-9 table-responsive-lg"
-			style="padding-left: 8px;">
-			<!-- Dashboard 헤더 -->
+		<div class="col-xl-10 col-lg-9">
 			<div class="content-header mb-5 ms-0" style="height: 65px;">
 					<h4 class="text-light text-uppercase mb-0">상품관리</h4>
 					<a href="${pageContext.request.contextPath}/logout"><i
@@ -62,15 +60,17 @@
 									<tr>
 										<td>${product.pid}</td>
 										<td><img
-											src=""
+											src="productImageDownload?pid=${product.pid}&index=1&pthumbBodyType=thumb"
 											width="90px" height="90px"></td>
-										<td><a href="adminProductDetail?pid=${product.pid}">${product.pname}</a></td>
+										<td>
+											<a href="adminProductDetail?pid=${product.pid}">${product.pname}</a>
+										</td>
 										<td>${product.pprice}</td>
 										<td>${product.pstock}</td>
 										<td>${product.psellAmount}</td>
 										<td>${product.psales}</td>
-										<td>${product.pdate}</td>
-										<td><a href="productInfoView?pid=${product.pid}"
+										<td><fmt:formatDate value="${product.pdate}" pattern="yyyy-MM-dd" /></td>
+										<td><a href="productUpdateView?pid=${product.pid}"
 											id="updateProductInfo" class="btn btn-info btn-sm">수정</a> <a
 											href="removeProduct?pid=${product.pid}"
 											id="removeProductInfo" class="btn btn-danger btn-sm">삭제</a></td>
@@ -90,8 +90,8 @@
 									<a class="page-link ${pager.pageNo==i ?'active':''}" href="productManageView?pageNo=${i}">${i}</a></li>
 								</c:forEach>
 								<c:if test="${pager.groupNo<pager.totalGroupNo}">
-									<li class="page-item"><a class="page-link" href="productList?pageNo=1">></a></li>
-									<li class="page-item"><a class="page-link" href="productList?pageNo=${pager.startPageNo-1}">>></a></li>
+									<li class="page-item"><a class="page-link" href="productList?pageNo=${pager.endPageNo+1}">></a></li>
+									<li class="page-item"><a class="page-link" href="productList?pageNo=${pager.totalPageNo}">>></a></li>
 								</c:if>
 							</ul>
 						</nav>
