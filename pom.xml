@@ -78,14 +78,12 @@
 			<version>2.0.1.Final</version>
 		</dependency>
 
-
 		<!-- multipart/form-data를 해석하기 위한 라이브러리 -->
 		<dependency>
 			<groupId>commons-fileupload</groupId>
 			<artifactId>commons-fileupload</artifactId>
 			<version>1.5</version>
 		</dependency>
-
 
 		<!-- @Resource를 사용하기 위한 라이브러리 -->
 		<dependency>
@@ -153,6 +151,12 @@
 		    <groupId>org.springframework.security</groupId>
 		    <artifactId>spring-security-taglibs</artifactId>
 		    <version>5.8.12</version>
+		</dependency>
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjweaver</artifactId>
+			<version>1.9.19</version>
+			<scope>runtime</scope>
 		</dependency>
 	</dependencies>
 
