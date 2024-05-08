@@ -23,40 +23,23 @@
 					onclick="location.href = '${pageContext.request.contextPath}/product/product_list'">전체</button>
 					
 				</li>
-				<li class="nav-item dropdown ms-3 me-3">
+				<li class="nav-item ms-3 me-3">
 					<button class="btn" aria-expanded="false">신상품</button>
 				</li>
-				<li class="nav-item dropdown ms-3 me-3">
+				<li class="nav-item ms-3 me-3">
 					<button class="btn" aria-expanded="false">BEST</button>
 				</li>
-				<li class="nav-item dropdown ms-3 me-3">
+				<li class="nav-item ms-3 me-3">
 					<button class="btn" aria-expanded="false">그릇</button>
-					<ul class="dropdown-menu">
-						<li><a class="dropdown-item" href="#">소파 전체</a></li>
-						<li><a class="dropdown-item" href="#">다인용 소파</a></li>
-						<li><a class="dropdown-item" href="#">1인용 소파</a></li>
-					</ul>
 				</li>
-				<li class="nav-item dropdown ms-3 me-3">
+				<li class="nav-item ms-3 me-3">
 					<button class="btn" aria-expanded="false">접시</button>
-					<ul class="dropdown-menu">
-						<li><a class="dropdown-item" href="#">테이블 전체</a></li>
-						<li><a class="dropdown-item" href="#">식탁</a></li>
-						<li><a class="dropdown-item" href="#">책상</a></li>
-						<li><a class="dropdown-item" href="#">사이드테이블</a></li>
-						<li><a class="dropdown-item" href="#">소파테이블</a></li>
-					</ul>
 				</li>
-				<li class="nav-item dropdown ms-3 me-3">
+				<li class="nav-item ms-3 me-3">
+					<button class="btn" aria-expanded="false">컵</button>
+				</li>
+				<li class="nav-item ms-3 me-3">
 					<button class="btn" aria-expanded="false">수저세트</button>
-					<ul class="dropdown-menu">
-						<li><a class="dropdown-item" href="#">의자 전체</a></li>
-						<li><a class="dropdown-item" href="#">인테리어 의자</a></li>
-						<li><a class="dropdown-item" href="#">사무용 의자</a></li>
-						<li><a class="dropdown-item" href="#">라운지체어</a></li>
-						<li><a class="dropdown-item" href="#">스톨</a></li>
-						<li><a class="dropdown-item" href="#">벤치</a></li>
-					</ul>
 				</li>
 				<li class="nav-item dropdown ms-3 me-3">
 					<button class="btn" aria-expanded="false">커뮤니티</button>
