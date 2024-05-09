@@ -62,7 +62,7 @@
 				order by pimageIndex
 				)
 			where rnum in
-			<foreach collection="indexList" item="index">
+			<foreach collection="indexList" item="index" separator="," open="(" close=")">
 				#{index}
 			</foreach>
 		)

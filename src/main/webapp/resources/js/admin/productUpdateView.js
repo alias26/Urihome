@@ -32,7 +32,7 @@ function imgFilesSelect(event, type, previewId, width, height, topPx, rightPx, t
 		
 		var reader = new FileReader();
 		reader.onload = function(e) {
-			var imageContainer = $("<div style=\"position:relative;\"></div>");
+			var imageContainer = $("<div class=\"fileBox\" style=\"position:relative;\"></div>");
 			var imageElement = $("<img class=\"mt-3 me-2\" src=\"" + e.target.result + "\" width=\""+width+"\" height=\""+ height+"\"/>");
 			var deleteButton = $("<button class=\"btn btn-light btn-sm delete\"  data-index=\"" + file.lastModified+ "\" onclick=\"deleteSelectFile\" type=\"button\" style=\"position:absolute;top:"+topPx+";right:"+rightPx+";\"><i class=\"bi bi-x\"></i></button>");
 			
