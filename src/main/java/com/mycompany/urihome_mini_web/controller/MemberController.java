@@ -1,15 +1,21 @@
 package com.mycompany.urihome_mini_web.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.mycompany.urihome_mini_web.dto.Member;
+import com.mycompany.urihome_mini_web.dto.MemberFormValidator;
 import com.mycompany.urihome_mini_web.security.UriHomeUserDetails;
 import com.mycompany.urihome_mini_web.service.MemberService;
 
@@ -33,6 +39,7 @@ public class MemberController {
 		return "redirect:/member/login";
 	}
 
+	
 	@GetMapping("/login")
 	public String login() {
 		return "member/login";
@@ -54,15 +61,27 @@ public class MemberController {
 		return "member/mypage";
 	}
 	
+	
+	/*memberForm이라는 이름의 폼 데이터를 검증하는 데에 MemberFormValidator 클래스의 검증 규칙을 사용하겠다고 선언하는 것입니다.*/
+	@InitBinder("member")
+	public void memberFormValidator(WebDataBinder binder) {
+		binder.setValidator(new MemberFormValidator());
+	}
+	
 	@GetMapping("/memberInfo")
-	/*@Secured("ROLE_USER")*/
+	@Secured("ROLE_USER")
 	public String memberInfo(Model model, Authentication authentication) {
 		UriHomeUserDetails userDetails = (UriHomeUserDetails) authentication.getPrincipal();
 		Member member = userDetails.getMember();
 		model.addAttribute("member", member);
 		
-		String[] mtel = member.getMtel().split("-");
-		model.addAttribute("mtel", mtel);
+		if(member.getMtel() != null) {
+			String[] mtel = member.getMtel().split("-");
+			model.addAttribute("mtel", mtel);
+		}else {
+			String[] mtel = {"", "", ""};
+			model.addAttribute("mtel", mtel);
+		}
 		
 		String[] mphone = member.getMphone().split("-");
 		model.addAttribute("mphone", mphone);
@@ -82,13 +101,18 @@ public class MemberController {
 	}
 	
 	@PostMapping("/updateMember")
-	public String updateMember(Model model, Member member, Authentication authentication) {			
+	public String updateMember(@Valid Model model, Member member, Authentication authentication,Errors errors) {			
 		memberService.updateMember(member);		
 		
 		//DB 내용을 수정했을 경우 Spring Security 정보도 수정
 		Member dbMember = memberService.getMember(member.getMid());
 		UriHomeUserDetails userDetails = (UriHomeUserDetails) authentication.getPrincipal();
 		userDetails.setMember(dbMember);
+		
+		if(errors.hasErrors()) {
+			
+			return "/member/memberInfo";
+		}
 		
 		return "redirect:/member/memberInfo";
 	}

@@ -31,6 +31,7 @@ function isRightID() {
 
 	//ID 검사	
 	var mid = $("#mid");
+	// .val()는 jQuery에서 사용되는 메서드로, 선택한 요소의 값을 반환
 	var midValue = mid.val();
 
 	var midPattern = /^(?=.*\d)(?=.*[A-Za-z]).{6,20}$/;
@@ -121,12 +122,11 @@ function isRightName() {
 function isRightNormalPhone() {
 	var result = true;
 
-	//phone 검사 
-	var normalPhone1 = $("#mtel1");
+	//phone 검사 	
 	var normalPhone2 = $("#mtel2");
 	var normalPhone3 = $("#mtel3");
-	var normalPhoneValue = normalPhone1.val() + "-" + normalPhone2.val() + "-" + normalPhone3.val();
-	var normalPhonePattern = /^(02|032)-\d{3}-\d{4}$/;
+	var normalPhoneValue = normalPhone2.val() + "-" + normalPhone3.val();
+	var normalPhonePattern = /^\d{3}-\d{4}$/;
 	var normalPhoneResult = normalPhonePattern.test(normalPhoneValue);
 	var normalPhoneSpan = $("#mtelSpan");
 	
@@ -156,12 +156,11 @@ function isRightNormalPhone() {
 function isRightCellPhone() {
 	var result = true;
 
-	//phone 검사 
-	var cellPhone1 = $("#mphone1");
+	//phone 검사 	
 	var cellPhone2 = $("#mphone2");
 	var cellPhone3 = $("#mphone3");
-	var cellPhoneValue = cellPhone1.val() + "-" + cellPhone2.val() + "-" + cellPhone3.val();
-	var cellPhonePattern = /^(010|011)-\d{3,4}-\d{4}$/;
+	var cellPhoneValue = cellPhone2.val() + "-" + cellPhone3.val();
+	var cellPhonePattern = /^\d{3,4}-\d{4}$/;
 	var cellPhoneResult = cellPhonePattern.test(cellPhoneValue);
 	var cellPhoneSpan = $("#mphoneSpan");
 
@@ -202,51 +201,4 @@ function isRightEmail() {
 	return result;
 }
 
-function checkAgree() {
-	var checkResult = true;
-	var checkboxes = $("input[name=agree]");
-	var checkSpan = $("#checkSpan");
-	
-	for(let index = 0; index < checkboxes.length - 1 ; index++){
-			checkResult &= checkboxes.eq(index).is(":checked");
-	}
-	
-	if (!checkResult) {
-		checkSpan.html("약관에 동의해주세요.");
-		checkSpan.addClass("text-danger");
-	} else {
-		checkSpan.html("&nbsp;");
-		checkSpan.removeClass("text-danger");
-	}
-	
-	return checkResult;
-}
 
-
-$(function() {
-		var agreeAll = $("#agreeAll");
-		var checkboxes = $("#agree1, #agree2, #agree3");
-		
-		agreeAll.on("click", function(){
-			if($("#agreeAll").is(":checked")){
-				checkboxes.prop("checked", true);
-			}else{
-				checkboxes.prop("checked", false);
-			}
-		});
-		
-		checkboxes.on("click", function(){
-			var checked = true;
-			checked &= $("input[name=agree1]:checked").length;
-			checked &= $("input[name=agree2]:checked").length;
-			checked &= $("input[name=agree3]:checked").length;
-			
-			if(checked){
-				agreeAll.prop("checked", true);
-			}else{
-				agreeAll.prop("checked", false);
-			}
-			
-		});
-	}
-);

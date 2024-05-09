@@ -15,6 +15,9 @@
 	  <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
 	  <script src="${pageContext.request.contextPath}/resources/js/member/mypage.js" rel="stylesheet"></script>
 	  
+	  
+	  <!-- jquery 회원정보 수정 유효성 검사-->
+	  <script src="${pageContext.request.contextPath}/resources/js/member/memberInfo.js"></script>
 	  <!-- 사용자 정의 자바스크립트 -->
 	  <script>  
 		  function updateFormCheckData() {
@@ -92,16 +95,16 @@
 						<div>
 							<span>
 								<select class="form-select" id="mtel1" name="mtel1">
-									<option <c:if test="${mtel[0] == 02}">selected</c:if>>02</option>
+									<option <c:if test="${mtel[0] == 02 or mtel[0] == ''}">selected</c:if>>02</option>
 									<option <c:if test="${mtel[0] == 031}">selected</c:if>>031</option>
 								</select>
 							</span>
 						</div>
 						<div>
-							<span><input type="text" class="form-control" onchange="isRightNormalPhone()" id="mtel2" name="mtel2" value="${mtel[1]}"></span>
+							<span><input type="text" class="form-control" onchange="isRightNormalPhone()" id="mtel2" name="mtel2" value="${mtel[1] != null ? mtel[1] : ''}"></span>
 						</div>
 						<div>
-							<span><input type="text" class="form-control" onchange="isRightNormalPhone()" id="mtel3" name="mtel3" value="${mtel[2]}"></span>
+							<span><input type="text" class="form-control" onchange="isRightNormalPhone()" id="mtel3" name="mtel3" value="${mtel[2] != null ? mtel[2] : ''}"></span>
 						</div>
 						</div>
 						<span class="form-text" id="mtelSpan">&nbsp;</span>
