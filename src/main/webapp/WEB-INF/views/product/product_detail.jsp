@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html>
    <head>
@@ -11,6 +14,10 @@
 	  <!-- jQuery 외부 라이브러리 설정 -->
 	  <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
 	  <script src="${pageContext.request.contextPath}/resources/js/product/product_detail.js" rel="stylesheet"></script>
+	  <!-- css -->
+	  <link
+		href="${pageContext.request.contextPath}/resources/css/board/writeUserBoardForm.css"
+		rel="stylesheet">
 	  
 	  <!-- 사용자 정의 자바스크립트 -->
 	  <script>
@@ -24,20 +31,42 @@
    	
    <body>
    <%@ include file="/WEB-INF/views/common/header.jsp" %>
-   <div class ="container">
+   <div class ="product-detail-div" style="margin-top: 40px;">
 	<!-- 상품 상세 페이지 상단 -->
-	   	<div class="d-flex" style="align-items: center;">	
+	   	<div class="product-detail-top d-flex">	
 			<!-- 이미지 -->
-			<div class= "image-box" style="flex:1; text-align : center;">
-				<img id="key-product" 
-					src="https://ssueim.com/web/product/big/202305/d066a2cc427364ba14a7bface9bef1ae.jpg"
-					style="border-radius:3%; ">
+			<div class="image-box" style="flex:1; text-align: center;">
+			    <div id="carouselExampleControlsNoTouching" class="carousel slide" data-bs-touch="false">
+			        <div class="carousel-inner">
+			            <div class="carousel-item active">
+			                <img id="key-product" src="https://ssueim.com/web/product/big/202305/d066a2cc427364ba14a7bface9bef1ae.jpg">
+			            </div>
+			            <div class="carousel-item">
+			                <img id="key-product" src="https://ssueim.com/web/product/extra/big/202305/7c22b114f1d889a97bea6d34103c816f.jpg">
+			            </div>
+			            <div class="carousel-item">
+			                <img id="key-product" src="https://ssueim.com/web/product/extra/big/202305/dd347ceb0bce1738aea06d2505fbda49.jpg">
+			            </div>
+			            <div class="carousel-item">
+			                <img id="key-product" src="https://ssueim.com/web/product/extra/big/202305/8db6ea78f812aa7c152b2e82527179c6.jpg">
+			            </div>
+			        </div>
+			    </div>
+			    <button class="carousel-control-btn-prev" type="button" data-bs-target="#carouselExampleControlsNoTouching" data-bs-slide="prev">
+		            <span class="carousel-control-prev-icon" aria-hidden="true" style="margin-top: 3px; margin-right: 3px;"></span>
+		            <span class="visually-hidden">Previous</span>
+		        </button>
+		        <button class="carousel-control-btn-next" type="button" data-bs-target="#carouselExampleControlsNoTouching" data-bs-slide="next">
+		            <span class="carousel-control-next-icon" aria-hidden="true" style="margin-top: 3px; margin-left: 3px;"></span>
+		            <span class="visually-hidden">Next</span>
+		        </button>
 			</div>
+
 			
 
 	   		<!-- 상품 정보 -->
-	   		<div style="flex:1; ">
-		   		<div class="text-box" style=" width:500px; margin: auto; margin-top: 40px;">
+	   		<div style="flex:1;">
+		   		<div class="text-box">
 		   			<div id="info" style="margin-top: 80px;"> 
 		   				<div id="name">굿바이브 머그 2P (2color)</div>
 		   				<div id="price">25% 30,200원</div>
@@ -84,9 +113,10 @@
 		   			
 		   			<!-- 총 상품금액 -->
 		   			<div id="total">
-		   				<div id="total-price" class="d-flex" style="justify-content: space-between; margin-bottom: 50px;">
-		   					<p>총 상품금액</p>
-		   					<p>0 원</p>
+		   				<div id="total-price" class="d-flex" style="justify-content: space-between; margin-bottom: 50px;
+		   					font-size: 18px;">
+		   					<p><strong>총 상품금액</strong></p>
+		   					<div id="totalPrice">0 원</div>
 		   				</div>
 		   				
 			   			<!-- 버튼 -->
@@ -94,7 +124,11 @@
 	   				    <button type="button" class="btn btn-lg product_btn me-1" style="border: solid 0.5px; flex:1;">
 	   				    	<img src="${pageContext.request.contextPath}/resources/image/star.png" width="27px;">
 	   				    </button>
-	   					<button type="button" class="btn btn-lg product_btn me-1" style="border: solid 0.5px; flex:3;">장바구니</button>
+	   					<button type="button" class="btn btn-lg product_btn me-1"
+	   							style="border: solid 0.5px; flex:3;"
+	   							 onclick="location.href = '${pageContext.request.contextPath}/cart'">
+	   							장바구니
+	   					</button>
 	   					<button type="button" class="btn btn-lg product_btn btn-dark me-1" style="border: solid 0.5px; flex:3;">구매하기</button>
 		   			</div>	
 		   		 </div>
@@ -103,9 +137,9 @@
 	   	</div>   
 	   
 	   <!-- tap 메뉴  -->
-	   	<div id="tab-menu" style="margin-top: 200px;">
+	   	<div id="tab-menu" style="margin-top: 150px;">
 	   		 <div class="tab" >
-			    <ul class="tabnav" style="text-align: center; ">
+			    <ul class="tabnav">
 			      <li><a href="#tab01">상세정보</a></li>
 			      <li><a href="#tab02">구매안내</a></li>
 			      <li><a href="#tab03">구매후기</a></li>
@@ -203,45 +237,59 @@
 		  <div class="tabcontent" style="margin-top: 100px; margin-bottom: 100px;">
 		  	<div id="tab03">
 			<div class="d-flex" id="review-top" style="justify-content: space-between;">
-				<h6><strong>REVIEW (2)</strong></h6>
+				<h5><strong>REVIEW ( )</strong></h5>
 				<div>
-				<button type="button" class="btn btn-sm" style="border: solid 0.5px;">리뷰등록</button>
+				<button type="button" class="btn btn-sm" style="border: solid 0.5px;"
+				onclick="location.href = '${pageContext.request.contextPath}/board/writeReviewForm'">리뷰등록</button>
 				<button type="button" class="btn btn-sm" style="border: solid 0.5px;">모두보기</button>
 			 	</div>
 			</div>
 			<hr/>
 			
-			<div id="review">
-		  	 <div id="review1">
-		  		<div id="review-title" style="margin-bottom: 10px;"><strong>좋아요.</strong></div>
-		  		<div id="review-content">색상이 차분하고 무게도 생각보다 너무 무겁지 않아서 사용하기 좋아요.</div>
-		  		<div id="review-writer" style="color: gray; margin-top: 30px;">
-		  		 	<p>y**** | 2024.04.14</p>
-		  		</div>
-		  	</div>
-		  	<hr/>
+			<!-- 게시물 0일 때 -->
+			<div style="text-align: center; padding: 70px; color: gray;">
+				<!-- 게시물 목록 -->
+				<c:forEach var="boardProduct" items="${reviewList}">
+					<div class="review">
+				  		<div class="review-title" style="margin-bottom: 10px;"><strong>${boardProduct.bptitle}</strong></div>
+				  		<div class="review-content">
+				  			<a href="product_detail?bno=${boardProduct.bpnumber}">${boardProduct.bpcontent}</a>
+				  		</div>
+				  		<div class="review-writer" style="color: gray; margin-top: 30px;">
+				  		 	<p>${boardProduct.mid} | <fmt:formatDate value="${boardProduct.bpdate}" pattern="yyyy.MM.dd"/></p>
+				  		</div>
+				  	</div>
+				  	<hr/>
+			  	</c:forEach>
+			  	
+				<c:if test="${reviewList == null}">
+				 등록된 게시물이 없습니다.
+				</c:if>
+		</div>
+		<hr>
 		  	
-		  	<div id="review2">
-		  		<div id="review-title" style="margin-bottom: 10px;"><strong>넘고급스러워요~</strong></div>
-		  		<div id="review-content">기존에 있는 컵들 종류가여러개라 짝맞춰교체햇는데 마음에들어요~~!!</div>
-		  		<div id="review-writer" style="color: gray; margin-top: 30px;">
-		  		 	<p>A**** | 2024.04.01</p>
-		  		</div>
-		  	</div>
-		  	</div>
-		  	<hr/>
-		  	
-		  	<!-- pagination bootstrap
-		  	<nav aria-label="page">
-			  <ul class="pagination">
-			    <li class="page-item"><a class="page-link" href="tabcontent03"><</a></li>
-			    <li class="page-item"><a class="page-link" href="#">1</a></li>
-			    <li class="page-item"><a class="page-link" href="#">2</a></li>
-			    <li class="page-item"><a class="page-link" href="#">3</a></li>
-			    <li class="page-item"><a class="page-link" href="#">></a></li>
-			  </ul>
-			</nav>
-			-->
+		  	<!-- pagenation -->
+             <div>
+                <a class="btn btn-outline-primary btn-sm" href="boardList?pageNo=1">처음</a>
+                <c:if test="${pager.groupNo>1}">
+                   <a class="btn btn-outline-info btn-sm" href="boardList?pageNo=${pager.startPageNo-1}">이전</a>
+                </c:if>
+                
+                <c:forEach var="i" begin="${pager.startPageNo}" end="${pager.endPageNo}">
+                   <c:if test="${pager.pageNo != i}">
+                      <a class="btn btn-outline-success btn-sm" href="boardList?pageNo=${i}">${i}</a>
+                   </c:if>
+                   <c:if test="${pager.pageNo == i}">
+                      <a class="btn btn-danger btn-sm" href="boardList?pageNo=${i}">${i}</a>
+                   </c:if>
+                </c:forEach>
+                
+                <c:if test="${pager.groupNo<pager.totalGroupNo}">
+                   <a class="btn btn-outline-info btn-sm" href="boardList?pageNo=${pager.endPageNo+1}">다음</a>
+                </c:if>
+                <a class="btn btn-outline-primary btn-sm" href="boardList?pageNo=${pager.totalPageNo}">맨끝</a>
+             </div>
+             <!-- pagenation -->
 
 		  	</div>
 		  </div>
@@ -251,9 +299,10 @@
 			<div class="tabcontent" style="margin-bottom: 100px;">
 			 <div id="tab04">
 			 	<div class="d-flex" id="qna-top" style="justify-content: space-between;">
-				 	<h6><strong>Q&A (1)</strong></h6>
+				 	<h5><strong>Q&A (1)</strong></h5>
 				 	<div>
-				 	<button type="button" class="btn btn-sm" style="border: solid 0.5px;">문의등록</button>
+				 	<button type="button" class="btn btn-sm" style="border: solid 0.5px;"
+				 	onclick="location.href = '${pageContext.request.contextPath}/board/writeQnaForm'">문의등록</button>
 					<button type="button" class="btn btn-sm" style="border: solid 0.5px;">모두보기</button>
 					</div>
 				</div>
@@ -271,7 +320,7 @@
 			<div class="tabcontent">
 			 <div id="tab05">
 			  <div id="relatedproduct">
-			  	<div id="relatedproduct-title" style="margin-bottom: 30px; ">관련상품</div>
+			  	<div id="relatedproduct-title" style="margin-bottom: 10px;">관련상품</div>
 			  	  <div class="d-flex" id="relatedproduct-detail" style="margin-bottom: 50px;">
 				  	  <div id="relatedproduct-detail1" style="margin-right: 20px;">
 					  	<img alt="" src="https://ssueim.com/web/product/medium/202304/95d9ef876f63d90403281c44a7f51b9a.jpg"
@@ -298,7 +347,6 @@
 			  	</div>
 			 </div>
 			</div>
-			
 			
 		</div>
 		<%@ include file="/WEB-INF/views/common/footer.jsp" %>
