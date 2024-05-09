@@ -10,7 +10,7 @@
 }
 
 #mzip{
-	width:70px;
+	width:100px;
 	display:table-cell;
 }
 
@@ -23,6 +23,10 @@
 	width:140px;
 	display:table-cell;
 	margin-left:5px;
+}
+
+#mzip, #maddress{
+	background-color: #EBEBE4;
 }
 
 input::placeholder{

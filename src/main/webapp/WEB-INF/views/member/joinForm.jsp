@@ -11,8 +11,10 @@
 
 		<!-- jquery -->
 		<script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
-		<script src="${pageContext.request.contextPath}/resources/js/member/joinForm.js"></script>
+		<!-- kakao address api -->
+		<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 		<!-- user script-->
+		<script src="${pageContext.request.contextPath}/resources/js/member/joinForm.js"></script>
 		<script>
 		</script>
 	</head>
@@ -48,17 +50,18 @@
 						<div class="mt-2">
 							<label class="form-label">주소</label>
 							<div class="d-flex">
-							<span ><input type="text" class="form-control mb-2" id="mzip" name="mzip" placeholder="우편번호" disabled></span>
-							<span><input type="button" id="addressBtn" name="addressBtn" value="우편번호" class="btn btn-outline-secondary btn-sm ms-1 mt-1"></span>
+							<span ><input type="text" class="form-control mb-2" id="mzip" name="mzip" placeholder="우편번호" readonly></span>
+							<span><input type="button" onclick="daumPostcode()" id="addressBtn" name="addressBtn" value="우편번호" class="btn btn-outline-secondary btn-sm ms-1 mt-1"></span>
 							</div>
 							<div>
-								<span><input type="text" class="form-control mb-2" id="maddress" name="maddress" placeholder="기본 주소" disabled></span>
+								<span><input type="text" class="form-control mb-2" id="maddress" name="maddress" placeholder="기본 주소" readonly></span>
 							</div>
 							<div>
 								<span><input type="text" class="form-control" id="mdetailAddress" name="mdetailAddress" placeholder="나머지 주소"></span>
 							</div>
+							<span class="form-text" id="addressSpan">&nbsp;</span>
 						</div>
-						<div class="mt-3">
+						<div class="mt-2">
 							<label class="form-label align-middle">일반전화</label>
 							<div class="d-flex">
 							<div>
