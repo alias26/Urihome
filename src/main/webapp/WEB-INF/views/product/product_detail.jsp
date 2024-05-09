@@ -35,11 +35,11 @@
 	   	<div class="product-detail-top d-flex">	
 			<!-- 이미지 -->
 			<div class="image-box" style="flex:1; text-align: center;">
-			    <div id="carouselExampleControlsNoTouching" class="carousel slide" data-bs-touch="false">
-			        <div class="carousel-inner">
+			    <div id="carouselExampleControlsNoTouching" class="carousel slide" data-bs-touch="false" >
+			        <div class="carousel-inner" >
 			        	<c:forEach var="i" begin="1" end="${thumbImageCount}">
-				            <div class="carousel-item ${i==1?'active':''}">
-								<img id="key-product" src="productImageDownload?pid=${product.pid}&index=${i}&pthumbBodyType=thumb" class="d-block w-100">
+				            <div class="carousel-item ${i==1?'active':''}" >
+								<img id="key-product" src="productImageDownload?pid=${product.pid}&index=${i}&pthumbBodyType=thumb">
 				            </div>
 			            </c:forEach>
 			        </div>
@@ -60,14 +60,14 @@
 	   		<div style="flex:1;">
 		   		<div class="text-box">
 		   			<div id="info" style="margin-top: 80px;"> 
-		   				<div id="name">굿바이브 머그 2P (2color)</div>
-		   				<div id="price">25% 30,200원</div>
+		   				<div id="name">${product.pname}</div>
+		   				<div id="price">${product.pprice}원</div>
 		   			</div>	   				
 		   			
 		   			<div id="detail">
 		   				<div class="d-flex" style="margin-top: 30px;">
 		   					<p style="margin-right: 30px;">상품코드</p>
-		   					<p>P0000MCV</p>
+		   					<p>${product.pid}</p>
 		   				</div>
 		   				<div class="d-flex" >
 		   					<p style="margin-right: 45px;">배송비</p>
@@ -75,7 +75,7 @@
 		   				</div>
 		   				<div class="d-flex" >
 		   					<p style="margin-right: 45px;">브랜드</p>
-		   					<p>쓰임</p>
+		   					<p>우리집</p>
 		   				</div>
 		   			</div>
 		   			<hr/>

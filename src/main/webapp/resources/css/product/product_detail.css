@@ -25,7 +25,7 @@
 
 .carousel-inner {
 	margin-top: 100px;
-	margin-left: 200px;
+	margin-left: 330px;
 	width: 500px;
 }
 
@@ -36,7 +36,7 @@
 
 .carousel-control-btn-prev {
 	position: absolute;
-	transform: translate(-356%, -550%);
+	transform: translate(-292%, -550%);
 	background-color: black;
 	opacity: 50%;
 	border: none;
@@ -46,7 +46,7 @@
 
 .carousel-control-btn-next {
 	position: absolute;
-	transform: translate(544%, -550%);
+	transform: translate(608%, -550%);
 	background-color: black;
 	opacity: 50%;
 	border: none;
@@ -67,6 +67,7 @@
   
 #key-product {
 	border-radius: 3%;
+	
 }
 
 #name{
