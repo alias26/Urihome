@@ -18,7 +18,11 @@
 	  
 	  <!-- jquery 회원정보 수정 유효성 검사-->
 	  <script src="${pageContext.request.contextPath}/resources/js/member/memberInfo.js"></script>
+	  <!-- kakao address api -->
+	  <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+	 
 	  <!-- 사용자 정의 자바스크립트 -->
+	 
 	  <script>  
 		  function updateFormCheckData() {
 		  		// 비밀번호 입력값과 비밀번호 재확인 입력값 가져오기
@@ -80,7 +84,7 @@
 						<label class="form-label">배송지 *</label>
 						<div class="d-flex">
 						<span ><input type="text" class="form-control mb-2" id="mzip" name="mzip" placeholder="우편번호" readonly value="${member.mzip}"></span>
-						<span><input type="button" id="addressBtn" name="addressBtn" value="우편번호" class="btn btn-outline-secondary btn-sm ms-1 mt-1"></span>
+						<span><input type="button" onclick="daumPostcode()" id="addressBtn" name="addressBtn" value="우편번호" class="btn btn-outline-secondary btn-sm ms-1 mt-1"></span>
 						</div>
 						<div>
 							<span><input type="text" class="form-control mb-2" id="maddress" name="maddress" placeholder="기본 주소" readonly value="${member.maddress}"></span>
