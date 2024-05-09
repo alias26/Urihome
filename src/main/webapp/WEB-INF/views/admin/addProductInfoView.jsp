@@ -33,7 +33,7 @@
 				<a href="${pageContext.request.contextPath}/logout"><i
 					class="fas fa-sign-out-alt text-danger fa-lg me-0"></i></a>
 			</div>
-			<form method="post" enctype="multipart/form-data" action="addProduct">
+			<form method="post" enctype="multipart/form-data">
 				<div style="text-align: right; width:98%;">
 					<a href="productManageView" class="btn me-1 border border-dark">취소</a>
 					<button type="button" id="submit"
@@ -71,11 +71,11 @@
 										<input class="form-control" type="text" id="pname" name="pname" />
 									</div>
 									<div class="form-group mt-2">
-										<label class="form-label col-4">상품 가격</label>
+										<label class="form-label col-4">가격</label>
 										<input class="form-control" type="number" id="pprice" name="pprice" />
 									</div>
 									<div class="form-group mt-2">
-										<label class="form-label">상품 재고</label>
+										<label class="form-label">재고</label>
 										<input class="form-control" type="number" id="pstock" name="pstock" />
 									</div>
 								</div>
@@ -87,31 +87,31 @@
 							<div class="card-body">
 								<div class="form-group">
 									<label class="form-label">카테고리</label>
-									<select class="form-select">
+									<select name="category" class="form-select">
 										<option selected>카테고리 선택</option>
 										<option value="1">그릇</option>
-										<option value="1">접시</option>
-										<option value="1">수저세트</option>
-										<option value="1">컵</option>
+										<option value="2">접시</option>
+										<option value="3">수저세트</option>
+										<option value="4">컵</option>
 									</select>
 								</div>
 								<div class="form-group mt-2">
 									<label class="form-label">배너 위치</label>
 									<div class="form-check">
-									  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked>
-									  <label class="form-check-label" for="flexRadioDefault1">
+									  <input class="form-check-input" type="radio" value="none" name="banner" id="banner1" checked>
+									  <label class="form-check-label" for="banner1">
 									    없음
 									  </label>
 									</div>
 									<div class="form-check">
-									  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
-									  <label class="form-check-label" for="flexRadioDefault2">
+									  <input class="form-check-input" type="radio" value="best" name="banner" id="banner2">
+									  <label class="form-check-label" for="banner2">
 									    Best
 									  </label>
 									</div>
 									<div class="form-check">
-									  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3">
-									  <label class="form-check-label" for="flexRadioDefault3">
+									  <input class="form-check-input" type="radio" value="famous" name="banner" id="banner3">
+									  <label class="form-check-label" for="banner3">
 									    인기 키워드
 									  </label>
 									</div>
@@ -124,11 +124,27 @@
 							<div class="card-body">
 								<div class="d-flex justify-content-between border-bottom">
 									<div class="mt-auto mb-auto">
+										옵션
+									</div>
+									<div>
+										<button id="option" class="btn" type="button">옵션 추가</button>
+									</div>
+								</div>
+								<div class="option">
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="p-2">
+						<div class="card" style="width:98%;margin:0 auto;">
+							<div class="card-body scroll">
+								<div class="d-flex justify-content-between border-bottom">
+									<div class="mt-auto mb-auto">
 										상품 소개 이미지
 									</div>
 									<div>
 										<label for="pbodyImage">
-											<div class="btn-upload">상품 소개 이미지 추가</div>
+											<div class="btn-upload">소개 이미지 추가</div>
 										</label>
 										<input type="file" multiple="multiple"
 											class="form-control-file" name="pbodyImage" id="pbodyImage">

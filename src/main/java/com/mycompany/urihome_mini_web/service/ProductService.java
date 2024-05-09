@@ -4,15 +4,16 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 
-import org.json.JSONArray;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.mycompany.urihome_mini_web.dao.PimageDao;
+import com.mycompany.urihome_mini_web.dao.ProductCategoryDao;
 import com.mycompany.urihome_mini_web.dao.ProductDao;
 import com.mycompany.urihome_mini_web.dto.Pager;
 import com.mycompany.urihome_mini_web.dto.Pimage;
 import com.mycompany.urihome_mini_web.dto.Product;
+import com.mycompany.urihome_mini_web.dto.ProductCategory;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -24,6 +25,9 @@ public class ProductService {
 
 	@Autowired
 	private PimageDao pimageDao;
+	
+	@Autowired
+	private ProductCategoryDao categoryDao;
 
 	public int getTotalRows() {
 		int totalRows = productDao.count();
@@ -34,10 +38,10 @@ public class ProductService {
 		return productDao.selectByPage(pager);
 	}
 
-	public void addProduct(Product product, List<Pimage> pImages) {
+	public void addProduct(Product product, ProductCategory category, List<Pimage> pImages) {
 		int productRowNum = productDao.insert(product);
+		int categoryRowNum = categoryDao.insert(category);
 		Iterator<Pimage> iter = pImages.iterator();
-
 		while (iter.hasNext()) {
 			pimageDao.insert(iter.next());
 		}
@@ -48,8 +52,9 @@ public class ProductService {
 		return product;
 	}
 
-	public void updateProduct(Product product, List<Pimage> pImages) {
+	public void updateProduct(Product product, ProductCategory category, List<Pimage> pImages) {
 		int productRowNum = productDao.update(product);
+		int categoryRowNum = categoryDao.update(category);
 		Iterator<Pimage> iter = pImages.iterator();
 
 		while (iter.hasNext()) {
@@ -58,7 +63,8 @@ public class ProductService {
 	}
 
 	public void removeProduct(String pid) {
-		int pbodyImageRowNum = pimageDao.deleteByPid(pid);
+		int pimageRowNum = pimageDao.deleteByPid(pid);
+		int pCategoryRowNum = categoryDao.deleteByPid(pid);
 		int productRowNum = productDao.deleteByPid(pid);
 
 	}
@@ -90,6 +96,11 @@ public class ProductService {
 			param.put("indexList", bodyList);
 			pimageDao.deleteByPindex(param);
 		}
+	}
+
+	public ProductCategory getProductCategory(String pid) {
+		ProductCategory category = categoryDao.getProductCategoryByPid(pid);
+		return category;
 	}
 
 }

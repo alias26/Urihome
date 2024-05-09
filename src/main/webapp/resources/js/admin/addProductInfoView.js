@@ -16,10 +16,6 @@ function imgFilesSelect(event, type, previewId, width, height, topPx, rightPx, t
 	var attFileCnt = $(".fileBox").length;
 	var remainFileCnt = totalCnt - attFileCnt;
 	
-	console.log("현재 파일 선택"+curFileCnt);
-	console.log("올라간 파일 개수:"+attFileCnt);
-	console.log("올라갈 수 있는 남은 파일 개수:"+remainFileCnt);
-	
 	if(curFileCnt > remainFileCnt){
 	}
 		
@@ -33,9 +29,9 @@ function imgFilesSelect(event, type, previewId, width, height, topPx, rightPx, t
 		
 		var reader = new FileReader();
 		reader.onload = function(e) {
-			var imageContainer = $("<div class=\"fileBox\" style=\"position:relative;\"></div>");
+			var imageContainer = $("<div style=\"position:relative;\"></div>");
 			var imageElement = $("<img class=\"mt-3 me-2\" src=\"" + e.target.result + "\" width=\""+width+"\" height=\""+ height+"\"/>");
-			var deleteButton = $("<button class=\"delete\" data-index=\"" + file.lastModified+ "\" onclick=\"deleteSelectFile\" class=\"btn btn-light btn-sm\" type=\"button\" style=\"position:absolute;top:"+topPx+";right:"+rightPx+";\"><i class=\"bi bi-x\"></i></button>");
+			var deleteButton = $("<button class=\"btn btn-light btn-sm delete\"  data-index=\"" + file.lastModified+ "\" onclick=\"deleteSelectFile\" type=\"button\" style=\"position:absolute;top:"+topPx+";right:"+rightPx+";\"><i class=\"bi bi-x\"></i></button>");
 			
 			imageContainer.append(imageElement);
 			imageContainer.append(deleteButton);
@@ -61,9 +57,26 @@ function deleteSelectFile(imageContainer, fileInputId, type){
     imageContainer.remove();
 }
 
+function addOption(){
+	var optionContainer = $("<div class=\"row mt-2\"></div>");
+	var optionName = $("<div class=\"col-3\"><label class=\"form-label\">옵션명</label><input type=\"text\" class=\"form-control\"></div>");
+	var optionValue = $("<div class=\"col-8\"><label class=\"form-label\">옵션값</label><input type=\"text\" class=\"form-control\"></div>");
+	var deleteButton = $("<div class=\"col-1 mt-auto mb-auto\"><button class=\"btn deleteOption\" type=\"button\"><i class=\"bi bi-x\"></i></button></div>");
+	
+	deleteButton.on("click", function(){
+		optionContainer.remove();
+	});
+	
+	optionContainer.append(optionName);
+	optionContainer.append(optionValue);
+	optionContainer.append(deleteButton);
+	$(".option").append(optionContainer);
+}
+
 $(function(){
 	$("#pbodyImage").on("change", (event) => imgFilesSelect(event, body, "#bodyPreview", "500px", "", "18px", "210px", 10));
 	$("#pthumbnailImage").on("change", (event) => imgFilesSelect(event, thumbnail, "#thumbnailPreview", "100px", "100px", "18px", "10px", 4));
+	$("#option").on("click", (event) => addOption(event));
 	
 	$('#submit').on("click", function () {
 		var formData = new FormData();
@@ -74,12 +87,12 @@ $(function(){
 			pname: $("#pname").val(),
 			pprice: parseInt($("#pprice").val()),
 			pstock: parseInt($("#pstock").val()),
-			
+			pcategoryName: $("select[name=category] option:selected").text(),
+			banner: $("input:radio[name=banner]:checked").val()
 		}
 		product = JSON.stringify(product);
 		formData.append("product", product);
 		
-				
 		if(pbodyImg.length>0){
 			for(var i=0; i < pbodyImg.length; i++){
 				formData.append("pbodyImage", pbodyImg[i]);

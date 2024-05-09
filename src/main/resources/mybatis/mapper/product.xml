@@ -8,12 +8,13 @@
 	
 	<select id="selectByPage" parameterType="Pager" resultType="Product">
 		<![CDATA[
-		select rnum, pid, pname, pprice, pstock, pdate, psellamount, psales
+		select rnum, pid, pname, pcategoryname, pbanner, pprice, pstock, pdate, psellamount, psales
 		from(
-			select rownum as rnum, pid, pname, pprice, pstock, pdate, psellamount, psales
+			select rownum as rnum, pid, pname, pcategoryname, pbanner, pprice, pstock, pdate, psellamount, psales
 			from(
-				select pid, pname, pprice, pstock, pdate, psellamount, psales
-				from product
+				select p.pid, pname, pc.pcategoryname, pc.pbanner, pprice, pstock, pdate, psellamount, psales
+				from product p, productcategory pc
+				where p.pid=pc.pid
 				order by pdate desc
 			)
 			where rownum <= #{endRowNo}

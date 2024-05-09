@@ -78,27 +78,27 @@
 										<input class="form-control" type="text" id="pname" name="pname" value="${product.pname}"/>
 									</div>
 									<div class="form-group mt-2">
-										<label class="form-label col-4">상품 가격</label>
+										<label class="form-label col-4">가격</label>
 										<input class="form-control" type="number" id="pprice" name="pprice" value="${product.pprice}"/>
 									</div>
 									<div class="form-group mt-2">
-										<label class="form-label">상품 재고</label>
+										<label class="form-label">재고</label>
 										<input class="form-control" type="number" id="pstock" name="pstock" value="${product.pstock}"/>
 									</div>
 									<div class="form-group mt-2">
-										<label class="form-label">상품 판매량: </label>
+										<label class="form-label">판매량: </label>
 										${product.psellAmount}
 									</div>
 									<div class="form-group mt-2">
-										<label class="form-label">상품 총 매출: </label>
+										<label class="form-label">총 매출: </label>
 										${product.psales}
 									</div>
 									<div class="form-group mt-2">
-										<label class="form-label">상품 조회수: </label>
+										<label class="form-label">조회수: </label>
 										${product.productHitcount}
 									</div>
 									<div class="form-group mt-2">
-										<label class="form-label">상품 추가 날짜: </label>
+										<label class="form-label">추가 날짜: </label>
 										<fmt:formatDate value="${product.pdate}" pattern="yyyy-MM-dd" />
 									</div>
 								</div>
@@ -110,31 +110,31 @@
 							<div class="card-body">
 								<div class="form-group">
 									<label class="form-label">카테고리</label>
-									<select class="form-select">
-										<option selected>카테고리 선택</option>
-										<option value="1">그릇</option>
-										<option value="1">접시</option>
-										<option value="1">수저세트</option>
-										<option value="1">컵</option>
+									<select name="category" class="form-select">
+										<option>카테고리 선택</option>
+										<option value="1" ${category.pcategoryName=='그릇'? 'selected':''}>그릇</option>
+										<option value="2" ${category.pcategoryName=='접시'? 'selected':''}>접시</option>
+										<option value="3" ${category.pcategoryName=='수저세트'? 'selected':''}>수저세트</option>
+										<option value="4" ${category.pcategoryName=='컵'? 'selected':''}>컵</option>
 									</select>
 								</div>
 								<div class="form-group mt-2">
 									<label class="form-label">배너 위치</label>
 									<div class="form-check">
-									  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked>
-									  <label class="form-check-label" for="flexRadioDefault1">
+									  <input class="form-check-input" type="radio" value="none" name="banner" id="banner1" ${category.pbanner=='none'? 'checked':''}>
+									  <label class="form-check-label" for="banner1">
 									    없음
 									  </label>
 									</div>
 									<div class="form-check">
-									  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
-									  <label class="form-check-label" for="flexRadioDefault2">
+									  <input class="form-check-input" type="radio" value="best" name="banner" id="banner2" ${category.pbanner=='best'? 'checked':''}>
+									  <label class="form-check-label" for="banner2">
 									    Best
 									  </label>
 									</div>
 									<div class="form-check">
-									  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3">
-									  <label class="form-check-label" for="flexRadioDefault3">
+									  <input class="form-check-input" type="radio" value="famous" name="banner" id="banner3"${category.pbanner=='famous'? 'checked':''}>
+									  <label class="form-check-label" for="banner3">
 									    인기 키워드
 									  </label>
 									</div>
@@ -143,23 +143,39 @@
 						</div>
 					</div>
 					<div class="p-2">
-						<div class="card">
+						<div class="card" style="width:98%;margin:0 auto;">
 							<div class="card-body">
 								<div class="d-flex justify-content-between border-bottom">
-									<div class="mt-auto mb-auto" style="width:98%;margin:0 auto;">
+									<div class="mt-auto mb-auto">
+										옵션
+									</div>
+									<div>
+										<button id="option" class="btn" type="button">옵션 추가</button>
+									</div>
+								</div>
+								<div class="option">
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="p-2">
+						<div class="card" style="width:98%;margin:0 auto;">
+							<div class="card-body scroll">
+								<div class="d-flex justify-content-between border-bottom">
+									<div class="mt-auto mb-auto">
 										상품 소개 이미지
 									</div>
 									<div>
 										<label for="pbodyImage">
-											<div class="btn-upload">상품 소개 이미지 추가</div>
+											<div class="btn-upload">소개 이미지 추가</div>
 										</label>
 										<input type="file" multiple="multiple"
 											class="form-control-file" name="pbodyImage" id="pbodyImage">
 									</div>
 								</div>
-								<div id="bodyPreview" style="text-align:center;">
+								<div class="scroll" id="bodyPreview" style="text-align:center;">
 									<c:forEach var="i" begin="1" end="${bodyImageCount}">
-										<div class="container" style="position:relative;">
+										<div style="position:relative;">
 											<img src="productImageDownload?pid=${product.pid}&index=${i}&pthumbBodyType=body"
 												class="mt-3" width="500px">
 											<button data-index="${i}" onclick="deleteSelectImage(this, 'body')" class="btn btn-light btn-sm" type="button" style="position:absolute;top:18px;right:210px;\"><i class="bi bi-x"></i></button>

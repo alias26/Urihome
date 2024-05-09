@@ -15,14 +15,15 @@ function imgFilesSelect(event, type, previewId, width, height, topPx, rightPx, t
 	var files = event.target.files;
 	var fileInputId = event.target.id;
 	var filesArray = Array.prototype.slice.call(files);
+	var curFileCnt = filesArray.length;
+	var attFileCnt = $(".fileBox").length;
+	var remainFileCnt = totalCnt - attFileCnt;
 	
-	if(totalCnt < type.count + filesArray.length){
-		return;
-	}else{
-		type.count = type.count + filesArray.length;
+	if(curFileCnt > remainFileCnt){
 	}
-	
-	filesArray.forEach(function(file){
+		
+	for(var i = 0; i < Math.min(remainFileCnt, curFileCnt); i++){
+		var file = filesArray[i];
 		if(!file.type.match("image.*")){
 			return;
 		}
@@ -31,9 +32,9 @@ function imgFilesSelect(event, type, previewId, width, height, topPx, rightPx, t
 		
 		var reader = new FileReader();
 		reader.onload = function(e) {
-			var imageContainer = $("<div class=\"continer\" style=\"position:relative;\"></div>");
+			var imageContainer = $("<div style=\"position:relative;\"></div>");
 			var imageElement = $("<img class=\"mt-3 me-2\" src=\"" + e.target.result + "\" width=\""+width+"\" height=\""+ height+"\"/>");
-			var deleteButton = $("<button class=\"delete\"  data-index=\"" + file.lastModified+ "\" onclick=\"deleteSelectFile\" class=\"btn btn-light btn-sm\" type=\"button\" style=\"position:absolute;top:"+topPx+";right:"+rightPx+";\"><i class=\"bi bi-x\"></i></button>");
+			var deleteButton = $("<button class=\"btn btn-light btn-sm delete\"  data-index=\"" + file.lastModified+ "\" onclick=\"deleteSelectFile\" type=\"button\" style=\"position:absolute;top:"+topPx+";right:"+rightPx+";\"><i class=\"bi bi-x\"></i></button>");
 			
 			imageContainer.append(imageElement);
 			imageContainer.append(deleteButton);
@@ -44,7 +45,7 @@ function imgFilesSelect(event, type, previewId, width, height, topPx, rightPx, t
 			});
 		}
 		reader.readAsDataURL(file);	
-	})
+	}
 }
 
 function deleteSelectFile(imageContainer, fileInputId, type){
@@ -72,10 +73,27 @@ function deleteSelectImage(element, type){
 	}
 }
 
+function addOption(){
+	var optionContainer = $("<div class=\"row mt-2\"></div>");
+	var optionName = $("<div class=\"col-3\"><label class=\"form-label\">옵션명</label><input type=\"text\" class=\"form-control\"></div>");
+	var optionValue = $("<div class=\"col-8\"><label class=\"form-label\">옵션값</label><input type=\"text\" class=\"form-control\"></div>");
+	var deleteButton = $("<div class=\"col-1 mt-auto mb-auto\"><button class=\"btn btn-light btn-sm deleteOption\" type=\"button\"><i class=\"bi bi-x\"></i></button></div>");
+	
+	deleteButton.on("click", function(){
+		optionContainer.remove();
+	});
+	
+	optionContainer.append(optionName);
+	optionContainer.append(optionValue);
+	optionContainer.append(deleteButton);
+	$(".option").append(optionContainer);
+}
+
 $(function(){
 	$("#pbodyImage").on("change", (event) => imgFilesSelect(event, body, "#bodyPreview", "500px", "", "18px", "210px", 10));
 	$("#pthumbnailImage").on("change", (event) => imgFilesSelect(event, thumbnail, "#thumbnailPreview", "100px", "100px", "18px", "10px", 4));
-
+	$("#option").on("click", (event) => addOption(event));
+	
 	$('#submit').on("click", function () {
 		var formData = new FormData();
 		var pbodyImg = $("#pbodyImage")[0].files;
@@ -85,6 +103,8 @@ $(function(){
 			pname: $("#pname").val(),
 			pprice: parseInt($("#pprice").val()),
 			pstock: parseInt($("#pstock").val()),
+			pcategoryName: $("select[name=category] option:selected").text(),
+			pbanner: $("input:radio[name=banner]:checked").val(),
 			thumbDel: thumbDel,
 			bodyDel: bodyDel
 		}

@@ -24,3 +24,8 @@ input::-webkit-inner-spin-button {
 input[type='number'] {
   -moz-appearance: textfield;
 }
+
+.scroll {
+    max-height: 600px;
+    overflow-y: auto;
+}

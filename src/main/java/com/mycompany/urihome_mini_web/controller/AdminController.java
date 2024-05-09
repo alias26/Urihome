@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,6 +26,7 @@ import com.mycompany.urihome_mini_web.dto.Member;
 import com.mycompany.urihome_mini_web.dto.Pager;
 import com.mycompany.urihome_mini_web.dto.Pimage;
 import com.mycompany.urihome_mini_web.dto.Product;
+import com.mycompany.urihome_mini_web.dto.ProductCategory;
 import com.mycompany.urihome_mini_web.service.MemberService;
 import com.mycompany.urihome_mini_web.service.ProductService;
 
@@ -32,6 +34,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @Controller
 @Slf4j
+@Secured("ROLE_ADMIN")
 @RequestMapping("/admin")
 public class AdminController {
 	@Autowired
@@ -39,7 +42,6 @@ public class AdminController {
 	
 	@Autowired
 	private MemberService memberService;
-	
 	
 	@GetMapping("/dashBoard")
 	public String dashBoard(Model model) {
@@ -78,7 +80,7 @@ public class AdminController {
 
 	@PostMapping("/addProduct")
 	@ResponseBody
-	public String addProduct(Product product, 
+	public String addProduct(Product product, ProductCategory category,
 			@RequestParam("pthumbnailImage") MultipartFile[] thumbFiles, 
 			@RequestParam("pbodyImage") MultipartFile[] bodyFiles,
 			@RequestParam("product") JSONObject p) {
@@ -87,11 +89,17 @@ public class AdminController {
 		String pname = (String)p.get("pname");
 		int pprice = (int)p.get("pprice");
 		int pstock = (int)p.get("pstock");
+		String pcategoryName = (String)p.get("pcategoryName");
+		String pbanner = (String)p.get("banner");
 		
 		product.setPid(pid);
 		product.setPname(pname);
 		product.setPprice(pprice);
 		product.setPstock(pstock);
+		
+		category.setPid(pid);
+		category.setPcategoryName(pcategoryName);
+		category.setPbanner(pbanner);
 		
 		List<Pimage> pimages = new ArrayList<Pimage>();
 		if (thumbFiles != null||bodyFiles != null) {
@@ -121,7 +129,7 @@ public class AdminController {
 			}
 		}
 
-		productService.addProduct(product, pimages);
+		productService.addProduct(product, category, pimages);
 
 		JSONObject jsonObject = new JSONObject();
 		jsonObject.put("result", "success");
@@ -138,10 +146,12 @@ public class AdminController {
 		int thumbImageCount = productService.getProductImageCount(param);
 		param.put("pthumbBodyType", "body");
 		int bodyImageCount = productService.getProductImageCount(param);
+		
 		model.addAttribute("thumbImageCount", thumbImageCount);
 		model.addAttribute("bodyImageCount", bodyImageCount);
 		model.addAttribute("product", product);
 		model.addAttribute("side", "productManage");
+		
 		return "admin/adminProductDetail";
 	}
 
@@ -154,16 +164,20 @@ public class AdminController {
 		int thumbImageCount = productService.getProductImageCount(param);
 		param.put("pthumbBodyType", "body");
 		int bodyImageCount = productService.getProductImageCount(param);
+		
+		ProductCategory category = productService.getProductCategory(pid);
+		
 		model.addAttribute("thumbImageCount", thumbImageCount);
 		model.addAttribute("bodyImageCount", bodyImageCount);
 		model.addAttribute("product", product);
+		model.addAttribute("category", category);
 		model.addAttribute("side", "productManage");
 		return "admin/productUpdateView";
 	}
 
 	@PostMapping("/updateProduct")
 	@ResponseBody
-	public String updateProduct(Product product, 
+	public String updateProduct(Product product, ProductCategory category,
 			@RequestParam(value="pthumbnailImage", required=false) MultipartFile[] pthumbnailImage,
 			@RequestParam(value="pbodyImage", required=false) MultipartFile[] pbodyImage,
 			@RequestParam("product") JSONObject p
@@ -178,6 +192,13 @@ public class AdminController {
 		product.setPname(pname);
 		product.setPprice(pprice);
 		product.setPstock(pstock);
+		
+		String pcategoryName = (String)p.get("pcategoryName");
+		String pbanner = (String)p.get("pbanner");
+		
+		category.setPid(pid);
+		category.setPcategoryName(pcategoryName);
+		category.setPbanner(pbanner);
 		
 		JSONArray thumbArr = (JSONArray) p.get("thumbDel");
 		List<Integer> thumbList = new ArrayList<>();
@@ -201,7 +222,6 @@ public class AdminController {
 		param.put("pthumbBodyType", "thumb");
 		
 		if (pthumbnailImage != null) {
-			int i = 1;
 			for (MultipartFile img : pthumbnailImage) {
 				Pimage pimage = new Pimage();
 				pimage.setPid(product.getPid());
@@ -230,7 +250,7 @@ public class AdminController {
 			}
 		}
 
-		productService.updateProduct(product, pimages);
+		productService.updateProduct(product, category, pimages);
 
 		JSONObject jsonObject = new JSONObject();
 		jsonObject.put("result", "success");

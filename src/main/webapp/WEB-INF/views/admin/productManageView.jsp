@@ -31,7 +31,6 @@
 		<div class="col-xl-2 col-lg-3">
 			<%@ include file="/WEB-INF/views/admin/adminHeader.jsp"%>
 		</div>
-		<!--  -->
 		<div class="col-xl-10 col-lg-9">
 			<div class="content-header mb-5 ms-0" style="height: 65px;">
 					<h4 class="text-light text-uppercase mb-0">상품관리</h4>
@@ -46,12 +45,14 @@
 							<tr>
 								<th scope="col">상품 번호</th>
 								<th scope="col">상품 이미지</th>
-								<th scope="col">상품 이름</th>
-								<th scope="col">상품 가격</th>
-								<th scope="col">상품 재고</th>
-								<th scope="col">상품 판매량</th>
-								<th scope="col">상품 판매 금액</th>
-								<th scope="col">상품 추가 날짜</th>
+								<th scope="col">상품명</th>
+								<th scope="col">카테고리</th>
+								<th scope="col">배너</th>
+								<th scope="col">가격</th>
+								<th scope="col">재고</th>
+								<th scope="col">판매량</th>
+								<th scope="col">판매 금액</th>
+								<th scope="col">추가 날짜</th>
 								<th></th>
 							</tr>
 						</thead>
@@ -65,6 +66,8 @@
 										<td>
 											<a href="adminProductDetail?pid=${product.pid}">${product.pname}</a>
 										</td>
+										<td>${product.pcategoryName}</td>
+										<td>${product.pbanner}</td>
 										<td>${product.pprice}</td>
 										<td>${product.pstock}</td>
 										<td>${product.psellAmount}</td>
