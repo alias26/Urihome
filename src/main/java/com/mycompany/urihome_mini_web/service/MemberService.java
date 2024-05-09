@@ -25,9 +25,6 @@ public class MemberService {
 	public void join(Member member) {
 		PasswordEncoder passwordEncoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
 		member.setMpassword(passwordEncoder.encode(member.getMpassword()));
-		member.setMzip("00000");
-		member.setMaddress("empty");
-		member.setMdetailAddress("empty");
 
 		if ((member.getMtel2() == "" || member.getMtel2() == null) || (member.getMtel3() == "" || member.getMtel3() == null)) {
 			member.setMtel(null);
