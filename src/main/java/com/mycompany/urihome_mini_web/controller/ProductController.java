@@ -31,6 +31,11 @@ public class ProductController {
 		
 		HashMap<String, String> param = new HashMap<>();
 		param.put("pid", pid);
+		
+		param.put("pthumbBodyType", "thumb");
+		int thumbImageCount = productService.getProductImageCount(param);
+		model.addAttribute("thumbImageCount", thumbImageCount);
+		
 		param.put("pthumbBodyType", "body");
 		int bodyImageCount = productService.getProductImageCount(param);
 		model.addAttribute("bodyImageCount", bodyImageCount);

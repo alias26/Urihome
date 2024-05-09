@@ -21,7 +21,6 @@
 	  
 	  <!-- 사용자 정의 자바스크립트 -->
 	  <script>
-	   
 	  </script>
 	  
    </head>
@@ -38,18 +37,11 @@
 			<div class="image-box" style="flex:1; text-align: center;">
 			    <div id="carouselExampleControlsNoTouching" class="carousel slide" data-bs-touch="false">
 			        <div class="carousel-inner">
-			            <div class="carousel-item active">
-			                <img id="key-product" src="https://ssueim.com/web/product/big/202305/d066a2cc427364ba14a7bface9bef1ae.jpg">
-			            </div>
-			            <div class="carousel-item">
-			                <img id="key-product" src="https://ssueim.com/web/product/extra/big/202305/7c22b114f1d889a97bea6d34103c816f.jpg">
-			            </div>
-			            <div class="carousel-item">
-			                <img id="key-product" src="https://ssueim.com/web/product/extra/big/202305/dd347ceb0bce1738aea06d2505fbda49.jpg">
-			            </div>
-			            <div class="carousel-item">
-			                <img id="key-product" src="https://ssueim.com/web/product/extra/big/202305/8db6ea78f812aa7c152b2e82527179c6.jpg">
-			            </div>
+			        	<c:forEach var="i" begin="1" end="${thumbImageCount}">
+				            <div class="carousel-item ${i==1?'active':''}">
+								<img id="key-product" src="productImageDownload?pid=${product.pid}&index=${i}&pthumbBodyType=thumb" class="d-block w-100">
+				            </div>
+			            </c:forEach>
 			        </div>
 			    </div>
 			    <button class="carousel-control-btn-prev" type="button" data-bs-target="#carouselExampleControlsNoTouching" data-bs-slide="prev">
@@ -151,7 +143,11 @@
 		    <!-- 상세정보 -->
 		    <div class="tabcontent" style="height:100%; margin-top: 100px;">
 		      <div id="tab01" style="text-align: center;">
-		      	<img alt="info" src="/urihome_mini_web/resources/image/info.png">
+		      	<c:forEach var="i" begin="1" end="${bodyImageCount}">
+		      		<div style="position:relative;">
+ 			      		<img alt="info" src="productImageDownload?pid=${product.pid}&index=${i}&pthumbBodyType=thumb" width="800px">
+	            	</div>
+	            </c:forEach>
 		      </div>
 		    </div>
 		    <!-- 상세정보 -->
