@@ -19,5 +19,9 @@ public class UriHomeUserDetails extends User{
 	public Member getMember() {
 		return member;
 	}
+	
+	public void setMember(Member member) {
+		this.member = member;
+	}
 
 }

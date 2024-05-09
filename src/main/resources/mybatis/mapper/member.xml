@@ -39,4 +39,19 @@
 		delete from member where mid=#{mid}		
 	</delete>
 	
+	<update id="update" parameterType="Member">
+		update member set
+			<if test="mpassword != null and mpassword != '' and mpassword != '${mpassword}'">
+				mpassword=#{mpassword},
+			</if>
+			mname=#{mname},
+			mtel=#{mtel},
+			mphone=#{mphone},
+			mzip=#{mzip},
+			maddress=#{maddress},
+			mdetailAddress=#{mdetailAddress},	
+			memail=#{memail}	
+		where mid=#{mid}
+	</update>
+	
 </mapper>

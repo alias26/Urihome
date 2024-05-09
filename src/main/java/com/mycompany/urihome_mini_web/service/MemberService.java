@@ -8,6 +8,7 @@ import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+
 import com.mycompany.urihome_mini_web.dao.MemberDao;
 import com.mycompany.urihome_mini_web.dto.Member;
 import com.mycompany.urihome_mini_web.dto.Pager;
@@ -18,7 +19,6 @@ import lombok.extern.slf4j.Slf4j;
 @Service
 @Slf4j
 public class MemberService {
-	
 	@Resource
 	private MemberDao memberDao;
 
@@ -42,20 +42,15 @@ public class MemberService {
 		memberDao.insert(member);
 	}
 	
-	
-	
 	public List<Member> getMemberList(Pager pager) {
 		List<Member> memberList=memberDao.selectByPage(pager);
 		return memberList;
 	}
 
-
-
 	public int getTotalRows() {
 		int totalRows = memberDao.count();
 		return totalRows;
 	}	
-
 
 	public void removeMember(String mid) {
 		int rowNum= memberDao.deleteByMid(mid);		
@@ -66,6 +61,17 @@ public class MemberService {
 		return member;
 	}
 
+	public void updateMember(Member member) {
+		member.setMtel(member.getMtel1() + "-" + member.getMtel2() + "-" + member.getMtel3());
+		member.setMphone(member.getMphone1() + "-" + member.getMphone2() + "-" + member.getMphone3());
+
+		if(member.getMpassword() != null && !member.getMpassword().equals("")) {
+			PasswordEncoder passwordEncoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
+			member.setMpassword(passwordEncoder.encode(member.getMpassword()));
+		}
+		
+		int rowNum = memberDao.update(member);
+	}
 	
 	
 

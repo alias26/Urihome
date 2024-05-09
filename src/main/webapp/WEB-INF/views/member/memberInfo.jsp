@@ -1,8 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
    <head>
+   
+   		
       <meta charset="UTF-8">
       <title>회원 정보 수정 | 우리집</title>
       <!-- Bootstrap 5를 위한 외부 라이브러리 설정 -->
@@ -13,9 +16,24 @@
 	  <script src="${pageContext.request.contextPath}/resources/js/member/mypage.js" rel="stylesheet"></script>
 	  
 	  <!-- 사용자 정의 자바스크립트 -->
-	  <script>
-	   
-	  </script>
+	  <script>  
+		  function updateFormCheckData() {
+		  		// 비밀번호 입력값과 비밀번호 재확인 입력값 가져오기
+			    var password = document.getElementById("mpassword").value;
+			    var passwordCheck = document.getElementById("mpasswordCheck").value;
+			
+			    // 비밀번호와 비밀번호 재확인이 일치하는지 확인
+			    if (password !== passwordCheck) {
+			        // 일치하지 않으면 경고 메시지를 표시하고 form 전송을 막음
+			        alert("비밀번호가 일치하지 않습니다.");		        
+			        return false;
+			    } else {
+			        // 일치하면 form 제출을 허용
+			        return true;
+			    }
+			}
+	  </script> 
+	  
 	  
    </head>
    <!-- css 적용 -->
@@ -30,15 +48,15 @@
 		<jsp:include page="/WEB-INF/views/member/mypageTab.jsp"></jsp:include>
 		
 		<div class="member-info mx-5" style="flex: 5;">
-			<div class="mb-5 ms-5" id="signUp">
-				<h3><strong>회원정보수정</strong></h3>
+			<div class="mb-5 ms-5" id="update">		
+				<h3><strong>${member.mid}님 회원정보수정</strong></h3>
 			</div>
-			<div id="joinFormDiv">
-				<form id="joinForm" name="joinForm" onsubmit="joinFormCheckData()" method="post" action="join" class="validation-form" novalidate>
+			<div id="updateFormDiv">
+				<form id="updateForm" name="updateForm" onsubmit="return updateFormCheckData()" method="post" action="updateMember" class="validation-form" novalidate>
 					<div class="form-group mt-4 mb-4">
 						<label class="form-label">아이디 *</label>
-						<input type="text" class="form-control" onchange="isRightID()" id="mid" name="mid">
-						<span class="form-text" id="midSpan">알파벳, 숫자를 혼용해서 6자 이상 20자 이하</span>
+						<input type="text" class="form-control" onchange="isRightID()" id="mid" name="mid" value="${member.mid}" readonly>
+						<span class="form-text" id="midSpan">아이디는 변경 불가능합니다.</span>
 					</div>
 					<div class="form-group mt-2 mb-4">
 						<label class="form-label">새 비밀번호</label>
@@ -52,20 +70,20 @@
 					</div>
 					<div class="form-group mt-2">
 						<label class="form-label">이름 *</label>
-						<input type="text" class="form-control" onchange="isRightName()" id="mname" name="mname">
+						<input type="text" class="form-control" onchange="isRightName()" id="mname" name="mname" value="${member.mname}">
 						<span class="form-text" id="nameSpan">&nbsp;</span>
 					</div>
 					<div class="mt-2">
 						<label class="form-label">배송지 *</label>
 						<div class="d-flex">
-						<span ><input type="text" class="form-control mb-2" id="mzip" name="mzip" placeholder="우편번호" disabled></span>
+						<span ><input type="text" class="form-control mb-2" id="mzip" name="mzip" placeholder="우편번호" readonly value="${member.mzip}"></span>
 						<span><input type="button" id="addressBtn" name="addressBtn" value="우편번호" class="btn btn-outline-secondary btn-sm ms-1 mt-1"></span>
 						</div>
 						<div>
-							<span><input type="text" class="form-control mb-2" id="maddress" name="maddress" placeholder="기본 주소" disabled></span>
+							<span><input type="text" class="form-control mb-2" id="maddress" name="maddress" placeholder="기본 주소" readonly value="${member.maddress}"></span>
 						</div>
 						<div>
-							<span><input type="text" class="form-control" id="mdetailAddress" name="mdetailAddress" placeholder="나머지 주소"></span>
+							<span><input type="text" class="form-control" id="mdetailAddress" name="mdetailAddress" placeholder="나머지 주소" value="${member.mdetailAddress}"></span>
 						</div>
 					</div>
 					<div class="mt-4">
@@ -74,16 +92,16 @@
 						<div>
 							<span>
 								<select class="form-select" id="mtel1" name="mtel1">
-									<option>02</option>
-									<option>031</option>
+									<option <c:if test="${mtel[0] == 02}">selected</c:if>>02</option>
+									<option <c:if test="${mtel[0] == 031}">selected</c:if>>031</option>
 								</select>
 							</span>
 						</div>
 						<div>
-							<span><input type="text" class="form-control" onchange="isRightNormalPhone()" id="mtel2" name="mtel2"></span>
+							<span><input type="text" class="form-control" onchange="isRightNormalPhone()" id="mtel2" name="mtel2" value="${mtel[1]}"></span>
 						</div>
 						<div>
-							<span><input type="text" class="form-control" onchange="isRightNormalPhone()" id="mtel3" name="mtel3"></span>
+							<span><input type="text" class="form-control" onchange="isRightNormalPhone()" id="mtel3" name="mtel3" value="${mtel[2]}"></span>
 						</div>
 						</div>
 						<span class="form-text" id="mtelSpan">&nbsp;</span>
@@ -94,31 +112,33 @@
 						<div>
 							<span>
 								<select class="form-select" id="mphone1" name="mphone1">
-									<option>010</option>
-									<option>011</option>
+									<option <c:if test="${mphone[0] == 010}">selected</c:if>>010</option>
+									<option <c:if test="${mphone[0] == 011}">selected</c:if>>011</option>
 								</select>
 							</span>
 						</div>
 						
 						<div>
-							<span><input type="text" class="form-control" onchange="isRightCellPhone()" id="mphone2" name="mphone2"></span>
+							<span><input type="text" class="form-control" onchange="isRightCellPhone()" id="mphone2" name="mphone2" value="${mphone[1]}"></span>
 						</div>
 						<div>
-							<span><input type="text" class="form-control" onchange="isRightCellPhone()" id="mphone3" name="mphone3"></span>
+							<span><input type="text" class="form-control" onchange="isRightCellPhone()" id="mphone3" name="mphone3" value="${mphone[2]}"></span>
 						</div>
 						</div>
 						<span class="form-text" id="mphoneSpan">&nbsp;</span>
 					</div>
 						<div class="form-group mt-2 mb-4">
 						<label class="form-label">이메일 *</label>
-						<input type="email" class="form-control" onchange="isRightEmail()" id="memail" name="memail">
+						<input type="email" class="form-control" onchange="isRightEmail()" id="memail" name="memail" value="${member.memail}">
 						<span class="form-text" id="memailSpan">&nbsp;</span>
 					</div>
 					
-					<button type="submit" class="btn btn-dark">수정하기</button>
+					
+					<button type="submit" class="btn btn-dark btn-sm">수정하기</button>	
+										
 				</form>
 			</div>
-		</div> <!-- joinForm -->
+		</div> 
 	
 	</div> <!-- 전체 div -->
 	<%@ include file="/WEB-INF/views/common/footer.jsp" %>
