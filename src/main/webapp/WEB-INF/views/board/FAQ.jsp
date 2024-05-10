@@ -19,7 +19,7 @@
 	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
 <script
 	src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
-<link href="${pageContext.request.contextPath}/resources/css/FAQ.css"
+<link href="${pageContext.request.contextPath}/resources/css/board/FAQ.css"
 	rel="stylesheet">
 
 

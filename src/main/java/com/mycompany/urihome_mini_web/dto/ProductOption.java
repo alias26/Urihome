@@ -4,7 +4,7 @@ import lombok.Data;
 
 @Data
 public class ProductOption {
-	public String pid;
-	public int poptionId;
-	public String poption;
+	private String pid;
+	private int poptionId;
+	private String poption;
 }

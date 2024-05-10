@@ -19,7 +19,7 @@
 <script
    src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
 <link
-   href="${pageContext.request.contextPath}/resources/css/questionBoard.css"
+   href="${pageContext.request.contextPath}/resources/css/board/questionBoard.css"
    rel="stylesheet">
 
 <!-- 사용자 정의 자바스크립트 -->
@@ -42,13 +42,16 @@
       <div id="questionForm">
          <form enctype="multipart/form-data" action="#" method="post">
             <div>
-               <span>제목</span> <input name="qtitle" id="qtitle" required></input>
+               <span>제목</span>
+               <input name="qtitle" id="qtitle" required></input>
             </div>
             <div>
-               <span>작성자</span> <input name="qwriter" id="qwriter" required></input>
+               <span>작성자</span> 
+               <input name="qwriter" id="qwriter" required></input>
             </div>
             <div style="margin-bottom: 1.5rem">
-               <label for="category">분류</label> <select id="category">
+               <label for="category">분류</label> 
+               <select id="category" style="margin-left: 30px; height:30px;">
                   <option value="product">상품문의</option>
                   <option value="delivery">배송문의</option>
                   <option value="return">반품/교환 문의</option>
@@ -60,25 +63,9 @@
                <input name="user-content" id="user-content"></input>
             </div>
 
-            <p>
-               첨부 파일1 <input type="file" name="SelectFile1" />
-            </p>
-            <p>
-               첨부 파일2 <input type="file" name="SelectFile2" />
-            </p>
-            <p>
-               첨부 파일3 <input type="file" name="SelectFile3" />
-            </p>
-            <div>
-               <span>비밀번호</span> <input type="password" name="qpassword"
-                  id="qpassword" required></input>
-            </div>
-
-            
-               <input type="radio" id="public-range" name="range" value="public">
-               <label for="public">전체공개</label><br> <input type="radio"
-                  id="private-range" name="range" value="private"> <label
-                  for="private">비밀글</label><br>
+            <p>첨부 파일1 <input type="file" name="SelectFile1" /></p>
+            <p> 첨부 파일2 <input type="file" name="SelectFile2" /></p>
+            <p>첨부 파일3 <input type="file" name="SelectFile3" /></p>
    
                <button class="btn_submit btn btn-dark btn-md " type="submit">글 작성</button>
             

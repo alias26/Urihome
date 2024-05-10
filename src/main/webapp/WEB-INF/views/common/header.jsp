@@ -44,9 +44,9 @@
 				<li class="nav-item dropdown ms-3 me-3">
 					<button class="btn" aria-expanded="false">커뮤니티</button>
 					<ul class="dropdown-menu">
-						<li><a class="dropdown-item" href="#">공지사항</a></li>
-						<li><a class="dropdown-item" href="#">자주 묻는 질문</a></li>
-						<li><a class="dropdown-item" href="#">1대1 문의</a></li>
+						<li><a class="dropdown-item" href="${pageContext.request.contextPath}/board/notice">공지사항</a></li>
+						<li><a class="dropdown-item" href="${pageContext.request.contextPath}/board/FAQ">자주 묻는 질문</a></li>
+						<li><a class="dropdown-item" href="${pageContext.request.contextPath}/board/questionBoard">1대1 문의</a></li>
 					</ul>
 				</li>
 			</ul>

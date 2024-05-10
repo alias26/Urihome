@@ -19,7 +19,7 @@
 <script
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <!-- jquery 외부라이브러리 설정 -->
-<link href="${pageContext.request.contextPath}/resources/css/board.css"
+<link href="${pageContext.request.contextPath}/resources/css/board/board.css"
 	rel="stylesheet">
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
@@ -35,10 +35,9 @@
 <body class="pt-5">
 	<%@ include file="/WEB-INF/views/common/header.jsp"%>
 
-
 	<h3 class="boardTitle">공지사항</h3>
 	<table class="table border-left:0 border-right:0"
-		style="width: 80%; margin-left: 150px; margin-bottom:100px">
+		style="width: 80%; margin-left: 150px; margin-bottom: 100px">
 		<thead class="table-danger">
 			<tr>
 				<th width="10%">번호</th>
@@ -49,13 +48,15 @@
 			</tr>
 		</thead>
 		<tbody>
-			<c:forEach var="board" items="${boardList}">
+			<c:forEach var="board" items="${notice}">
 				<tr height="60px">
-					<td width="10%" class="align-middle">${board.bno}</td>
-					<td width="35%" class="align-middle"><a id="btitle" href="#">${board.btitle}</a></td>
-					<td width="25%" class="align-middle"><fmt:formatDate
+					<td width="10%" class="align-middle">${board.bnumber}</td>
+					<td width="35%" class="align-middle">
+					<a id="btitle" href="detailBoard?bnumber=${board.bnumber}">${board.btitle}</a></td>
+					<td width="25%" class="align-middle">
+					<fmt:formatDate
 							value="${board.bdate}" pattern="yyyy-MM-dd" /></td>
-					<td width="20%" class="align-middle">${board.bwriter}</td>
+					<td width="20%" class="align-middle">관리자</td>
 					<td width="10%" class="align-middle">${board.bhitcount}</td>
 
 				</tr>
@@ -65,26 +66,50 @@
 	<div aria-label="page-trans">
 		<ol class=" d-flex align-items-center pagination"
 			style="margin-bottom: 150px; justify-content: center">
-			<li class="page-icon">
-			<a
-				style="border-style: none; font-size: 16px; color:black" class="previous-icon"
-				href="#" aria-label="Previous"><i class="bi bi-caret-left" ></i>
-			</a></li> 
-			<li class="page-num"><a
-				style="border-style: none; font-size: 16px; color:black" class="page-link"
-				href="#">1</a></li>
-			<li class="page-num"><a
-				style="border-style: none; font-size: 16px; color:black" class="page-link"
-				href="#">2</a></li>
+
+			<c:if test="${pager.groupNo>1}">
+				<li class="page-icon"><a
+					style="border-style: none; font-size: 16px; color: black"
+					class="first-previous-icon" href="notice?pageNo=1"
+					aria-label="beginning"> <i class="bi bi-caret-left"></i>
+				</a></li>
+				<li class="page-icon"><a
+					style="border-style: none; font-size: 16px; color: black"
+					class="previous-icon" href="notice?pageNo=${pager.startPageNo-1}"
+					aria-label="Previous"> <i class="bi bi-caret-left"></i>
+				</a></li>
+			</c:if>
+			<c:forEach var="i" begin="${pager.startPageNo}"
+				end="${pager.endPageNo}">
+				<li class="page-num"><a
+					style="border-style: none; font-size: 16px; color: black"
+					class="page-link 
+				${pager.pageNo==i ? 'active':''}"
+					href="notice?pageNo=${i}">${i}</a></li>
+			</c:forEach>
+			<c:if test="${pager.groupNo<pager.totalGroupNo}">
+				<li class="page-icon"><a
+					style="border-style: none; font-size: 16px; color: black"
+					class="next-icon" href="notice?pageNo=${pager.endPageNo+1}"
+					aria-label="Next"> <i class="bi bi-caret-right"></i>
+				</a></li>
+			</c:if>
 			<li class="page-icon"><a
-				style="border-style: none; font-size: 16px; color:black" class="page-link"
-				href="#">3</a></li>
-			<li class="page-item"><a
-				style="border-style: none; font-size: 16px; color:black" class="next-icon"
-				href="#" aria-label="Next"><i class="bi bi-caret-right"></i>
-			</a></li>
+				style="border-style: none; font-size: 16px; color: black"
+				class="next-icon" href="notice?pageNo=${pager.totalPageNo}"
+				aria-label="last"><i class="bi bi-caret-right"></i> </a></li>
 
 		</ol>
+	</div>
+
+	<div class="searchType d-flex" id="searchType">
+		<select class="search-select" name="search-select" style="height: 35px">
+			<option selected value="stitle">제목</option>
+			<option value="scontent">내용</option>
+		</select>
+		<input 
+		type="text" id="inputSearch" name="inputSearch" placeholder="검색어를 입력해 주세요">
+		<button type="submit" class="btn_submit btn btn-danger btn-sm">검색</button>
 	</div>
 
 	<%@ include file="/WEB-INF/views/common/footer.jsp"%>

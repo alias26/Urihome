@@ -1,5 +1,6 @@
 package com.mycompany.urihome_mini_web.controller;
 
+
 import java.io.OutputStream;
 import java.util.List;
 
@@ -19,39 +20,39 @@ import com.mycompany.urihome_mini_web.dto.Pager;
 import com.mycompany.urihome_mini_web.service.BoardService;
 
 import lombok.extern.slf4j.Slf4j;
+
 @Slf4j
 @Controller
-@RequestMapping("/board")
+@RequestMapping("/admin")
 public class BoardController {
 	@Autowired
 	public BoardService service;
 
-	@GetMapping("/writeBoardForm")
-	public String writeBoardForm(){
-		return "/board/writeBoardForm";
+	@GetMapping("/boardWriteForm")
+	public String boardWriteForm() {
+		return "admin/boardWriteForm";
 	}
-	
+
 	@PostMapping("/writeBoard")
 	public String writeBoard(Board board, HttpServletRequest request) {
-		if(board.getBattach()!=null && !board.getBattach().isEmpty()) {
+		if (board.getBattach() != null && !board.getBattach().isEmpty()) {
+			// DTO 추가 설정
 			board.setBattachoname(board.getBattach().getOriginalFilename());
 			board.setBattachtype(board.getBattach().getContentType());
 			try {
 				board.setBattachdata(board.getBattach().getBytes());
-			} catch(Exception e) {
-				
+			} catch (Exception e) {
 			}
 		}
-		String btype= request.getParameter("btype");
-		log.info("btype"+btype);
-	
+	/*	String btype=request.getParameter("btype");
+		log.info(btype);*/
+		
 		service.writeBoard(board);
-		return "redirect:/board/notice";
-
+		
+		return "redirect:/admin/adminNotice";
 	}
-	@RequestMapping("/notice")
-	public String notice(String pageNo, Model model, HttpSession session) {
-		log.info("실행");
+	@GetMapping("/adminNotice")
+	public String adminNotice( String pageNo, HttpSession session, Model model) {
 		if(pageNo==null) {
 			pageNo=(String) session.getAttribute("pageNo");
 			if(pageNo==null) {
@@ -64,50 +65,65 @@ public class BoardController {
 		int rowsPagingTarget = service.getTotalRows();
 		Pager pager = new Pager(10,10,rowsPagingTarget, intpageNo);
 		List<Board> notice= service.getBoardList(pager);
+		log.info(notice.get(0).getBtype());
 		model.addAttribute("pager", pager);
 		model.addAttribute("notice", notice);
-		return "board/notice";
-		
+		return "admin/adminNotice";
 	}
+	@GetMapping("/adminNoticeView")
+	public String detailBoard(int bnumber, Model model) {
+		Board board = service.getBoard(bnumber);
+		model.addAttribute("board", board);
+		return "admin/adminNoticeView";
+	}
+
 	@GetMapping("/attachDownload")
-	public void attachDownload(int bnumber, HttpServletResponse response) throws Exception{
+	public void attachDownload(int bnumber, HttpServletResponse response) throws Exception {
 		Board board = service.getBoard(bnumber);
 		byte[] data = service.getAttachData(bnumber);
 		response.setContentType(board.getBattachtype());
-		String fileName= new String(board.getBattachoname().getBytes("UTF-8"), "ISO-8859-1");
-		response.setHeader("content-disposition", "attachment; filename\""+ fileName +"\"");
-		
+		String fileName = new String(board.getBattachoname().getBytes("UTF-8"), "ISO-8859-1");
+		response.setHeader("content-disposition", "attachment; filename\"" + fileName + "\"");
 		OutputStream os = response.getOutputStream();
 		os.write(data);
 		os.flush();
 		os.close();
 	}
-	@GetMapping("/updateBoardForm")
-	public String updateBoardForm(int bnumber, Model model){
+
+	@GetMapping("/boardUpdateForm")
+	public String boardUpdateForm(int bnumber, Model model) {
 		Board board = service.getBoard(bnumber);
 		model.addAttribute("board", board);
-		return "board/updateBoardForm";
+		return "admin/boardUpdateForm";
 	}
-	@PostMapping("updateBoard")
-	public String updatBoardForm(Board board) {
-		if(board.getBattach() != null && board.getBattach().isEmpty()) {
+
+	@PostMapping("/updateBoard")
+	public String updateBoard(Board board) {
+
+		log.info("bno" + board.getBnumber());
+		if (board.getBattach() != null && !board.getBattach().isEmpty()) {
 			board.setBattachoname(board.getBattach().getOriginalFilename());
 			board.setBattachtype(board.getBattach().getContentType());
 			try {
 				board.setBattachdata(board.getBattach().getBytes());
-			}catch(Exception e) {
-				
+			} catch (Exception e) {
 			}
-			
 		}
 		service.updateBoard(board);
-		return "redirect:/Board/detailBoard?bnumber="+board.getBnumber();		
+		return "redirect:/admin/adminNoticeView?bnumber=" + board.getBnumber();
+	}
+
+	@GetMapping("/deleteBoard")
+	public String deleteBoard(int bnumber) {
+		service.removeBoard(bnumber);
+		return "redirect:/admin/adminNotice";
 	}
 
 	@RequestMapping("/FAQ")
 	public String FAQboard() {
 		return "board/FAQ";
 	}
+
 	@RequestMapping("/questionBoard")
 	public String questionBoard() {
 		return "board/questionBoard";

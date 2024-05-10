@@ -4,6 +4,6 @@ import lombok.Data;
 
 @Data
 public class ProductOptionDetail {
-	public int poptionId;
-	public String poptionDetail;
+	private int poptionId;
+	private String poptionDetail;
 }

@@ -48,6 +48,10 @@
 					class="nav-link text-white p-3 mb-2 sidebar-link ${side=='customerManage'? 'current':'' }"> <i
 						class="fas fa-user text-white fa-lg me-3"></i>고객관리
 				</a></li>
+				<li class="nav-item"><a href="adminNotice"
+					class="nav-link text-white p-3 mb-2 sidebar-link ${side=='boardManage'? 'current':'' }"> 
+					<i class="fas fa-pen text-white fa-lg me-3"></i>게시판 관리
+				</a></li>
 			</ul>
 		</div>
 	</div>
