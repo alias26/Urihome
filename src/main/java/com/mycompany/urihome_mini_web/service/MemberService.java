@@ -59,7 +59,9 @@ public class MemberService {
 	}
 
 	public void updateMember(Member member) {
-		member.setMtel(member.getMtel1() + "-" + member.getMtel2() + "-" + member.getMtel3());
+		if(member.getMtel2() != null && member.getMtel3() != null) {
+			member.setMtel(member.getMtel1() + "-" + member.getMtel2() + "-" + member.getMtel3());
+		}
 		member.setMphone(member.getMphone1() + "-" + member.getMphone2() + "-" + member.getMphone3());
 
 		if(member.getMpassword() != null && !member.getMpassword().equals("")) {

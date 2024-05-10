@@ -4,8 +4,6 @@
 <!DOCTYPE html>
 <html>
    <head>
-   
-   		
       <meta charset="UTF-8">
       <title>회원 정보 수정 | 우리집</title>
       <!-- Bootstrap 5를 위한 외부 라이브러리 설정 -->
@@ -41,7 +39,6 @@
 			}
 	  </script> 
 	  
-	  
    </head>
    <!-- css 적용 -->
    	<link href="${pageContext.request.contextPath}/resources/css/member/mypage.css" rel="stylesheet">
@@ -59,20 +56,20 @@
 				<h3><strong>${member.mid}님 회원정보수정</strong></h3>
 			</div>
 			<div id="updateFormDiv">
-				<form id="updateForm" name="updateForm" onsubmit="return updateFormCheckData()" method="post" action="updateMember" class="validation-form" novalidate>
+				<form id="updateForm" name="updateForm" method="post" action="updateMember" class="validation-form" novalidate onsubmit="memberInfoFormCheckData()">
 					<div class="form-group mt-4 mb-4">
 						<label class="form-label">아이디 *</label>
-						<input type="text" class="form-control" onchange="isRightID()" id="mid" name="mid" value="${member.mid}" readonly>
+						<input type="text" class="form-control" id="mid" name="mid" value="${member.mid}" readonly>
 						<span class="form-text" id="midSpan">아이디는 변경 불가능합니다.</span>
 					</div>
 					<div class="form-group mt-2 mb-4">
 						<label class="form-label">새 비밀번호</label>
-						<input type="password" class="form-control" onchange="isRightPassword()" id="mpassword" name="mpassword">
+						<input type="password" class="form-control" onchange="isRightPassword()" id="mpassword" name="mpassword" value="Aa!12345">
 						<span class="form-text" id="mpasswordSpan">알파벳 대소문자, 숫자, 특수문자를 혼용해서 8자 이상 15장 이하</span>
 					</div>
 					<div class="form-group mt-2">
 						<label class="form-label">새 비밀번호 확인</label>
-						<input type="password" class="form-control" onchange="isRightPasswordCheck()" id="mpasswordCheck" name="mpasswordCheck">
+						<input type="password" class="form-control" onchange="isRightPasswordCheck()" id="mpasswordCheck" name="mpasswordCheck" value="Aa!12345">
 						<span class="form-text" id="mpasswordCheckSpan">&nbsp;</span>
 					</div>
 					<div class="form-group mt-2">
@@ -99,7 +96,7 @@
 						<div>
 							<span>
 								<select class="form-select" id="mtel1" name="mtel1">
-									<option <c:if test="${mtel[0] == 02 or mtel[0] == ''}">selected</c:if>>02</option>
+									<option <c:if test="${mtel[0] == 02}">selected</c:if>>02</option>
 									<option <c:if test="${mtel[0] == 031}">selected</c:if>>031</option>
 								</select>
 							</span>

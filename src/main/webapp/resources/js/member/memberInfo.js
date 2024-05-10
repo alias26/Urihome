@@ -6,24 +6,21 @@ function memberInfoFormCheckData() {
 	var totalResult = true;
 	
 	//오른쪽의 결과에 따라 totalResult의 결과가 달라진다.
-	totalResult &= isRightID();
-	totalResult &= isRightPassword();
-	totalResult &= isRightPasswordCheck();
-	totalResult &= isRightName();
-	totalResult &= isRightNormalPhone();
-	totalResult &= isRightCellPhone();
-	totalResult &= isRightEmail();
-	
-
+	totalResult = totalResult && isRightID();
+	totalResult = totalResult && isRightPassword();
+	totalResult = totalResult && isRightPasswordCheck();
+	totalResult = totalResult && isRightName();
+	totalResult = totalResult && isRightNormalPhone();
+	totalResult = totalResult && isRightCellPhone();
+	totalResult = totalResult && isRightEmail();
 	
 	if (totalResult) {
 		//#memberInfoForm 요소를 선택하고 이를 elForm 변수에 할당합니다.
-		var elForm = $("#memberInfoForm");
+		var elForm = $("#updateForm");
 
 		//선택한 폼 요소의 첫 번째 요소를 통해 폼을 수동으로 제출합니다.
 		elForm[0].submit();
 	}
-
 }
 
 function isRightID() {
@@ -34,7 +31,7 @@ function isRightID() {
 	// .val()는 jQuery에서 사용되는 메서드로, 선택한 요소의 값을 반환
 	var midValue = mid.val();
 
-	var midPattern = /^(?=.*\d)(?=.*[A-Za-z]).{6,20}$/;
+	var midPattern = /^[A-Za-z]{4,20}$/;
 	var midResult = midPattern.test(midValue);
 	var midSpan = $("#midSpan");
 

@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.mycompany.urihome_mini_web.dto.Member;
-import com.mycompany.urihome_mini_web.dto.MemberFormValidator;
+import com.mycompany.urihome_mini_web.dto.MemberValidator;
 import com.mycompany.urihome_mini_web.security.UriHomeUserDetails;
 import com.mycompany.urihome_mini_web.service.MemberService;
 
@@ -63,14 +63,7 @@ public class MemberController {
 		String mid = authentication.getName();
 		model.addAttribute("member", member);
 		return "member/mypage";
-	}
-	
-	
-	/*memberForm이라는 이름의 폼 데이터를 검증하는 데에 MemberFormValidator 클래스의 검증 규칙을 사용하겠다고 선언하는 것입니다.*/
-	@InitBinder("member")
-	public void memberFormValidator(WebDataBinder binder) {
-		binder.setValidator(new MemberFormValidator());
-	}
+	}	
 	
 	@GetMapping("/memberInfo")
 	@Secured("ROLE_USER")
@@ -104,8 +97,22 @@ public class MemberController {
 		return "error/error403";
 	}
 	
+	
+	/*member라는 이름의 폼 데이터를 검증하는 데에 MemberValidator 클래스의 검증 규칙을 사용하겠다고 선언하는 것입니다.*/
+	@InitBinder("member")
+	public void memberFormValidator(WebDataBinder binder) {
+		binder.setValidator(new MemberValidator());
+	}
+	
+	
 	@PostMapping("/updateMember")
-	public String updateMember(@Valid Model model, Member member, Authentication authentication,Errors errors) {			
+	public String updateMember(Model model, @Valid Member member, Authentication authentication,Errors errors) {			
+		//유효성 검사 에러시 마이페이지로 이동시킨다.
+		if(errors.hasErrors()) {
+			return "/member/memberInfo";
+		}
+		
+		log.info(member.getMid());
 		memberService.updateMember(member);		
 		
 		//DB 내용을 수정했을 경우 Spring Security 정보도 수정
@@ -113,12 +120,8 @@ public class MemberController {
 		UriHomeUserDetails userDetails = (UriHomeUserDetails) authentication.getPrincipal();
 		userDetails.setMember(dbMember);
 		
-		if(errors.hasErrors()) {
-			
-			return "/member/memberInfo";
-		}
-		
-		return "redirect:/member/memberInfo";
+		//
+		return "redirect:/member/mypage";
 	}
 	
 	

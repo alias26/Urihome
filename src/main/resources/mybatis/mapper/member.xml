@@ -41,7 +41,7 @@
 	
 	<update id="update" parameterType="Member">
 		update member set
-			<if test="mpassword != null and mpassword != '' and mpassword != '${mpassword}'">
+			<if test="mpassword != null and mpassword != ''">
 				mpassword=#{mpassword},
 			</if>
 			mname=#{mname},
