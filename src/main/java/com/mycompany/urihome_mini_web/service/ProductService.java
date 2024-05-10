@@ -137,5 +137,16 @@ public class ProductService {
 		}
 		return result;
 	}
+	
+	
+	public List<Product> getProductCategoryListAll() {
+		List<Product> productCategoryListAll = productDao.selectAll();
+		return productCategoryListAll;
+	}
+	
+	public List<Product> getProductCategoryListCate1() {
+		List<Product> getProductCategoryListCate1 = productDao.selectAll();
+		return getProductCategoryListCate1;
+	}
 
 }

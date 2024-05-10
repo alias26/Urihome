@@ -15,5 +15,6 @@ public interface ProductDao {
 	public Product selectByPid(String pid);
 	public int update(Product product);
 	public int deleteByPid(String pid);
+	public List<Product> selectAll();
 
 }

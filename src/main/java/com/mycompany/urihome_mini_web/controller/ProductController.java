@@ -2,9 +2,12 @@ package com.mycompany.urihome_mini_web.controller;
 
 import java.io.OutputStream;
 import java.util.HashMap;
+import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import org.json.HTTP;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.mycompany.urihome_mini_web.dto.Pimage;
 import com.mycompany.urihome_mini_web.dto.Product;
+import com.mycompany.urihome_mini_web.dto.ProductCategory;
 import com.mycompany.urihome_mini_web.service.ProductService;
 
 import lombok.extern.slf4j.Slf4j;
@@ -39,6 +43,7 @@ public class ProductController {
 		param.put("pthumbBodyType", "body");
 		int bodyImageCount = productService.getProductImageCount(param);
 		model.addAttribute("bodyImageCount", bodyImageCount);
+		
 		return "product/product_detail";
 	}
 	
@@ -46,6 +51,49 @@ public class ProductController {
 	public String product_list() {
 		return "product/product_list";
 	}
+	
+	
+	@GetMapping("/productCategoryAll")
+	public String productCategoryAll(ProductCategory productCategory, Model model) {
+		List<Product> product = productService.getProductCategoryListAll();
+		model.addAttribute("productCategory", productCategory);
+		log.info("product: "+product);
+		return "product/productCategoryAll";
+	}
+	
+	/*
+	@GetMapping("/productCategoryCate1")
+	public String productCategoryCate1(ProductCategory productCategory, Model model) {
+		List<Product> product = productService.getProductCategoryList();
+		model.addAttribute("productCategory", productCategory);
+		log.info("product: "+product);
+		return "productCategory";
+	}
+	
+	@GetMapping("/productCategoryCate2")
+	public String productCategoryCate2(ProductCategory productCategory, Model model) {
+		List<Product> product = productService.getProductCategoryList();
+		model.addAttribute("productCategory", productCategory);
+		log.info("product: "+product);
+		return "productCategory";
+	}
+	
+	@GetMapping("/productCategoryCate3")
+	public String productCategoryCate3(ProductCategory productCategory, Model model) {
+		List<Product> product = productService.getProductCategoryList();
+		model.addAttribute("productCategory", productCategory);
+		log.info("product: "+product);
+		return "productCategory";
+	}
+	
+	@GetMapping("/productCategoryCate4")
+	public String productCategoryCate4(ProductCategory productCategory, Model model) {
+		List<Product> product = productService.getProductCategoryList();
+		model.addAttribute("productCategory", productCategory);
+		log.info("product: "+product);
+		return "productCategory";
+	}*/
+	
 	
 	@GetMapping("/productImageDownload")
 	public void productImageDownload(String pid, int index, String pthumbBodyType, HttpServletResponse response) throws Exception {

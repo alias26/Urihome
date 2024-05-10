@@ -35,8 +35,7 @@
 	</insert>
 	
 	<select id="selectByPid" parameterType="String" resultType="Product">
-		select pid, pname, pprice, pstock, 
-			pdate, psellamount, psales
+		select pid, pname, pprice, pstock, pdate, psellamount, psales
 		from product
 		where pid=#{pid}
 	</select>
@@ -51,4 +50,37 @@
 		delete from product where pid=#{pid}
 	</delete>
 	
+	<select id="selectAll" resultType="Product">
+		select * from product
+		product inner join productCategory
+		on product.pid = productCategory.pid
+	</select>
+	
+	<select id="selectByPcategoryname1" resultType="Product">
+		select * from product
+		product inner join productCategory
+		on product.pid = productCategory.pid
+		where pcategoryname = '수저세트'
+	</select>
+	
+	<select id="selectByPcategoryname2" resultType="Product">
+		select * from product
+		product inner join productCategory
+		on product.pid = productCategory.pid
+		where pcategoryname = '컵'
+	</select>
+	
+	<select id="selectByPcategoryname3" resultType="Product">
+		select * from product
+		product inner join productCategory
+		on product.pid = productCategory.pid
+		where pcategoryname = '그릇'
+	</select>
+	
+	<select id="selectByPcategoryname4" resultType="Product">
+		select * from product
+		product inner join productCategory
+		on product.pid = productCategory.pid
+		where pcategoryname = '접시'
+	</select>
 </mapper>
