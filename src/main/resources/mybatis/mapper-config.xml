@@ -12,6 +12,7 @@
 		<typeAlias type="com.mycompany.urihome_mini_web.dto.Pager" alias="Pager"/>
 		<typeAlias type="com.mycompany.urihome_mini_web.dto.Member" alias="Member"/>
 		<typeAlias type="com.mycompany.urihome_mini_web.dto.Board" alias="Board"/>
+		<typeAlias type="com.mycompany.urihome_mini_web.dto.BoardProduct" alias="BoardProduct"/>
 		<typeAlias type="com.mycompany.urihome_mini_web.dto.ProductCategory" alias="ProductCategory"/>
 	</typeAliases>
 </configuration>
