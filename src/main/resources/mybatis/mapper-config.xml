@@ -14,5 +14,6 @@
 		<typeAlias type="com.mycompany.urihome_mini_web.dto.Board" alias="Board"/>
 		<typeAlias type="com.mycompany.urihome_mini_web.dto.BoardProduct" alias="BoardProduct"/>
 		<typeAlias type="com.mycompany.urihome_mini_web.dto.ProductCategory" alias="ProductCategory"/>
+		<typeAlias type="com.mycompany.urihome_mini_web.dto.ProductOption" alias="ProductOption"/>
 	</typeAliases>
 </configuration>
