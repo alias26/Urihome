@@ -58,7 +58,7 @@
 				<ul class="navbar-nav">
 					<li class="nav-item dropdown">
 						<sec:authorize access="hasRole('ROLE_ADMIN')">
-							<a href="admin/productManageView" class="me-2" style="text-decoration:none;color:black;"><b>관리자</b></a>
+							<a href="${pageContext.request.contextPath}/admin/productManageView" class="me-2" style="text-decoration:none;color:black;"><b>관리자</b></a>
 						</sec:authorize>
 						<button class="btn" aria-expanded="false">
 							<i class="bi bi-person-circle fs-5"></i>
