@@ -27,6 +27,7 @@ import com.mycompany.urihome_mini_web.dto.Pager;
 import com.mycompany.urihome_mini_web.dto.Pimage;
 import com.mycompany.urihome_mini_web.dto.Product;
 import com.mycompany.urihome_mini_web.dto.ProductCategory;
+import com.mycompany.urihome_mini_web.dto.ProductOption;
 import com.mycompany.urihome_mini_web.service.MemberService;
 import com.mycompany.urihome_mini_web.service.ProductService;
 
@@ -39,16 +40,16 @@ import lombok.extern.slf4j.Slf4j;
 public class AdminController {
 	@Autowired
 	private ProductService productService;
-	
+
 	@Autowired
 	private MemberService memberService;
-	
+
 	@GetMapping("/dashBoard")
 	public String dashBoard(Model model) {
 		model.addAttribute("side", "dashBoard");
 		return "admin/dashBoard";
 	}
-	
+
 	@GetMapping("/productManageView")
 	public String productManageView(String pageNo, Model model, HttpSession session) {
 		if (pageNo == null) {
@@ -80,29 +81,45 @@ public class AdminController {
 
 	@PostMapping("/addProduct")
 	@ResponseBody
-	public String addProduct(Product product, ProductCategory category,
-			@RequestParam("pthumbnailImage") MultipartFile[] thumbFiles, 
+	public String addProduct(Product product, ProductCategory category, 
+			@RequestParam("pthumbnailImage") MultipartFile[] thumbFiles,
 			@RequestParam("pbodyImage") MultipartFile[] bodyFiles,
 			@RequestParam("product") JSONObject p) {
-		
-		String pid = (String)p.get("pid");
-		String pname = (String)p.get("pname");
-		int pprice = (int)p.get("pprice");
-		int pstock = (int)p.get("pstock");
-		String pcategoryName = (String)p.get("pcategoryName");
-		String pbanner = (String)p.get("banner");
+
+		String pid = (String) p.get("pid");
+		String pname = (String) p.get("pname");
+		int pprice = (int) p.get("pprice");
+		int pstock = (int) p.get("pstock");
+		String pcategoryName = (String) p.get("pcategoryName");
+		String pbanner = (String) p.get("banner");
 		
 		product.setPid(pid);
 		product.setPname(pname);
 		product.setPprice(pprice);
 		product.setPstock(pstock);
-		
+
 		category.setPid(pid);
 		category.setPcategoryName(pcategoryName);
 		category.setPbanner(pbanner);
 		
+		List<ProductOption> poptionList = new ArrayList<>();
+		JSONArray optionNames = (JSONArray) p.get("optionNames");
+		JSONArray optionVals = (JSONArray) p.get("optionVals");
+		
+		for (int i = 0; i < optionNames.length(); i++) {
+			String optionName = optionNames.getString(i);
+			JSONArray optionVal = optionVals.getJSONArray(i);
+			for(int j = 0; j < optionVal.length(); j++) {
+				ProductOption poption = new ProductOption();
+				poption.setPid(pid);
+				poption.setPoption(optionName);
+				poption.setPoptionValue(optionVal.getString(j));
+				poptionList.add(poption);
+			}
+		}
+				
 		List<Pimage> pimages = new ArrayList<Pimage>();
-		if (thumbFiles != null||bodyFiles != null) {
+		if (thumbFiles != null || bodyFiles != null) {
 			for (MultipartFile img : thumbFiles) {
 				Pimage pimage = new Pimage();
 				pimage.setPid(product.getPid());
@@ -111,8 +128,9 @@ public class AdminController {
 				pimage.setPthumbBodyType("thumb");
 				try {
 					pimage.setPimageData(img.getBytes());
-				} catch (IOException e) {}
-				
+				} catch (IOException e) {
+				}
+
 				pimages.add(pimage);
 			}
 			for (MultipartFile img : bodyFiles) {
@@ -123,17 +141,17 @@ public class AdminController {
 				pimage.setPthumbBodyType("body");
 				try {
 					pimage.setPimageData(img.getBytes());
-				} catch (IOException e) {}
-				
+				} catch (IOException e) {
+				}
+
 				pimages.add(pimage);
 			}
 		}
 
-		productService.addProduct(product, category, pimages);
+		productService.addProduct(product, category, poptionList, pimages);
 
 		JSONObject jsonObject = new JSONObject();
 		jsonObject.put("result", "success");
-//		return "redirect:/admin/productManageView";
 		return jsonObject.toString();
 	}
 
@@ -146,17 +164,17 @@ public class AdminController {
 		int thumbImageCount = productService.getProductImageCount(param);
 		param.put("pthumbBodyType", "body");
 		int bodyImageCount = productService.getProductImageCount(param);
-		
+
 		model.addAttribute("thumbImageCount", thumbImageCount);
 		model.addAttribute("bodyImageCount", bodyImageCount);
 		model.addAttribute("product", product);
 		model.addAttribute("side", "productManage");
-		
+
 		return "admin/adminProductDetail";
 	}
 
 	@GetMapping("/productUpdateView")
-	public String productInfoView(String pid, Model model) {
+	public String productUpdateView(String pid, Model model) {
 		HashMap<String, String> param = new HashMap<>();
 		param.put("pid", pid);
 		param.put("pthumbBodyType", "thumb");
@@ -164,13 +182,15 @@ public class AdminController {
 		int thumbImageCount = productService.getProductImageCount(param);
 		param.put("pthumbBodyType", "body");
 		int bodyImageCount = productService.getProductImageCount(param);
-		
+
 		ProductCategory category = productService.getProductCategory(pid);
+		HashMap<String, String> poptions = productService.getProductOption(pid);
 		
 		model.addAttribute("thumbImageCount", thumbImageCount);
 		model.addAttribute("bodyImageCount", bodyImageCount);
 		model.addAttribute("product", product);
 		model.addAttribute("category", category);
+		model.addAttribute("poptions", poptions);
 		model.addAttribute("side", "productManage");
 		return "admin/productUpdateView";
 	}
@@ -178,49 +198,48 @@ public class AdminController {
 	@PostMapping("/updateProduct")
 	@ResponseBody
 	public String updateProduct(Product product, ProductCategory category,
-			@RequestParam(value="pthumbnailImage", required=false) MultipartFile[] pthumbnailImage,
-			@RequestParam(value="pbodyImage", required=false) MultipartFile[] pbodyImage,
-			@RequestParam("product") JSONObject p
-			) {
-		
-		String pid = (String)p.get("pid");
-		String pname = (String)p.get("pname");
-		int pprice = (int)p.get("pprice");
-		int pstock = (int)p.get("pstock");
-		
+			@RequestParam(value = "pthumbnailImage", required = false) MultipartFile[] pthumbnailImage,
+			@RequestParam(value = "pbodyImage", required = false) MultipartFile[] pbodyImage,
+			@RequestParam("product") JSONObject p) {
+
+		String pid = (String) p.get("pid");
+		String pname = (String) p.get("pname");
+		int pprice = (int) p.get("pprice");
+		int pstock = (int) p.get("pstock");
+
 		product.setPid(pid);
 		product.setPname(pname);
 		product.setPprice(pprice);
 		product.setPstock(pstock);
-		
-		String pcategoryName = (String)p.get("pcategoryName");
-		String pbanner = (String)p.get("pbanner");
-		
+
+		String pcategoryName = (String) p.get("pcategoryName");
+		String pbanner = (String) p.get("pbanner");
+
 		category.setPid(pid);
 		category.setPcategoryName(pcategoryName);
 		category.setPbanner(pbanner);
-		
+
 		JSONArray thumbArr = (JSONArray) p.get("thumbDel");
 		List<Integer> thumbList = new ArrayList<>();
-		for(int i=0; i<thumbArr.length(); i++){
-	    	Integer obj = thumbArr.getInt(i);
-	    	thumbList.add(obj);
+		for (int i = 0; i < thumbArr.length(); i++) {
+			Integer obj = thumbArr.getInt(i);
+			thumbList.add(obj);
 		}
-		
+
 		JSONArray bodyArr = (JSONArray) p.get("bodyDel");
 		List<Integer> bodyList = new ArrayList<>();
-		for(int i=0; i<bodyArr.length(); i++){
-	    	Integer obj = bodyArr.getInt(i);
-	    	bodyList.add(obj);
+		for (int i = 0; i < bodyArr.length(); i++) {
+			Integer obj = bodyArr.getInt(i);
+			bodyList.add(obj);
 		}
-		
+
 		List<Pimage> pimages = new ArrayList<Pimage>();
 		productService.deleteProductImageData(pid, thumbList, bodyList);
-		
+
 		HashMap<String, String> param = new HashMap<>();
 		param.put("pid", pid);
 		param.put("pthumbBodyType", "thumb");
-		
+
 		if (pthumbnailImage != null) {
 			for (MultipartFile img : pthumbnailImage) {
 				Pimage pimage = new Pimage();
@@ -230,12 +249,13 @@ public class AdminController {
 				pimage.setPthumbBodyType("thumb");
 				try {
 					pimage.setPimageData(img.getBytes());
-				} catch (IOException e) {}
-				
+				} catch (IOException e) {
+				}
+
 				pimages.add(pimage);
 			}
 		}
-		if(pbodyImage != null) {
+		if (pbodyImage != null) {
 			for (MultipartFile img : pbodyImage) {
 				Pimage pimage = new Pimage();
 				pimage.setPid(product.getPid());
@@ -244,8 +264,9 @@ public class AdminController {
 				pimage.setPthumbBodyType("body");
 				try {
 					pimage.setPimageData(img.getBytes());
-				} catch (IOException e) {}
-				
+				} catch (IOException e) {
+				}
+
 				pimages.add(pimage);
 			}
 		}
@@ -266,37 +287,38 @@ public class AdminController {
 	}
 
 	@GetMapping("/customerManageView")
-	public String customerManageView(String pageNo,Model model,HttpSession session) {
-		if(pageNo==null) {
-			pageNo=(String) session.getAttribute("pageNo");
-			if(pageNo==null) {
-				pageNo="1";
+	public String customerManageView(String pageNo, Model model, HttpSession session) {
+		if (pageNo == null) {
+			pageNo = (String) session.getAttribute("pageNo");
+			if (pageNo == null) {
+				pageNo = "1";
 			}
 		}
-		
+
 		session.setAttribute("pageNo", pageNo);
-		int intPageNo=Integer.parseInt(pageNo);
-		
-		int rowsPagingTarget= memberService.getTotalRows();
-		Pager pager = new Pager(10,10,rowsPagingTarget,intPageNo);
-		
-		List<Member> memberList= memberService.getMemberList(pager);
-		
-		model.addAttribute("pager",pager);
-		model.addAttribute("memberList",memberList);
+		int intPageNo = Integer.parseInt(pageNo);
+
+		int rowsPagingTarget = memberService.getTotalRows();
+		Pager pager = new Pager(10, 10, rowsPagingTarget, intPageNo);
+
+		List<Member> memberList = memberService.getMemberList(pager);
+
+		model.addAttribute("pager", pager);
+		model.addAttribute("memberList", memberList);
 		model.addAttribute("side", "customerManage");
 		return "admin/customerManageView";
 	}
-	
+
 	@GetMapping("/productImageDownload")
-	public void productImageDownload(String pid, int index, String pthumbBodyType, HttpServletResponse response) throws Exception {
+	public void productImageDownload(String pid, int index, String pthumbBodyType, HttpServletResponse response)
+			throws Exception {
 		HashMap<String, String> param = new HashMap<>();
 		param.put("pid", pid);
 		param.put("index", String.valueOf(index));
 		param.put("pthumbBodyType", pthumbBodyType);
 		Pimage pimage = productService.getPimage(param);
 		byte[] data = productService.getProductImageData(param);
-		
+
 		response.setContentType(pimage.getPimageType());
 		String fileName = new String(pimage.getPimageName().getBytes("UTF-8"), "ISO-8859-1");
 		response.setHeader("content-Disposition", "attachment; filename=\"" + fileName + "\"");

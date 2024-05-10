@@ -3,6 +3,7 @@ package com.mycompany.urihome_mini_web.service;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,10 +11,12 @@ import org.springframework.stereotype.Service;
 import com.mycompany.urihome_mini_web.dao.PimageDao;
 import com.mycompany.urihome_mini_web.dao.ProductCategoryDao;
 import com.mycompany.urihome_mini_web.dao.ProductDao;
+import com.mycompany.urihome_mini_web.dao.ProductOptionDao;
 import com.mycompany.urihome_mini_web.dto.Pager;
 import com.mycompany.urihome_mini_web.dto.Pimage;
 import com.mycompany.urihome_mini_web.dto.Product;
 import com.mycompany.urihome_mini_web.dto.ProductCategory;
+import com.mycompany.urihome_mini_web.dto.ProductOption;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -25,9 +28,12 @@ public class ProductService {
 
 	@Autowired
 	private PimageDao pimageDao;
-	
+
 	@Autowired
 	private ProductCategoryDao categoryDao;
+
+	@Autowired
+	private ProductOptionDao poptionDao;
 
 	public int getTotalRows() {
 		int totalRows = productDao.count();
@@ -38,10 +44,16 @@ public class ProductService {
 		return productDao.selectByPage(pager);
 	}
 
-	public void addProduct(Product product, ProductCategory category, List<Pimage> pImages) {
+	public void addProduct(Product product, ProductCategory category, List<ProductOption> poptionNameList,
+		 List<Pimage> pimages) {
 		int productRowNum = productDao.insert(product);
 		int categoryRowNum = categoryDao.insert(category);
-		Iterator<Pimage> iter = pImages.iterator();
+
+		Iterator<ProductOption> pniter = poptionNameList.iterator();
+		while (pniter.hasNext()) {
+			int poptionNameRowNum = poptionDao.insert(pniter.next());
+		}
+		Iterator<Pimage> iter = pimages.iterator();
 		while (iter.hasNext()) {
 			pimageDao.insert(iter.next());
 		}
@@ -55,8 +67,9 @@ public class ProductService {
 	public void updateProduct(Product product, ProductCategory category, List<Pimage> pImages) {
 		int productRowNum = productDao.update(product);
 		int categoryRowNum = categoryDao.update(category);
+		
 		Iterator<Pimage> iter = pImages.iterator();
-
+		
 		while (iter.hasNext()) {
 			pimageDao.insert(iter.next());
 		}
@@ -64,7 +77,8 @@ public class ProductService {
 
 	public void removeProduct(String pid) {
 		int pimageRowNum = pimageDao.deleteByPid(pid);
-		int pCategoryRowNum = categoryDao.deleteByPid(pid);
+		int pcategoryRowNum = categoryDao.deleteByPid(pid);
+		int poptionNameRowNum = poptionDao.deleteByPid(pid);
 		int productRowNum = productDao.deleteByPid(pid);
 
 	}
@@ -82,7 +96,7 @@ public class ProductService {
 	public int getProductImageCount(HashMap<String, String> param) {
 		return pimageDao.count(param);
 	}
-	
+
 	public void deleteProductImageData(String pid, List<Integer> thumbList, List<Integer> bodyList) {
 		HashMap<String, Object> param = new HashMap<>();
 		param.put("pid", pid);
@@ -101,6 +115,27 @@ public class ProductService {
 	public ProductCategory getProductCategory(String pid) {
 		ProductCategory category = categoryDao.getProductCategoryByPid(pid);
 		return category;
+	}
+	
+	public HashMap<String, String> getProductOption(String pid) {
+		List<ProductOption> poption = poptionDao.selectByPid(pid);
+		
+		HashMap<String, String> result = new HashMap<>();
+		
+		Iterator<ProductOption> iter = poption.iterator();
+		while(iter.hasNext()) {
+			ProductOption option = iter.next();
+			String optionName =  option.getPoption();
+			String optionVal = option.getPoptionValue();
+			
+			if(!result.containsKey(optionName)) {
+				result.put(optionName, optionVal);
+			}else {
+				result.put(optionName, result.get(optionName)+", "+optionVal);
+			}
+			
+		}
+		return result;
 	}
 
 }

@@ -11,12 +11,9 @@
 	  <!-- jQuery 외부 라이브러리 설정 -->
 	  <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
 	  <script src="${pageContext.request.contextPath}/resources/js/product/product_list.js" rel="stylesheet"></script>
-	  
 	  <!-- 사용자 정의 자바스크립트 -->
 	  <script>
-	   
 	  </script>
-	  
    </head>
    <!-- css 적용 -->
    	<link href="${pageContext.request.contextPath}/resources/css/product/product_list.css" rel="stylesheet">
@@ -25,11 +22,10 @@
    <div class="container">
    <!-- 헤더 -->
    <div class="header">
-   	<!-- 베스트 상품 제목 -->
+ 	<!-- 베스트 상품 제목 -->
    	<div class="best-product-title">
    		<h2><strong>B &nbsp;E &nbsp;S &nbsp;T</strong></h2>
    	</div>
-   
    <!-- 베스트 상품 -->
    <div class="best-product">
    <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
@@ -291,8 +287,8 @@
    					<!-- 첫번째 행 -->
 	   				<div id="row1" style=" display: flex; justify-content: space-evenly; margin-top: 30px;">
 	   					<div id="product_no1">
-	   						<img alt="" src="https://ssueim.com/web/product/big/202107/b5b01d07f2f18fbc0e02455c97178b41.jpg"
-   							style="width: 290px; border-radius: 10px;">
+	   						<a href="${pageContext.request.contextPath}/product/product_detail?pid=dummy1"><img alt="" src="https://ssueim.com/web/product/big/202107/b5b01d07f2f18fbc0e02455c97178b41.jpg"
+   							style="width: 290px; border-radius: 10px;"></a>
    							<!-- 장바구니 버튼 -->
 		 					<div class="btn" id="cart" style="background-color: black; border-radius: 50%;">
 								<i class="bi bi-handbag-fill" style="color: white;"></i>

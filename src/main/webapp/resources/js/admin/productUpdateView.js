@@ -89,6 +89,14 @@ function addOption(){
 	$(".option").append(optionContainer);
 }
 
+function deleteOption(button) {
+    // 버튼의 부모 요소인 div를 찾습니다.
+    var parentDiv = button.closest("div");
+
+    // 부모 div를 삭제합니다.
+    parentDiv.remove();
+}
+
 $(function(){
 	$("#pbodyImage").on("change", (event) => imgFilesSelect(event, body, "#bodyPreview", "500px", "", "18px", "210px", 10));
 	$("#pthumbnailImage").on("change", (event) => imgFilesSelect(event, thumbnail, "#thumbnailPreview", "100px", "100px", "18px", "10px", 4));

@@ -8,6 +8,8 @@ var body ={
 	filesList: []
 };
 
+var optionCnt = 0;
+
 function imgFilesSelect(event, type, previewId, width, height, topPx, rightPx, totalCnt){
 	var files = event.target.files;
 	var fileInputId = event.target.id;
@@ -29,7 +31,7 @@ function imgFilesSelect(event, type, previewId, width, height, topPx, rightPx, t
 		
 		var reader = new FileReader();
 		reader.onload = function(e) {
-			var imageContainer = $("<div style=\"position:relative;\"></div>");
+			var imageContainer = $("<div class=\"fileBox\" style=\"position:relative;\"></div>");
 			var imageElement = $("<img class=\"mt-3 me-2\" src=\"" + e.target.result + "\" width=\""+width+"\" height=\""+ height+"\"/>");
 			var deleteButton = $("<button class=\"btn btn-light btn-sm delete\"  data-index=\"" + file.lastModified+ "\" onclick=\"deleteSelectFile\" type=\"button\" style=\"position:absolute;top:"+topPx+";right:"+rightPx+";\"><i class=\"bi bi-x\"></i></button>");
 			
@@ -59,8 +61,8 @@ function deleteSelectFile(imageContainer, fileInputId, type){
 
 function addOption(){
 	var optionContainer = $("<div class=\"row mt-2\"></div>");
-	var optionName = $("<div class=\"col-3\"><label class=\"form-label\">옵션명</label><input type=\"text\" class=\"form-control\"></div>");
-	var optionValue = $("<div class=\"col-8\"><label class=\"form-label\">옵션값</label><input type=\"text\" class=\"form-control\"></div>");
+	var optionName = $("<div class=\"col-3\"><label class=\"form-label\">옵션명</label><input type=\"text\" id=\"optionName"+ optionCnt + "\" class=\"form-control\"></div>");
+	var optionValue = $("<div class=\"col-8\"><label class=\"form-label\">옵션값</label><input type=\"text\" id=\"optionVal"+ optionCnt + "\" class=\"form-control\"></div>");
 	var deleteButton = $("<div class=\"col-1 mt-auto mb-auto\"><button class=\"btn deleteOption\" type=\"button\"><i class=\"bi bi-x\"></i></button></div>");
 	
 	deleteButton.on("click", function(){
@@ -71,6 +73,7 @@ function addOption(){
 	optionContainer.append(optionValue);
 	optionContainer.append(deleteButton);
 	$(".option").append(optionContainer);
+	optionCnt++;
 }
 
 $(function(){
@@ -82,14 +85,31 @@ $(function(){
 		var formData = new FormData();
 		var pbodyImg = $("#pbodyImage")[0].files;
 		var pthumbnailImg = $("#pthumbnailImage")[0].files;
+		var optionNames = []
+		var optionVals = []
+		
+		
+		for(var i = 0; i < optionCnt; i++){
+			var optionName = $("#optionName"+i).val();
+			var optionVal = $("#optionVal"+i).val().replaceAll(" ", "").split(',');
+			if(optionVal == "" || optionVal == null){
+				return;
+			}
+			optionNames.push(optionName);
+			optionVals.push(optionVal);
+		}
+		
 		var product = {
 			pid: $("#pid").val(),
 			pname: $("#pname").val(),
 			pprice: parseInt($("#pprice").val()),
 			pstock: parseInt($("#pstock").val()),
 			pcategoryName: $("select[name=category] option:selected").text(),
-			banner: $("input:radio[name=banner]:checked").val()
+			banner: $("input:radio[name=banner]:checked").val(),
+			optionNames: optionNames,
+			optionVals: optionVals
 		}
+
 		product = JSON.stringify(product);
 		formData.append("product", product);
 		
@@ -108,7 +128,6 @@ $(function(){
 			formData.append("pthumbnailImage", null);
 		}
 		
-		/*var jsonData = JSON.stringify(formData);*/
 		
 		$.ajax({
 			url:"addProduct",

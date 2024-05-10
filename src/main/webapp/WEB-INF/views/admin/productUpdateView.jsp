@@ -154,6 +154,23 @@
 									</div>
 								</div>
 								<div class="option">
+								 	<c:forEach var="poption" items="${poptions}">
+										<div class="row mt-2">
+											<div class="col-3">
+												<label class="form-label">옵션명</label>
+												<input type="text" class="form-control" value="${poption.key}">
+											</div>
+											<div class="col-8">
+												<label class="form-label">옵션값</label>
+												<input type="text" class="form-control" value="${poption.value}">
+											</div>
+											<div class="col-1 mt-auto mb-auto">
+												<button class="btn btn-light btn-sm deleteOption" onclick="deleteOption(this)" type="button">
+													<i class="bi bi-x"></i>
+												</button>
+											</div>
+										</div>
+									</c:forEach>
 								</div>
 							</div>
 						</div>
