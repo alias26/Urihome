@@ -57,7 +57,11 @@ public class MemberController {
 
 	@GetMapping("/mypage")
 	@Secured("ROLE_USER")
-	public String mypage() {
+	public String mypage(Authentication authentication, Model model) {
+		UriHomeUserDetails uriHomeUserDetails = (UriHomeUserDetails) authentication.getPrincipal();
+		Member member = uriHomeUserDetails.getMember();
+		String mid = authentication.getName();
+		model.addAttribute("member", member);
 		return "member/mypage";
 	}
 	
