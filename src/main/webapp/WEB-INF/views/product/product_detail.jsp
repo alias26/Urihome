@@ -145,7 +145,7 @@
 		      <div id="tab01" style="text-align: center;">
 		      	<c:forEach var="i" begin="1" end="${bodyImageCount}">
 		      		<div style="position:relative;">
- 			      		<img alt="info" src="productImageDownload?pid=${product.pid}&index=${i}&pthumbBodyType=thumb" width="800px">
+ 			      		<img alt="info" src="productImageDownload?pid=${product.pid}&index=${i}&pthumbBodyType=body" width="800px">
 	            	</div>
 	            </c:forEach>
 		      </div>
