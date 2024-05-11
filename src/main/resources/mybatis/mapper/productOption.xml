@@ -20,4 +20,9 @@
 		where pid=#{pid}
 		order by poptionIndex
 	</select>
+	
+	<delete id="deleteByPidOption" parameterType="ProductOption">
+		delete from productOption 
+		where pid=#{pid} and poption = #{poption}
+	</delete>
 </mapper>

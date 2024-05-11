@@ -40,7 +40,7 @@
 		where pid=#{pid}
 	</select>
 	
-	<update id="update" parameterType="product">
+	<update id="update" parameterType="Product">
 		update product set
 			pname=#{pname}, pprice=#{pprice}, pstock=#{pstock}, psellAmount=#{psellAmount}, psales=#{psales}			
 		where pid=#{pid}

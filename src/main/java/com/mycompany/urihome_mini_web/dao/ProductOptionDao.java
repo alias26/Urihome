@@ -11,4 +11,5 @@ public interface ProductOptionDao {
 	public int insert(ProductOption productOption);
 	public int deleteByPid(String pid);
 	public List<ProductOption> selectByPid(String pid);
+	public int deleteByPidOption(ProductOption optionDelList);
 }

@@ -31,10 +31,7 @@
 		<div class="col-xl-2 col-lg-3">
 			<%@ include file="/WEB-INF/views/admin/adminHeader.jsp"%>
 		</div>
-		<!--  -->
-		<div class="col-xl-10 col-lg-9"
-			style="padding-left: 8px;">
-			<!-- Dashboard 헤더 -->
+		<div class="col-xl-10 col-lg-9">
 			<div class="content-header mb-5 ms-0" style="height: 65px;">
 					<h4 class="text-light text-uppercase mb-0">대시보드</h4>
 					<a href="${pageContext.request.contextPath}/logout"><i

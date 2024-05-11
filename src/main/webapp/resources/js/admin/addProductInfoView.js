@@ -63,7 +63,7 @@ function addOption(){
 	var optionContainer = $("<div class=\"row mt-2\"></div>");
 	var optionName = $("<div class=\"col-3\"><label class=\"form-label\">옵션명</label><input type=\"text\" id=\"optionName"+ optionCnt + "\" class=\"form-control\"></div>");
 	var optionValue = $("<div class=\"col-8\"><label class=\"form-label\">옵션값</label><input type=\"text\" id=\"optionVal"+ optionCnt + "\" class=\"form-control\"></div>");
-	var deleteButton = $("<div class=\"col-1 mt-auto mb-auto\"><button class=\"btn deleteOption\" type=\"button\"><i class=\"bi bi-x\"></i></button></div>");
+	var deleteButton = $("<div class=\"col-1 mt-auto mb-auto\"><button class=\"btn btn-light btn-sm deleteOption\" type=\"button\"><i class=\"bi bi-x\"></i></button></div>");
 	
 	deleteButton.on("click", function(){
 		optionContainer.remove();
@@ -92,8 +92,8 @@ $(function(){
 		for(var i = 0; i < optionCnt; i++){
 			var optionName = $("#optionName"+i).val();
 			var optionVal = $("#optionVal"+i).val().replaceAll(" ", "").split(',');
-			if(optionVal == "" || optionVal == null){
-				return;
+			if(optionName.length==0 || optionName== null||optionVal.length==0 || optionVal == null){
+				continue;
 			}
 			optionNames.push(optionName);
 			optionVals.push(optionVal);

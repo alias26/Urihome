@@ -8,8 +8,11 @@ var body ={
 	filesList: []
 };
 
+var optionCnt = 0;
+
 var thumbDel = [];
 var bodyDel = [];
+var optionDel = [];
 
 function imgFilesSelect(event, type, previewId, width, height, topPx, rightPx, totalCnt){
 	var files = event.target.files;
@@ -75,8 +78,8 @@ function deleteSelectImage(element, type){
 
 function addOption(){
 	var optionContainer = $("<div class=\"row mt-2\"></div>");
-	var optionName = $("<div class=\"col-3\"><label class=\"form-label\">옵션명</label><input type=\"text\" class=\"form-control\"></div>");
-	var optionValue = $("<div class=\"col-8\"><label class=\"form-label\">옵션값</label><input type=\"text\" class=\"form-control\"></div>");
+	var optionName = $("<div class=\"col-3\"><label class=\"form-label\">옵션명</label><input type=\"text\" id=\"optionName"+ optionCnt + "\" class=\"form-control\"></div>");
+	var optionValue = $("<div class=\"col-8\"><label class=\"form-label\">옵션값</label><input type=\"text\" id=\"optionVal"+ optionCnt + "\" class=\"form-control\"></div>");
 	var deleteButton = $("<div class=\"col-1 mt-auto mb-auto\"><button class=\"btn btn-light btn-sm deleteOption\" type=\"button\"><i class=\"bi bi-x\"></i></button></div>");
 	
 	deleteButton.on("click", function(){
@@ -87,14 +90,19 @@ function addOption(){
 	optionContainer.append(optionValue);
 	optionContainer.append(deleteButton);
 	$(".option").append(optionContainer);
+	optionCnt++;
 }
 
 function deleteOption(button) {
     // 버튼의 부모 요소인 div를 찾습니다.
-    var parentDiv = button.closest("div");
-
+	var parentDiv = button.parentElement;    
+	var parentParentDiv = parentDiv.parentElement;
+	var inputVal = parentParentDiv.querySelector("input").value;
+	optionDel.push(inputVal);
+	
     // 부모 div를 삭제합니다.
-    parentDiv.remove();
+    parentParentDiv.remove();
+	
 }
 
 $(function(){
@@ -106,6 +114,19 @@ $(function(){
 		var formData = new FormData();
 		var pbodyImg = $("#pbodyImage")[0].files;
 		var pthumbnailImg = $("#pthumbnailImage")[0].files;
+		var optionNames = []
+		var optionVals = []
+		
+		for(var i = 0; i < optionCnt; i++){
+			var optionName = $("#optionName"+i).val();
+			var optionVal = $("#optionVal"+i).val().replaceAll(" ", "").split(',');
+			if(optionName.length==0 || optionName== null||optionVal.length==0 || optionVal == null){
+				continue;
+			}
+			optionNames.push(optionName);
+			optionVals.push(optionVal);
+		}
+		
 		var product = {
 			pid: $("#pid").val(),
 			pname: $("#pname").val(),
@@ -113,9 +134,13 @@ $(function(){
 			pstock: parseInt($("#pstock").val()),
 			pcategoryName: $("select[name=category] option:selected").text(),
 			pbanner: $("input:radio[name=banner]:checked").val(),
+			optionNames: optionNames,
+			optionVals: optionVals,
 			thumbDel: thumbDel,
-			bodyDel: bodyDel
+			bodyDel: bodyDel,
+			optionDel: optionDel
 		}
+		
 		product = JSON.stringify(product);
 		formData.append("product", product);
 		
@@ -134,8 +159,6 @@ $(function(){
 		}else{
 			formData.append("pthumbnailImage", null);
 		}
-		
-		/*var jsonData = JSON.stringify(formData);*/
 		
 		$.ajax({
 			url:"updateProduct",

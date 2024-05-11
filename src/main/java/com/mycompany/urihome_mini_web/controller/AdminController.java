@@ -218,7 +218,33 @@ public class AdminController {
 		category.setPid(pid);
 		category.setPcategoryName(pcategoryName);
 		category.setPbanner(pbanner);
+		
+		JSONArray optionDel = (JSONArray) p.get("optionDel");
+		List<ProductOption> optionDelList = new ArrayList<>();
+		for (int i = 0; i < optionDel.length(); i++) {
+			String option = optionDel.getString(i);
+			ProductOption poption = new ProductOption();
+			poption.setPid(pid);
+			poption.setPoption(option);
+			optionDelList.add(poption);
+		}
 
+		List<ProductOption> poptionList = new ArrayList<>();
+		JSONArray optionNames = (JSONArray) p.get("optionNames");
+		JSONArray optionVals = (JSONArray) p.get("optionVals");
+		
+		for (int i = 0; i < optionNames.length(); i++) {
+			String optionName = optionNames.getString(i);
+			JSONArray optionVal = optionVals.getJSONArray(i);
+			for(int j = 0; j < optionVal.length(); j++) {
+				ProductOption poption = new ProductOption();
+				poption.setPid(pid);
+				poption.setPoption(optionName);
+				poption.setPoptionValue(optionVal.getString(j));
+				poptionList.add(poption);
+			}
+		}
+		
 		JSONArray thumbArr = (JSONArray) p.get("thumbDel");
 		List<Integer> thumbList = new ArrayList<>();
 		for (int i = 0; i < thumbArr.length(); i++) {
@@ -271,11 +297,11 @@ public class AdminController {
 			}
 		}
 
-		productService.updateProduct(product, category, pimages);
+		productService.updateProduct(product, category, optionDelList, poptionList, pimages);
 
 		JSONObject jsonObject = new JSONObject();
 		jsonObject.put("result", "success");
-//		return "redirect:/admin/productManageView";
+
 		return jsonObject.toString();
 	}
 
@@ -308,6 +334,8 @@ public class AdminController {
 		model.addAttribute("side", "customerManage");
 		return "admin/customerManageView";
 	}
+	
+	
 
 	@GetMapping("/productImageDownload")
 	public void productImageDownload(String pid, int index, String pthumbBodyType, HttpServletResponse response)

@@ -39,7 +39,7 @@
 			</div>
 			<div class="card" style="width:95%; margin: 0 auto;">
 				<div class="card-body">
-					<table class="table table-bordered table-striped table-hover"
+					<table class="table table-bordered table-hover"
 						id="productInfoTable">
 						<thead class="table-secondary">
 							<tr>
@@ -53,6 +53,7 @@
 								<th scope="col">판매량</th>
 								<th scope="col">판매 금액</th>
 								<th scope="col">추가 날짜</th>
+								<th></th>
 								<th></th>
 							</tr>
 						</thead>
@@ -74,7 +75,9 @@
 										<td>${product.psales}</td>
 										<td><fmt:formatDate value="${product.pdate}" pattern="yyyy-MM-dd" /></td>
 										<td><a href="productUpdateView?pid=${product.pid}"
-											id="updateProductInfo" class="btn btn-info btn-sm">수정</a> <a
+											id="updateProductInfo" class="btn btn-info btn-sm">수정</a>
+										</td>
+										<td> <a
 											href="removeProduct?pid=${product.pid}"
 											id="removeProductInfo" class="btn btn-danger btn-sm">삭제</a></td>
 									</tr>

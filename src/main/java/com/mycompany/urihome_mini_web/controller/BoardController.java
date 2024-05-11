@@ -29,12 +29,13 @@ public class BoardController {
 	public BoardService service;
 
 	@GetMapping("/boardWriteForm")
-	public String boardWriteForm() {
+	public String boardWriteForm(Model model) {
+		model.addAttribute("side", "boardManage");
 		return "admin/boardWriteForm";
 	}
 
 	@PostMapping("/writeBoard")
-	public String writeBoard(Board board, HttpServletRequest request) {
+	public String writeBoard(Board board, Model model, HttpServletRequest request) {
 		if (board.getBattach() != null && !board.getBattach().isEmpty()) {
 			// DTO 추가 설정
 			board.setBattachoname(board.getBattach().getOriginalFilename());
@@ -48,9 +49,10 @@ public class BoardController {
 		log.info(btype);*/
 		
 		service.writeBoard(board);
-		
+		model.addAttribute("side", "boardManage");
 		return "redirect:/admin/adminNotice";
 	}
+	
 	@GetMapping("/adminNotice")
 	public String adminNotice( String pageNo, HttpSession session, Model model) {
 		if(pageNo==null) {
@@ -65,15 +67,17 @@ public class BoardController {
 		int rowsPagingTarget = service.getTotalRows();
 		Pager pager = new Pager(10,10,rowsPagingTarget, intpageNo);
 		List<Board> notice= service.getBoardList(pager);
-		log.info(notice.get(0).getBtype());
 		model.addAttribute("pager", pager);
 		model.addAttribute("notice", notice);
+		model.addAttribute("side", "boardManage");
+		
 		return "admin/adminNotice";
 	}
 	@GetMapping("/adminNoticeView")
 	public String detailBoard(int bnumber, Model model) {
 		Board board = service.getBoard(bnumber);
 		model.addAttribute("board", board);
+		model.addAttribute("side", "boardManage");
 		return "admin/adminNoticeView";
 	}
 
@@ -94,6 +98,7 @@ public class BoardController {
 	public String boardUpdateForm(int bnumber, Model model) {
 		Board board = service.getBoard(bnumber);
 		model.addAttribute("board", board);
+		model.addAttribute("side", "boardManage");
 		return "admin/boardUpdateForm";
 	}
 

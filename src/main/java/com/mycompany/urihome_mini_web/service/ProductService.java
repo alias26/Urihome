@@ -5,6 +5,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+import org.json.JSONArray;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -64,12 +65,24 @@ public class ProductService {
 		return product;
 	}
 
-	public void updateProduct(Product product, ProductCategory category, List<Pimage> pImages) {
+	public void updateProduct(Product product, ProductCategory category, List<ProductOption> optionDelList,
+			List<ProductOption> poptionNameList, List<Pimage> pImages) {
 		int productRowNum = productDao.update(product);
 		int categoryRowNum = categoryDao.update(category);
 		
-		Iterator<Pimage> iter = pImages.iterator();
+		if (optionDelList != null && !optionDelList.isEmpty()) {
+			Iterator<ProductOption> oditer = optionDelList.iterator();
+			while (oditer.hasNext()){
+				int poptionNameRowNum1 = poptionDao.deleteByPidOption(oditer.next());
+			}
+		}
 		
+		Iterator<ProductOption> pniter = poptionNameList.iterator();
+		while (pniter.hasNext()) {
+			int poptionNameRowNum2 = poptionDao.insert(pniter.next());
+		}
+		
+		Iterator<Pimage> iter = pImages.iterator();
 		while (iter.hasNext()) {
 			pimageDao.insert(iter.next());
 		}
