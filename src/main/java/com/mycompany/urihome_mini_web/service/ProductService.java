@@ -1,11 +1,10 @@
 package com.mycompany.urihome_mini_web.service;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 
-import org.json.JSONArray;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -160,6 +159,31 @@ public class ProductService {
 	public List<Product> getProductCategoryListCate1() {
 		List<Product> getProductCategoryListCate1 = productDao.selectAll();
 		return getProductCategoryListCate1;
+	}
+
+	public HashMap<String, List<String>> getProductOptionMap(String pid) {
+		HashMap<String, List<String>> productOptionMap = new HashMap<>();
+		List<ProductOption> poption = poptionDao.selectByPid(pid);
+		
+		Iterator<ProductOption> iter = poption.iterator();
+		while(iter.hasNext()) {
+			ProductOption option = iter.next();
+			String optionName =  option.getPoption();
+			String optionVal = option.getPoptionValue();
+			
+			if(!productOptionMap.containsKey(optionName)) {
+				List<String> optionValList = new ArrayList<>();
+				optionValList.add(optionVal);
+				productOptionMap.put(optionName, optionValList);
+			}else {
+				List<String> optionValList = productOptionMap.get(optionName);
+				optionValList.add(optionVal);
+				productOptionMap.put(optionName, optionValList);
+			}
+			
+		}
+		
+		return productOptionMap;
 	}
 
 }

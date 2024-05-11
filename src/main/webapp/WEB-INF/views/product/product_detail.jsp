@@ -81,26 +81,24 @@
 		   			<hr/>
 		   			
 		   			<!-- 옵션 선택 -->
-		   			<div id="option" style="margin-top: 20px; margin-bottom: 20px;">
-		   			  <label for="color" class="form-label">색상1</label>
-	                  <select id="color" name="color" class="form-control">
-	                  <option selected value ="select">- [필수] 옵션을 선택해 주세요. -</option>
-	                  <option value="vertical">------------------</option>
-	                  <option value="white">화이트</option>
-	                  <option value="light-purple">라이트퍼플</option>
-	                </select> 
-		   			</div>
+		   			<c:forEach var="poptions" items="${productOption}">
+			   			<div id="option" style="margin-top: 20px; margin-bottom: 20px;">
+			   			  <label for="color" class="form-label">${poptions.key}</label>
+		                  <select id="color" name="color" class="form-control">
+			                  <option selected value ="select">- [필수] 옵션을 선택해 주세요. -</option>
+			                  <option value="vertical">------------------</option>
+			                  <c:forEach var="poption" items="${poptions.value}">
+			                  	<option value="${poption}">${poption}</option>	
+			                  </c:forEach>
+		                	</select> 
+			   			</div>
+		   			</c:forEach>
+		   			<div>
+		   				<button class="minus btn btn-dark btn-sm">-</button>
+						<input class=" cart-number" name="item2" value="1" style="width:80px;text-align:center;">
+						<button class="plus btn btn-dark btn-sm">+</button>
+					</div>
 		   			
-		   			<div id="option" style="margin-bottom: 60px;">
-		   			  <label for="color" class="form-label">색상2</label>
-	                  <select id="color" name="color" class="form-control">
-	                  <option selected value ="select">- [필수] 옵션을 선택해 주세요. -</option>
-	                  <option value="vertical">------------------</option>
-	                  <option value="white">화이트</option>
-	                  <option value="light-purple">라이트퍼플</option>
-	                </select>
-		   			</div>
-		   		
 		   			<hr/>
 		   			
 		   			<!-- 총 상품금액 -->
