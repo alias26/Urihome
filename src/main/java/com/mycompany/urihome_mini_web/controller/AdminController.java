@@ -78,6 +78,8 @@ public class AdminController {
 		model.addAttribute("side", "productManage");
 		return "admin/addProductInfoView";
 	}
+	
+	
 
 	@PostMapping("/addProduct")
 	@ResponseBody
@@ -335,6 +337,15 @@ public class AdminController {
 		return "admin/customerManageView";
 	}
 	
+	@GetMapping("/userInfoView")
+	public String userInfoView(String mid, Model model) {	
+		
+		Member userInfo = memberService.getMember(mid); // 실제로는 DB에서 회원 정보를 조회하는 메서드를 호출합니다.
+        model.addAttribute("member", userInfo); // 모델에 회원 정보를 추가합니다.
+		
+		return "admin/userInfoView";
+	}
+
 	
 
 	@GetMapping("/productImageDownload")

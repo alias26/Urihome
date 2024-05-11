@@ -20,6 +20,9 @@
 	<!-- css적용되도록 login.css 파일을 연결시킵니다. -->
 	<link href="${pageContext.request.contextPath}/resources/css/member/login.css" rel="stylesheet">
 	
+	<%--  <!-- jquery 로그인 유효성 검사-->
+	  <script src="${pageContext.request.contextPath}/resources/js/member/loginForm.js"></script> --%>
+	
 		
 		<title>로그인 페이지</title>
 
@@ -33,6 +36,8 @@
 		</a>
 	</div>
 
+ 								
+								
 
 
 	<div class="login-wrapper">
@@ -41,6 +46,13 @@
 			<input type="text" name="mid" placeholder="아이디" required>
 			<input type="password" name="mpassword" placeholder="비밀번호" required>
 			
+		<c:if test="${SPRING_SECURITY_LAST_EXCEPTION != null}">
+			<div class="alert alert-danger mb-2" role="alert">
+				<c:if test="${SPRING_SECURITY_LAST_EXCEPTION.message == 'Bad credentials'}">
+					 아이디 또는 비밀번호가 틀립니다.
+				</c:if>
+			</div>
+		</c:if>			
 			
 			<label for="remember-check">
 				<input type="checkbox" id="remember-check">아이디 저장
