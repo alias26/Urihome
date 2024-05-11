@@ -118,6 +118,9 @@ $(function(){
 		var optionVals = []
 		
 		for(var i = 0; i < optionCnt; i++){
+			if($("#optionName"+i).length == 0 || $("#optionVal"+i) == 0){
+				continue;
+			}
 			var optionName = $("#optionName"+i).val();
 			var optionVal = $("#optionVal"+i).val().replaceAll(" ", "").split(',');
 			if(optionName.length==0 || optionName== null||optionVal.length==0 || optionVal == null){
@@ -144,22 +147,24 @@ $(function(){
 		product = JSON.stringify(product);
 		formData.append("product", product);
 		
-				
-		if(pbodyImg.length>0){
-			for(var i=0; i < pbodyImg.length; i++){
-				formData.append("pbodyImage", pbodyImg[i]);
+		formData.append("pbodyImage", null);
+		formData.append("pthumbnailImage", null);
+			
+		if (body.filesList.length > 0) {
+			for (var i = 0; i < body.filesList.length; i++) {
+				formData.append("pbodyImage", body.filesList[i]);
 			}
-		}else{
+		} else {
 			formData.append("pbodyImage", null);
 		}
-		if(pthumbnailImg.length>0){
-			for(var i=0; i < pthumbnailImg.length; i++){
-				formData.append("pthumbnailImage", pthumbnailImg[i]);
+		if (thumbnail.filesList.length > 0) {
+			for (var i = 0; i < thumbnail.filesList.length; i++) {
+				formData.append("pthumbnailImage", thumbnail.filesList[i]);
 			}
-		}else{
+		} else {
 			formData.append("pthumbnailImage", null);
 		}
-		
+	
 		$.ajax({
 			url:"updateProduct",
 			method:"post",
