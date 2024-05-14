@@ -123,7 +123,7 @@ function isRightNormalPhone() {
 	var normalPhone2 = $("#mtel2");
 	var normalPhone3 = $("#mtel3");
 	var normalPhoneValue = normalPhone1.val() + "-" + normalPhone2.val() + "-" + normalPhone3.val();
-	var normalPhonePattern = /^(02|032)-\d{3}-\d{4}$/;
+	var normalPhonePattern = /^(02|031)-\d{3}-\d{4}$/;
 	var normalPhoneResult = normalPhonePattern.test(normalPhoneValue);
 	var normalPhoneSpan = $("#mtelSpan");
 	

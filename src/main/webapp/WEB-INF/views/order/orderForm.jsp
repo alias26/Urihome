@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 
@@ -22,6 +23,42 @@
 <!-- user script-->
 <script
 	src="${pageContext.request.contextPath}/resources/js/order/orderForm.js"></script>
+	
+	<script type="text/javascript">
+	    function fillDeliveryInfo() {
+	        // 주문자 정보 가져오기
+	        var oname1 = document.getElementById('oname1').value;
+	        var email = document.getElementById('email').value;
+	        var cellPhone1_1 = document.getElementById('cellPhone1_1').value;
+	        var cellPhone1_2 = document.getElementById('cellPhone1_2').value;
+	        var cellPhone1_3 = document.getElementById('cellPhone1_3').value;
+	        var address1_1 = document.getElementById('address1_1').value;
+	        var address1_2 = document.getElementById('address1_2').value;
+	        var address1_3 = document.getElementById('address1_3').value;
+	
+	        // 배송지 정보 채우기
+	        document.getElementById('oname2').value = oname1;
+	        document.getElementById('cellPhone2_1').value = cellPhone1_1;
+	        document.getElementById('cellPhone2_2').value = cellPhone1_2;
+	        document.getElementById('cellPhone2_3').value = cellPhone1_3;
+	        document.getElementById('address2_1').value = address1_1;
+	        document.getElementById('address2_2').value = address1_2;
+	        document.getElementById('address2_3').value = address1_3;
+	    }
+	</script>
+	
+	<script type="text/javascript">
+    function clearDeliveryInfo() {
+        // 배송지 정보 입력란 비우기
+        document.getElementById('oname2').value = '';
+        document.getElementById('cellPhone2_1').value = '';
+        document.getElementById('cellPhone2_2').value = '';
+        document.getElementById('cellPhone2_3').value = '';
+        document.getElementById('address2_1').value = '';
+        document.getElementById('address2_2').value = '';
+        document.getElementById('address2_3').value = '';
+    }
+</script>
 </head>
 
 <body class="pt-5">
@@ -32,7 +69,7 @@
 		</div>
 		<div class="d-flex">
 			<div id="orderFormDiv">
-				<form action="${pageContext.request.contextPath}/" id="orderForm"
+				<form action="orderWait" id="orderForm"
 					name="orderForm" onsubmit="orderFormCheckData()" method="post"
 					class="validation-form" novalidate>
 					<div>
@@ -41,13 +78,13 @@
 						</div>
 						<div class="form-group mt-4">
 							<label class="form-label">주문자</label> <input type="text"
-								class="form-control" onchange="isRightName('oname1')" id="oname1" name="oname1">
+								class="form-control" onchange="isRightName('oname1')" id="oname1" name="oname1" value="${member.mname}">
 							<span class="form-text" id="onameSpan1">&nbsp;</span>
 						</div>
 						<div class="form-group mt-2">
 							<label class="form-label">이메일</label> <input type="email"
 								class="form-control" onchange="isRightEmail()" id="email"
-								name="email"> <span class="form-text" id="emailSpan">&nbsp;</span>
+								name="email" value="${member.memail}"> <span class="form-text" id="emailSpan">&nbsp;</span>
 						</div>
 						<div class="mt-2">
 							<label class="form-label align-middle">휴대전화</label>
@@ -55,8 +92,8 @@
 								<div>
 									<span> <select class="form-select" id="cellPhone1_1"
 										name="cellPhone1_1">
-											<option>010</option>
-											<option>011</option>
+											<option <c:if test="${mphone[0] == 010}">selected</c:if>>010</option>
+											<option <c:if test="${mphone[0] == 011}">selected</c:if>>011</option>
 									</select>
 									</span>
 								</div>
@@ -64,12 +101,12 @@
 								<div>
 									<span><input type="text" class="form-control"
 										onchange="isRightCellPhone('cellPhone1')" id="cellPhone1_2"
-										name="cellPhone1_2"></span>
+										name="cellPhone1_2" value="${mphone[1]}"></span>
 								</div>
 								<div>
 									<span><input type="text" class="form-control"
 										onchange="isRightCellPhone('cellPhone1')" id="cellPhone1_3"
-										name="cellPhone1_3"></span>
+										name="cellPhone1_3" value="${mphone[2]}"></span>
 								</div>
 							</div>
 							<span class="form-text" id="cellPhoneSpan1">&nbsp;</span>
@@ -78,24 +115,40 @@
 							<label class="form-label">주소</label>
 							<div class="d-flex">
 								<span><input type="text" class="form-control mb-2"
-									id="address1" name="address1" placeholder="우편번호" disabled></span>
+									id="address1_1" name="address1" placeholder="우편번호" disabled value="${member.mzip}"></span>
 								<span><input type="button" id="addressBtn"
 									name="addressBtn" value="우편번호"
 									class="btn btn-outline-secondary btn-sm ms-1 mt-1"></span>
 							</div>
 							<div>
 								<span><input type="text" class="form-control mb-2"
-									id="address2" name="address2" placeholder="기본 주소" disabled></span>
+									id="address1_2" name="address2" placeholder="기본 주소" disabled value="${member.maddress}"></span>
 							</div>
 							<div>
 								<span><input type="text" class="form-control"
-									id="address3" name="address3" placeholder="나머지 주소"></span>
+									id="address1_3" name="address3" placeholder="나머지 주소" value="${member.mdetailAddress}"></span>
 							</div>
 						</div>
 					</div>
 					<div class="mt-4">
+						
 						<div>
 							<h5>배송지</h5>
+						</div>
+						 <!-- 배송지 정보 버튼 그룹 -->
+						<div class="mt-3 d-flex">
+						    <!-- 주문자 정보와 동일 라디오 버튼 -->
+						    <div class="me-3">
+						        <label class="btn">
+						            <input type="radio" name="deliveryOption" onclick="fillDeliveryInfo()"> 주문자와 정보 동일
+						        </label>
+						    </div>
+						    <!-- 배송지 정보 초기화 라디오 버튼 -->
+						    <div>
+						        <label class="btn">
+						            <input type="radio" name="deliveryOption" onclick="clearDeliveryInfo()"> 배송지 정보 초기화
+						        </label>
+						    </div>
 						</div>
 						<div class="form-group mt-4">
 							<label class="form-label">받는사람</label> <input type="text"
@@ -130,18 +183,18 @@
 							<label class="form-label">주소</label>
 							<div class="d-flex">
 								<span><input type="text" class="form-control mb-2"
-									id="address1" name="address1" placeholder="우편번호" disabled></span>
+									id="address2_1" name="address1" placeholder="우편번호" disabled></span>
 								<span><input type="button" id="addressBtn"
 									name="addressBtn" value="우편번호"
 									class="btn btn-outline-secondary btn-sm ms-1 mt-1"></span>
 							</div>
 							<div>
 								<span><input type="text" class="form-control mb-2"
-									id="address2" name="address2" placeholder="기본 주소" disabled></span>
+									id="address2_2" name="address2" placeholder="기본 주소" disabled></span>
 							</div>
 							<div>
 								<span><input type="text" class="form-control"
-									id="address3" name="address3" placeholder="나머지 주소"></span>
+									id="address2_3" name="address3" placeholder="나머지 주소"></span>
 							</div>
 						</div>
 					</div>

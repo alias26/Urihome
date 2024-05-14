@@ -113,33 +113,29 @@
 					<div class="mt-2">
 						<label class="form-label align-middle">휴대전화 *</label>
 						<div class="d-flex">
-						<div>
-							<span>
-								<select class="form-select" id="mphone1" name="mphone1">
-									<option <c:if test="${mphone[0] == 010}">selected</c:if>>010</option>
-									<option <c:if test="${mphone[0] == 011}">selected</c:if>>011</option>
-								</select>
-							</span>
-						</div>
-						
-						<div>
-							<span><input type="text" class="form-control" onchange="isRightCellPhone()" id="mphone2" name="mphone2" value="${mphone[1]}"></span>
-						</div>
-						<div>
-							<span><input type="text" class="form-control" onchange="isRightCellPhone()" id="mphone3" name="mphone3" value="${mphone[2]}"></span>
-						</div>
+							<div>
+								<span>
+									<select class="form-select" id="mphone1" name="mphone1">
+										<option <c:if test="${mphone[0] == 010}">selected</c:if>>010</option>
+										<option <c:if test="${mphone[0] == 011}">selected</c:if>>011</option>
+									</select>
+								</span>
+							</div>						
+							<div>
+								<span><input type="text" class="form-control" onchange="isRightCellPhone()" id="mphone2" name="mphone2" value="${mphone[1]}"></span>
+							</div>
+							<div>
+								<span><input type="text" class="form-control" onchange="isRightCellPhone()" id="mphone3" name="mphone3" value="${mphone[2]}"></span>
+							</div>
 						</div>
 						<span class="form-text" id="mphoneSpan">&nbsp;</span>
 					</div>
-						<div class="form-group mt-2 mb-4">
+					<div class="form-group mt-2 mb-4">
 						<label class="form-label">이메일 *</label>
 						<input type="email" class="form-control" onchange="isRightEmail()" id="memail" name="memail" value="${member.memail}">
 						<span class="form-text" id="memailSpan">&nbsp;</span>
-					</div>
-					
-					
-					<button type="submit" class="btn btn-dark btn-sm">수정하기</button>	
-										
+					</div>					
+					<button type="submit" class="btn btn-dark btn-sm">수정하기</button>											
 				</form>
 			</div>
 		</div> 

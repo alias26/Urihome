@@ -6,7 +6,7 @@ function orderFormCheckData() {
 
 	totalResult &= isRightName("oname1");
 	totalResult &= isRightCellPhone("cellPhone1");
-	totalResult &= isRightEmail();
+	totalResult &= isRightEmail("email");
 	totalResult &= isRightName("oname2");
 	totalResult &= isRightCellPhone("cellPhone2");
 	totalResult &= checkAgree();
