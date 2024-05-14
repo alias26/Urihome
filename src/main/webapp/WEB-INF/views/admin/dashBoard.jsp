@@ -45,7 +45,7 @@
 								<i class="fas fa-shopping-cart fa-3x text-warning"></i>
 								<div class="text-right text-secondary">
 									<h5>Sales</h5>
-									<h3>0000</h3>
+									<h3>${sales}</h3>
 								</div>
 							</div>
 						</div>
@@ -63,7 +63,7 @@
 								<i class="fas fa-money-bill-alt fa-3x text-success"></i>
 								<div class="text-right text-secondary">
 									<h5>Expenses</h5>
-									<h3>0000</h3>
+									<h3>${expenses}</h3>
 								</div>
 							</div>
 						</div>
@@ -80,7 +80,7 @@
 								<i class="fas fa-users fa-3x text-info"></i>
 								<div class="text-right text-secondary">
 									<h5>Users</h5>
-									<h3>0000</h3>
+									<h3>${memberCount}</h3>
 								</div>
 							</div>
 						</div>
@@ -97,7 +97,7 @@
 								<i class="fas fa-chart-line fa-3x text-info"></i>
 								<div class="text-right text-secondary">
 									<h5>Visiters</h5>
-									<h3>0000</h3>
+									<h3>${visiters}</h3>
 								</div>
 							</div>
 						</div>

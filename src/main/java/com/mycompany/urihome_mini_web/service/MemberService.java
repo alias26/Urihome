@@ -71,14 +71,10 @@ public class MemberService {
 		
 		int rowNum = memberDao.update(member);
 	}
-	
-	
 
-	
-
-
-
-	
-	
+	public int getMemberCount() {
+		int memberCount = memberDao.getMemberCount();
+		return memberCount;
+	}
 
 }

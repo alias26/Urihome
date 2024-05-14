@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
@@ -45,8 +47,31 @@ public class AdminController {
 	private MemberService memberService;
 
 	@GetMapping("/dashBoard")
-	public String dashBoard(Model model) {
+	public String dashBoard(Model model, HttpServletRequest request) {
 		model.addAttribute("side", "dashBoard");
+		
+		// 총 판매량
+		int sales = productService.getSales();
+		model.addAttribute("sales", sales);
+		
+		// 총 매출 
+		int expenses = productService.getExpenses();
+		model.addAttribute("expenses", expenses);
+		
+		// 총 회원수 조회
+		int memberCount = memberService.getMemberCount();
+		model.addAttribute("memberCount", memberCount);
+		
+		// 방문자 수 조회
+		ServletContext application = request.getServletContext();
+		Integer visiters = (Integer) application.getAttribute("visiters");
+		
+		if(visiters == null) {
+			application.setAttribute("visiters", 1);
+		} else {
+			application.setAttribute("visiters", visiters+1);
+		}
+		
 		return "admin/dashBoard";
 	}
 

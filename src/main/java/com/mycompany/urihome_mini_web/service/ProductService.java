@@ -180,13 +180,20 @@ public class ProductService {
 		return productList;
 	}
 	
-	public List<Product> selectByPcategoryname() {
-		List<Product> productList = productDao.selectByPcategoryname();
+	public List<Product> selectByPcategoryname(String pcategoryname) {
+		List<Product> productList = productDao.selectByPcategoryname(pcategoryname);
 		return productList;
 	}
 
-	public int getSellAmount() {
-		int sellAmount = productDao.getSellAmount();
-		return sellAmount;
+	public int getSales() {
+		int sales = productDao.getSales();
+		return sales;
 	}
+
+	public int getExpenses() {
+		int expenses = productDao.getExpenses();
+		return expenses;
+	}
+
+	
 }

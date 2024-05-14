@@ -54,4 +54,8 @@
 		where mid=#{mid}
 	</update>
 	
+	<select id="getMemberCount" resultType="int">
+		select count(mid) as memberCount from member
+		where mrole = 'ROLE_USER'
+	</select>
 </mapper>
