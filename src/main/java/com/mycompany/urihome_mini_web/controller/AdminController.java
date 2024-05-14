@@ -98,13 +98,27 @@ public class AdminController {
 		return "admin/productManageView";
 	}
 
+	@GetMapping("/productManageTable")
+	public String productManageTable(String pageNo, Model model, HttpSession session) {
+		session.setAttribute("pageNo", pageNo);
+
+		int intPageNo = Integer.parseInt(pageNo);
+
+		int rowsPagingTarget = productService.getTotalRows();
+		Pager pager = new Pager(10, 10, rowsPagingTarget, intPageNo);
+
+		List<Product> productList = productService.getProductList(pager);
+		model.addAttribute("pager", pager);
+		model.addAttribute("productList", productList);
+		return "admin/productManageTable";
+	}
+	
+	
 	@GetMapping("/addProductInfoView")
 	public String addProductInfoView(Model model) {
 		model.addAttribute("side", "productManage");
 		return "admin/addProductInfoView";
 	}
-	
-	
 
 	@PostMapping("/addProduct")
 	@ResponseBody
@@ -180,24 +194,6 @@ public class AdminController {
 		JSONObject jsonObject = new JSONObject();
 		jsonObject.put("result", "success");
 		return jsonObject.toString();
-	}
-
-	@GetMapping("/adminProductDetail")
-	public String adminProductDetail(String pid, Model model) {
-		HashMap<String, String> param = new HashMap<>();
-		param.put("pid", pid);
-		param.put("pthumbBodyType", "thumb");
-		Product product = productService.getProduct(pid);
-		int thumbImageCount = productService.getProductImageCount(param);
-		param.put("pthumbBodyType", "body");
-		int bodyImageCount = productService.getProductImageCount(param);
-
-		model.addAttribute("thumbImageCount", thumbImageCount);
-		model.addAttribute("bodyImageCount", bodyImageCount);
-		model.addAttribute("product", product);
-		model.addAttribute("side", "productManage");
-
-		return "admin/adminProductDetail";
 	}
 
 	@GetMapping("/productUpdateView")

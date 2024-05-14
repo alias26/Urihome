@@ -20,6 +20,8 @@
 <script
 	src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
 <!-- user script-->
+<script
+	src="${pageContext.request.contextPath}/resources/js/admin/productManageView.js"></script>
 <script>
 	
 </script>
@@ -65,7 +67,7 @@
 											src="productImageDownload?pid=${product.pid}&index=1&pthumbBodyType=thumb"
 											width="90px" height="90px"></td>
 										<td>
-											<a href="adminProductDetail?pid=${product.pid}">${product.pname}</a>
+											${product.pname}
 										</td>
 										<td>${product.pcategoryName}</td>
 										<td>${product.pbanner}</td>
@@ -88,16 +90,16 @@
 						<nav class="ms-auto me-auto" aria-label="">
 							<ul class="pagination pagination-sm">
 								<c:if test="${pager.groupNo>1}">
-									<li class="page-item"><a class="page-link" href="productList?pageNo=1"><<</a></li>
-									<li class="page-item"><a class="page-link" href="productList?pageNo=${pager.startPageNo-1}"><</a></li>
+									<li class="page-item"><a class="page-link"  href="javascript:void(0);" onclick="ajaxTable(1); return false;"><<</a></li>
+									<li class="page-item"><a class="page-link"  href="javascript:void(0);" onclick="ajaxTable(${pager.startPageNo-1}); return false;"><</a></li>
 								</c:if>
 								<c:forEach var="i" begin="${pager.startPageNo}" end="${pager.endPageNo}">
 									<li class="page-item">
-									<a class="page-link ${pager.pageNo==i ?'active':''}" href="productManageView?pageNo=${i}">${i}</a></li>
+									<a class="page-link ${pager.pageNo==i ?'active':''}" href="javascript:void(0);" onclick="ajaxTable(${i}); return false;">${i}</a></li>
 								</c:forEach>
 								<c:if test="${pager.groupNo<pager.totalGroupNo}">
-									<li class="page-item"><a class="page-link" href="productList?pageNo=${pager.endPageNo+1}">></a></li>
-									<li class="page-item"><a class="page-link" href="productList?pageNo=${pager.totalPageNo}">>></a></li>
+									<li class="page-item"><a class="page-link" href="javascript:void(0);" onclick="ajaxTable(${pager.endPageNo+1}); return false;">></a></li>
+									<li class="page-item"><a class="page-link" href="javascript:void(0);" onclick="ajaxTable(${pager.totalPageNo}); return false;">>></a></li>
 								</c:if>
 							</ul>
 						</nav>

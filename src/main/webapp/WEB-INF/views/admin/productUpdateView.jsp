@@ -177,7 +177,7 @@
 					</div>
 					<div class="p-2">
 						<div class="card" style="width:98%;margin:0 auto;">
-							<div class="card-body scroll">
+							<div class="card-body">
 								<div class="d-flex justify-content-between border-bottom">
 									<div class="mt-auto mb-auto">
 										상품 소개 이미지
@@ -202,7 +202,6 @@
 							</div>
 						</div>
 					</div>
-
 				</div>
 			</form>
 		</div>
