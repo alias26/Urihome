@@ -21,7 +21,7 @@
 	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css" 
 	rel="stylesheet">
 <link
-	href="${pageContext.request.contextPath}/resources/css/board/writeUserBoardForm.css"
+	href="${pageContext.request.contextPath}/resources/css/boardProduct/writeReviewForm.css"
 	rel="stylesheet">
 <!-- user script-->
 <script type="text/javascript">
@@ -43,16 +43,11 @@
 		 	
 		 	<div class="attach-file mt-4 mb-4">
 		 		<img alt="" src="https://ssueim.com/web/upload/_awesome_skin/common/img_noimage.png">
-		 		<button class="btn btn-outline-secondary" style="width: 110px; height: 40px; margin: 60px 30px;">주문상품선택</button>
+		 		<button class="btn btn-outline-secondary" style="width: 150px; height: 40px; margin: 60px 30px;">주문상품선택</button>
 		 	</div>
 		 	<hr>
-		 	
-		 	<div class="input-group mt-4">
-		 		<p style="margin-right: 30px; margin-top: 20px">상품코드</p>
-		 		<input id="pid" type="text" name="pid" class="form-control"
-		 		 style="border:none; border-bottom: 1px solid #ddd;" >
-		 	</div>
-		 
+	 		<input id="pid" type="hidden" name="pid" class="form-control"
+	 		 style="border:none; border-bottom: 1px solid #ddd;" value="${pid}">		 
 		 	<div class="input-group mt-4">
 		 		<p style="margin-right: 30px; margin-top: 20px">제목</p>
 		 		<input id="bptitle" type="text" name="bptitle" class="form-control" placeholder="제목을 입력해주세요. (최대 125자)"
@@ -65,12 +60,12 @@
 		 	</div>
 		 	
 		 	<div class="input-group mt-4">
-		 		<input id="bpattachdata" type="file" name="bpattachdata" class="form-control" >
+		 		<input id="bpattachdata" type="file" name="bpattach" class="form-control" >
 		 	</div>
 		 	
 		 	<div class="mt-3 d-flex">
 		 		<button type="submit" class="btn btn-dark me-2" style="margin-left: auto;">등록</button>
-		 		<a class="btn btn-outline-secondary" href="${pageContext.request.contextPath}/product/product_detail">목록</a>
+		 		<a class="btn btn-outline-secondary" href="${pageContext.request.contextPath}/product/product_detail?pid=${pid}">목록</a>
 		 	</div>
 		 </form>
 		</div>

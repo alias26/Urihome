@@ -20,6 +20,8 @@
 		rel="stylesheet">
 	  
 	  <!-- 사용자 정의 자바스크립트 -->
+	  <script src="${pageContext.request.contextPath}/resources/js/boardProduct/reviewListForm.js"></script>
+	  
 	  <script>
 	  </script>
 	  
@@ -67,7 +69,7 @@
 		   			<div id="detail">
 		   				<div class="d-flex" style="margin-top: 30px;">
 		   					<p style="margin-right: 30px;">상품코드</p>
-		   					<p>${product.pid}</p>
+		   					<p id="pid">${product.pid}</p>
 		   				</div>
 		   				<div class="d-flex" >
 		   					<p style="margin-right: 45px;">배송비</p>
@@ -132,8 +134,8 @@
 			    <ul class="tabnav">
 			      <li><a href="#tab01">상세정보</a></li>
 			      <li><a href="#tab02">구매안내</a></li>
-			      <li><a href="#tab03">구매후기</a></li>
-			      <li><a href="#tab04">Q&A</a></li>
+			      <li><a id="review" href="#tab03">구매후기</a></li>
+			      <li><a id="qna" href="#tab04">Q&A</a></li>
 			      <li><a href="#tab05">관련상품</a></li>
 			    </ul>
 			 </div> 
@@ -228,64 +230,7 @@
 			 <!-- 구매 안내 -->
 					  
 		  <!-- REVIEW -->
-		  <div class="tabcontent" style="margin-top: 100px; margin-bottom: 100px;">
-		  	<div id="tab03">
-			<div class="d-flex" id="review-top" style="justify-content: space-between;">
-				<h5><strong>REVIEW ( )</strong></h5>
-				<div>
-				<button type="button" class="btn btn-sm" style="border: solid 0.5px;"
-				onclick="location.href = '${pageContext.request.contextPath}/board/writeReviewForm'">리뷰등록</button>
-				<button type="button" class="btn btn-sm" style="border: solid 0.5px;">모두보기</button>
-			 	</div>
-			</div>
-			<hr/>
-			
-			<!-- 게시물 0일 때 -->
-			<div style="text-align: center; padding: 70px; color: gray;">
-				<!-- 게시물 목록 -->
-				<c:forEach var="boardProduct" items="${reviewList}">
-					<div class="review">
-				  		<div class="review-title" style="margin-bottom: 10px;"><strong>${boardProduct.bptitle}</strong></div>
-				  		<div class="review-content">
-				  			<a href="product_detail?bno=${boardProduct.bpnumber}">${boardProduct.bpcontent}</a>
-				  		</div>
-				  		<div class="review-writer" style="color: gray; margin-top: 30px;">
-				  		 	<p>${boardProduct.mid} | <fmt:formatDate value="${boardProduct.bpdate}" pattern="yyyy.MM.dd"/></p>
-				  		</div>
-				  	</div>
-				  	<hr/>
-			  	</c:forEach>
-			  	
-				<c:if test="${reviewList == null}">
-				 등록된 게시물이 없습니다.
-				</c:if>
-		</div>
-		<hr>
-		  	
-		  	<!-- pagenation -->
-             <div>
-                <a class="btn btn-outline-primary btn-sm" href="boardList?pageNo=1">처음</a>
-                <c:if test="${pager.groupNo>1}">
-                   <a class="btn btn-outline-info btn-sm" href="boardList?pageNo=${pager.startPageNo-1}">이전</a>
-                </c:if>
-                
-                <c:forEach var="i" begin="${pager.startPageNo}" end="${pager.endPageNo}">
-                   <c:if test="${pager.pageNo != i}">
-                      <a class="btn btn-outline-success btn-sm" href="boardList?pageNo=${i}">${i}</a>
-                   </c:if>
-                   <c:if test="${pager.pageNo == i}">
-                      <a class="btn btn-danger btn-sm" href="boardList?pageNo=${i}">${i}</a>
-                   </c:if>
-                </c:forEach>
-                
-                <c:if test="${pager.groupNo<pager.totalGroupNo}">
-                   <a class="btn btn-outline-info btn-sm" href="boardList?pageNo=${pager.endPageNo+1}">다음</a>
-                </c:if>
-                <a class="btn btn-outline-primary btn-sm" href="boardList?pageNo=${pager.totalPageNo}">맨끝</a>
-             </div>
-             <!-- pagenation -->
-
-		  	</div>
+		  <div id="tabcontent03" class="tabcontent" style="margin-top: 100px; margin-bottom: 100px;">
 		  </div>
 		  <!-- Review -->
 					
@@ -295,9 +240,8 @@
 			 	<div class="d-flex" id="qna-top" style="justify-content: space-between;">
 				 	<h5><strong>Q&A (1)</strong></h5>
 				 	<div>
-				 	<button type="button" class="btn btn-sm" style="border: solid 0.5px;"
-				 	onclick="location.href = '${pageContext.request.contextPath}/board/writeQnaForm'">문의등록</button>
-					<button type="button" class="btn btn-sm" style="border: solid 0.5px;">모두보기</button>
+					 	<button type="button" class="btn btn-sm" style="border: solid 0.5px;"
+					 	onclick="location.href = '${pageContext.request.contextPath}/boardProduct/writeQnaForm'">문의등록</button>
 					</div>
 				</div>
 			 	<hr/>

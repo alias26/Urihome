@@ -14,11 +14,11 @@
 			)
 	</insert>
 	
-	<select id="count" resultType="int">
-		select count(*) from boardProduct
+	<select id="count" parameterType="String" resultType="int">
+		select count(*) from boardProduct where pid=#{pid}
 	</select>
 	
-	<select id="selectByPage" parameterType="Pager" resultType="BoardProduct">
+	<select id="selectByPage" parameterType="HashMap" resultType="BoardProduct">
 		<![CDATA[
 			select rnum, bpnumber, bptitle, mid, bpcontent, bpdate, bptype, pid 
 			from (
@@ -26,11 +26,12 @@
 			 	from (
 			 		select rownum as rnum, bpnumber, bptitle, mid, bpcontent, bpdate, bptype, pid
 			 	from boardProduct
+			 	where pid=#{pid}
 			 	order by bpnumber desc
 			 )
-			 where rownum <= #{endRowNo}
+			 where rownum <= #{pager.endRowNo}
 		)
-		where rnum >= #{startRowNo}	 	
+		where rnum >= #{pager.startRowNo}	 	
 		]]>
 	</select>
 	
@@ -39,4 +40,8 @@
 			 	from boardProduct
 		where bpnumber=#{bpnumber}
 	</select>
+	<delete id="deleteByBpno" parameterType="int">
+		delete from boardProduct
+		where bpnumber=#{bpnumber}
+	</delete>
 </mapper>
