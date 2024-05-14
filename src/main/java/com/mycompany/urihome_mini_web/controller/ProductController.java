@@ -51,9 +51,24 @@ public class ProductController {
 	}
 	
 	@RequestMapping("/product_list")
-	public String product_list(Model model) {
+	public String product_list(Model model, String pid) {
 		List<Product> productList = productService.getProductCategoryListAll();
 		model.addAttribute("productList", productList);
+		
+		HashMap<String, String> param = new HashMap<>();
+		param.put("pid", pid);
+		
+		param.put("pthumbBodyType", "thumb");
+		int thumbImageCount = productService.getProductImageCount(param);
+		model.addAttribute("thumbImageCount", thumbImageCount);
+		
+		param.put("pthumbBodyType", "body");
+		int bodyImageCount = productService.getProductImageCount(param);
+		model.addAttribute("bodyImageCount", bodyImageCount);
+		
+		HashMap<String, List<String>> productOption = productService.getProductOptionMap(pid);
+		model.addAttribute("productOption", productOption);
+		
 		return "/product/product_list";
 	}
 	
