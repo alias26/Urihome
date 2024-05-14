@@ -277,7 +277,7 @@
    	<div class = "productList">
    		<div class="productList-header">
    			<!-- 옵션 -->
-   			<div class="orderType d-flex" style="justify-content: flex-start;">
+   			<div class="orderType d-flex mb-4" style="justify-content: flex-start;">
    				<!-- 새로고침 아이콘 -->
 				<button class="btn" id="return-btn" onclick="window.location.reload()" style="margin-right: 8px;">
 					<i class="bi bi-arrow-counterclockwise"></i>
