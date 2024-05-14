@@ -58,52 +58,22 @@ public class ProductController {
 	}
 	
 	// 전체 상품 조회
-	@GetMapping("/getProductListAjax")
+	@GetMapping("/getProductListAllAjax")
 	public String getProductListAll(Model model) {
 		List<Product> productList = productService.getProductCategoryListAll();
 		model.addAttribute("productList", productList);
 //		log.info(Integer.toString(productList.size()));
-		return "product/getProductListAjax";
+		return "product/getProductListAllAjax";
 	}
 	
-	// 수저세트 상품 조회
-	@GetMapping("/getProductListAjax1")
-	public String productCategoryCate1(Model model) {
-		List<Product> productList = productService.selectByPcategoryname();
+	// 카테고리별 상품 조회
+	@GetMapping("/getProductListAjax")
+	public String getProductList(Model model, @RequestParam("pcategoryName") String pcategoryName) {
+		List<Product> productList = productService.selectByPcategoryName(pcategoryName);
 		model.addAttribute("productList", productList);
 //		log.info("productList1: "+productList);
 //		log.info(Integer.toString(productList.size()));
-		return "product/getProductListAjax1";
-	}
-	
-	// 컵 상품 조회
-	@GetMapping("/getProductListAjax2")
-	public String productCategoryCate2(Model model) {
-		List<Product> productList = productService.selectByPcategoryname();
-		model.addAttribute("productList", productList);
-//		log.info("productList2: "+productList);
-//		log.info(Integer.toString(productList.size()));
-		return "product/getProductListAjax2";
-	}
-	
-	// 그릇 상품 조회
-	@GetMapping("/getProductListAjax3")
-	public String productCategoryCate3(Model model) {
-		List<Product> productList = productService.selectByPcategoryname();
-		model.addAttribute("productList", productList);
-//		log.info("productList3: "+productList);
-//		log.info(Integer.toString(productList.size()));
-		return "product/getProductListAjax3";
-	}
-	
-	// 접시 상품 조회
-	@GetMapping("/getProductListAjax4")
-	public String productCategoryCate4(Model model) {
-		List<Product> productList = productService.selectByPcategoryname();
-		model.addAttribute("productList", productList);
-//		log.info("productList4: "+productList);
-//		log.info(Integer.toString(productList.size()));
-		return "product/getProductListAjax4";
+		return "product/getProductListAjax";
 	}
 	
 	@GetMapping("/productImageDownload")

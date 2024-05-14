@@ -54,11 +54,11 @@
 		select * from product
 	</select>
 	
-	<select id="selectByPcategoryname" parameterType="String" resultType="Product">
+	<select id="selectByPcategoryName" parameterType="String" resultType="Product">
 		select * from product
 		product inner join productCategory
 		on product.pid = productCategory.pid
-		where pcategoryname=#{pcategoryname}
+		where pcategoryName=#{pcategoryName}
 	</select>
 	
 	<select id="getSales" resultType="int">

@@ -7,6 +7,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.mycompany.urihome_mini_web.dao.PimageDao;
 import com.mycompany.urihome_mini_web.dao.ProductCategoryDao;
@@ -180,8 +181,8 @@ public class ProductService {
 		return productList;
 	}
 	
-	public List<Product> selectByPcategoryname(String pcategoryname) {
-		List<Product> productList = productDao.selectByPcategoryname(pcategoryname);
+	public List<Product> selectByPcategoryName(String pcategoryName) {
+		List<Product> productList = productDao.selectByPcategoryName(pcategoryName);
 		return productList;
 	}
 

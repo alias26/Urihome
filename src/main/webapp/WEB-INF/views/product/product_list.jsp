@@ -249,24 +249,20 @@
 			  </li>  
 			  <li class="nav-item">
 			    <a class="nav-link active" aria-current="page"
-			        href="${pageContext.request.contextPath}/product/getProductListAjax?category=${productCategory.pcategoryname}"
+			    	href="javascript:void(0);" onclick="categoryAllFunction(); return false;"
 			        id="categoryAllBtn"><strong>전체</strong></a>
 			 </li>
 			  <li class="nav-item">
-			    <a class="nav-link" href="${pageContext.request.contextPath}/product/getProductListAjax1"
-			    	id="category1Btn"><strong>수저세트</strong></a>
+			    <a class="nav-link" href="javascript:void(0);" onclick="categoryFunction('수저세트'); return false;" id="categoryBtn"><strong>수저세트</strong></a>
+			 </li>
+			  <li class="nav-item">
+			    <a class="nav-link" href="javascript:void(0);" onclick="categoryFunction('컵'); return false;" id="categoryBtn"><strong>컵</strong></a>
 			  </li>
 			  <li class="nav-item">
-			    <a class="nav-link" href="${pageContext.request.contextPath}/product/getProductListAjax2"
-			    	id="category2Btn"><strong>컵</strong></a>
+			    <a class="nav-link" href="javascript:void(0);" onclick="categoryFunction('그릇'); return false;" id="categoryBtn"><strong>그릇</strong></a>
 			  </li>
 			  <li class="nav-item">
-			    <a class="nav-link" href="${pageContext.request.contextPath}/product/getProductListAjax3"
-			    	id="category3Btn"><strong>그릇</strong></a>
-			  </li>
-			  <li class="nav-item">
-			    <a class="nav-link" href="${pageContext.request.contextPath}/product/getProductListAjax4"
-			    	id="category4Btn"><strong>접시</strong></a>
+			    <a class="nav-link" href="javascript:void(0);" onclick="categoryFunction('접시'); return false;" id="categoryBtn"><strong>접시</strong></a>
 			  </li>
 			</ul>
    		</div>

@@ -3,6 +3,7 @@ package com.mycompany.urihome_mini_web.dao;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.mycompany.urihome_mini_web.dto.Pager;
 import com.mycompany.urihome_mini_web.dto.Product;
@@ -16,7 +17,7 @@ public interface ProductDao {
 	public int update(Product product);
 	public int deleteByPid(String pid);
 	public List<Product> selectAll();
-	public List<Product> selectByPcategoryname(String pcategoryname);
+	public List<Product> selectByPcategoryName(String pcategoryName);
 	public int getSales();
 	public int getExpenses();
 	
