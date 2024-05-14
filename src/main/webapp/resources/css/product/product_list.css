@@ -51,6 +51,21 @@
 
 }
 
+.productList {
+	flex: 3;
+	margin-top: 20px;
+}
+
+#productItem {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: flex-start;
+}
+
+#product_no {
+	margin-left: 20px;
+}
+
 .body {
 	display: flex;
 	margin-top: 50px;
@@ -84,13 +99,6 @@
 	margin-left: 30px;
 	font-size: 18px;
 }
-
-.productList {
-	flex: 3;
-	margin-top: 20px;
-}
-
-
 
 #cate-btn {
 	padding: 5px 18px;
