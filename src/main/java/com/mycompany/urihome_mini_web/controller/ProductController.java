@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.mycompany.urihome_mini_web.dto.Pimage;
 import com.mycompany.urihome_mini_web.dto.Product;
@@ -50,53 +51,60 @@ public class ProductController {
 	}
 	
 	@RequestMapping("/product_list")
-	public String product_list() {
-		return "product/product_list";
+	public String product_list(Model model) {
+		List<Product> productList = productService.getProductCategoryListAll();
+		model.addAttribute("productList", productList);
+		return "/product/product_list";
 	}
 	
-	
-	@GetMapping("/productCategoryAll")
-	public String productCategoryAll(ProductCategory productCategory, Model model) {
-		List<Product> product = productService.getProductCategoryListAll();
-		model.addAttribute("productCategory", productCategory);
-		log.info("product: ", product);
-		return "product/productCategoryAll";
+	// 전체 상품 조회
+	@GetMapping("/getProductListAjax")
+	public String getProductListAll(Model model) {
+		List<Product> productList = productService.getProductCategoryListAll();
+		model.addAttribute("productList", productList);
+//		log.info(Integer.toString(productList.size()));
+		return "product/getProductListAjax";
 	}
 	
-	
-	/*
-	@GetMapping("/productCategoryCate1")
-	public String productCategoryCate1(ProductCategory productCategory, Model model) {
-		List<Product> product = productService.getProductCategoryList();
-		model.addAttribute("productCategory", productCategory);
-		log.info("product: "+product);
-		return "productCategory";
+	// 수저세트 상품 조회
+	@GetMapping("/getProductListAjax1")
+	public String productCategoryCate1(Model model) {
+		List<Product> productList = productService.selectByPcategoryname();
+		model.addAttribute("productList", productList);
+//		log.info("productList1: "+productList);
+//		log.info(Integer.toString(productList.size()));
+		return "product/getProductListAjax1";
 	}
 	
-	@GetMapping("/productCategoryCate2")
-	public String productCategoryCate2(ProductCategory productCategory, Model model) {
-		List<Product> product = productService.getProductCategoryList();
-		model.addAttribute("productCategory", productCategory);
-		log.info("product: "+product);
-		return "productCategory";
+	// 컵 상품 조회
+	@GetMapping("/getProductListAjax2")
+	public String productCategoryCate2(Model model) {
+		List<Product> productList = productService.selectByPcategoryname();
+		model.addAttribute("productList", productList);
+//		log.info("productList2: "+productList);
+//		log.info(Integer.toString(productList.size()));
+		return "product/getProductListAjax2";
 	}
 	
-	@GetMapping("/productCategoryCate3")
-	public String productCategoryCate3(ProductCategory productCategory, Model model) {
-		List<Product> product = productService.getProductCategoryList();
-		model.addAttribute("productCategory", productCategory);
-		log.info("product: "+product);
-		return "productCategory";
+	// 그릇 상품 조회
+	@GetMapping("/getProductListAjax3")
+	public String productCategoryCate3(Model model) {
+		List<Product> productList = productService.selectByPcategoryname();
+		model.addAttribute("productList", productList);
+//		log.info("productList3: "+productList);
+//		log.info(Integer.toString(productList.size()));
+		return "product/getProductListAjax3";
 	}
 	
-	@GetMapping("/productCategoryCate4")
-	public String productCategoryCate4(ProductCategory productCategory, Model model) {
-		List<Product> product = productService.getProductCategoryList();
-		model.addAttribute("productCategory", productCategory);
-		log.info("product: "+product);
-		return "productCategory";
-	}*/
-	
+	// 접시 상품 조회
+	@GetMapping("/getProductListAjax4")
+	public String productCategoryCate4(Model model) {
+		List<Product> productList = productService.selectByPcategoryname();
+		model.addAttribute("productList", productList);
+//		log.info("productList4: "+productList);
+//		log.info(Integer.toString(productList.size()));
+		return "product/getProductListAjax4";
+	}
 	
 	@GetMapping("/productImageDownload")
 	public void productImageDownload(String pid, int index, String pthumbBodyType, HttpServletResponse response) throws Exception {

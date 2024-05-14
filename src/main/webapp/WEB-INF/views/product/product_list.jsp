@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
    <head>
@@ -13,6 +14,7 @@
 	  <script src="${pageContext.request.contextPath}/resources/js/product/product_list.js" rel="stylesheet"></script>
 	  <!-- 사용자 정의 자바스크립트 -->
 	  <script>
+		  
 	  </script>
    </head>
    <!-- css 적용 -->
@@ -219,6 +221,7 @@
    </div>
  <!-- best-product -->
    
+   </div>
    <!-- 헤더 -->
    
    <!-- 바디 -->
@@ -239,25 +242,31 @@
    		</div>	
    	
    		<!-- 카테고리 -->
-   		<div class = "category">
+   		<div id = "category">
    			<ul class="nav flex-column" style="margin-top: 20px;" >
    			  <li class="nav-item">
 			    <a class="nav-link disabled" aria-disabled="true" style="font-size: 22px; color: black; margin-bottom: 10px;"><strong>카테고리</strong></a>
 			  </li>  
 			  <li class="nav-item">
-			    <a class="nav-link active" aria-current="page" href="#onclick"><strong>전체</strong></a>
+			    <a class="nav-link active" aria-current="page"
+			        href="${pageContext.request.contextPath}/product/getProductListAjax?category=${productCategory.pcategoryname}"
+			        id="categoryAllBtn"><strong>전체</strong></a>
+			 </li>
+			  <li class="nav-item">
+			    <a class="nav-link" href="${pageContext.request.contextPath}/product/getProductListAjax1"
+			    	id="category1Btn"><strong>수저세트</strong></a>
 			  </li>
 			  <li class="nav-item">
-			    <a class="nav-link" href="#onclick"><strong>수저세트</strong></a>
+			    <a class="nav-link" href="${pageContext.request.contextPath}/product/getProductListAjax2"
+			    	id="category2Btn"><strong>컵</strong></a>
 			  </li>
 			  <li class="nav-item">
-			    <a class="nav-link" href="#onclick"><strong>컵</strong></a>
+			    <a class="nav-link" href="${pageContext.request.contextPath}/product/getProductListAjax3"
+			    	id="category3Btn"><strong>그릇</strong></a>
 			  </li>
 			  <li class="nav-item">
-			    <a class="nav-link" href="#onclick"><strong>그릇</strong></a>
-			  </li>
-			  <li class="nav-item">
-			    <a class="nav-link" href="#onclick"><strong>접시</strong></a>
+			    <a class="nav-link" href="${pageContext.request.contextPath}/product/getProductListAjax4"
+			    	id="category4Btn"><strong>접시</strong></a>
 			  </li>
 			</ul>
    		</div>
@@ -270,7 +279,7 @@
    			<!-- 옵션 -->
    			<div class="orderType d-flex" style="justify-content: flex-start;">
    				<!-- 새로고침 아이콘 -->
-				<button class="btn" id="return-btn" style="margin-right: 8px;">
+				<button class="btn" id="return-btn" onclick="window.location.reload()" style="margin-right: 8px;">
 					<i class="bi bi-arrow-counterclockwise"></i>
 				</button>
    				<button type="button" class="btn" id="cate-btn" style="margin-right: 8px;">추천순</button>
@@ -282,47 +291,27 @@
    			
    			<!-- 상품 목록 -->
    			<div class="product-list">
-   				<!-- 전체 행 -->
-   				<div class="all-product">
-   					<!-- 첫번째 행 -->
-	   				<div id="row1" style=" display: flex; justify-content: space-evenly; margin-top: 30px;">
-	   					<div id="product_no1">
-	   						<a href="${pageContext.request.contextPath}/product/product_detail?pid=dummy1"><img alt="" src="https://ssueim.com/web/product/big/202107/b5b01d07f2f18fbc0e02455c97178b41.jpg"
-   							style="width: 290px; border-radius: 10px;"></a>
-   							<!-- 장바구니 버튼 -->
+  				<div id="productItem">
+  					<c:forEach var="product" items="${productList}">
+   						<div id="product_no">
+   							<a href="${pageContext.request.contextPath}/product/product_detail?pid=${product.pid}">
+   							<img alt="" src="https://ssueim.com/web/product/big/202107/b5b01d07f2f18fbc0e02455c97178b41.jpg"
+  								style="width: 290px; border-radius: 10px;"></a>
+  							<!-- 장바구니 버튼 -->
 		 					<div class="btn" id="cart" style="background-color: black; border-radius: 50%;">
 								<i class="bi bi-handbag-fill" style="color: white;"></i>
 							</div>
-   							<div id="name">피에르 티스푼 (3color)</div>
-   							<div id="price">1,900원</div>
-	   					</div>
-   						<div id=product_no2>
-	   						<img alt="" src="https://ssueim.com/web/product/big/202107/b5a60aac4741a7c60a2e65d84fafa8b5.jpg"
-	   						style="width: 290px; border-radius: 10px;">
-	   						<!-- 장바구니 버튼 -->
-		 					<div class="btn" id="cart" style="background-color: black; border-radius: 50%;">
-								<i class="bi bi-handbag-fill" style="color: white;"></i>
-							</div>
-	   						<div id="name">론드 젓가락 (3color)</div>
-   							<div id="price">3,900원</div>
-   						</div>
-   						<div id="product_no3">
-	   						<img alt="" src="https://ssueim.com/web/product/big/202107/ee6606e5fa088104bb65c5ea1ff48b41.jpg"
-	   						style="width: 290px; border-radius: 10px;">
-	   						<!-- 장바구니 버튼 -->
-		 					<div class="btn" id="cart" style="background-color: black; border-radius: 50%;">
-								<i class="bi bi-handbag-fill" style="color: white;"></i>
-							</div>
-	   						<div id="name">피에르 나이프 (3color)</div>
-   							<div id="price">3,900원</div>
-   						</div>
-	   				</div>
-	   				<!-- 두번째 행 -->
-	   				<div id="row2" style="display: flex; justify-content: space-evenly; margin-top: 30px;">
+  							<div id="name">${product.pname}</div>
+  							<div id="price">${product.pprice}원</div>
+   					</div>
+  					</c:forEach>
+  				</div>
+	   			 <!-- 두번째 행 -->
+	   			<!--	<div id="row2" style="display: flex; justify-content: space-evenly; margin-top: 30px;">
 	   					<div id="product_no4">
 		   					<img alt="" src="https://ssueim.com/web/product/big/202312/070cd414c43a41a5914e544d7080bbb3.jpg"
 		   					style="width: 290px; border-radius: 10px;">
-		   					<!-- 장바구니 버튼 -->
+		   					장바구니 버튼
 		 					<div class="btn" id="cart" style="background-color: black; border-radius: 50%;">
 								<i class="bi bi-handbag-fill" style="color: white;"></i>
 							</div>
@@ -332,7 +321,7 @@
 	   					<div id="product_no5">
 		   					<img alt="" src="https://ssueim.com/web/product/big/202312/c4679b21081d4c53e880d6a98afef0cb.jpg"
 		   					style="width: 290px; border-radius: 10px;">
-		   					<!-- 장바구니 버튼 -->
+		   					장바구니 버튼
 		 					<div class="btn" id="cart" style="background-color: black; border-radius: 50%;">
 								<i class="bi bi-handbag-fill" style="color: white;"></i>
 							</div>
@@ -342,7 +331,7 @@
 	   					<div id="product_no6">
 		   					<img alt="" src="https://ssueim.com/web/product/big/202310/910853dad80e2fde05cd417805eed2c1.jpg"
 		   					style="width: 290px; border-radius: 10px;">
-		   					<!-- 장바구니 버튼 -->
+		   					장바구니 버튼
 		 					<div class="btn" id="cart" style="background-color: black; border-radius: 50%;">
 								<i class="bi bi-handbag-fill" style="color: white;"></i>
 							</div>
@@ -350,12 +339,12 @@
 		   					<div id="price">22,400원</div>
 	   					</div>
 	   				</div>
-	   				<!-- 세번째 행 -->
+	   				세번째 행
 	   				<div id="row3" style="display: flex; justify-content: space-evenly; margin-top: 30px;">
 	   					<div id="product_no7">
 		   					<img alt="" src="https://ssueim.com/web/product/big/202203/a1bc1ee7b7dbb26ea9f592ab2acc2b95.jpg"
 		   					style="width: 290px; border-radius: 10px;">
-		   					<!-- 장바구니 버튼 -->
+		   					장바구니 버튼
 		 					<div class="btn" id="cart" style="background-color: black; border-radius: 50%;">
 								<i class="bi bi-handbag-fill" style="color: white;"></i>
 							</div>
@@ -365,7 +354,7 @@
 		   				<div id="product_no8"> 
 		   					<img alt="" src="https://ssueim.com/web/product/big/202203/ca7f94de5ca2e63b2c5f7ac8741fcb7d.jpg"
 		   					style="width: 290px; border-radius: 10px;">
-		   					<!-- 장바구니 버튼 -->
+		   					장바구니 버튼
 		 					<div class="btn" id="cart" style="background-color: black; border-radius: 50%;">
 								<i class="bi bi-handbag-fill" style="color: white;"></i>
 							</div>
@@ -375,7 +364,7 @@
 		   				<div id="product_no9">
 		   					<img alt="" src="https://ssueim.com/web/product/big/202203/6ef6c0079ea5a426827eb42f70a9cd78.jpg"
 		   					style="width: 290px; border-radius: 10px;">
-		   					<!-- 장바구니 버튼 -->
+		   					장바구니 버튼
 		 					<div class="btn" id="cart" style="background-color: black; border-radius: 50%;">
 								<i class="bi bi-handbag-fill" style="color: white;"></i>
 							</div>
@@ -383,12 +372,12 @@
 		   					<div id="price">70,000원</div>
 		   				</div>
 	   				</div>
-	   				<!-- 네번째 행 -->
+	   				네번째 행
 	   				<div id="row4" style="display: flex; justify-content: space-evenly; margin-top: 30px;">
 	   					<div id="product_no10">
 		   					<img alt="" src="https://ssueim.com/web/product/big/202306/22f513d94d07f0ffba12035f37ae1b17.jpg"
 		   					style="width: 290px; border-radius: 10px;">
-		   					<!-- 장바구니 버튼 -->
+		   					장바구니 버튼
 		 					<div class="btn" id="cart" style="background-color: black; border-radius: 50%;">
 								<i class="bi bi-handbag-fill" style="color: white;"></i>
 							</div>
@@ -398,7 +387,7 @@
 		   				<div id="product_no11">
 		   					<img alt="" src="https://ssueim.com/web/product/big/202012/e40f89c6c550068d013a5b632d10f70c.jpg"
 		   					style="width: 290px; border-radius: 10px;">
-		   					<!-- 장바구니 버튼 -->
+		   					장바구니 버튼
 		 					<div class="btn" id="cart" style="background-color: black; border-radius: 50%;">
 								<i class="bi bi-handbag-fill" style="color: white;"></i>
 							</div>
@@ -408,7 +397,7 @@
 		   				<div id="product_no12">
 		   					<img alt="" src="https://ssueim.com/web/product/big/202103/1bbc4b8074e8c4c90f80d4d78178ba1f.jpg"
 		   					style="width: 290px; border-radius: 10px;">
-		   					<!-- 장바구니 버튼 -->
+		   					장바구니 버튼
 		 					<div class="btn" id="cart" style="background-color: black; border-radius: 50%;">
 								<i class="bi bi-handbag-fill" style="color: white;"></i>
 							</div>
@@ -417,7 +406,7 @@
 		   				</div>
 	   				</div>
 	   			</div>
-	   		</div>
+	   		</div> -->
 	   		
 	   		<!-- pagination -->
    			<div class="pagenation">
@@ -441,12 +430,15 @@
 				  </ul>
 				</nav>
 			</div>
+			<!-- pagination -->
 			
 	   		</div>
+	   		<!-- 상품 목록 -->
 	   	</div>
 	  </div>
-	 </div>
+	  
 	 </div> <!-- container -->
+</div>
   	<%@ include file="/WEB-INF/views/common/footer.jsp" %>
 	</body>
 </html>

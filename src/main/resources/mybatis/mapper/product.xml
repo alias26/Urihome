@@ -52,35 +52,16 @@
 	
 	<select id="selectAll" resultType="Product">
 		select * from product
-		product inner join productCategory
-		on product.pid = productCategory.pid
 	</select>
 	
-	<select id="selectByPcategoryname1" resultType="Product">
+	<select id="selectByPcategoryname" resultType="Product">
 		select * from product
 		product inner join productCategory
 		on product.pid = productCategory.pid
-		where pcategoryname = '수저세트'
+		where pcategoryname=#{pcategoryname}
 	</select>
 	
-	<select id="selectByPcategoryname2" resultType="Product">
-		select * from product
-		product inner join productCategory
-		on product.pid = productCategory.pid
-		where pcategoryname = '컵'
-	</select>
-	
-	<select id="selectByPcategoryname3" resultType="Product">
-		select * from product
-		product inner join productCategory
-		on product.pid = productCategory.pid
-		where pcategoryname = '그릇'
-	</select>
-	
-	<select id="selectByPcategoryname4" resultType="Product">
-		select * from product
-		product inner join productCategory
-		on product.pid = productCategory.pid
-		where pcategoryname = '접시'
+	<select id="getSellAmount" resultType="int">
+		select sum(psellamount) as sellAmount from product
 	</select>
 </mapper>

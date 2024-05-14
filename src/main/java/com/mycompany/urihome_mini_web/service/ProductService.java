@@ -150,17 +150,6 @@ public class ProductService {
 		return result;
 	}
 	
-	
-	public List<Product> getProductCategoryListAll() {
-		List<Product> productCategoryListAll = productDao.selectAll();
-		return productCategoryListAll;
-	}
-	
-	public List<Product> getProductCategoryListCate1() {
-		List<Product> getProductCategoryListCate1 = productDao.selectAll();
-		return getProductCategoryListCate1;
-	}
-
 	public HashMap<String, List<String>> getProductOptionMap(String pid) {
 		HashMap<String, List<String>> productOptionMap = new HashMap<>();
 		List<ProductOption> poption = poptionDao.selectByPid(pid);
@@ -186,4 +175,18 @@ public class ProductService {
 		return productOptionMap;
 	}
 
+	public List<Product> getProductCategoryListAll() {
+		List<Product> productList = productDao.selectAll();
+		return productList;
+	}
+	
+	public List<Product> selectByPcategoryname() {
+		List<Product> productList = productDao.selectByPcategoryname();
+		return productList;
+	}
+
+	public int getSellAmount() {
+		int sellAmount = productDao.getSellAmount();
+		return sellAmount;
+	}
 }
