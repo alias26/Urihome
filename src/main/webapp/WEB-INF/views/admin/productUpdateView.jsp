@@ -55,7 +55,7 @@
 								</div>
 								<div class="d-flex" id="thumbnailPreview">
 									<c:forEach var="i" begin="1" end="${thumbImageCount}">
-										<div style="position:relative;">
+										<div class="fileBox" style="position:relative;">
 											<img src="productImageDownload?pid=${product.pid}&index=${i}&pthumbBodyType=thumb"
 												class="mt-3 me-2" width="100px" height="100px">
 											<button data-index="${i}" onclick="deleteSelectImage(this, 'thumbnail')" class="btn btn-light btn-sm" type="button" style="position:absolute;top:18px;right:10px;\"><i class="bi bi-x"></i></button>
@@ -192,7 +192,7 @@
 								</div>
 								<div class="scroll" id="bodyPreview" style="text-align:center;">
 									<c:forEach var="i" begin="1" end="${bodyImageCount}">
-										<div style="position:relative;">
+										<div class="fileBox" style="position:relative;">
 											<img src="productImageDownload?pid=${product.pid}&index=${i}&pthumbBodyType=body"
 												class="mt-3" width="500px">
 											<button data-index="${i}" onclick="deleteSelectImage(this, 'body')" class="btn btn-light btn-sm" type="button" style="position:absolute;top:18px;right:210px;\"><i class="bi bi-x"></i></button>

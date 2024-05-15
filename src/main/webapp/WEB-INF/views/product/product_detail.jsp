@@ -17,7 +17,7 @@
 	  <!-- css -->
 	  <!-- 사용자 정의 자바스크립트 -->
 	  <script src="${pageContext.request.contextPath}/resources/js/boardProduct/reviewListForm.js"></script>
-	  	  <script src="${pageContext.request.contextPath}/resources/js/boar	dProduct/qnaListForm.js"></script>
+	  	  <script src="${pageContext.request.contextPath}/resources/js/boardProduct/qnaListForm.js"></script>
 	  
 	  <script>
 	  </script>
