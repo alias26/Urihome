@@ -5,18 +5,18 @@
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
 
-<div id="tab03">
+<div id="tab04">
 	<div class="d-flex" id="review-top" style="justify-content: space-between;">
-		<h5><strong>REVIEW (${reviewCount})</strong></h5>
+		<h5><strong>Q&A (${qnaCount})</strong></h5>
 		<div>
 		<button type="button" class="btn btn-sm" style="border: solid 0.5px;"
-		onclick="location.href = '${pageContext.request.contextPath}/boardProduct/writeReviewForm?pid=${pid}'">리뷰등록</button>
+		onclick="location.href = '${pageContext.request.contextPath}/boardProduct/writeQnaForm?pid=${pid}'">질문등록</button>
 	 	</div>
 	</div>
 	<hr/>
 	<div id="reviews" style="color: gray;">
 		<!-- 게시물 목록 -->
-		<c:forEach var="boardProduct" items="${reviewList}">
+		<c:forEach var="boardProduct" items="${qnaList}">
 			<div class="review">
 		  		<div class="review-title me-1"><strong>${boardProduct.bptitle}</strong></div>
 		  		<div class="review-content">
@@ -32,9 +32,9 @@
 			  			<c:if test="${mid == boardProduct.mid or mid == 'admin'}">
 				  			<div>
 				  				<c:if test="${mid == boardProduct.mid}">
-					  				<button onclick="location.href='../boardProduct/updateReviewForm?bpnumber=${boardProduct.bpnumber}'" class="btn btn-sm" style="border: solid 0.5px;">수정</button>
+					  				<button onclick="location.href='../boardProduct/updateQnaForm?bpnumber=${boardProduct.bpnumber}'" class="btn btn-sm" style="border: solid 0.5px;">수정</button>
 					  			</c:if>
-					  			<button onclick="removeReview(${boardProduct.bpnumber}, '${pid}')" class="btn btn-sm" style="border: solid 0.5px;">삭제</button>
+					  			<button onclick="removeQna(${boardProduct.bpnumber}, '${pid}')" class="btn btn-sm" style="border: solid 0.5px;">삭제</button>
 				  			</div>
 			  			</c:if>
 		  			</sec:authorize>
@@ -43,27 +43,27 @@
 		  	<hr/>
 	  	</c:forEach>
 	  	
-		<c:if test="${reviewCount == 0}">
+		<c:if test="${qnaCount == 0}">
 		 등록된 게시물이 없습니다.
 		 <hr>
 		</c:if>
 	</div>
 	<!-- pagenation -->
-	<c:if test="${reviewCount != 0 }">
+	<c:if test="${qnaCount != 0 }">
 		<div class="d-flex justify-content-between">
 			<nav class="ms-auto me-auto" aria-label="">
 				<ul class="pagination pagination-sm">
 					<c:if test="${pager.groupNo>1}">
-						<li class="page-item"><a class="page-link"  href="javascript:void(0);" onclick="getReviewPage('${pid}', 1); return false;"><<</a></li>
-						<li class="page-item"><a class="page-link"  href="javascript:void(0);" onclick="getReviewPage('${pid}', ${pager.startPageNo-1}); return false;"><</a></li>
+						<li class="page-item"><a class="page-link"  href="javascript:void(0);" onclick="getQnaPage('${pid}', 1); return false;"><<</a></li>
+						<li class="page-item"><a class="page-link"  href="javascript:void(0);" onclick="getQnaPage('${pid}', ${pager.startPageNo-1}); return false;"><</a></li>
 					</c:if>
 					<c:forEach var="i" begin="${pager.startPageNo}" end="${pager.endPageNo}">
 						<li class="page-item">
-						<a class="page-link ${pager.pageNo==i ?'active':''}" href="javascript:void(0);" onclick="getReviewPage('${pid}', ${i}); return false;">${i}</a></li>
+						<a class="page-link ${pager.pageNo==i ?'active':''}" href="javascript:void(0);" onclick="getQnaPage('${pid}', ${i}); return false;">${i}</a></li>
 					</c:forEach>
 					<c:if test="${pager.groupNo<pager.totalGroupNo}">
-						<li class="page-item"><a class="page-link" href="javascript:void(0);" onclick="getReviewPage('${pid}', ${pager.endPageNo+1}); return false;">></a></li>
-						<li class="page-item"><a class="page-link" href="javascript:void(0);" onclick="getReviewPage('${pid}', ${pager.totalPageNo}); return false;">>></a></li>
+						<li class="page-item"><a class="page-link" href="javascript:void(0);" onclick="getQnaPage('${pid}', ${pager.endPageNo+1}); return false;">></a></li>
+						<li class="page-item"><a class="page-link" href="javascript:void(0);" onclick="getQnaPage('${pid}', ${pager.totalPageNo}); return false;">>></a></li>
 					</c:if>
 				</ul>
 			</nav>

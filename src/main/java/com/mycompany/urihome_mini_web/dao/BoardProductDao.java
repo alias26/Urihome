@@ -13,8 +13,11 @@ public interface BoardProductDao {
 	
 	public int insert(BoardProduct boardProduct);
 	public List<BoardProduct> selectByPage(HashMap<String, Object> param);
-	public int count(String pid);
+	public int count(HashMap<String,String> param);
 	public BoardProduct selectByBpno(int bpnumber);
 	public int deleteByBpno(int bpnumber);
+	public int updateByBpno(BoardProduct boardProduct);
+	public BoardProduct selectImageByBpno(int bpnumber);
+	public BoardProduct selectImageDataByBpno(int bpnumber);
 	
 }

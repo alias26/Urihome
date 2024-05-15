@@ -20,4 +20,17 @@ $(function(){
 		}
 	});
   });
+  
+  $(".tabnav #qna").click(function(){
+	  var pid = $("#pid").text();
+	  $.ajax({
+		url:"../boardProduct/qnaList?pid=" + pid,
+		method:"get",
+		contentType : "application/json; charset:UTF-8",
+		success: function(data){
+			$("#tab04").remove();
+			$("#tabcontent04").append(data);
+		}
+	});
+  });
 });

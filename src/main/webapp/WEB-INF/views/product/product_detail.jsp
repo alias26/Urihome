@@ -15,12 +15,9 @@
 	  <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
 	  <script src="${pageContext.request.contextPath}/resources/js/product/product_detail.js" rel="stylesheet"></script>
 	  <!-- css -->
-	  <link
-		href="${pageContext.request.contextPath}/resources/css/board/writeUserBoardForm.css"
-		rel="stylesheet">
-	  
 	  <!-- 사용자 정의 자바스크립트 -->
 	  <script src="${pageContext.request.contextPath}/resources/js/boardProduct/reviewListForm.js"></script>
+	  	  <script src="${pageContext.request.contextPath}/resources/js/boar	dProduct/qnaListForm.js"></script>
 	  
 	  <script>
 	  </script>
@@ -235,24 +232,7 @@
 		  <!-- Review -->
 					
 			<!-- QnA -->
-			<div class="tabcontent" style="margin-bottom: 100px;">
-			 <div id="tab04">
-			 	<div class="d-flex" id="qna-top" style="justify-content: space-between;">
-				 	<h5><strong>Q&A (1)</strong></h5>
-				 	<div>
-					 	<button type="button" class="btn btn-sm" style="border: solid 0.5px;"
-					 	onclick="location.href = '${pageContext.request.contextPath}/boardProduct/writeQnaForm'">문의등록</button>
-					</div>
-				</div>
-			 	<hr/>
-			 	
-			 	<div id="qna" style="font-size: 12px;">
-			 	  <div id="qna-title"><strong>배송관련문의</strong></div>
-			 	  <div id="qna-writer" style="color: gray; margin-top: 20px;">b*** | 2023.08.29</div>
-			 	</div>
-			 	<hr/>
-			 	
-			 </div>
+			<div id="tabcontent04" class="tabcontent" style="margin-bottom: 100px;">
 			</div>
 			  <!-- QnA -->
 			<div class="tabcontent">

@@ -11,8 +11,6 @@ function removeReview(bpnumber, pid) {
 }
 
 function getReviewPage(pid, rpageNo) {
-	console.log(rpageNo);
-	
 	$.ajax({
 		url : "../boardProduct/reviewList?pid=" + pid + "&rpageNo=" + rpageNo,
 		method : "get",

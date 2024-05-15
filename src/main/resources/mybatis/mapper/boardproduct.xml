@@ -14,19 +14,19 @@
 			)
 	</insert>
 	
-	<select id="count" parameterType="String" resultType="int">
-		select count(*) from boardProduct where pid=#{pid}
+	<select id="count" parameterType="HashMap" resultType="int">
+		select count(*) from boardProduct where pid=#{pid} and bptype=#{bptype}
 	</select>
 	
 	<select id="selectByPage" parameterType="HashMap" resultType="BoardProduct">
 		<![CDATA[
-			select rnum, bpnumber, bptitle, mid, bpcontent, bpdate, bptype, pid 
+			select rnum, bpnumber, bptitle, mid, bpcontent, bpdate, bptype, pid, bpattachoname
 			from (
-			 	select rownum as rnum, bpnumber, bptitle, mid, bpcontent, bpdate, bptype, pid
+			 	select rownum as rnum, bpnumber, bptitle, mid, bpcontent, bpdate, bptype, pid, bpattachoname
 			 	from (
-			 		select rownum as rnum, bpnumber, bptitle, mid, bpcontent, bpdate, bptype, pid
+			 		select rownum as rnum, bpnumber, bptitle, mid, bpcontent, bpdate, bptype, pid, bpattachoname
 			 	from boardProduct
-			 	where pid=#{pid}
+			 	where pid=#{pid} and bptype=#{bptype}
 			 	order by bpnumber desc
 			 )
 			 where rownum <= #{pager.endRowNo}
@@ -44,4 +44,26 @@
 		delete from boardProduct
 		where bpnumber=#{bpnumber}
 	</delete>
+	<update id="updateByBpno" parameterType="BoardProduct">
+		update boardProduct
+		set bptitle=#{bptitle}, bpcontent=#{bpcontent}
+		<if test="bpattachoname!=null">
+			,bpattachoname=#{bpattachoname}
+			,bpattachtype=#{bpattachtype}
+			,bpattachdata=#{bpattachdata}
+		</if>
+		where bpnumber=#{bpnumber}
+	</update>
+	<select id="selectImageByBpno" parameterType="int" resultType="BoardProduct">
+		select bpattachoname, bpattachtype
+		from boardProduct
+		where bpnumber=#{bpnumber}
+	</select>
+	<select id="selectImageDataByBpno" parameterType="int" resultType="BoardProduct">
+		select bpattachdata
+		from boardProduct
+		where bpnumber=#{bpnumber}
+	</select>
+	
+	
 </mapper>

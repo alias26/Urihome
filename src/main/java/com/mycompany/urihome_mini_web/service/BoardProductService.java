@@ -16,30 +16,44 @@ public class BoardProductService {
 	@Resource
 	private BoardProductDao boardProductDao;
 	
-	public void writeReview(BoardProduct boardProduct) {
+	public void writeBoardProduct(BoardProduct boardProduct) {
 		int rowNum = boardProductDao.insert(boardProduct);
 	}
 	
 	// 페이지 가져오기
-	public List<BoardProduct> getReviewList(HashMap<String, Object> param) {
-		List<BoardProduct> reviewList = boardProductDao.selectByPage(param);
-		return reviewList;
+	public List<BoardProduct> getBoardProductList(HashMap<String, Object> param) {
+		List<BoardProduct> boardProductList = boardProductDao.selectByPage(param);
+		return boardProductList;
 	}
-
+	
 	// 전체 행수를 가져옴
-	public int getTotalRows(String pid) {
-		int totalRows = boardProductDao.count(pid);
+	public int getTotalRows(HashMap<String,String> param) {
+		int totalRows = boardProductDao.count(param);
 		return totalRows;
 	}
 
 	// 작성한 리뷰를 가져옴
-	public BoardProduct getReview(int bpnumber) {
+	public BoardProduct getBoardProduct(int bpnumber) {
 		BoardProduct review = boardProductDao.selectByBpno(bpnumber);
 		return review;
 	}
 
-	public void removeReview(int bpnumber) {
+	public void removeBoardProduct(int bpnumber) {
 		int rowReview = boardProductDao.deleteByBpno(bpnumber);
+	}
+
+	public void updateBoardProduct(BoardProduct boardProduct) {
+		int rowReview = boardProductDao.updateByBpno(boardProduct);
+	}
+
+	public BoardProduct getBoardProductImage(int bpnumber) {
+		BoardProduct boardProduct = boardProductDao.selectImageByBpno(bpnumber);
+		return boardProduct;
+	}
+
+	public byte[] getBoardProductImageData(int bpnumber) {
+		BoardProduct boardProduct = boardProductDao.selectImageDataByBpno(bpnumber);
+		return boardProduct.getBpattachdata();
 	}
 	
 }

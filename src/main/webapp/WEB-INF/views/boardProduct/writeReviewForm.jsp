@@ -23,6 +23,8 @@
 <link
 	href="${pageContext.request.contextPath}/resources/css/boardProduct/writeReviewForm.css"
 	rel="stylesheet">
+<script
+	src="${pageContext.request.contextPath}/resources/js/boardProduct/writeReviewForm.js"></script>
 <!-- user script-->
 <script type="text/javascript">
 </script>
@@ -34,7 +36,7 @@
 		 <form id="writeReviewForm" method="post" action="writeReview" enctype="multipart/form-data">
 		 	<!-- 상품후기 -->
 		 	<div class="board-title d-flex">
-		 		<button type="button" id="back-btn" onclick="history.go(-1)">
+		 		<button type="button" id="back-btn" onclick="location.href='${pageContext.request.contextPath}/product/product_detail?pid=${pid}'">
 			      	<i class="bi bi-chevron-left"></i>
 			     </button>
 		 		<h4 style="margin-top: 7px;"><strong>상품후기</strong></h4>
@@ -59,8 +61,12 @@
 		 			style="width: 100%; height: 300px;"></textarea>
 		 	</div>
 		 	
-		 	<div class="input-group mt-4">
-		 		<input id="bpattachdata" type="file" name="bpattach" class="form-control" >
+		 	<div class="input-group mt-4 row">
+		 		<div class="col-4">
+		 			<input id="bpattach" type="file" name="bpattach" class="form-control">
+		 		</div>
+		 		<div class="col-8" id="bpattachPreview" style="width:120px;height:120px;">
+		 		</div>
 		 	</div>
 		 	
 		 	<div class="mt-3 d-flex">
