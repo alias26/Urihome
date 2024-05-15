@@ -28,7 +28,7 @@
 	<div class="row">
 		<div class="col-xl-2 col-lg-3 sidebar">
 			<a href="#"
-				class="navbar-brand text-white text-center d-block mx-auto py-3 mb-4 bottom-border">AdminPage</a>
+				class="navbar-brand text-white text-center d-block mx-auto py-3 mb-4 bottom-border">관리자 페이지</a>
 			<div class="bottom-border pb-3">
 				<img src="${pageContext.request.contextPath}/resources/image/admin/admin.png" width="50px" height="50px" class="rounded-circle ms-3 me-3">
 				<b class="text-white me-2">
@@ -36,9 +36,13 @@
 				</b>
 			</div>
 			<ul class="navbar-nav flex-column mt-4">
+				<li class="nav-item"><a href="${pageContext.request.contextPath}/"
+					class="nav-link text-white p-3 mb-2 sidebar-link"> <i
+						class="fas fa-home text-white fa-lg me-3"></i>메인으로
+				</a></li>
 				<li class="nav-item"><a href="dashBoard"
 					class="nav-link text-white p-3 mb-2 sidebar-link ${side=='dashBoard'? 'current':'' }"> <i
-						class="fas fa-home text-white fa-lg me-3"></i>대시보드
+						class="fas fa-border-all text-white fa-lg me-3"></i>대시보드
 				</a></li>
 				<li class="nav-item"><a href="productManageView"
 					class="nav-link text-white p-3 mb-2 sidebar-link ${side=='productManage'? 'current':'' }"> <i
