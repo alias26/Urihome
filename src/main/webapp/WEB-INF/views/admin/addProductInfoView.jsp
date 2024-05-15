@@ -115,6 +115,12 @@
 									    인기 키워드
 									  </label>
 									</div>
+									<div class="form-check">
+									  <input class="form-check-input" type="radio" value="famous" name="banner" id="banner3">
+									  <label class="form-check-label" for="banner3">
+									   신상품
+									  </label>
+									</div>
 								</div>
 							</div>
 						</div>
