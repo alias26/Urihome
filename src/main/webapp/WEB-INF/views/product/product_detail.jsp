@@ -113,12 +113,20 @@
 	   				    <button type="button" class="btn btn-lg product_btn me-1" style="border: solid 0.5px; flex:1;">
 	   				    	<img src="${pageContext.request.contextPath}/resources/image/star.png" width="27px;">
 	   				    </button>
-	   					<button type="button" class="btn btn-lg product_btn me-1"
-	   							style="border: solid 0.5px; flex:3;"
-	   							 onclick="location.href = '${pageContext.request.contextPath}/cart'">
-	   							장바구니
-	   					</button>
-	   					<button type="button" class="btn btn-lg product_btn btn-dark me-1" style="border: solid 0.5px; flex:3;">구매하기</button>
+	   				    <c:if test="${product.pstock != 0}">
+		   					<button type="button" class="btn btn-lg product_btn me-1"
+		   							style="border: solid 0.5px; flex:3;"
+		   							 onclick="location.href = '${pageContext.request.contextPath}/cart'">
+		   							장바구니
+		   					</button>
+		   					<button type="button" class="btn btn-lg product_btn btn-dark me-1" style="border: solid 0.5px; flex:3;">구매하기</button>
+	   					</c:if>
+	   					<c:if test="${product.pstock == 0}">
+	   						<button type="button" class="btn btn-lg product_btn btn-dark me-1"
+		   							style="border: solid 0.5px; flex:3;" disabled>
+		   							일시 품절된 상품입니다.
+		   					</button>
+	   					</c:if>
 		   			</div>	
 		   		 </div>
 		   		</div>
