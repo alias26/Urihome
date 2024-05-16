@@ -16,6 +16,7 @@
 		<typeAlias type="com.mycompany.urihome_mini_web.dto.ProductCategory" alias="ProductCategory"/>
 		<typeAlias type="com.mycompany.urihome_mini_web.dto.ProductOption" alias="ProductOption"/>
 		<typeAlias type="com.mycompany.urihome_mini_web.dto.Cart" alias="Cart"/>
+		<typeAlias type="com.mycompany.urihome_mini_web.dto.OrderItemList" alias="OrderItemList"/>
 		
 	</typeAliases>
 </configuration>

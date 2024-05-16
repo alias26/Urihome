@@ -1,6 +1,10 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<!--jstl를 사용하기 위해 사용해야하는 부분 -->
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<!--jstl 함수를 사용하기 위해 사용해야하는 부분  -->
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html>
 
@@ -59,6 +63,9 @@
         document.getElementById('address2_3').value = '';
     }
 </script>
+
+
+
 </head>
 
 <body class="pt-5">
@@ -257,23 +264,33 @@
 				</form>
 			</div>
 			<div class="flex-column ms-4" id="orderProductDiv">
-				<div style="width: 250px;">
+				<div style="width: 500px;">
 					<div>
 						<h5>주문상품</h5>
 					</div>
 					<div class="container">
-						 <c:forEach items="${cartList}" var="cart">
+						 <c:forEach items="${orderItemList}" var="orderItem">
                			 <!-- 각 카트 아이템에 대한 정보를 출력합니다 -->	                		
 								<div class="d-flex mb-4">							
 									<div class="me-1">
-										<a href=""><img
-											src="${pageContext.request.contextPath}/resources/image/best5.jpg"
+										<a href="">
+									<img src="../product/productImageDownload?pid=${orderItem.pid}&index=1&pthumbBodyType=thumb"
 											width="90px" height="90px" class="rounded-3"></a>
 									</div>
-									<div class="description ms-auto">
-										<strong>상품명: ${product.pname}</strong>
-										<p>수량: ${cart.pbuyAmount}개</p>
-										<p>${product.pprice}원</p>
+									<div class="description" style="text-align:left;">
+										<strong>
+											<c:set var="pname" value="${orderItem.pname}"/>
+											<c:choose>
+									            <c:when test="${fn:length(pname) > 10}">
+									                ${fn:substring(pname, 0, 10)}...
+									            </c:when>
+									            <c:otherwise>
+									                ${orderItem.pname}
+									            </c:otherwise>
+									        </c:choose>
+								        </strong>
+										<p>수량: ${orderItem.pbuyAmount}개</p>
+										<p>${orderItem.pbuyAmount*orderItem.pprice}원</p>
 									</div>
 									<div class="ms-auto me-0">
 										<button class="btn btn-sm">X</button>
@@ -287,22 +304,48 @@
 						<h5>결제 정보</h5>
 					</div>
 					<div class="d-flex">
-						<span class="me-auto">주문 상품</span> <strong>x,xxx원</strong>
+						<span class="me-auto">주문 상품</span> <strong id="totalprice"></strong>
 					</div>
 					<div class="d-flex">
-						<span class="me-auto">배송비</span> <strong>+x,xxx원</strong>
+						<span class="me-auto">배송비</span> <strong id="deliveryFee"></strong>
 					</div>
 				</div>
 				<div>
 					<div class="d-flex text-bg-light" id="totalPrice">
 						<h5 class="me-auto">최종 결제 금액</h5>
-						<strong>x,xxx원</strong>
+						<strong id="totalPayment"></strong>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 	<%@ include file="/WEB-INF/views/common/footer.jsp"%>
+	
+<script>
+    // 주문 상품 가격의 합계를 저장할 변수
+    var totalPrice = 0;
+
+    // 주문 상품 목록을 순회하면서 각 상품 가격을 totalPrice에 더함
+    <c:forEach items="${orderItemList}" var="orderItem">
+        // 각 주문 상품의 가격과 수량을 JavaScript 변수에 저장
+        var quantity = ${orderItem.pbuyAmount};
+        var price = ${orderItem.pprice};
+
+        // 각 상품 가격을 totalPrice에 더함
+        totalPrice += quantity * price;
+    </c:forEach>
+    $('#totalprice').html(totalPrice+'원');
+    
+ 	// 배송비 계산
+    var deliveryFee = totalPrice < 50000 ? 3000 : 0;
+
+    // 총 결제 금액 계산
+    var totalPayment = totalPrice + deliveryFee;
+
+    // HTML 요소에 총 결제 금액 값을 할당하여 화면에 표시
+    $('#deliveryFee').html(deliveryFee + '원');
+    $('#totalPayment').html(totalPayment + '원');
+</script>
 </body>
 
 </html>

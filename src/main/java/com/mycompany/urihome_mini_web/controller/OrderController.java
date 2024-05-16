@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.mycompany.urihome_mini_web.dto.Cart;
 import com.mycompany.urihome_mini_web.dto.Member;
+import com.mycompany.urihome_mini_web.dto.OrderItemList;
 import com.mycompany.urihome_mini_web.security.UriHomeUserDetails;
 import com.mycompany.urihome_mini_web.service.CartService;
 import com.mycompany.urihome_mini_web.service.MemberService;
@@ -80,6 +81,15 @@ public class OrderController {
 		
 		model.addAttribute("cartList",cartList);
 		
+			
+
+
+		List<OrderItemList> orderItemList = orderService.getOrderItem(mid);
+				model.addAttribute("orderItemList",orderItemList);
+				for(OrderItemList pro: orderItemList) {
+					log.info("" + pro);
+		}
+				
 		
 //		Cart cart = cartList.get(0);
 //		log.info(" " + cart.getPbuyAmount());

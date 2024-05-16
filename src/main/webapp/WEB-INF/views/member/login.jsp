@@ -15,7 +15,7 @@
 	<link href="${pageContext.request.contextPath}/resources/css/member/login.css" rel="stylesheet">
 	<%--  <!-- jquery 로그인 유효성 검사-->
 	  <script src="${pageContext.request.contextPath}/resources/js/member/loginForm.js"></script> --%>
-		<title>로그인 페이지</title>
+		<title>로그인 페이지</title>	
 </head>
 
 <body>
@@ -25,7 +25,7 @@
 			<img src="${pageContext.request.contextPath}/resources/image/common/LOGO.png" width="150"/>
 		</a>
 	</div>
-	<div class="login-wrapper">
+	<div class="login-wrapper" style="margin-top:30px;">
 		<h2>로그인</h2>
 		<form method="post" action="${pageContext.request.contextPath}/login" id="login-form">
 			<input type="text" name="mid" placeholder="아이디" required>
