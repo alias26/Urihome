@@ -3,6 +3,7 @@
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/header.css" type="text/css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
+<script src="${pageContext.request.contextPath}/resources/js/product/product_list.js" rel="stylesheet"></script>
 
 <div id="header" class="header">
 	<nav class="navbar navbar-expand-lg fixed-top bg-light">
@@ -30,16 +31,20 @@
 					<button class="btn" aria-expanded="false">BEST</button>
 				</li>
 				<li class="nav-item ms-3 me-3">
-					<button class="btn" aria-expanded="false">그릇</button>
+					<a class="btn" id="categoryHeaderBtn" aria-expanded="false" onclick="categoryFunction('그릇'); return false;"
+						href="${pageContext.request.contextPath}/product/product_list?pcategoryName='그릇'">그릇</a>
 				</li>
 				<li class="nav-item ms-3 me-3">
-					<button class="btn" aria-expanded="false">접시</button>
+					<a class="btn" aria-expanded="false" onclick="categoryFunction('접시'); return false;"
+						href="${pageContext.request.contextPath}/product/product_list?pcategoryName='접시'">접시</a>
 				</li>
 				<li class="nav-item ms-3 me-3">
-					<button class="btn" aria-expanded="false">컵</button>
+					<a class="btn" aria-expanded="false" onclick="categoryFunction('컵'); return false;"
+						href="${pageContext.request.contextPath}/product/product_list?pcategoryName='컵'">컵</a>
 				</li>
 				<li class="nav-item ms-3 me-3">
-					<button class="btn" aria-expanded="false">수저세트</button>
+					<a class="btn" aria-expanded="false" onclick="categoryFunction('수저세트'); return false;"
+						href="${pageContext.request.contextPath}/product/product_list?pcategoryName='수저세트'">수저세트</a>
 				</li>
 				<li class="nav-item dropdown ms-3 me-3">
 					<button class="btn" aria-expanded="false">커뮤니티</button>
@@ -94,7 +99,7 @@
 							<li><p id="cartInfo">장바구니가 비어있습니다.</p></li>
 							<hr>
 							<li id="cartMoveButton" class="text-center">
-								<button onclick="location.href = '${pageContext.request.contextPath}/cart'" class="btn btn-dark btn-sm" aria-expanded="false">
+								<button onclick="location.href = '${pageContext.request.contextPath}/cart/cartView'" class="btn btn-dark btn-sm" aria-expanded="false">
 									장바구니로 이동</button>
 							</li>
 						</ul>
