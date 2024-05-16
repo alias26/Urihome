@@ -140,9 +140,9 @@
 				</div>
 			</div>
 			<div class="final-order">
-				<button type="button" class="btn btn-secondary btn-md ">선택상품
-					주문</button>
-				<button type="button" class="btn btn-dark btn-md ">전체상품 주문</button>
+				<a href="javascript:void(0);" onclick="getSelectCartOrder()" class="btn btn-secondary btn-md ">선택상품
+					주문</a>
+				<a href="${pageContext.request.contextPath}/order/orderForm" class="btn btn-dark btn-md ">전체상품 주문</a>
 			</div>
 		</div>
 		<div class="col-2"></div>

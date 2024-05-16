@@ -138,7 +138,7 @@ function removeCart(pid){
          }
      
      });
-};
+}
 
 function getTotalPrice(){
 	var ptPrice = $(".list-unstyled").children(".cart-items").find(".ptPrice");
@@ -162,4 +162,34 @@ function getTotalPrice(){
 	$("#deliveryFee").text(deliveryFee);
 	$("#totalCartPrice").text(totalPrice+deliveryFee);
 	
+}
+
+function getSelectCartOrder(){
+	var pidList = $(".list-unstyled").children(".cart-items").find("input[name=pid]");
+	var cartCheckBox = $(".list-unstyled").children(".cart-items").find("input[name=order-checkbox]");
+	var selected = []
+	
+	for(var i = 0; i < pidList.length; i++){
+		if(cartCheckBox[i].checked){
+			selected.push(pidList[i].value);
+		}
+	}
+	
+	if(selected.length == 0){
+		return;
+	}
+	
+	console.log(selected);
+	
+	 $.ajax({
+         url: "../order/orderForm", 
+         method: "GET",
+         traditional : true,
+         data: {
+        	 selected:selected
+         },
+         success: function(response) {
+         }
+     });
+
 }

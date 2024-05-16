@@ -2,12 +2,15 @@ package com.mycompany.urihome_mini_web.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.mycompany.urihome_mini_web.dto.Cart;
@@ -55,12 +58,13 @@ public class OrderController {
 	
 	@GetMapping("/orderForm")
 	@Secured("ROLE_USER")
-	public String orderWait(Model model,String pid, Authentication authentication) {
+	public String orderWait(HttpServletRequest request, Model model, Authentication authentication) {
 		UriHomeUserDetails userDetails = (UriHomeUserDetails) authentication.getPrincipal();
 		Member member = userDetails.getMember();
 		model.addAttribute("member", member);
 		String mid = member.getMid();
 		
+		String[] selected = request.getParameterValues("selected");
 		
 		if(member.getMtel() != null) {
 			String[] mtel = member.getMtel().split("-");
@@ -75,19 +79,12 @@ public class OrderController {
 		
 		
 		List<Cart> cartList = cartService.getCartList(mid);
-		for(Cart ca : cartList) {
-			log.info("" + ca);			
-		}
-		
 		model.addAttribute("cartList",cartList);
-		
+	
 			
-
-
 		List<OrderItemList> orderItemList = orderService.getOrderItem(mid);
 				model.addAttribute("orderItemList",orderItemList);
-				for(OrderItemList pro: orderItemList) {
-					log.info("" + pro);
+		for(OrderItemList pro: orderItemList) {
 		}
 				
 		
@@ -103,10 +100,17 @@ public class OrderController {
 //		Product product = productList.get(0);
 //		log.info(" " + product.getPname());
 //		model.addAttribute("product",product);
-		return "/order/orderForm";
+				
+		return "order/orderForm";
 	}
 	
-	
+	@Secured("ROLE_USER")
+	@PostMapping("/selectOrder")
+	public String selectOrder(HttpServletRequest request) {
+		String[] selected = request.getParameterValues("selected");
+		
+		return "redirect:/order/orderForm";
+	}
 	
 	
 	
