@@ -33,4 +33,76 @@ $(function(){
 		}
 	});
   });
+  
+  $("#insertCart").click(function(){
+  	var pid = $("#pid").text();
+  	console.log(pid);
+  	var pname = $("#pname").val();
+  	console.log(pname);
+  	var pprice = $("#pprice").val(); 
+  	console.log(pprice);
+  	var pbuyAmount = $("#pbuyAmount").val();
+  	console.log(pbuyAmount);
+  	var cartItem = {
+  	    pid: pid,
+   	    pname: pname,
+  	    pprice: pprice,  
+  	    pbuyAmount: pbuyAmount
+  	};
+  	
+  	console.log(cartItem);
+  	cartItem = JSON.stringify(cartItem);
+      $.ajax({
+          url: "../cart/addCartItem", 
+          method: "POST",
+          data: cartItem,
+          contentType: "application/json",
+          success: function(response) {
+          	
+               document.location.href="../cart/cartView";   
+          }
+      
+      })
+  });
+  $(".plus").click(function() {
+      var value = parseInt($(this).parent("div").find("input").val());
+      $(this).parent("div").find("input").val(++value);
+
+   });
+   $(".minus").click(function() {
+      var value = parseInt($(this).parent("div").find("input").val());
+      if (value > 1) {
+
+         $(this).parent("div").find("input").val(--value);
+      }
+
+   });
+  
+  $("#addCart").click(function(){
+	   	var pid = $("#pid").text();
+	   	var pname = $("#pname").text();
+	   	var pprice = $("#pprice").text(); 
+	   	var pbuyAmount = $("#pbuyAmount").val();
+	   	
+	   	var cartItem = {
+	   	    pid: pid,
+	    	pname: pname,
+	   	    pprice: pprice,  
+	   	    pbuyAmount: pbuyAmount
+	   	};
+	   	
+	   	console.log(cartItem);
+	   	cartItem = JSON.stringify(cartItem);
+	       $.ajax({
+	           url: "../cart/addCartItem", 
+	           method: "POST",
+	           data: cartItem,
+	           contentType: "application/json",
+	           success: function(response) {
+	           	console.log("success");
+	           	location.href=" ../cart/cartView";
+	           }
+	       
+	       });
+	  });
 });

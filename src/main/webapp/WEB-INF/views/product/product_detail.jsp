@@ -59,8 +59,8 @@
 	   		<div style="flex:1;">
 		   		<div class="text-box">
 		   			<div id="info" style="margin-top: 80px;"> 
-		   				<div id="name">${product.pname}</div>
-		   				<div id="price">${product.pprice}원</div>
+		   				<div id="pname">${product.pname}</div>
+		   				<div id="pprice">${product.pprice}</div>
 		   			</div>	   				
 		   			
 		   			<div id="detail">
@@ -82,8 +82,8 @@
 		   			<!-- 옵션 선택 -->
 		   			<c:forEach var="poptions" items="${productOption}">
 			   			<div id="option" style="margin-top: 20px; margin-bottom: 20px;">
-			   			  <label for="color" class="form-label">${poptions.key}</label>
-		                  <select id="color" name="color" class="form-control">
+			   			  <label class="form-label">${poptions.key}</label>
+		                  <select  name="color" class="form-control">
 			                  <option selected value ="select">- [필수] 옵션을 선택해 주세요. -</option>
 			                  <option value="vertical">------------------</option>
 			                  <c:forEach var="poption" items="${poptions.value}">
@@ -94,7 +94,7 @@
 		   			</c:forEach>
 		   			<div>
 		   				<button class="minus btn btn-dark btn-sm">-</button>
-						<input class=" cart-number" name="item2" value="1" style="width:80px;text-align:center;">
+						<input class=" cart-number" name="item2" value="1" id="pbuyAmount" style="width:80px;text-align:center;">
 						<button class="plus btn btn-dark btn-sm">+</button>
 					</div>
 		   			
@@ -115,8 +115,8 @@
 	   				    </button>
 	   				    <c:if test="${product.pstock != 0}">
 		   					<button type="button" class="btn btn-lg product_btn me-1"
-		   							style="border: solid 0.5px; flex:3;"
-		   							 onclick="location.href = '${pageContext.request.contextPath}/cart'">
+		   							id="addCart" style="border: solid 0.5px; flex:3;"
+		   							 onclick="addcart()">
 		   							장바구니
 		   					</button>
 		   					<button type="button" class="btn btn-lg product_btn btn-dark me-1" style="border: solid 0.5px; flex:3;">구매하기</button>
@@ -277,4 +277,6 @@
 		</div>
 		<%@ include file="/WEB-INF/views/common/footer.jsp" %>
    </body>
+   <script>
+   </script>
 </html>
