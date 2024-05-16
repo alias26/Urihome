@@ -1,24 +1,22 @@
 package com.mycompany.urihome_mini_web.controller;
 
-import javax.validation.Valid;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.Errors;
-import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.InitBinder;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.mycompany.urihome_mini_web.dto.Cart;
 import com.mycompany.urihome_mini_web.dto.Member;
-import com.mycompany.urihome_mini_web.dto.MemberValidator;
 import com.mycompany.urihome_mini_web.security.UriHomeUserDetails;
+import com.mycompany.urihome_mini_web.service.CartService;
 import com.mycompany.urihome_mini_web.service.MemberService;
-
+import com.mycompany.urihome_mini_web.service.OrderService;
+import com.mycompany.urihome_mini_web.service.ProductService;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -34,14 +32,34 @@ public class OrderController {
 	@Autowired
 	private MemberService memberService;
 	
+	@Autowired
+	private ProductService productService;
 	
+	@Autowired
+	private CartService cartService;
+	
+	@Autowired
+	private OrderService orderService;
+	
+	
+	/*@GetMapping("/order")
+    public String getOrder(Model model) {
+        List<Map<String, Object>> orderItemList = orderService.getOrderItems();
+        model.addAttribute("orderItemList", orderItemList);
+        return "orderPage";
+    }*/
+	
+	
+	 
 	
 	@GetMapping("/orderForm")
 	@Secured("ROLE_USER")
-	public String orderWait(Model model, Authentication authentication) {
+	public String orderWait(Model model,String pid, Authentication authentication) {
 		UriHomeUserDetails userDetails = (UriHomeUserDetails) authentication.getPrincipal();
 		Member member = userDetails.getMember();
 		model.addAttribute("member", member);
+		String mid = member.getMid();
+		
 		
 		if(member.getMtel() != null) {
 			String[] mtel = member.getMtel().split("-");
@@ -54,14 +72,41 @@ public class OrderController {
 		String[] mphone = member.getMphone().split("-");
 		model.addAttribute("mphone", mphone);
 		
+		
+		List<Cart> cartList = cartService.getCartListByMid(mid);
+		for(Cart ca : cartList) {
+			log.info("" + ca);			
+		}
+		
+		model.addAttribute("cartList",cartList);
+		
+		
+//		Cart cart = cartList.get(0);
+//		log.info(" " + cart.getPbuyAmount());
+//		model.addAttribute("cart", cart);
+//		
+//		
+//		List<Product> productList = productService.getProductListByPid(pid);
+//		for(Product pro : productList) {
+//			log.info("" + pro);
+//		}
+//		Product product = productList.get(0);
+//		log.info(" " + product.getPname());
+//		model.addAttribute("product",product);
 		return "/order/orderForm";
 	}
 	
-	/*member라는 이름의 폼 데이터를 검증하는 데에 orderValidator 클래스의 검증 규칙을 사용하겠다고 선언하는 것입니다.*/
+	
+	
+	
+	
+	
+	/*member라는 이름의 폼 데이터를 검증하는 데에 orderValidator 클래스의 검증 규칙을 사용하겠다고 선언하는 것입니다.
 	@InitBinder("member")
 	public void orderFormValidator(WebDataBinder binder) {
 		binder.setValidator(new MemberValidator());
-	}
+	}*/
+	
 	
 	
 	/*@PostMapping("/orderWait")

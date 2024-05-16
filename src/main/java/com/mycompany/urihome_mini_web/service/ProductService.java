@@ -7,7 +7,6 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import com.mycompany.urihome_mini_web.dao.PimageDao;
 import com.mycompany.urihome_mini_web.dao.ProductCategoryDao;
@@ -64,6 +63,9 @@ public class ProductService {
 		Product product = productDao.selectByPid(pid);
 		return product;
 	}
+	
+	
+	
 
 	public void updateProduct(Product product, ProductCategory category, List<ProductOption> optionDelList,
 			List<ProductOption> poptionNameList, List<Pimage> pImages) {
@@ -196,5 +198,9 @@ public class ProductService {
 		return expenses;
 	}
 
+	public List<Product> getProductListByPid(String pid) {		
+		List<Product> productList = productDao.getProduct(pid);
+		return productList;
+	}
 	
 }

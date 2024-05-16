@@ -262,21 +262,24 @@
 						<h5>주문상품</h5>
 					</div>
 					<div class="container">
-						<div class="d-flex mb-4">
-							<div class="me-1">
-								<a href=""><img
-									src="${pageContext.request.contextPath}/resources/image/best5.jpg"
-									width="90px" height="90px" class="rounded-3"></a>
-							</div>
-							<div class="description ms-auto">
-								<strong>상품 이름1</strong>
-								<p>수량: x개</p>
-								<p>x,xxx원</p>
-							</div>
-							<div class="ms-auto me-0">
-								<button class="btn btn-sm">X</button>
-							</div>
-						</div>
+						 <c:forEach items="${cartList}" var="cart">
+               			 <!-- 각 카트 아이템에 대한 정보를 출력합니다 -->	                		
+								<div class="d-flex mb-4">							
+									<div class="me-1">
+										<a href=""><img
+											src="${pageContext.request.contextPath}/resources/image/best5.jpg"
+											width="90px" height="90px" class="rounded-3"></a>
+									</div>
+									<div class="description ms-auto">
+										<strong>상품명: ${product.pname}</strong>
+										<p>수량: ${cart.pbuyAmount}개</p>
+										<p>${product.pprice}원</p>
+									</div>
+									<div class="ms-auto me-0">
+										<button class="btn btn-sm">X</button>
+									</div>
+								</div>							
+            			</c:forEach>
 					</div>
 				</div>
 				<div class="mb-3">

@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.mycompany.urihome_mini_web.dao.CartDao">
-
+	
+	<select id="selectCartListByMid" parameterType="String" resultType="Cart">
+		select cnumber, mid, pid, pbuyAmount
+		from cart
+		where mid = #{mid}
+	</select>
+	
 </mapper>

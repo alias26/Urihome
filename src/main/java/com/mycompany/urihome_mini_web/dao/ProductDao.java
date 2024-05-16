@@ -13,13 +13,14 @@ public interface ProductDao {
 	public int count();
 	public List<Product> selectByPage(Pager pager);
 	public int insert(Product product);
-	public Product selectByPid(String pid);
+	public Product selectByPid(String pid);	
 	public int update(Product product);
 	public int deleteByPid(String pid);
 	public List<Product> selectAll();
 	public List<Product> selectByPcategoryName(String pcategoryName);
 	public int getSales();
 	public int getExpenses();
+	public List<Product> getProduct(String pid);
 	
 
 }

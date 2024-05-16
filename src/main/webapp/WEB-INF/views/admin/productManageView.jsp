@@ -16,19 +16,37 @@
 	rel="stylesheet">
 <script
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+	
+	
 <!-- jquery -->
 <script
 	src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
 <!-- user script-->
 <script
 	src="${pageContext.request.contextPath}/resources/js/admin/productManageView.js"></script>
+
 <script>
-	
+    $(document).ready(function() {
+        // 카테고리 버튼 클릭 시 정렬 기준으로 'category'를 파라미터로 전달
+        $("#sortByCategory").click(function() {
+            window.location.href = "productManage?sortBy=category";
+        });
+        
+        // 가격 버튼 클릭 시 정렬 기준으로 'price'를 파라미터로 전달
+        $("#sortByPrice").click(function() {
+            window.location.href = "productManage?sortBy=price";
+        });
+        
+        // 판매량 버튼 클릭 시 정렬 기준으로 'sellAmount'를 파라미터로 전달
+        $("#sortBySellAmount").click(function() {
+            window.location.href = "productManage?sortBy=sellAmount";
+        });
+    });
 </script>
-<style>
-</style>
 </head>
+
 <body id="wrap" style="overflow-x: hidden">
+	
 	<div class="row">
 		<div class="col-xl-2 col-lg-3">
 			<%@ include file="/WEB-INF/views/admin/adminHeader.jsp"%>
@@ -42,7 +60,10 @@
 			<div class="card" style="width:95%; margin: 0 auto;">
 				<div class="card-body">
 					<table class="table table-bordered table-hover"
-						id="productInfoTable">
+						id="productInfoTable">					
+						<button id="sortByCategory">카테고리 정렬</button>
+						<button id="sortByPrice">가격 정렬</button>
+						<button id="sortBySellAmount">판매량 정렬</button>						
 						<thead class="table-secondary">
 							<tr>
 								<th scope="col">상품 번호</th>
@@ -110,5 +131,6 @@
 			</div>
 		</div>
 	</div>
+
 </body>
 </html>

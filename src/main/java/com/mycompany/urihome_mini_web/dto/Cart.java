@@ -8,4 +8,6 @@ public class Cart {
 	private String mid;
 	private String pid;
 	private int pbuyAmount;
+	
+	
 }

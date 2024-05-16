@@ -68,4 +68,14 @@
 	<select id="getExpenses" resultType="int">
 		select sum(ototalprice) as expenses from orderitem
 	</select>
+	
+	<select id="getProduct" parameterType="String" resultType="Product">
+		select pname, pprice 
+		from product
+		where pid=#{pid}
+	</select>
+	
+	
+	
+	
 </mapper>
