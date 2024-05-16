@@ -1,9 +1,10 @@
 package com.mycompany.urihome_mini_web.service;
 
+
+import java.util.HashMap;
 import java.util.List;
 
-import javax.annotation.Resource;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.mycompany.urihome_mini_web.dao.CartDao;
@@ -14,23 +15,41 @@ import lombok.extern.slf4j.Slf4j;
 @Service
 @Slf4j
 public class CartService {
-	@Resource
+	@Autowired
 	private CartDao cartDao;
 	
-	/*public Cart getCart(String mid) {
-		Cart cart= cartDao.selectByMid(mid);		
-		return cart;
-}*/
-
-
-	public List<Cart> getCartListByMid(String mid) {
+	public void createCart(Cart cart) {
+		cartDao.insert(cart);
 		
-		return cartDao.selectCartListByMid(mid);
+	}
+	public List<Cart> getCartList(String mid) {
+		List<Cart> cartItem= cartDao.cartProduct(mid);
+		return cartItem;
+	}
+	public Cart findItem(HashMap<String, String> param) {
+		Cart result=cartDao.findByPidMid(param);
+		return result;
+	}
+	public void updateCart(Cart cart) {
+		HashMap<String, String> param = new HashMap<>();
+		param.put("pid", cart.getPid());
+		param.put("mid", cart.getMid());
+		Cart existCart= cartDao.findByPidMid(param);
+		cart.setPbuyAmount(existCart.getPbuyAmount()+cart.getPbuyAmount());
+		cartDao.updateCart(cart);
+		
+	}
+	public void removeCart(HashMap<String, String> param) {
+		int row = cartDao.deleteCart(param);
+	}
+	public void updateCartItemAmount(Cart cart) {
+		cart.setPbuyAmount(cart.getPbuyAmount());
+		cartDao.updateCart(cart);
 	}
 
-	/*public Cart getPID(String mid) {
-		Cart cart = cartDao.selectByPid(pid);
-		return product;
-	}*/
-	
+
+
+
+
+
 }

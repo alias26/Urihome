@@ -73,7 +73,7 @@ public class OrderController {
 		model.addAttribute("mphone", mphone);
 		
 		
-		List<Cart> cartList = cartService.getCartListByMid(mid);
+		List<Cart> cartList = cartService.getCartList(mid);
 		for(Cart ca : cartList) {
 			log.info("" + ca);			
 		}

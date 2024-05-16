@@ -17,7 +17,6 @@ body {
 }
 
 .shopping-cart-layout {
-	height: 500px;
 	margin-top:20px;
 }
 
@@ -68,15 +67,22 @@ input[type="checkbox"] {
 	margin-right: 90px;
 	margin-left: 10px;
 }
-.total-price-count{
+.cartTprice{
 	background-color:lightgray;
 	/* text-align:center; */
 	margin-top:50px;
 	height:70px;
 	border-radius: 25px;
+
 }
 .final-order{
 
 	margin:30px;
 	text-align:center;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
 }
