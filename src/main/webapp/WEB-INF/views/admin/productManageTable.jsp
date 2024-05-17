@@ -9,6 +9,10 @@
 
 <table class="table table-bordered table-hover"
 						id="productInfoTable">
+	<button class="btn btn-sm mb-2 me-2 border" id="sortByCategory">카테고리 정렬</button>
+	<button class="btn btn-sm mb-2 me-2 border" id="sortByPrice">가격 정렬</button>
+	<button class="btn btn-sm mb-2 border" id="sortBySellAmount">판매량 정렬</button>						
+	<thead class="table-secondary">
 	<thead class="table-secondary">
 		<tr>
 			<th scope="col">상품 번호</th>

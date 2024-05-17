@@ -62,11 +62,11 @@
 	</select>
 	
 	<select id="getSales" resultType="int">
-		select sum(psellamount) as sales from product
+		select sum(ototalprice*0.08) as sales from orderHistory
 	</select>
 	
 	<select id="getExpenses" resultType="int">
-		select sum(ototalprice) as expenses from orderitem
+		select sum(ototalprice) as expenses from orderHistory
 	</select>
 	
 	<select id="getProduct" parameterType="String" resultType="Product">
