@@ -21,4 +21,9 @@
 		from orderHistory
 		where mid=#{mid}
 	</select>
+	<select id="getOrderHistory" parameterType="String" resultType="OrderHistory">
+		select *
+		from orderHistory
+		where mid=#{mid}
+	</select>
 </mapper>

@@ -20,3 +20,20 @@ function getReviewPage(pid, rpageNo) {
 		}
 	});
 }
+
+function writeReview(pid){
+	$.ajax({
+		url : "../boardProduct/isWriteReview?pid="+pid,
+		method : "get",
+		contentType : "application/json; charset:UTF-8",
+		success : function(data) {
+			console.log(data);
+			var isBought = data;
+			if(isBought){
+				location.href = "../boardProduct/writeReviewForm?pid="+pid;
+			}else{
+				
+			}
+		}
+	})
+}

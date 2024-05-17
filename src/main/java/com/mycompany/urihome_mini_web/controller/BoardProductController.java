@@ -5,9 +5,9 @@ import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
@@ -17,9 +17,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.mycompany.urihome_mini_web.dto.BoardProduct;
+import com.mycompany.urihome_mini_web.dto.Member;
+import com.mycompany.urihome_mini_web.dto.OrderHistory;
 import com.mycompany.urihome_mini_web.dto.Pager;
-import com.mycompany.urihome_mini_web.dto.Pimage;
+import com.mycompany.urihome_mini_web.security.UriHomeUserDetails;
 import com.mycompany.urihome_mini_web.service.BoardProductService;
+import com.mycompany.urihome_mini_web.service.OrderService;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -30,6 +33,8 @@ import lombok.extern.slf4j.Slf4j;
 public class BoardProductController {
 	@Autowired
 	public BoardProductService bpService;
+	@Autowired
+	public OrderService orderService;
 	
 	// 리뷰 폼
 	@Secured("ROLE_USER")
@@ -380,5 +385,19 @@ public class BoardProductController {
 		os.write(data);
 		os.flush();
 		os.close();
+	}
+	
+	@GetMapping("/isWriteReview")
+	public ResponseEntity<Boolean> isWriteReview(String pid, Authentication authentication) {
+		UriHomeUserDetails uriHomeUserDetails = (UriHomeUserDetails) authentication.getPrincipal();
+		Member member = uriHomeUserDetails.getMember();
+		String mid = authentication.getName();
+		
+		List<OrderHistory> ohistoryList = orderService.getOrderHistory(mid);
+		List<String> ohistoryPidList = orderService.getOrderHistoryPid(ohistoryList);
+		
+		Boolean isBoughtPid = ohistoryPidList.contains(pid) ? true : false;
+		
+		return ResponseEntity.ok(isBoughtPid);
 	}
 }

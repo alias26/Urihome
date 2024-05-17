@@ -3,7 +3,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
-
+<script src="${pageContext.request.contextPath}/resources/js/boardProduct/qnaListForm.js"></script>
 
 <div id="tab04">
 	<div class="d-flex" id="review-top" style="justify-content: space-between;">

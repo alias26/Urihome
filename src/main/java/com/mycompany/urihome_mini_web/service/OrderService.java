@@ -1,6 +1,7 @@
 package com.mycompany.urihome_mini_web.service;
 
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -16,6 +17,7 @@ import com.mycompany.urihome_mini_web.dao.RecipientDao;
 import com.mycompany.urihome_mini_web.dto.Cart;
 import com.mycompany.urihome_mini_web.dto.Order;
 import com.mycompany.urihome_mini_web.dto.OrderHistory;
+import com.mycompany.urihome_mini_web.dto.OrderItem;
 import com.mycompany.urihome_mini_web.dto.OrderItemList;
 import com.mycompany.urihome_mini_web.dto.Orderer;
 import com.mycompany.urihome_mini_web.dto.Recipient;
@@ -141,5 +143,25 @@ public class OrderService {
 			
 			int orderItemRow = orderItemDao.insertPayItems(param);
 		}
+	}
+
+
+	public List<OrderHistory> getOrderHistory(String mid) {
+		List<OrderHistory> orderHistoryList = orderHistoryDao.getOrderHistory(mid);
+		return orderHistoryList;
+	}
+
+
+	public List<String> getOrderHistoryPid(List<OrderHistory> ohistoryList) {
+		Iterator<OrderHistory> iter = ohistoryList.iterator();
+		List<String> orderHistoryPidList = new ArrayList<>();
+		while(iter.hasNext()) {
+			OrderHistory ohistory = iter.next();
+			List<OrderItem> orderItemList = orderItemDao.getOrderItemList(ohistory.getOnumber());
+			for(OrderItem oitem : orderItemList) {
+				orderHistoryPidList.add(oitem.getPid());
+			}
+		}
+		return orderHistoryPidList;
 	}
 }

@@ -11,4 +11,5 @@ import com.mycompany.urihome_mini_web.dto.OrderItemList;
 public interface OrderHistoryDao {
 	public int order(OrderHistory orderHistory);
 	public int getOnumber(String mid);
+	public List<OrderHistory> getOrderHistory(String mid);
 }

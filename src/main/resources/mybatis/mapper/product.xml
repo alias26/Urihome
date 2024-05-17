@@ -30,7 +30,7 @@
 		)
 		values(
 			#{pid}, #{pname}, #{pprice}, #{pstock}, 
-			 sysdate, 0, 0, 0, 'Y'
+			 sysdate, 0, 0, 0, #{pstatus}
 		)
 	</insert>
 	

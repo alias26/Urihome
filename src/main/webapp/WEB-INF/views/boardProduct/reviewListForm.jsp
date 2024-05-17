@@ -3,6 +3,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+ <script src="${pageContext.request.contextPath}/resources/js/boardProduct/reviewListForm.js"></script>
 
 
 <div id="tab03">
@@ -10,7 +11,7 @@
 		<h5><strong>REVIEW (${reviewCount})</strong></h5>
 		<div>
 		<button type="button" class="btn btn-sm" style="border: solid 0.5px;"
-		onclick="location.href = '${pageContext.request.contextPath}/boardProduct/writeReviewForm?pid=${pid}'">리뷰등록</button>
+		onclick="writeReview('${pid}')">리뷰등록</button>
 	 	</div>
 	</div>
 	<hr/>
