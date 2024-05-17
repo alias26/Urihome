@@ -20,4 +20,9 @@
 		from productCategory
 		where pid=#{pid}
 	</select>
+	<select id="selectByPbanner" resultType="String">
+		select *
+		from productCategory
+		where pbanner=#{pbanner}
+	</select>
 </mapper>

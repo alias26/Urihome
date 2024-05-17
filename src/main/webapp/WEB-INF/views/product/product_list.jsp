@@ -81,7 +81,7 @@
 										src="https://ssueim.com/web/product/big/202404/7e887ef07fda6770589a9bef7a3a8979.jpg"
 										style="width: 300px; border-radius: 0px 10px 10px 10px;">
 									<!-- 장바구니 버튼 -->
-									<div class="btn" style="transform: translate(-135%, 640%);">
+									<div class="btn" id="cart" style="transform: translate(-135%, 640%);">
 										<i class="bi bi-handbag-fill" style="color: white;"></i>
 									</div>
 									<div id="best-name">하트 시그널 커피잔 1인조 세트 (3color)</div>
@@ -321,23 +321,21 @@
 							</li>
 							<li class="nav-item"><a class="nav-link active"
 								aria-current="page" href="javascript:void(0);"
-								onclick="categoryAllFunction(); return false;"
-								id="categoryAllBtn"><strong>전체</strong></a></li>
+								onclick="categoryAllFunction(); return false;"><strong>전체</strong></a></li>
 							<li class="nav-item"><a class="nav-link"
 								href="javascript:void(0);"
-								onclick="categoryFunction('수저세트'); return false;"
-								id="categoryBtn"><strong>수저세트</strong></a></li>
+								onclick="categoryFunction('수저세트'); return false;"><strong>수저세트</strong></a></li>
 							<li class="nav-item"><a class="nav-link"
 								href="javascript:void(0);"
-								onclick="categoryFunction('컵'); return false;" id="categoryBtn"><strong>컵</strong></a>
+								onclick="categoryFunction('컵'); return false;"><strong>컵</strong></a>
 							</li>
 							<li class="nav-item"><a class="nav-link"
 								href="javascript:void(0);"
-								onclick="categoryFunction('그릇'); return false;" id="categoryBtn"><strong>그릇</strong></a>
+								onclick="categoryFunction('그릇'); return false;"><strong>그릇</strong></a>
 							</li>
 							<li class="nav-item"><a class="nav-link"
 								href="javascript:void(0);"
-								onclick="categoryFunction('접시'); return false;" id="categoryBtn"><strong>접시</strong></a>
+								onclick="categoryFunction('접시'); return false;"><strong>접시</strong></a>
 							</li>
 						</ul>
 					</div>
@@ -371,9 +369,8 @@
 						<div id="productItem">
 							<c:forEach var="product" items="${productList}">				
 								<div id="product_no">
-								<input id="pid" name="pid" type="hidden" value="${product.pid}">
-									<a
-										href="${pageContext.request.contextPath}/product/product_detail?pid=${product.pid}">
+									<input id="pid" name="pid" type="hidden" value="${product.pid}">
+									<a href="${pageContext.request.contextPath}/product/product_detail?pid=${product.pid}">
 										<img alt=""
 										src="productImageDownload?pid=${product.pid}&index=1&pthumbBodyType=thumb"
 										style="width: 290px; border-radius: 10px;">

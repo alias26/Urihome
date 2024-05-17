@@ -196,5 +196,10 @@ public class ProductService {
 		List<Product> productList = productDao.getProduct(pid);
 		return productList;
 	}
+
+	public List<ProductCategory> selectByPbanner(String pbanner) {
+		List<ProductCategory> bannerList = categoryDao.selectByPbanner(pbanner);
+		return bannerList;
+	}
 	
 }

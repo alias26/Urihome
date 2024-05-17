@@ -12,4 +12,5 @@ public interface ProductOptionDao {
 	public int deleteByPid(String pid);
 	public List<ProductOption> selectByPid(String pid);
 	public int deleteByPidOption(ProductOption optionDelList);
+	
 }

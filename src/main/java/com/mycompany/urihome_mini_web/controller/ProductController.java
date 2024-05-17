@@ -27,7 +27,7 @@ import lombok.extern.slf4j.Slf4j;
 public class ProductController {
 	@Autowired
 	ProductService productService;
-	
+
 	@RequestMapping("/product_detail")
 	public String product_detail(String pid, Model model) {
 		Product product = productService.getProduct(pid);
@@ -51,9 +51,14 @@ public class ProductController {
 	}
 	
 	@RequestMapping("/product_list")
-	public String product_list(Model model, String pid) {
-		List<Product> productList = productService.getProductCategoryListAll();
-		model.addAttribute("productList", productList);
+	public String product_list(Model model, String pcategoryName, String pid) {
+		if(pcategoryName == null) {
+			List<Product> productList = productService.getProductCategoryListAll();
+			model.addAttribute("productList", productList);
+		} else {
+			List<Product> productList = productService.selectByPcategoryName(pcategoryName);
+			model.addAttribute("productList", productList);
+		}
 		
 		HashMap<String, String> param = new HashMap<>();
 		param.put("pid", pid);
@@ -109,5 +114,5 @@ public class ProductController {
 		os.write(data);
 		os.flush();
 		os.close();
-	}
+	}                                      
 }
