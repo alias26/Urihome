@@ -2,11 +2,6 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<% 
-    int divCount = 0;
-    pageContext.setAttribute("divCount", divCount);
-%>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,9 +11,9 @@
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
 	rel="stylesheet">
-<link href="${pageContext.request.contextPath}/resources/css/index.css" rel="stylesheet">
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
+<link href="${pageContext.request.contextPath}/resources/css/index.css" rel="stylesheet">
 <script
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <!-- jquery -->
@@ -97,34 +92,23 @@
 		data-bs-ride="carousel" data-interval="5000">
 				<div class="carousel-inner">
 				<c:forEach var="best" items="${bestList}" varStatus="status">
-					<c:if test="${divCount%4==0}">
-						<div class="carousel-item d-flex ${status.count==1?'active':''}">
+					<c:if test="${status.first|| status.index%4==0}">
+						<div name="best" class="carousel-item ${status.index==0?'active':''}">
+						<div class="d-flex">
 					</c:if>
-					<% 
-				        // `div`가 생성될 때마다 변수를 증가
-				        divCount = (Integer) pageContext.getAttribute("divCount");
-				        divCount++;
-				        pageContext.setAttribute("divCount", divCount);
-				    %>
-					<div class="card-wrapper container-md d-flex justify-content-around">
+					<div class="card-wrapper container-md justify-content-around">
 						<div class="card border-0 p-3">
-							<img id="bestseller"
+							<img name="bestseller"
 								src="product/productImageDownload?pid=${best.pid}&index=1&pthumbBodyType=thumb"
 								class="card-img-top" alt="..."
 								style="width: 290px; border-radius: 10px; margin-bottom: 10px;">
 						</div>
 					</div>
-				<c:if test="${divCount/4==1 or status.last}">
+				<c:if test="${(status.index+1)%4==0 || status.last}">
+					</div>
 					</div>
 				</c:if>
-				<% 
-			        // `divCount`가 4가 될 때마다 초기화
-			        if (divCount == 4) {
-			            divCount = 0;
-			            pageContext.setAttribute("divCount", divCount);
-			        }
-			    %>
-			</c:forEach>	
+			</c:forEach>
 			<button class="carousel-control-prev" type="button"
 				data-bs-target="#carouselExampleControls" data-bs-slide="prev">
 				<span class="carousel-control-prev-icon " aria-hidden="true"></span>
@@ -135,7 +119,6 @@
 				<span class="carousel-control-next-icon" aria-hidden="true"></span>
 				<span class="visually-hidden">Next</span>
 			</button>
-		</div>
 	</div>
 	<!-- best carousel -->
 	
