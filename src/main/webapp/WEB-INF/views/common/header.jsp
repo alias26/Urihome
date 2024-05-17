@@ -31,19 +31,20 @@
 					<button class="btn" aria-expanded="false">BEST</button>
 				</li>
 				<li class="nav-item ms-3 me-3">
-					<a class="btn" id="categoryHeaderBtn" aria-expanded="false" onclick="categoryFunction('그릇'); return false;"
+					<a class="btn" id="categoryHeaderBtn" aria-expanded="false"
 						href="${pageContext.request.contextPath}/product/product_list?pcategoryName='그릇'">그릇</a>
 				</li>
 				<li class="nav-item ms-3 me-3">
-					<a class="btn" aria-expanded="false" onclick="categoryFunction('접시'); return false;"
+					<a class="btn" aria-expanded="false"
 						href="${pageContext.request.contextPath}/product/product_list?pcategoryName='접시'">접시</a>
 				</li>
 				<li class="nav-item ms-3 me-3">
-					<a class="btn" aria-expanded="false" onclick="categoryFunction('컵'); return false;"
+					<a class="btn" aria-expanded="false"
 						href="${pageContext.request.contextPath}/product/product_list?pcategoryName='컵'">컵</a>
 				</li>
 				<li class="nav-item ms-3 me-3">
-					<a class="btn" aria-expanded="false" onclick="categoryFunction('수저세트'); return false;"
+					<a class="btn" aria-expanded="false"
+"
 						href="${pageContext.request.contextPath}/product/product_list?pcategoryName='수저세트'">수저세트</a>
 				</li>
 				<li class="nav-item dropdown ms-3 me-3">

@@ -1,10 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>따뜻한 가구, 우리집에 어서오세요</title>
+<!-- css 적용 -->
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
 	rel="stylesheet">
@@ -82,16 +84,7 @@
 		</div>
 	</div>
 
-
-
-
-
-
-
-
-
-
-
+	<!-- best carousel -->
 	<h2 class="mb-3" style="text-align: center; margin-top:80px" >B E S T</h2>
 	<!-- css icon -->
 	<div id="carouselExampleControls" class="carousel carousel-dark slide"
@@ -99,167 +92,90 @@
 
 		<div class="carousel-inner">
 			<div class="carousel-item active">
-				<div
-					class="card-wrapper container-md d-flex  justify-content-around">
-					<div class="card border-0 p-3">
-						<img id="bestseller"
-							src="${pageContext.request.contextPath}/resources/image/best.jpg"
-							class="card-img-top" alt="...">
-					</div>
-					<div class="card border-0 p-3">
-						<img id="bestseller"
-							src="${pageContext.request.contextPath}/resources/image/best2.jpg"
-							class="card-img-top" alt="...">
-						<div class="card-body"></div>
-					</div>
-					<div class="card border-0 p-3">
-						<img id="bestseller"
-							src="${pageContext.request.contextPath}/resources/image/best3.jpg"
-							class="card-img-top " alt="...">
-						<div class="card-body"></div>
-					</div>
-					<div class="card border-0 p-3">
-						<img id="bestseller"
-							src="${pageContext.request.contextPath}/resources/image/best4.jpg"
-							class="card-img-top" alt="...">
-						<div class="card-body"></div>
-					</div>
-				</div>
-			</div>
-			<div class="carousel-item">
 				<div class="card-wrapper container-md d-flex justify-content-around">
-					<div class="card border-0 p-3 ">
-						<img id="bestseller" src="${pageContext.request.contextPath}/resources/image/best5.jpg"
-							class="card-img-top" alt="...">
-						<div class="card-body"></div>
-					</div>
-					<div class="card border-0 p-3">
-						<img id="bestseller" src="${pageContext.request.contextPath}/resources/image/best6.jpg"
-							class="card-img-top" alt="...">
-						<div class="card-body"></div>
-					</div>
-					<div class="card border-0 p-3">
-						<img id="bestseller" src="${pageContext.request.contextPath}/resources/image/best7.jpg"
-							class="card-img-top" alt="...">
-						<div class="card-body"></div>
-					</div>
-					<div class="card border-0 p-3">
-						<img id="bestseller" src="${pageContext.request.contextPath}/resources/image/best8.jpg"
-							class="card-img-top" alt="...">
-						<div class="card-body"></div>
-					</div>
+					<c:forEach var="product" items="${bannerList}" begin="0" end="3">
+							<div class="card border-0 p-3">
+								<img id="bestseller"
+									src="product/productImageDownload?pid=${product.pid}&index=1&pthumbBodyType=thumb"
+									class="card-img-top" alt="..."
+									style="width: 290px; border-radius: 10px; margin-bottom: 10px;">
+							</div>
+					</c:forEach>	
 				</div>
 			</div>
-
-			<button class="carousel-control-prev " type="button"
+			
+			<button class="carousel-control-prev" type="button"
 				data-bs-target="#carouselExampleControls" data-bs-slide="prev">
 				<span class="carousel-control-prev-icon " aria-hidden="true"></span>
 				<span class="visually-hidden">Previous</span>
 			</button>
-			<button class="carousel-control-next " type="button"
+			<button class="carousel-control-next" type="button"
 				data-bs-target="#carouselExampleControls" data-bs-slide="next">
 				<span class="carousel-control-next-icon" aria-hidden="true"></span>
 				<span class="visually-hidden">Next</span>
 			</button>
 		</div>
 	</div>
-    <div>
-		<div class="d-flex">
-		<div style="margin-left:auto;">
+	<!-- best carousel -->
+	
+	<!-- famous keyword -->
+    <div class="d-flex" style="margin-left: 360px;">
+		<div class="d-flex" style="flex-direction: column;">
+		<div>
 			<div id="text-box" style="text-align: center;">
-			<h1 id="title" style="margin-right:120px">인기 키워드</h1>
+			<h2 id="title" style="margin-right:100px">인기 키워드</h2>
 			</div>
 		</div>
 		
+		<!-- 카테고리 -->
+		<div class = "category">
+   			<ul class="nav flex-column">
+			  <!-- 쇼핑 관련 -->
+			  <li class="nav-item">
+			    <a class="nav-link" href="javascript:void(0);"
+				   onclick="categoryFunction('그릇'); return false;">#잔</a>
+			  </li>
+			  <li class="nav-item">
+			    <a class="nav-link" href='${pageContext.request.contextPath}/product/product_list' >#선물</a>
+			  </li>
+			  <li class="nav-item">
+			    <a class="nav-link" href='${pageContext.request.contextPath}/product/product_list'>#마리벨</a>
+			  </li>  
+			  <li class="nav-item">
+			    <a class="nav-link" href='${pageContext.request.contextPath}/product/product_list'>#블랑</a>
+			  </li>
+			</ul>
+  			</div>	
+		</div> <!-- 카테고리 -->
+		
 		<div class="image-box" style="margin-right:auto;">
-		  <div class="container" id="recommendItem">
-			<div id="box">
-	
-				<img id="content-img"
-					src="https://ssueim.com/web/product/big/202404/9d011e8c1884aaa631376cbd9caf024b.jpg">
-				<div class="btn" name="cart"
-					style="background-color: black; border-radius: 50%;">
-					<i class="bi bi-bag" style="color: white"></i>
-				</div>
-	
-				<!-- 인기 키워드 사진 -->
-				<div id="info">
-					<div id="name">블랑 4인 홈세트 27P</div>
-					<div id="price">199,000원</div>
-				</div>
-			</div>
-			<div id="box">
-	
-				<img id="content-img"
-					src="https://ssueim.com/web/product/big/202309/09642480b50e05fc3fe0013d865de602.jpg">
-				<div class="btn" name="cart"
-					style="background-color: black; border-radius: 50%">
-					<i class="bi bi-bag" style="color: white"></i>
-				</div>
-	
-				<div id="info">
-					<div id="name">[4월18일 발송예정] 보담 6인 홈세트</div>
-					<div id="price">159,000원</div>
-				</div>
-			</div>
-			<div id="box">
-				<img id="content-img"
-					src="https://ssueim.com/web/product/big/202009/53645479796c9e0bc493ae269a609516.jpg">
-				<div class="btn" name="cart"
-					style="background-color: black; border-radius: 50%">
-					<i class="bi bi-bag" style="color: white"></i>
-				</div>
-				<div id="info">
-					<div id="name">키엘로 2인 홈세트 13P (크림화이트)</div>
-					<div id="price">69,000원</div>
-				</div>
-			</div>
-			<div id="box">
-				<img id="content-img"
-					src="https://ssueim.com/web/product/big/202010/ab0d0f8d3c21e5cbe9cc151285a3dff7.jpg">
-				<div class="btn" name="cart"
-					style="background-color: black; border-radius: 50%">
-					<i class="bi bi-bag" style="color: white"></i>
-				</div>
-				<div id="info">
-					<div id="name">마일드 화이트 계란찜기(중)</div>
-					<div id="price">10,900원</div>
-				</div>
-			</div>
-			<div id="box">
-				<img id="content-img"
-					src="https://ssueim.com/web/product/big/202401/1c1f10690bf5301ee503b4fbbab8f0da.jpg">
-				<div class="btn" name="cart"
-					style="background-color: black; border-radius: 50%">
-					<i class="bi bi-bag" style="color: white"></i>
-				</div>
-				<div id="info">
-					<div id="name">테르 그레이베이지 2인 홈세트 14P</div>
-					<div id="price">79,000원</div>
-				</div>
-			</div>
-			<div id="box">
-				<img id="content-img"
-					src="https://ssueim.com/web/product/big/202009/11e358bac5feeaf86e36ea99c7b04af2.jpg">
-				<div class="btn" name="cart"
-					style="background-color: black; border-radius: 50%">
-					<i class="bi bi-bag" style="color: white"></i>
-				</div>
-				<div id="info">
-					<div id="name">키엘로 면기 대 (2color)</div>
-					<div id="price">9,900원</div>
-				</div>
-			</div>
+		  <div id="recommendItem">
+		  	<c:forEach var="product" items="${bannerList}">
+		  		
+					<div id="box">
+						<img id="content-img"
+							src="product/productImageDownload?pid=${product.pid}&index=1&pthumbBodyType=thumb">
+						<!-- 장바구니 버튼 -->
+						<div class="btn" id="famous-cart">
+							<i class="bi bi-handbag-fill" style="color: white;"></i>
+						</div>
+						<div id="name">${product.pname}</div>
+						<div id="price">${product.pprice}원</div>
+					</div>
+
+			</c:forEach>
 			
 		 </div>		
 			<div style="text-align: center;">
-		<button id="more-btn" style="font-weight: bolder;">더보기 +</button>
-		</div>		
+		<button id="more-btn" onclick="location.href='${pageContext.request.contextPath}/product/product_list'">더보기 +</button>
+		</div>	
+			
 		</div>
 	 </div>
   </div>
-</div>  
-		
+  <!-- famous keyword -->
+  
+	
 		
 
 
