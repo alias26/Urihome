@@ -96,14 +96,16 @@
 						<div name="best" class="carousel-item ${status.index==0?'active':''}">
 						<div class="d-flex">
 					</c:if>
-					<div class="card-wrapper container-md justify-content-around">
-						<div class="card border-0 p-3">
-							<img name="bestseller"
-								src="product/productImageDownload?pid=${best.pid}&index=1&pthumbBodyType=thumb"
-								class="card-img-top" alt="..."
-								style="width: 290px; border-radius: 10px; margin-bottom: 10px;">
+						<div class="card-wrapper container-md justify-content-around">
+							<div class="card border-0 p-3">
+								<a href="product/product_detail?pid=${best.pid}">
+								<img name="bestseller"
+									src="product/productImageDownload?pid=${best.pid}&index=1&pthumbBodyType=thumb"
+									class="card-img-top" alt="..."
+									style="width: 290px; border-radius: 10px; margin-bottom: 10px;">
+								</a>
+							</div>
 						</div>
-					</div>
 				<c:if test="${(status.index+1)%4==0 || status.last}">
 					</div>
 					</div>
@@ -123,65 +125,62 @@
 	<!-- best carousel -->
 	
 	<!-- famous keyword -->
-    <div class="d-flex" style="margin-left: 360px;">
+	<div class="d-flex mt-5" style="margin-left:100px;">
 		<div class="d-flex" style="flex-direction: column;">
-		<div>
-			<div id="text-box" style="text-align: center;">
-			<h2 id="title" style="margin-right:100px">인기 키워드</h2>
+			<div>
+				<div id="text-box" style="text-align: center;">
+					<h2 id="title" style="margin-right: 100px">인기 키워드</h2>
+				</div>
+			</div>
+
+			<!-- 카테고리 -->
+			<div class="category">
+				<ul class="nav flex-column">
+					<!-- 쇼핑 관련 -->
+					<li class="nav-item"><a class="nav-link"
+						href="javascript:void(0);"
+						onclick="categoryFunction('그릇'); return false;">#잔</a></li>
+					<li class="nav-item"><a class="nav-link"
+						href='${pageContext.request.contextPath}/product/product_list'>#선물</a>
+					</li>
+					<li class="nav-item"><a class="nav-link"
+						href='${pageContext.request.contextPath}/product/product_list'>#마리벨</a>
+					</li>
+					<li class="nav-item"><a class="nav-link"
+						href='${pageContext.request.contextPath}/product/product_list'>#블랑</a>
+					</li>
+				</ul>
 			</div>
 		</div>
-		
 		<!-- 카테고리 -->
-		<div class = "category">
-   			<ul class="nav flex-column">
-			  <!-- 쇼핑 관련 -->
-			  <li class="nav-item">
-			    <a class="nav-link" href="javascript:void(0);"
-				   onclick="categoryFunction('그릇'); return false;">#잔</a>
-			  </li>
-			  <li class="nav-item">
-			    <a class="nav-link" href='${pageContext.request.contextPath}/product/product_list' >#선물</a>
-			  </li>
-			  <li class="nav-item">
-			    <a class="nav-link" href='${pageContext.request.contextPath}/product/product_list'>#마리벨</a>
-			  </li>  
-			  <li class="nav-item">
-			    <a class="nav-link" href='${pageContext.request.contextPath}/product/product_list'>#블랑</a>
-			  </li>
-			</ul>
-  			</div>	
-		</div> <!-- 카테고리 -->
-		
-		<div class="image-box" style="margin-right:auto;">
-		  <div id="recommendItem">
-		  	<c:forEach var="product" items="${famousList}">
-		  			<a href="product/product_detail?pid=${product.pid}">
-					<div id="box">
-						<img id="content-img"
-							src="product/productImageDownload?pid=${product.pid}&index=1&pthumbBodyType=thumb">
-						<!-- 장바구니 버튼 -->
-						<div class="btn" id="famous-cart">
-							<i class="bi bi-handbag-fill" style="color: white;"></i>
-						</div>
-						<div id="name">${product.pname}</div>
-						<div id="price">${product.pprice}원</div>
-					</div>
-					</a>
-			</c:forEach>
-			
-		 </div>		
-			<div style="text-align: center;">
-		<button id="more-btn" onclick="location.href='${pageContext.request.contextPath}/product/product_list'">더보기 +</button>
-		</div>	
-			
-		</div>
-	 </div>
-  </div>
-  <!-- famous keyword -->
-  
-	
-		
 
+		<div class="image-box" style="margin-right: auto;">
+			<div id="recommendItem">
+				<c:forEach var="product" items="${famousList}">
+					<a href="product/product_detail?pid=${product.pid}">
+						<div id="box">
+							<img id="content-img"
+								src="product/productImageDownload?pid=${product.pid}&index=1&pthumbBodyType=thumb">
+							<!-- 장바구니 버튼 -->
+							<div class="btn" id="famous-cart">
+								<i class="bi bi-handbag-fill" style="color: white;"></i>
+							</div>
+							<div id="name">${product.pname}</div>
+							<div id="price">${product.pprice}원</div>
+						</div>
+					</a>
+				</c:forEach>
+
+			</div>
+			<div style="text-align: center;">
+				<button id="more-btn"
+					onclick="location.href='${pageContext.request.contextPath}/product/product_list'">더보기
+					+</button>
+			</div>
+
+		</div>
+	</div>
+	<!-- famous keyword -->
 
 	<%@ include file="/WEB-INF/views/common/footer.jsp"%>
 </body>
