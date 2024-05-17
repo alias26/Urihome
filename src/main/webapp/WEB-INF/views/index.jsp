@@ -1,6 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
+<% 
+    int divCount = 0;
+    pageContext.setAttribute("divCount", divCount);
+%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -89,21 +95,36 @@
 	<!-- css icon -->
 	<div id="carouselExampleControls" class="carousel carousel-dark slide"
 		data-bs-ride="carousel" data-interval="5000">
-
-		<div class="carousel-inner">
-			<div class="carousel-item active">
-				<div class="card-wrapper container-md d-flex justify-content-around">
-					<c:forEach var="product" items="${bannerList}" begin="0" end="3">
-							<div class="card border-0 p-3">
-								<img id="bestseller"
-									src="product/productImageDownload?pid=${product.pid}&index=1&pthumbBodyType=thumb"
-									class="card-img-top" alt="..."
-									style="width: 290px; border-radius: 10px; margin-bottom: 10px;">
-							</div>
-					</c:forEach>	
-				</div>
-			</div>
-			
+				<div class="carousel-inner">
+				<c:forEach var="best" items="${bestList}" varStatus="status">
+					<c:if test="${divCount%4==0}">
+						<div class="carousel-item d-flex ${status.count==1?'active':''}">
+					</c:if>
+					<% 
+				        // `div`가 생성될 때마다 변수를 증가
+				        divCount = (Integer) pageContext.getAttribute("divCount");
+				        divCount++;
+				        pageContext.setAttribute("divCount", divCount);
+				    %>
+					<div class="card-wrapper container-md d-flex justify-content-around">
+						<div class="card border-0 p-3">
+							<img id="bestseller"
+								src="product/productImageDownload?pid=${best.pid}&index=1&pthumbBodyType=thumb"
+								class="card-img-top" alt="..."
+								style="width: 290px; border-radius: 10px; margin-bottom: 10px;">
+						</div>
+					</div>
+				<c:if test="${divCount/4==1 or status.last}">
+					</div>
+				</c:if>
+				<% 
+			        // `divCount`가 4가 될 때마다 초기화
+			        if (divCount == 4) {
+			            divCount = 0;
+			            pageContext.setAttribute("divCount", divCount);
+			        }
+			    %>
+			</c:forEach>	
 			<button class="carousel-control-prev" type="button"
 				data-bs-target="#carouselExampleControls" data-bs-slide="prev">
 				<span class="carousel-control-prev-icon " aria-hidden="true"></span>
@@ -150,8 +171,8 @@
 		
 		<div class="image-box" style="margin-right:auto;">
 		  <div id="recommendItem">
-		  	<c:forEach var="product" items="${bannerList}">
-		  		
+		  	<c:forEach var="product" items="${famousList}">
+		  			<a href="product/product_detail?pid=${product.pid}">
 					<div id="box">
 						<img id="content-img"
 							src="product/productImageDownload?pid=${product.pid}&index=1&pthumbBodyType=thumb">
@@ -162,7 +183,7 @@
 						<div id="name">${product.pname}</div>
 						<div id="price">${product.pprice}원</div>
 					</div>
-
+					</a>
 			</c:forEach>
 			
 		 </div>		

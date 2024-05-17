@@ -20,7 +20,7 @@
 		from productCategory
 		where pid=#{pid}
 	</select>
-	<select id="selectByPbanner" resultType="String">
+	<select id="selectByPbanner" parameterType="String" resultType="ProductCategory">
 		select *
 		from productCategory
 		where pbanner=#{pbanner}

@@ -62,7 +62,7 @@
 	</select>
 	
 	<select id="getSales" resultType="int">
-		select sum(ototalprice*0.08) as sales from orderHistory
+		select sum(ototalprice*0.1) as sales from orderHistory
 	</select>
 	
 	<select id="getExpenses" resultType="int">
@@ -75,6 +75,11 @@
 		where pid=#{pid}
 	</select>
 	
+	<select id="selectProductByPbanner" parameterType="String" resultType="Product">
+		select p.pid, p.pname, p.pprice
+		from product p, productCategory pc
+		where p.pid = pc.pid and pc.pbanner=#{pbanner}
+	</select>
 	
 	
 	

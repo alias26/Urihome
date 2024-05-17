@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import com.mycompany.urihome_mini_web.dto.Product;
 import com.mycompany.urihome_mini_web.dto.ProductCategory;
 
 @Mapper

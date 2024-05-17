@@ -118,3 +118,7 @@
 	  border-radius: 2em;
 	  font-weight: bolder;
 }
+a{
+	text-decoration: none;
+	color: black;
+}

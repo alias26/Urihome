@@ -22,6 +22,7 @@ public interface ProductDao {
 	public int getExpenses();
 	public List<Product> getProduct(String pid);
 	public int disableByPid(Product product);
+	public List<Product> selectProductByPbanner(String pbanner);
 	
 
 }

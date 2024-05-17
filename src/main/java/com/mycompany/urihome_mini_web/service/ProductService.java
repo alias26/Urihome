@@ -201,5 +201,10 @@ public class ProductService {
 		List<ProductCategory> bannerList = categoryDao.selectByPbanner(pbanner);
 		return bannerList;
 	}
+
+	public List<Product> selectProductByPbanner(String pbanner) {
+		List<Product> productList = productDao.selectProductByPbanner(pbanner);
+		return productList;
+	}
 	
 }
