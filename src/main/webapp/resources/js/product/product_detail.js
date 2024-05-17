@@ -36,11 +36,8 @@ $(function(){
   
   $("#insertCart").click(function(){
   	var pid = $("#pid").text();
-  	console.log(pid);
   	var pname = $("#pname").val();
-  	console.log(pname);
   	var pprice = $("#pprice").val(); 
-  	console.log(pprice);
   	var pbuyAmount = $("#pbuyAmount").val();
   	console.log(pbuyAmount);
   	var cartItem = {
@@ -50,7 +47,6 @@ $(function(){
   	    pbuyAmount: pbuyAmount
   	};
   	
-  	console.log(cartItem);
   	cartItem = JSON.stringify(cartItem);
       $.ajax({
           url: "../cart/addCartItem", 
@@ -109,5 +105,15 @@ $(function(){
 	           }
 	      
 	       });
+	  });
+  
+  $("#buyNow").click(function(){
+	   	var pid = $("#pid").text();
+	   	var pname = $("#pname").text();
+	   	var pprice = $("#pprice").text(); 
+	   	var pbuyAmount = $("#pbuyAmount").val();
+	   	
+	   	location.href= "../order/orderNowForm?pid="+pid+"&pbuyAmount="+pbuyAmount;
+       
 	  });
 });

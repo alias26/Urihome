@@ -142,7 +142,7 @@
 		   							id="addCart" style="border: solid 0.5px; flex:3;">
 		   							장바구니
 		   					</button>
-		   					<button type="button" class="btn btn-lg product_btn btn-dark me-1" style="border: solid 0.5px; flex:3;">구매하기</button>
+		   					<button id="buyNow" type="button" class="btn btn-lg product_btn btn-dark me-1" style="border: solid 0.5px; flex:3;">구매하기</button>
 	   					</c:if>
 	   					<c:if test="${product.pstock == 0}">
 	   						<button type="button" class="btn btn-lg product_btn btn-dark me-1"

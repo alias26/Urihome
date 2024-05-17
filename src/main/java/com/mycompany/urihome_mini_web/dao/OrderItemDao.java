@@ -8,7 +8,5 @@ import com.mycompany.urihome_mini_web.dto.Cart;
 
 @Mapper
 public interface OrderItemDao {
-
 	int insertPayItems(HashMap<String, Object> param);
-
 }

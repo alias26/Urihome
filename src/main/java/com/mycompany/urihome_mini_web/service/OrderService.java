@@ -101,4 +101,45 @@ public class OrderService {
 			int cartRow = cartDao.deleteCart(delCart);
 		}
 	}
+
+
+	public void orderSelectItem(HashMap<String, Object> orderInfo) {
+		String mid = (String) orderInfo.get("mid");
+		Order order = (Order) orderInfo.get("order");
+		
+		Orderer orderer = order.getOrderer();
+		Recipient recipient = order.getRecipient();
+		List<Cart> cartList = order.getCartList();
+		int ototalPrice = order.getOtotalPrice();
+		
+		OrderHistory orderHistory = new OrderHistory();
+		orderHistory.setMid(mid);
+		orderHistory.setOstatus("결제완료");
+		orderHistory.setOtotalPrice(ototalPrice);
+		
+		int orderRow = orderHistoryDao.order(orderHistory);
+		int onumber = orderHistoryDao.getOnumber(mid);
+		
+		orderer.setOnumber(onumber);
+		recipient.setOnumber(onumber);
+		
+		int ordererRow = ordererDao.order(orderer);
+		int recipientRow = recipientDao.order(recipient);
+		
+		HashMap<String, Object> param = new HashMap<>();
+		param.put("onumber", onumber);
+		
+		HashMap<String, String> delCart = new HashMap<>();
+		delCart.put("mid", mid);
+		
+		for(int i = 0; i < cartList.size(); i++) {
+			Cart cart = cartList.get(i);
+			delCart.put("pid", cart.getPid());
+			param.put("pid", cart.getPid());
+			param.put("pbuyAmount", cart.getPbuyAmount());
+			param.put("ptotalPrice", cart.getPtotalPrice());
+			
+			int orderItemRow = orderItemDao.insertPayItems(param);
+		}
+	}
 }

@@ -195,5 +195,4 @@ function getSelectCartOrder(){
         	 location.href="../order/orderForm?check=checked"
          }
      });
-
 }
