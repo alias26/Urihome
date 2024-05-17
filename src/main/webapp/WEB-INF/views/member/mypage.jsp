@@ -71,8 +71,8 @@
 		<!-- 멤버 정보 -->
 		<div class="info-div d-flex">
 			<div id="member-info" style="display: flex; margin-left: 20px;">
-				<div id="member-name" style="font-weight: bolder; font-size: 30px; margin-right: 10px;">우리집</div>
-				<div id="member-id" style="color: gray; font-size: 18px; margin-top: 15px;">urihome123</div>
+				<div id="member-name" style="font-weight: bolder; font-size: 30px; margin-right: 10px;">${member.mname}</div>
+				<div id="member-id" style="color: gray; font-size: 18px; margin-top: 15px;">${member.mid}</div>
 			</div>
 		</div>	<!-- 멤버 정보 -->
 		
