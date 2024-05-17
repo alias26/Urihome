@@ -35,7 +35,22 @@
 
 <body class="pt-5">
 	<%@ include file="/WEB-INF/views/common/header.jsp"%>
-
+		<div class="modal" id="selectOrder" >
+		  <div class="modal-dialog modal-dialog-centered" style="width:280px; height:250px;">
+		    <div class="modal-content">
+		      <div class="modal-header border-0">
+		        <div class="modal-title d-flex" style="text-align: center; display: none;"></div>
+		      </div>
+		      <div class="modal-body  border-0 p-0" style="text-align: center;">
+		      	<i class="fas fa-solid fa-cart-plus text-black" style=" font-size: 3rem; margin-bottom: 20px;"></i>
+		        <p style="text-align:center ;font-size: 15px">선택된 상품이 없습니다.</p>
+		      </div>
+		      <div class="modal-footer  border-0 " style="justify-content: center;">
+		        <button type="button" class="btn btn-dark btn-sm" data-bs-dismiss="modal" aria-label="Close">확인</button>
+		      </div>
+		    </div>
+		  </div>
+		</div>
 	<!-- bootstrap의 grid를 이용해 전체 가로비율을 2:8:2로 지정  -->
 	<div class="row">
 		<div class="col-2"></div>
@@ -61,8 +76,8 @@
 			<div class="shopping-cart-layout">
 				<!-- 장바구니  목록을 보여준다 -->
 				<ul class="list-unstyled">
-					<c:forEach var="cartItem" items="${cartItem}">
-						<li class="cart-items" id="${cartItem.pid }">
+					<c:forEach var="cartItem" items="${cartItem}" varStatus="index">
+						<li class="cart-items" id="${cartItem.pid}">
 							<div class="d-flex">
 								<div class=" col-2">
 									<input class="form-check-input" type="checkbox"
@@ -142,7 +157,7 @@
 			<div class="final-order">
 				<a href="javascript:void(0);" onclick="getSelectCartOrder()" class="btn btn-secondary btn-md ">선택상품
 					주문</a>
-				<a href="${pageContext.request.contextPath}/order/orderForm" class="btn btn-dark btn-md ">전체상품 주문</a>
+				<a class="AllProdcut_order btn btn-dark btn-md ">전체상품 주문</a>
 			</div>
 		</div>
 		<div class="col-2"></div>

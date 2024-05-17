@@ -38,30 +38,38 @@ function categoryFunction(category) {
 		}
 	});
 }
-
+//이벤트 중복  방지
 $(function() {
-	$(".cartBtn").click(function() {
-	 	var pid = $(this).parent("div").find("input[name=pid]").val();
-	   	var pname = $(this).parent("div").find("#pname").text();
-	   	var pprice = $(this).parent("div").find("#pprice").text();
-	   	var pbuyAmount = 1;
-	   	var cartItem = {
-	   	    "pid": pid,
-	    	"pname": pname,
-	   	    "pprice": pprice,  
-	   	    "pbuyAmount":1
-	   	};
-	   	cartItem = JSON.stringify(cartItem);
-	       $.ajax({
-	           url: "../cart/addCartItem", 
-	           method: "POST",
-	           data: cartItem,
-	           contentType: "application/json",
-	           success: function(data) {
-			      	  const modal=new bootstrap.Modal("#addCartModal");
-			      	  modal.show();
-	           }
-	      
-	       })
-	});
-})
+    $(".addcartBtn").off('click').on('click', function() {
+        var pid = $(this).parent("div").find("input[name=pid]").val();
+        var pname = $(this).parent("div").find("#pname").text();
+        var pprice = $(this).parent("div").find("#pprice").text();
+        var pbuyAmount = 1;
+        var cartItem = {
+            "pid": pid,
+            "pname": pname,
+            "pprice": pprice,
+            "pbuyAmount": 1
+        };
+        cartItem = JSON.stringify(cartItem);
+        $.ajax({
+            url: "../cart/addCartItem",
+            method: "POST",
+            data: cartItem,
+            contentType: "application/json",
+            success: function(data) {
+                $("#addCartModal").modal('show'); // Bootstrap 모달 열기
+            }
+        })
+    });
+
+    // 모달 닫기 버튼
+    document.querySelector(".btn-close").addEventListener('click', () => {
+        $("#addCartModal").modal('hide'); // Bootstrap 모달 닫기
+    });
+
+    // 쇼핑 계속하기 버튼
+    document.querySelector(".shopping").addEventListener('click', () => {
+        $("#addCartModal").modal('hide'); // Bootstrap 모달 닫기
+    });
+});

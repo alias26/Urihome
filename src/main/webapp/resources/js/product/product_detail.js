@@ -74,14 +74,17 @@ $(function(){
    $(".minus").click(function() {
 		  var pprice = parseInt($("#pprice").text()); 
 	      var value = parseInt($(this).parent("div").find("input").val());
+	      if(value>1){
 	      $(this).parent("div").find("input").val(--value);
 	      $(totalPrice).text(pprice * value);
-
+	      }
    });
   
   $("#addCart").click(function(){
 	   	var pid = $("#pid").text();
+	   	console.log(pid);
 	   	var pname = $("#pname").text();
+	   	console.log(pname);
 	   	var pprice = $("#pprice").text(); 
 	   	var pbuyAmount = $("#pbuyAmount").val();
 	   	
@@ -111,8 +114,7 @@ $(function(){
 	   	var pid = $("#pid").text();
 	   	var pname = $("#pname").text();
 	   	var pprice = $("#pprice").text(); 
-	   	var pbuyAmount = $("#pbuyAmount").val();
-	   	
+	   	var pbuyAmount = $("#pbuyAmount").val();  	
 	   	location.href= "../order/orderNowForm?pid="+pid+"&pbuyAmount="+pbuyAmount;
        
 	  });

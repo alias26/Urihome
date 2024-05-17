@@ -119,8 +119,16 @@ $(function() {
 		}
 
 	});
-
-});
+	 $(".AllProdcut_order").click(function(){
+		  var pidList = $(".list-unstyled").children(".cart-items").find("input[name=pid]");
+		  if(pidList.length==0){
+			  const modal=new bootstrap.Modal("#selectOrder");
+			  modal.show();
+		  }else{
+			  location.href="${pageContext.request.contextPath}/order/orderForm";
+		  }
+	      })
+	});
 
 function removeCart(pid){
  	var cart = {"pid":pid}
@@ -181,8 +189,11 @@ function getSelectCartOrder(){
 	}
 	
 	if(selected.length == 0){
+		const modal= new bootstrap.Modal("#selectOrder")
+		modal.show();
 		return;
 	}
+
 	
 	 $.ajax({
          url: "../order/selectOrder", 
