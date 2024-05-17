@@ -387,6 +387,7 @@ public class BoardProductController {
 		os.close();
 	}
 	
+	@Secured("ROLE_USER")
 	@GetMapping("/isWriteReview")
 	public ResponseEntity<Boolean> isWriteReview(String pid, Authentication authentication) {
 		UriHomeUserDetails uriHomeUserDetails = (UriHomeUserDetails) authentication.getPrincipal();

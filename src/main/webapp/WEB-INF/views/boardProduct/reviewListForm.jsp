@@ -70,4 +70,20 @@
 			</nav>
 		</div>
 	</c:if>
+	<div class="modal" id="writeReviewModal">
+	  <div class="modal-dialog modal-dialog-centered" style="width:320px; height:250px;">
+	    <div class="modal-content">
+	      <div class="modal-header border-0">
+	        <div class="modal-title d-flex" style="text-align: center; display: none;"></div>
+	        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+	      </div>
+	      <div class="modal-body  border-0 p-0" style="text-align: center;">
+	        <p style="text-align:center ;font-size: 16px">구매하신 상품이 아닙니다.</p>
+	      </div>
+	      <div class="modal-footer  border-0 " style="justify-content: center;">
+	        <button type="button" class="shopping btn btn-outline-dark btn-sm" data-bs-dismiss="modal">쇼핑 계속하기</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
 </div>

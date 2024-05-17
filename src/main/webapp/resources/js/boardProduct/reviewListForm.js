@@ -32,7 +32,8 @@ function writeReview(pid){
 			if(isBought){
 				location.href = "../boardProduct/writeReviewForm?pid="+pid;
 			}else{
-				
+				const modal=new bootstrap.Modal("#writeReviewModal");
+	      	  modal.show();
 			}
 		}
 	})
