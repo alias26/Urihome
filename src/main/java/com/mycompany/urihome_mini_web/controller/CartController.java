@@ -43,7 +43,6 @@ public class CartController {
 		String mid = authentication.getName();
 		JSONObject jsonData = new JSONObject(cart);
 	    String pid = jsonData.getString("pid");
-	    
 		cart.setMid(mid);
 		HashMap<String, String> param = new HashMap<>();
 		param.put("pid", pid);

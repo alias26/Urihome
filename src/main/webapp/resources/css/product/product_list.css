@@ -131,7 +131,7 @@
 	background-color: #929494;
 }
 
-#name {
+#pname {
 	display: flex;
 	margin-top: 20px;
 	font-weight: bold;
@@ -142,7 +142,7 @@
 	overflow: hidden;
 }
 
-#price {
+#pprice {
 	display: flex;
 	margin-bottom: 15px;
 	font-weight: bold;

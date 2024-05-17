@@ -99,10 +99,10 @@ $(function(){
 	           data: cartItem,
 	           contentType: "application/json",
 	           success: function(response) {
-	           	console.log("success");
-	           	location.href=" ../cart/cartView";
+	      	  const modal=new bootstrap.Modal("#addCartModal");
+	      	  modal.show();
 	           }
-	       
+	      
 	       });
 	  });
 });

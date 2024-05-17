@@ -14,12 +14,15 @@
 	  <!-- jQuery 외부 라이브러리 설정 -->
 	  <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
 	  <script src="${pageContext.request.contextPath}/resources/js/product/product_detail.js" rel="stylesheet"></script>
-	  <!-- css -->
-	  <!-- 사용자 정의 자바스크립트 -->
+	  <!-- Font Awesome CSS CDN -->
+		<link rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+			integrity="sha512-..." crossorigin="anonymous" />
 	  <script src="${pageContext.request.contextPath}/resources/js/boardProduct/reviewListForm.js"></script>
 	  	  <script src="${pageContext.request.contextPath}/resources/js/boardProduct/qnaListForm.js"></script>
 	  
 	  <script>
+	 
 	  </script>
 	  
    </head>
@@ -29,6 +32,24 @@
    	
    <body>
    <%@ include file="/WEB-INF/views/common/header.jsp" %>
+   		<div class="modal" id="addCartModal">
+		  <div class="modal-dialog modal-dialog-centered" style="width:320px; height:250px;">
+		    <div class="modal-content">
+		      <div class="modal-header border-0">
+		        <div class="modal-title d-flex" style="text-align: center; display: none;"></div>
+		        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+		      </div>
+		      <div class="modal-body  border-0 p-0" style="text-align: center;">
+		      	<i class="fas fa-solid fa-cart-plus text-black" style=" font-size: 3rem; margin-bottom: 20px;"></i>
+		        <p style="text-align:center ;font-size: 16px">상품이 장바구니에 추가되었습니다.</p>
+		      </div>
+		      <div class="modal-footer  border-0 " style="justify-content: center;">
+		        <button onclick="location.href='${pageContext.request.contextPath}/cart/cartView'" type="button" class="btn btn-outline-dark btn-sm" data-bs-dismiss="modal" >장바구니 이동</button>
+		        <button type="button" class="shopping btn btn-outline-dark btn-sm" data-bs-dismiss="modal">쇼핑 계속하기</button>
+		      </div>
+		    </div>
+		  </div>
+		</div>
    <div class ="product-detail-div" style="margin-top: 40px;">
 	<!-- 상품 상세 페이지 상단 -->
 	   	<div class="product-detail-top d-flex">	
@@ -115,8 +136,7 @@
 	   				    </button>
 	   				    <c:if test="${product.pstock != 0}">
 		   					<button type="button" class="btn btn-lg product_btn me-1"
-		   							id="addCart" style="border: solid 0.5px; flex:3;"
-		   							 onclick="addcart()">
+		   							id="addCart" style="border: solid 0.5px; flex:3;">
 		   							장바구니
 		   					</button>
 		   					<button type="button" class="btn btn-lg product_btn btn-dark me-1" style="border: solid 0.5px; flex:3;">구매하기</button>
