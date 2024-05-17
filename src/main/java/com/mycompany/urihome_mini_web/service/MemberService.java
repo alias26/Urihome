@@ -8,11 +8,9 @@ import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-
 import com.mycompany.urihome_mini_web.dao.MemberDao;
 import com.mycompany.urihome_mini_web.dto.Member;
 import com.mycompany.urihome_mini_web.dto.Pager;
-import com.mycompany.urihome_mini_web.dto.Product;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -76,5 +74,11 @@ public class MemberService {
 		int memberCount = memberDao.getMemberCount();
 		return memberCount;
 	}
+
+	/*public String find_id(String mname, String mphone) {
+		String memberId = memberDao.getMemberId(mname, mphone);
+		return memberId;
+	}*/
+	
 
 }

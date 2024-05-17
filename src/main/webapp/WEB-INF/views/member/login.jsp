@@ -25,7 +25,7 @@
 			<img src="${pageContext.request.contextPath}/resources/image/common/LOGO.png" width="150"/>
 		</a>
 	</div>
-	<div class="login-wrapper" style="margin-top:30px;">
+	<div class="login-wrapper">
 		<h2>로그인</h2>
 		<form method="post" action="${pageContext.request.contextPath}/login" id="login-form">
 			<input type="text" name="mid" placeholder="아이디" required>
