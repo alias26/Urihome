@@ -22,7 +22,6 @@
 		and cart.pid=product.pid
 	</select>
 	
-	
 	<update id="updateCart" parameterType="Cart">
 		update cart set pbuyAmount=#{pbuyAmount}
 		where mid=#{mid} and pid=#{pid} 
@@ -31,4 +30,23 @@
 	<delete id="deleteCart" parameterType="HashMap">
 		delete from cart where mid=#{mid} and pid=#{pid}
 	</delete>
+	
+	<update id="changeCheckOrder" parameterType="Cart">
+		update cart set selected=#{selected}
+		where mid=#{mid} and pid=#{pid}
+	</update>
+	
+	<select id="getOrderItem" parameterType="String" resultType="OrderItemList">
+		select * from product
+		product inner join cart
+		on product.pid = cart.pid
+		where mid=#{mid}
+	</select>
+	
+	<select id="getCheckOrderItem" parameterType="String" resultType="OrderItemList">
+		select * from product
+		product inner join cart
+		on product.pid = cart.pid
+		where mid=#{mid} and selected='Y'
+	</select>
 </mapper>

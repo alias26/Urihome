@@ -1,7 +1,5 @@
 package com.mycompany.urihome_mini_web.dto;
 
-import java.util.Date;
-
 import lombok.Data;
 
 @Data

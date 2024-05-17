@@ -170,25 +170,29 @@ function getSelectCartOrder(){
 	var selected = []
 	
 	for(var i = 0; i < pidList.length; i++){
+		var select = []
+		select.push(pidList[i].value);
 		if(cartCheckBox[i].checked){
-			selected.push(pidList[i].value);
+			select.push('Y');
+		}else{
+			select.push('N');
 		}
+		selected.push(select);
 	}
 	
 	if(selected.length == 0){
 		return;
 	}
 	
-	console.log(selected);
-	
 	 $.ajax({
-         url: "../order/orderForm", 
-         method: "GET",
+         url: "../order/selectOrder", 
+         method: "POST",
          traditional : true,
          data: {
         	 selected:selected
          },
          success: function(response) {
+        	 location.href="../order/orderForm?check=checked"
          }
      });
 

@@ -11,5 +11,7 @@ public class Cart {
 	private String pname;
 	private int pprice;
 	private int pstock;
+	private String selected;
 	
+	private int ptotalPrice;
 }

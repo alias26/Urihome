@@ -10,5 +10,5 @@ public class OrderHistory {
 	private String mid;
 	private String ostatus;
 	private int ototalPrice;
-	private Date oitemData;
+	private Date oitemDate;
 }
