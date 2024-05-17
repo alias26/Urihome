@@ -19,6 +19,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -133,11 +134,13 @@ public class AdminController {
 		int pstock = (int) p.get("pstock");
 		String pcategoryName = (String) p.get("pcategoryName");
 		String pbanner = (String) p.get("banner");
+		String pstatus = (String) p.get("pstatus");
 		
 		product.setPid(pid);
 		product.setPname(pname);
 		product.setPprice(pprice);
 		product.setPstock(pstock);
+		product.setPstatus(pstatus);
 
 		category.setPid(pid);
 		category.setPcategoryName(pcategoryName);
@@ -229,11 +232,13 @@ public class AdminController {
 		String pname = (String) p.get("pname");
 		int pprice = (int) p.get("pprice");
 		int pstock = (int) p.get("pstock");
+		String pstatus = (String) p.get("pstatus");
 
 		product.setPid(pid);
 		product.setPname(pname);
 		product.setPprice(pprice);
 		product.setPstock(pstock);
+		product.setPstatus(pstatus);
 
 		String pcategoryName = (String) p.get("pcategoryName");
 		String pbanner = (String) p.get("pbanner");
@@ -328,10 +333,15 @@ public class AdminController {
 		return jsonObject.toString();
 	}
 
-	@GetMapping("/removeProduct")
-	public String removeProduct(String pid) {
-		productService.removeProduct(pid);
-
+	@PostMapping("/disableProduct")
+	@ResponseBody
+	public String disableProduct(@RequestBody Product product) {
+		productService.disableProduct(product);
+		
+		JSONObject jsonObject = new JSONObject();
+		jsonObject.append("result", "success");
+		
+		
 		return "redirect:/admin/productManageView";
 	}
 

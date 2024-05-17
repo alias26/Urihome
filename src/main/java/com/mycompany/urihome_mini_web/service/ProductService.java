@@ -64,8 +64,9 @@ public class ProductService {
 		return product;
 	}
 	
-	
-	
+	public void disableProduct(Product product) {
+		int productRowNum = productDao.disableByPid(product);
+	}
 
 	public void updateProduct(Product product, ProductCategory category, List<ProductOption> optionDelList,
 			List<ProductOption> poptionNameList, List<Pimage> pImages) {
@@ -90,13 +91,6 @@ public class ProductService {
 		}
 	}
 
-	public void removeProduct(String pid) {
-		int pimageRowNum = pimageDao.deleteByPid(pid);
-		int pcategoryRowNum = categoryDao.deleteByPid(pid);
-		int poptionNameRowNum = poptionDao.deleteByPid(pid);
-		int productRowNum = productDao.deleteByPid(pid);
-
-	}
 
 	public Pimage getPimage(HashMap<String, String> param) {
 		Pimage pimage = pimageDao.selectByPidAndIndex(param);

@@ -137,6 +137,7 @@ $(function(){
 			pstock: parseInt($("#pstock").val()),
 			pcategoryName: $("select[name=category] option:selected").text(),
 			pbanner: $("input:radio[name=banner]:checked").val(),
+			pstatus: $("input:radio[name=pstatus]:checked").val(),
 			optionNames: optionNames,
 			optionVals: optionVals,
 			thumbDel: thumbDel,

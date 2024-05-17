@@ -108,6 +108,7 @@ $(function() {
 			pprice: parseInt($("#pprice").val()),
 			pstock: parseInt($("#pstock").val()),
 			pcategoryName: $("select[name=category] option:selected").text(),
+			pstatus: $("input:radio[name=pstatus]:checked").val(),
 			banner: $("input:radio[name=banner]:checked").val(),
 			optionNames: optionNames,
 			optionVals: optionVals

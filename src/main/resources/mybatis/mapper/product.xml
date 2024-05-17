@@ -8,11 +8,11 @@
 	
 	<select id="selectByPage" parameterType="Pager" resultType="Product">
 		<![CDATA[
-		select rnum, pid, pname, pcategoryname, pbanner, pprice, pstock, pdate, psellamount, psales
+		select rnum, pid, pname, pcategoryname, pbanner, pprice, pstock, pdate, psellamount, psales, pstatus
 		from(
-			select rownum as rnum, pid, pname, pcategoryname, pbanner, pprice, pstock, pdate, psellamount, psales
+			select rownum as rnum, pid, pname, pcategoryname, pbanner, pprice, pstock, pdate, psellamount, psales, pstatus
 			from(
-				select p.pid, pname, pc.pcategoryname, pc.pbanner, pprice, pstock, pdate, psellamount, psales
+				select p.pid, pname, pc.pcategoryname, pc.pbanner, pprice, pstock, pdate, psellamount, psales, pstatus
 				from product p, productcategory pc
 				where p.pid=pc.pid
 				order by pdate desc
@@ -26,29 +26,29 @@
 	<insert id="insert" parameterType="Product">
 		insert into product(
 			pid, pname, pprice, pstock, 
-			pdate, psellamount, psales, producthitcount
+			pdate, psellamount, psales, producthitcount, pstatus
 		)
 		values(
-			#{pid}, #{pname}, #{pprice}, #{pstock},
-			 sysdate, 0, 0, 0
+			#{pid}, #{pname}, #{pprice}, #{pstock}, 
+			 sysdate, 0, 0, 0, 'Y'
 		)
 	</insert>
 	
 	<select id="selectByPid" parameterType="String" resultType="Product">
-		select pid, pname, pprice, pstock, pdate, psellamount, psales
+		select pid, pname, pprice, pstock, pdate, psellamount, psales, pstatus
 		from product
 		where pid=#{pid}
 	</select>
 	
 	<update id="update" parameterType="Product">
 		update product set
-			pname=#{pname}, pprice=#{pprice}, pstock=#{pstock}, psellAmount=#{psellAmount}, psales=#{psales}			
+			pname=#{pname}, pprice=#{pprice}, pstock=#{pstock}, psellAmount=#{psellAmount}, psales=#{psales}, pstatus=#{pstatus}			
 		where pid=#{pid}
 	</update>
 	
-	<delete id="deleteByPid" parameterType="String">
-		delete from product where pid=#{pid}
-	</delete>
+	<update id="disableByPid" parameterType="Product">
+		update product set pstatus=#{pstatus} where pid=#{pid}
+	</update>
 	
 	<select id="selectAll" resultType="Product">
 		select * from product

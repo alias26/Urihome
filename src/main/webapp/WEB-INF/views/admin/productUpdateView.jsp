@@ -107,6 +107,7 @@
 					</div>
 					<div class="col-sm-3 p-2">
 						<div class="card">
+							
 							<div class="card-body">
 								<div class="form-group">
 									<label class="form-label">카테고리</label>
@@ -142,6 +143,21 @@
 									  <input class="form-check-input" type="radio" value="famous" name="banner" id="banner3">
 									  <label class="form-check-label" for="banner3">
 									   신상품
+									  </label>
+									</div>
+								</div>
+								<div class="form-group mt-2">
+									<label class="form-label">상품 판매 상태</label>
+									<div class="form-check">
+									  <input class="form-check-input" type="radio" value="Y" name="pstatus" id="pstatus1" ${product.pstatus =='Y'? 'checked':''}>
+									  <label class="form-check-label" for="pstatus1">
+									    활성화
+									  </label>
+									</div>
+									<div class="form-check">
+									  <input class="form-check-input" type="radio" value="N" name="pstatus" id="pstatus2" ${product.pstatus =='N'? 'checked':''}>
+									  <label class="form-check-label" for="pstatus2">
+									    비활성화
 									  </label>
 									</div>
 								</div>

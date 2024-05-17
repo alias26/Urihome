@@ -16,6 +16,7 @@ public class Product {
 	private int psellAmount;
 	private int psales;
 	private int productHitcount;
+	private String pstatus;
 	
 	private String pcategoryName;
 	private String pbanner;

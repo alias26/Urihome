@@ -3,6 +3,10 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
+<script
+	src="${pageContext.request.contextPath}/resources/js/admin/productManageView.js"></script>
+
 <table class="table table-bordered table-hover"
 						id="productInfoTable">
 	<thead class="table-secondary">
@@ -39,11 +43,16 @@
 					<td>${product.psales}</td>
 					<td><fmt:formatDate value="${product.pdate}" pattern="yyyy-MM-dd" /></td>
 					<td><a href="productUpdateView?pid=${product.pid}"
-						id="updateProductInfo" class="btn btn-info btn-sm">수정</a>
+						id="updateProductInfo" class="btn btn-dark btn-sm">수정</a>
 					</td>
-					<td> <a
-						href="removeProduct?pid=${product.pid}"
-						id="removeProductInfo" class="btn btn-danger btn-sm">삭제</a></td>
+					<td>
+						<c:if test="${product.pstatus=='Y'}">
+							<button id="${product.pid}" class="btn btn-danger btn-sm disableProduct" value="N">비활성화</button>
+						</c:if>
+						<c:if test="${product.pstatus=='N'}">
+							<button id="${product.pid}" class="btn btn-primary btn-sm disableProduct" value="Y">활성화</button>
+						</c:if>
+					</td>
 				</tr>
 		</c:forEach>
 	</tbody>

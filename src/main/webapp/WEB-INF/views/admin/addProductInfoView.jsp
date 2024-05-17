@@ -122,6 +122,21 @@
 									  </label>
 									</div>
 								</div>
+								<div class="form-group mt-2">
+									<label class="form-label">상품 판매 상태</label>
+									<div class="form-check">
+									  <input class="form-check-input" type="radio" value="Y" name="pstatus" id="pstatus1">
+									  <label class="form-check-label" for="pstatus1">
+									    활성화
+									  </label>
+									</div>
+									<div class="form-check">
+									  <input class="form-check-input" type="radio" value="N" name="pstatus" id="pstatus2">
+									  <label class="form-check-label" for="pstatus2">
+									    비활성화
+									  </label>
+									</div>
+								</div>
 							</div>
 						</div>
 					</div>
