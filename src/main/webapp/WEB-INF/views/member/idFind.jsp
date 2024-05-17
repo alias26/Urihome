@@ -15,26 +15,22 @@
    <link type="text/css" rel="stylesheet" href="css/style.css"/> 
 
 
-
-
 	<!-- css적용되도록 login.css 파일을 연결시킵니다. -->
-	<link href="${pageContext.request.contextPath}/resources/css/member/idFind.css" rel="stylesheet">
-	
+	<link href="${pageContext.request.contextPath}/resources/css/member/idFind.css" rel="stylesheet">	
 		
 		<title>아이디 찾기 페이지</title>
 
 </head>
 
 <body>
-
+<!--모달창을 불러오기위한 부분 -->
+<%-- <%@ include file="./IdFindModal.jsp" %> --%>
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
-	
 
 
 
 	<div class="idfind-wrapper">
-		<h2>아이디 찾기</h2>
-						
+		<h2>아이디 찾기</h2>						
 		<input type="radio" id="email" name="contactMethod" value="email" checked>
 		<label for="email">이메일로 찾기</label>
 		<input type="radio" id="phone" name="contactMethod" value="phone">
@@ -42,17 +38,16 @@
 			
 			
 		<form method="post" action="#" id="idfind-form">			
-			<input type="text" name="userName" placeholder="이름" required>
-			
-			
+			<input type="text" name="userName" placeholder="이름" required>			
 			<div id="emailField" >
 		        <input type="email" id="emailInput" name="email" placeholder="이메일">
 		    </div>
 		    <div id="phoneField" style="display: none;">
 		        <input type="text" id="phoneInput" name="phone" placeholder="전화번호">
 		    </div>			
-			
-			<button class="idfindbutton" type="submit">확인</button>			
+			<!-- <button class="idfindbutton" type="submit">확인</button>
+			<button type="button" id='find_id' onclick="findId_click()" class="w3-button w3-block w3-black w3-ripple w3-margin-top w3-round">find</button>		
+			<button type="button" onclick="history.go(-1);" class="w3-button w3-block w3-black w3-ripple w3-margin-top w3-margin-bottom w3-round">Cancel</button> -->
 		</form>
 		<div class="idfind-function" >
 			<a href="${pageContext.request.contextPath}/member/passwordFind">비밀번호 찾기</a>|
@@ -60,32 +55,16 @@
 			<a href="${pageContext.request.contextPath}/member/joinForm">회원 가입</a>
 		</div>		
 		
-	</div>	
+	</div>
 	
+<!-- 모달 트리거 버튼 -->
+<!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+  모달창 띄우기
+</button> -->
 	
 <%@ include file="/WEB-INF/views/common/footer.jsp" %>
-
-
-<script>
-    const emailField = document.getElementById('emailField'); /*id가 'emailField'인 요소를 찾아서 가져오는 역할을 합니다. emailField <-변수명*/
-    const phoneField = document.getElementById('phoneField'); 
-
-    document.querySelectorAll('input[name="contactMethod"]').forEach((radio) => { /*name 속성이 "contactMethod"인 모든 <input> 요소를 선택하고, 각 요소에 대해 반복적으로 작업을 수행합니다. */
-        radio.addEventListener('change', function() { /*요소에 이벤트 리스너를 추가합니다. 'radio' 변수에 저장된 라디오 버튼 요소에 대해 'change' 이벤트를 감지하고, 해당 이벤트가 발생할 때 실행할 함수를 등록하는 것입니다.  */
-            if (this.value === 'email') { /*radio의 값이 email일때*/
-                emailField.style.display = 'block';
-                phoneField.style.display = 'none';
-            } else if (this.value === 'phone') { /*radio의 값이 phone일때*/
-                emailField.style.display = 'none';
-                phoneField.style.display = 'block';
-            }
-        });
-    });
-</script>
+	
 
 
 </body>
-
-
-
 </html>

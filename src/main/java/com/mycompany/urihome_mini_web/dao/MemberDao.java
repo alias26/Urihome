@@ -9,7 +9,7 @@ import com.mycompany.urihome_mini_web.dto.Member;
 import com.mycompany.urihome_mini_web.dto.Pager;
 
 @Mapper
-public interface MemberDao {
+public interface MemberDao {	
 	public Member selectByMid(String mid);
 	public int insert(Member member);
 	public int count();
@@ -18,4 +18,5 @@ public interface MemberDao {
 	public int update(Member member);
 	public String getMember(String mid);
 	public int getMemberCount();
+	/*public String getMemberId(String mname, String mphone);*/
 }

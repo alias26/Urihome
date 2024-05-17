@@ -28,6 +28,16 @@ public class MemberController {
 	@Autowired
 	private MemberService memberService;
 	
+	//아이디 찾기 
+	/*@RequestMapping(value = "/find_id", method = RequestMethod.POST)
+	@ResponseBody
+	public String find_id(@RequestParam("name") String name,@RequestParam("phone") String phone) {
+			
+	String result = memberService.find_id(name, phone);
+			
+	return result;
+	}*/
+	
 	@GetMapping("/joinForm")
 	public String joinForm() {
 		return "member/joinForm";
@@ -46,9 +56,10 @@ public class MemberController {
 	}
 
 	@GetMapping("/idFind")
-	public String idFind() {
+	public String idFind() {	
 		return "member/idFind";
-	}
+	}	
+	
 
 	@GetMapping("/passwordFind")
 	public String passwordFind() {
