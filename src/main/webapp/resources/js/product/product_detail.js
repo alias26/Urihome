@@ -64,17 +64,22 @@ $(function(){
       
       })
   });
+  	
   $(".plus").click(function() {
+	  var pprice = parseInt($("#pprice").text()); 
       var value = parseInt($(this).parent("div").find("input").val());
       $(this).parent("div").find("input").val(++value);
+      $(totalPrice).text(pprice * value);
+
+
+
 
    });
    $(".minus").click(function() {
-      var value = parseInt($(this).parent("div").find("input").val());
-      if (value > 1) {
-
-         $(this).parent("div").find("input").val(--value);
-      }
+		  var pprice = parseInt($("#pprice").text()); 
+	      var value = parseInt($(this).parent("div").find("input").val());
+	      $(this).parent("div").find("input").val(--value);
+	      $(totalPrice).text(pprice * value);
 
    });
   

@@ -126,7 +126,10 @@
 		   				<div id="total-price" class="d-flex" style="justify-content: space-between; margin-bottom: 50px;
 		   					font-size: 18px;">
 		   					<p><strong>총 상품금액</strong></p>
-		   					<div id="totalPrice">0 원</div>
+		   					<div class="d-flex">
+		   					<div id="totalPrice">${product.pprice}</div>
+		   					<div>원</div>
+		   					</div>
 		   				</div>
 		   				
 			   			<!-- 버튼 -->
