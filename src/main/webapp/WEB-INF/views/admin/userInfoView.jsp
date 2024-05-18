@@ -28,13 +28,13 @@
 	<div class="row">
 		<div class="col-xl-2 col-lg-3">
 			<%@ include file="/WEB-INF/views/admin/adminHeader.jsp"%>
-		</div>
-	
+		</div>	
 		<div class="col-xl-10 col-lg-9 table-responsive-lg" style="padding-left: 8px; text-align:center;">
 			<div class="content-header mb-5 ms-0" style="height: 65px;">
 					<h4 class="text-light text-uppercase mb-0">회원 관리</h4>
-					<a href="${pageContext.request.contextPath}/logout"><i
-						class="fas fa-sign-out-alt text-danger fa-lg me-0"></i></a>
+					<a href="${pageContext.request.contextPath}/logout">
+						<i class="fas fa-sign-out-alt text-danger fa-lg me-0"></i>
+					</a>
 			</div>
 			<div style="text-algin:center;">		
 				<table class="table" style="width: 75%;">
@@ -64,7 +64,7 @@
 				    </tr>
 				    <tr>
 				        <td>회원 전화번호</td>
-				        <td><input class="form-text input-width" type="number" id="mtel" name="mtel" value="${member.mtel}" readonly></td>
+				        <td><input class="form-text input-width" type="text" id="mtel" name="mtel" value="${member.mtel}" readonly></td>
 				    </tr>
 				    <tr>
 				        <td>회원 핸드폰번호</td>
@@ -100,93 +100,10 @@
 				    </tr>
 				</table>
 			</div>
-			<div style="margin-right: 0px; text-align:center;">
-				<a href="userInfoView?mid=${member.mid}" class="btn btn-danger me-2">수정</a>
+			<div style="margin-right: 0px; text-align:center;">				
 				<a href="customerManageView" class="btn btn-primary me-2">취소</a>
-			</div>
-				
-			<%-- <div class="card" style="width:95%;margin:0 auto;">
-				<div class="card-body">
-					<div class=" d-flex" style="border:1px solid; justify-content:center;">
-						<div>
-							
-							<div class="form-group mb-2">
-								<label class="form-label">회원 아이디</label> <input class="form-text"
-									type="text" id="mid" name="mid" value="${member.mid}" readonly>
-							</div>
-							<div class="form-group mb-2">
-								<label class="form-label">회원 이름</label> <input class="form-text"
-									type="text" id="mname" name="mname" value="${member.mname}" />
-							</div>
-							<div class="form-group mb-2">
-								<label class="form-label">회원 비밀번호</label> <input class="form-text"
-									type="text" id="mpassword" name="mpassword" value="${member.mpassword}" />
-							</div>
-							<div class="form-group mb-2">
-								<label class="form-label">회원 이메일</label> <input class="form-text"
-									type="text" id="memail" name="memail" value="${member.memail}" />
-							</div>
-							<div class="form-group mb-2">
-								<label class="form-label">회원 가입 날짜</label><input class="form-text"
-									type="text" id="mdate" name="mdate" value="<fmt:formatDate value="${member.mdate}" pattern="yyyy-MM-dd"/>" />
-							</div>
-							<div class="form-group mb-2">
-								<label class="form-label">회원 전화번호</label><input class="form-text"
-									type="number" id="mtel" name="mtel" value="${member.mtel}" />
-							</div>
-							<div class="form-group mb-2">
-								<label class="form-label">회원 핸드폰번호</label><input class="form-text"
-									type="text" id="mphone" name="mphone" value="${member.mphone}" />								
-							</div>
-														
-							<div class="form-group mb-2">
-								<label class="form-label">회원 상세주소</label><input class="form-text"
-									type="text" id="mdetailAddress" name="mdetailAddress" value="${member.mdetailAddress}" />	
-							</div>
-							<div class="form-group mb-2">
-								<label class="form-label">회원 우편번호</label><input class="form-text"
-									type="number" id="mzip" name="mzip" value="${member.mzip}" />	
-							</div>
-							<div class="form-group mb-2">
-								<label class="form-label">회원 주소</label><input class="form-text"
-									type="text" id="maddress" name="maddress" value="${member.maddress}" />	
-							</div>
-							<div class="form-group mb-2">
-								<label class="form-label">권한</label><input class="form-text"
-									type="text" id="mrole" name="mrole" value="${member.mrole}" />	
-							</div>
-							
-						 	<div class="form-group mb-2">
-							    <label class="form-label">동의 사항1</label>
-							    <input class="form-check-input" type="checkbox" id="agree1" name="agree1" ${member.agree1 ? 'checked' : ''} />	
-							</div> 							
-							
-							<div class="form-group mb-2">
-							    <label class="form-label">동의 사항2</label>
-							    <input class="form-check-input" type="checkbox" id="agree2" name="agree2" ${member.agree2 ? 'checked' : ''} />	
-							</div>
-
-							<div class="form-group mb-2">
-							    <label class="form-label">동의 사항3</label>
-							    <input class="form-check-input" type="checkbox" id="agree3" name="agree3" ${member.agree3 ? 'checked' : ''} />	
-							</div>
-							
-							
-							<div style="margin-right: 0px;">
-								<a href="userInfoView?mid=${member.mid}" 
-									class="btn btn-danger btn-sm me-2">수정</a>
-								<a href="customerManageView"
-									class="btn btn-primary btn-sm me-2">취소</a>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div> --%>
-		</div>
-			
-			
-		</div>
-
-	 
+			</div>				
+		</div>		
+	</div>
 </body>
 </html>
