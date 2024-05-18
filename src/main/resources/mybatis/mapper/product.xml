@@ -55,10 +55,9 @@
 	</select>
 	
 	<select id="selectByPcategoryName" parameterType="String" resultType="Product">
-		select * from product
-		product inner join productCategory
-		on product.pid = productCategory.pid
-		where pcategoryName=#{pcategoryName}
+		select product.pid, product.pname, product.pprice
+		from product, productCategory
+		where product.pid = productCategory.pid and pcategoryName=#{pcategoryName}
 	</select>
 	
 	<select id="getSales" resultType="int">

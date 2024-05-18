@@ -73,3 +73,24 @@ $(function() {
         $("#addCartModal").modal('hide'); // Bootstrap 모달 닫기
     });
 });
+
+$(function(){
+	var query = document.location.search;
+	var param = new URLSearchParams(query);
+	var pcategoryName = param.get('pcategoryName').slice(1,-1);
+	
+	if(pcategoryName != null){
+		$.ajax({
+			url : "getProductListAjax?pcategoryName=" + pcategoryName,
+			type : "get",
+			success : function(data) {
+				// 서버로부터 받은 데이터를 div에 적용
+				$("#productItem").remove();
+				$(".product-list").html(data);
+			},
+			error : function(xhr, status, error) {
+				console.error("AJAX 요청 실패: ", error);
+			}
+		});
+	}
+});
