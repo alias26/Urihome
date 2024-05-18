@@ -53,13 +53,12 @@ function toggleAllDetails() {
 	<div class="row">
 		<div class="col-xl-2 col-lg-3">
 			<%@ include file="/WEB-INF/views/admin/adminHeader.jsp"%>
-		</div>
-		<!--  -->
+		</div>		
 		<div class="col-xl-10 col-lg-9 table-responsive-lg"
 			style="padding-left: 8px;">
 			<!-- Dashboard 헤더 -->
 			<div class="content-header mb-5 ms-0" style="height: 65px;">
-					<h4 class="text-light text-uppercase mb-0">고객관리</h4>
+					<h4 class="text-light text-uppercase mb-0">회원관리</h4>
 					<a href="${pageContext.request.contextPath}/logout"><i
 						class="fas fa-sign-out-alt text-danger fa-lg me-0"></i></a>
 			</div>
@@ -69,22 +68,13 @@ function toggleAllDetails() {
 						id="productInfoTable">
 						<thead class="table-secondary">
 							<tr>
+								<!-- 평상시에 보여지는 정보  -->
 								<th scope="col">회원 아이디</th>
                                 <th scope="col">회원 비밀번호</th>
                                 <th scope="col">회원 이메일</th>
                                 <th scope="col">회원 이름</th>
                                 <th scope="col">회원 가입 날짜</th>
-                                <!-- 추가 정보 열 -->
-                                <th class="additional-info" scope="col">회원 전화번호</th>
-                                <th class="additional-info" scope="col">회원 핸드폰번호</th>
-                                <th class="additional-info" scope="col">회원 상세주소</th>                               
-                                <th class="additional-info" scope="col">회원 우편번호</th>
-                                <th class="additional-info" scope="col">회원 주소</th>
-                                <th class="additional-info" scope="col">권한</th>
-                                 <th class="additional-info" scope="col">동의 사항</th>
-                                <th class="additional-info" scope="col">동의사항2</th>
-                                <th class="additional-info" scope="col">동의사항3</th>
-                                <th scope="col"> 회원 수정 및 삭제</th>
+                                <th scope="col"> 모든 정보 보기 및 삭제</th>                               
 							</tr>
 						</thead>
 						<tbody>
@@ -94,27 +84,16 @@ function toggleAllDetails() {
 	                                    <td>${member.mpassword}</td>
 	                                    <td>${member.memail}</td>
 	                                    <td>${member.mname}</td>
-	                                       <td><fmt:formatDate value="${member.mdate}" pattern="yyyy-MM-dd"/></td>
-	                                     
-	                                    <!-- 추가 정보 열에 해당하는 데이터 -->
-	                                    <td class="additional-info">${member.mtel}</td>
-	                                    <td class="additional-info">${member.mphone}</td>
-	                                    <td class="additional-info">${member.mdetailAddress}</td>	                                    
-	                                    <td class="additional-info">${member.mzip}</td>
-	                                    <td class="additional-info">${member.maddress}</td>
-	                                    <td class="additional-info">${member.mrole}</td>
-	                                    <td class="additional-info">${member.agree1}</td>
-	                                    <td class="additional-info">${member.agree2}</td>
-	                                    <td class="additional-info">${member.agree3}</td>	                                        
+	                                    <td><fmt:formatDate value="${member.mdate}" pattern="yyyy-MM-dd"/></td>	                                                                           
 	                                    <td>
-	                                    	<a class="btn btn-primary" href="userInfoView?mid=${member.mid}">수정</a>
-	                                    	<a class="btn btn-danger" href="deleteMember?mid=${member.mid}">삭제</a>	                                    
+	                                    	<a class="btn btn-primary" href="userInfoView?mid=${member.mid}">모든 정보 보기</a>
+	                                    	<button class="btn btn-danger" onclick="deleteMember('${member.mid}')">삭제</button>	                                    
 	                                    </td>        
 									</tr>
 							</c:forEach>
-						</tbody>
-						
+						</tbody>												
 					</table>
+					<!-- 회원정보 페이지네이션 -->
 					<div class="d-flex justify-content-between">
 						<nav class="ms-auto me-auto" aria-label="">
 							<ul class="pagination pagination-sm">
@@ -128,18 +107,37 @@ function toggleAllDetails() {
 								</c:forEach>
 								<c:if test="${pager.groupNo<pager.totalGroupNo}">
 									<li class="page-item"><a class="page-link" href="productList?pageNo=1">></a></li>
-									<li class="page-item"><a class="page-link" href="productList?pageNo=${pager.startPageNo-1}">>></a></li>
+									<li class="page-item"><a class="page-link" href="${pageContext.request.contextPath}/admin/deleteMember?pageNo=${pager.startPageNo-1}">>></a></li>
 								</c:if>
 							</ul>
 						</nav>					
-					</div>
-					<button class="btn btn-primary btn-sm" onclick="toggleAllDetails()">모든 정보 보기</button>
+					</div>					
 				</div>
-			</div>
-			
-			
+			</div>			
 		</div>
 	</div>
-	 
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+<script>
+function deleteMember(mid) {
+    if(confirm("정말로 삭제하시겠습니까?")) {
+        $.ajax({
+            url: `${pageContext.request.contextPath}/member/deleteMember`,
+            type: 'GET',
+            data: { mid: mid },
+            success: function(response) {
+                // 삭제 성공 시, 해당 행을 테이블에서 제거
+                $('#row-' + mid).remove();
+                alert('회원이 삭제되었습니다.');
+            },
+            error: function(xhr, status, error) {
+                // 오류 처리
+                alert('삭제 중 오류가 발생했습니다.');
+                console.error(error);
+            }
+        });
+    }
+}
+</script>	 
 </body>
 </html>

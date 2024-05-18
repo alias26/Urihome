@@ -47,8 +47,8 @@ public class MemberService {
 		return totalRows;
 	}	
 
-	public void removeMember(String mid) {
-		int rowNum= memberDao.deleteByMid(mid);		
+	public void deleteMember(String mid) {
+		memberDao.deleteByMid(mid);		
 	}
 
 	public Member getMember(String mid) {

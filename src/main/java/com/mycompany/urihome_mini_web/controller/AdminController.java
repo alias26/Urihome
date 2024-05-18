@@ -344,7 +344,8 @@ public class AdminController {
 		
 		return "redirect:/admin/productManageView";
 	}
-
+	
+	//회원 관리 뷰
 	@GetMapping("/customerManageView")
 	public String customerManageView(String pageNo, Model model, HttpSession session) {
 		if (pageNo == null) {
@@ -375,9 +376,7 @@ public class AdminController {
         model.addAttribute("member", userInfo); // 모델에 회원 정보를 추가합니다.
 		
 		return "admin/userInfoView";
-	}
-
-	
+	}	
 
 	@GetMapping("/productImageDownload")
 	public void productImageDownload(String pid, int index, String pthumbBodyType, HttpServletResponse response)
