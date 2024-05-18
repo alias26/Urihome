@@ -22,7 +22,6 @@ public class BoardService {
 	}
 	public List<Board> getBoardList(Pager pager){
 		List<Board> notice = boardDao.selectByPage(pager);
-		log.info(notice.get(0).getBtype());
 		return notice;
 	}
 	public int getTotalRows() {

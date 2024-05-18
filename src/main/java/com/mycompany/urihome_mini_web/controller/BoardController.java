@@ -54,15 +54,16 @@ public class BoardController {
 	}
 	
 	@GetMapping("/adminNotice")
-	public String adminNotice( String pageNo, HttpSession session, Model model) {
+	public String adminNotice(String pageNo, HttpSession session, Model model) {
 		if(pageNo==null) {
-			pageNo=(String) session.getAttribute("pageNo");
-			if(pageNo==null) {
+//			pageNo=(String) session.getAttribute("pageNo");
+//			if(pageNo==null) {
 				pageNo="1";
-			}
+//			}
 		}
 		int intpageNo=Integer.parseInt(pageNo);
-		session.setAttribute("pageNo",pageNo);
+//		session.setAttribute("pageNo",pageNo);
+		model.addAttribute("pageNo", pageNo);
 		
 		int rowsPagingTarget = service.getTotalRows();
 		Pager pager = new Pager(10,10,rowsPagingTarget, intpageNo);

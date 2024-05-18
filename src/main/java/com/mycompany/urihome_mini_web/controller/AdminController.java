@@ -79,14 +79,15 @@ public class AdminController {
 	@GetMapping("/productManageView")
 	public String productManageView(String pageNo, Model model, HttpSession session) {
 		if (pageNo == null) {
-			pageNo = (String) session.getAttribute("pageNo");
-			if (pageNo == null) {
+//			pageNo = (String) session.getAttribute("pageNo");
+//			if (pageNo == null) {
 				pageNo = "1";
-			}
+//			}
 		}
 
-		session.setAttribute("pageNo", pageNo);
-
+//		session.setAttribute("pageNo", pageNo);
+		model.addAttribute("pageNo", pageNo);
+		
 		int intPageNo = Integer.parseInt(pageNo);
 
 		int rowsPagingTarget = productService.getTotalRows();
@@ -101,7 +102,8 @@ public class AdminController {
 
 	@GetMapping("/productManageTable")
 	public String productManageTable(String pageNo, Model model, HttpSession session) {
-		session.setAttribute("pageNo", pageNo);
+//		session.setAttribute("pageNo", pageNo);
+		model.addAttribute("pageNo", pageNo);
 
 		int intPageNo = Integer.parseInt(pageNo);
 
@@ -349,13 +351,14 @@ public class AdminController {
 	@GetMapping("/customerManageView")
 	public String customerManageView(String pageNo, Model model, HttpSession session) {
 		if (pageNo == null) {
-			pageNo = (String) session.getAttribute("pageNo");
-			if (pageNo == null) {
+//			pageNo = (String) session.getAttribute("pageNo");
+//			if (pageNo == null) {
 				pageNo = "1";
-			}
+//			}
 		}
 
-		session.setAttribute("pageNo", pageNo);
+//		session.setAttribute("pageNo", pageNo);
+		model.addAttribute("pageNo", pageNo);
 		int intPageNo = Integer.parseInt(pageNo);
 
 		int rowsPagingTarget = memberService.getTotalRows();
