@@ -98,16 +98,16 @@ function toggleAllDetails() {
 						<nav class="ms-auto me-auto" aria-label="">
 							<ul class="pagination pagination-sm">
 								<c:if test="${pager.groupNo>1}">
-									<li class="page-item"><a class="page-link" href="productList?pageNo=1"><<</a></li>
-									<li class="page-item"><a class="page-link" href="productList?pageNo=${pager.startPageNo-1}"><</a></li>
+									<li class="page-item"><a class="page-link" href="customerManageView?pageNo=1"><<</a></li>
+									<li class="page-item"><a class="page-link" href="customerManageView?pageNo=${pager.startPageNo-1}"><</a></li>
 								</c:if>
 								<c:forEach var="i" begin="${pager.startPageNo}" end="${pager.endPageNo}">
 									<li class="page-item">
-									<a class="page-link ${pager.pageNo==i ?'active':''}" href="productManageView?pageNo=${i}">${i}</a></li>
+									<a class="page-link ${pager.pageNo==i ?'active':''}" href="customerManageView?pageNo=${i}">${i}</a></li>
 								</c:forEach>
 								<c:if test="${pager.groupNo<pager.totalGroupNo}">
-									<li class="page-item"><a class="page-link" href="productList?pageNo=1">></a></li>
-									<li class="page-item"><a class="page-link" href="${pageContext.request.contextPath}/admin/deleteMember?pageNo=${pager.startPageNo-1}">>></a></li>
+									<li class="page-item"><a class="page-link" href="customerManageView?pageNo=1">></a></li>
+									<li class="page-item"><a class="page-link" href="${pageContext.request.contextPath}/admin/customerManageView?pageNo=${pager.startPageNo-1}">>></a></li>
 								</c:if>
 							</ul>
 						</nav>					
