@@ -64,7 +64,7 @@
 				<ul class="navbar-nav">
 					<li class="nav-item dropdown">
 						<sec:authorize access="hasRole('ROLE_ADMIN')">
-							<a href="${pageContext.request.contextPath}/admin/productManageView" class="me-2" style="text-decoration:none;color:black;"><b>관리자</b></a>
+							<a href="${pageContext.request.contextPath}/admin/dashBoard" class="me-2" style="text-decoration:none;color:black;"><b>관리자</b></a>
 						</sec:authorize>
 						<button class="btn" aria-expanded="false">
 							<i class="bi bi-person-circle fs-5"></i>
@@ -92,18 +92,10 @@
 							</sec:authorize>
 						</ul>
 					</li>
-					<li class="nav-item dropdown">
-						<button class="btn" aria-expanded="false">
+					<li class="nav-item">
+						<button onclick="location.href = '${pageContext.request.contextPath}/cart/cartView'" class="btn" aria-expanded="false">
 							<i class="bi bi-bag fs-5"></i>
 						</button>
-						<ul class="dropdown-menu">
-							<li><p id="cartInfo">장바구니가 비어있습니다.</p></li>
-							<hr>
-							<li id="cartMoveButton" class="text-center">
-								<button onclick="location.href = '${pageContext.request.contextPath}/cart/cartView'" class="btn btn-dark btn-sm" aria-expanded="false">
-									장바구니로 이동</button>
-							</li>
-						</ul>
 					</li>
 					<li class="nav-item dropdown">
 						<button class="btn" aria-expanded="false">
