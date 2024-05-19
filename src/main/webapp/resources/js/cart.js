@@ -125,7 +125,7 @@ $(function() {
 			  const modal=new bootstrap.Modal("#selectOrder");
 			  modal.show();
 		  }else{
-			  location.href="${pageContext.request.contextPath}/order/orderForm";
+			  location.href="../order/orderForm";
 		  }
 	      })
 	});
@@ -176,6 +176,7 @@ function getSelectCartOrder(){
 	var pidList = $(".list-unstyled").children(".cart-items").find("input[name=pid]");
 	var cartCheckBox = $(".list-unstyled").children(".cart-items").find("input[name=order-checkbox]");
 	var selected = []
+	var noSelectNum = 0;
 	
 	for(var i = 0; i < pidList.length; i++){
 		var select = []
@@ -184,11 +185,12 @@ function getSelectCartOrder(){
 			select.push('Y');
 		}else{
 			select.push('N');
+			noSelectNum++;
 		}
 		selected.push(select);
 	}
 	
-	if(selected.length == 0){
+	if(noSelectNum==selected.length){
 		const modal= new bootstrap.Modal("#selectOrder")
 		modal.show();
 		return;
