@@ -165,10 +165,17 @@ function getTotalPrice(){
 	if(totalPrice >= 50000 || checked==0){
 		deliveryFee=0;
 	}
+	var strongTotalPrice = $("<strong style=\"font-size: 19px\"></strong>");
+	strongTotalPrice.text(totalPrice);
+	$("#totalPrice").html(strongTotalPrice);
 	
-	$("#totalPrice").text(totalPrice);
-	$("#deliveryFee").text(deliveryFee);
-	$("#totalCartPrice").text(totalPrice+deliveryFee);
+	var strongDeliveryFee = $("<strong style=\"font-size: 19px\"></strong>");
+	strongDeliveryFee.text(deliveryFee);
+	$("#deliveryFee").html(strongDeliveryFee);
+	
+	var strongTotalPriceDeliveryFee = $("<strong style=\"font-size: 19px\"></strong>");
+	strongTotalPriceDeliveryFee.text(totalPrice+deliveryFee);
+	$("#totalCartPrice").html(strongTotalPriceDeliveryFee);
 	
 }
 
