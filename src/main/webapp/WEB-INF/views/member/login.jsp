@@ -10,7 +10,6 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
   <!--Custom Css-->  
-   <link type="text/css" rel="stylesheet" href="css/style.css"/> 
 	<!-- css적용되도록 login.css 파일을 연결시킵니다. -->
 	<link href="${pageContext.request.contextPath}/resources/css/member/login.css" rel="stylesheet">
 	<%--  <!-- jquery 로그인 유효성 검사-->
