@@ -17,6 +17,7 @@ import com.mycompany.urihome_mini_web.dao.OrdererDao;
 import com.mycompany.urihome_mini_web.dao.RecipientDao;
 import com.mycompany.urihome_mini_web.dto.Cart;
 import com.mycompany.urihome_mini_web.dto.MyPageOrderHistory;
+import com.mycompany.urihome_mini_web.dto.OnumberOrderHistory;
 import com.mycompany.urihome_mini_web.dto.Order;
 import com.mycompany.urihome_mini_web.dto.OrderHistory;
 import com.mycompany.urihome_mini_web.dto.OrderItem;
@@ -172,7 +173,26 @@ public class OrderService {
 
 	public List<MyPageOrderHistory> getmyPageOrderList(String mid) {
 		List<MyPageOrderHistory> mypageOrderList = mypageOrderHistoryDao.getOrderProductHistory(mid);
-		return mypageOrderList;
+		List<MyPageOrderHistory> myOrderList = new ArrayList<>();
 		
+		Iterator<MyPageOrderHistory> iter = mypageOrderList.iterator();
+		List<Integer> onumList = new ArrayList<>();
+		
+		while(iter.hasNext()) {
+			MyPageOrderHistory ohist = iter.next();
+			
+			if(!onumList.contains(ohist.getOnumber())) {
+				onumList.add(ohist.getOnumber());
+				myOrderList.add(ohist);
+			}
+		}
+		
+		return myOrderList;
+	}
+
+
+	public List<OnumberOrderHistory> getOnumberOrderHistory(HashMap<String, Object> param) {
+		List<OnumberOrderHistory> onumberOrderHistory = mypageOrderHistoryDao.getOnumberOrderHistory(param);
+		return onumberOrderHistory;
 	}
 }

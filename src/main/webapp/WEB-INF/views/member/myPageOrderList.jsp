@@ -24,7 +24,6 @@
 
 <link rel="stylesheet"
 	href="https://code.jquery.com/ui/1.13.3/themes/base/jquery-ui.css">
-<link rel="stylesheet" href="/resources/demos/style.css">
 
 <!-- css적용되도록 login.css 파일을 연결시킵니다. -->
 <link
@@ -196,7 +195,6 @@
 								<th>상품 이미지</th>
 								<th>상품명</th>
 								<th>가격</th>
-								<th>수량</th>
 								<th>주문날짜</th>
 								<th>주문상태</th>
 								<th>배송상태</th>
@@ -209,14 +207,13 @@
 									<td style="vertical-align: middle;"> ${orderHistory.onumber}</td>		
 									<td><img
 										src="../product/productImageDownload?pid=${orderHistory.pid}&index=1&pthumbBodyType=thumb""
-										alt="아이템 이미지"></td>
-									<td style="vertical-align: middle;">${orderHistory.pname}</td>
-									<td style="vertical-align: middle;">${orderHistory.ptotalPrice}</td>
-									<td style="vertical-align: middle;" >${orderHistory.pbuyAmount}</td>
+										alt="아이템 이미지"></a></td>
+									<td style="vertical-align: middle;"><a href="getOnumberOrderHistory?onumber=${orderHistory.onumber}">${orderHistory.pname} <c:if test="${orderHistory.ocount > 1}" >외 ${orderHistory.ocount-1}</c:if></a></td>
+									<td style="vertical-align: middle;">${orderHistory.ototalPrice}</td>
 									<td style="vertical-align: middle;"><fmt:formatDate value="${orderHistory.oitemDate}" pattern="yyyy-MM-dd"/></td>
 									<td style="vertical-align: middle;">${orderHistory.ostatus}<br>
 										<button class="cancel-btn">주문 취소</button>
-									</td >
+									</td>
 									<td style="vertical-align: middle;">배송 준비중</td>
 								</tr>
 						</c:forEach>
@@ -226,8 +223,6 @@
 			</div>
 		</div>
 	</div>
-
-
 
 	<div class="footer">
 		<%@ include file="/WEB-INF/views/common/footer.jsp"%>

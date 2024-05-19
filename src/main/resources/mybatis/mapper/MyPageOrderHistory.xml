@@ -3,11 +3,38 @@
 <mapper namespace="com.mycompany.urihome_mini_web.dao.MyPageOrderHistoryDao">
 
 	<select id="getOrderProductHistory" parameterType="String" resultType="MyPageOrderHistory">
-	SELECT h.mid, o.onumber, o.pid, p.pname, o.ptotalPrice, o.pbuyAmount, h.oitemDate, h.ostatus
-	FROM orderItem o
-	JOIN orderHistory h ON h.onumber = o.onumber
-	JOIN product p ON p.pid = o.pid
-	WHERE h.mid = #{mid}
-	ORDER BY h.oitemDate desc
+	SELECT h.mid, 
+         o.onumber, 
+         o.pid, 
+         p.pname, 
+         h.ototalPrice, 
+         h.oitemDate, 
+         h.ostatus, 
+         cnt.ocount
+  FROM orderItem o
+  JOIN orderHistory h ON h.onumber = o.onumber
+  JOIN product p ON p.pid = o.pid
+  JOIN (
+      SELECT onumber, COUNT(*) AS ocount
+      FROM orderItem
+      GROUP BY onumber
+  ) cnt ON cnt.onumber = o.onumber
+  WHERE h.mid = #{mid}
+  ORDER BY h.oitemDate DESC
+	</select>
+	
+	<select id="getOnumberOrderHistory" parameterType="String" resultType="OnumberOrderHistory">
+	SELECT h.mid, 
+         o.onumber, 
+         o.pid, 
+         p.pname, 
+         h.oitemDate, 
+         h.ostatus,
+         o.ptotalPrice
+  FROM orderItem o
+  JOIN orderHistory h ON h.onumber = o.onumber
+  JOIN product p ON p.pid = o.pid
+  WHERE h.mid = #{mid}
+  ORDER BY h.oitemDate DESC
 	</select>
 </mapper>

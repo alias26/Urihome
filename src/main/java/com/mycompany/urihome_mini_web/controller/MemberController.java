@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.mycompany.urihome_mini_web.dto.Member;
 import com.mycompany.urihome_mini_web.dto.MemberValidator;
 import com.mycompany.urihome_mini_web.dto.MyPageOrderHistory;
+import com.mycompany.urihome_mini_web.dto.OnumberOrderHistory;
 import com.mycompany.urihome_mini_web.security.UriHomeUserDetails;
 import com.mycompany.urihome_mini_web.service.MemberService;
 import com.mycompany.urihome_mini_web.service.OrderService;
@@ -104,6 +105,23 @@ public class MemberController {
 		Member member = uriHomeUserDetails.getMember();
 		String mid = authentication.getName();
 		List<MyPageOrderHistory> myPageOrderList = orderService.getmyPageOrderList(mid);
+	    model.addAttribute("myPageOrderList", myPageOrderList);
+	    return "member/myPageOrderList";
+	}
+	
+	@GetMapping("/getOnumberOrderHistory")
+	@Secured("ROLE_USER")
+	public String getOnumberOrderHistory(int onumber, Model model, Authentication authentication) {
+		UriHomeUserDetails uriHomeUserDetails = (UriHomeUserDetails) authentication.getPrincipal();
+		Member member = uriHomeUserDetails.getMember();
+		String mid = authentication.getName();
+		
+		HashMap<String, Object> param = new HashMap<>();
+		param.put("mid", mid);
+		param.put("onumber", onumber);
+		
+		List<OnumberOrderHistory> myPageOrderList = orderService.getOnumberOrderHistory(param);
+		
 	    model.addAttribute("myPageOrderList", myPageOrderList);
 	    return "member/myPageOrderList";
 	}
