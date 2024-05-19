@@ -70,7 +70,7 @@
 							<i class="bi bi-person-circle fs-5"></i>
 						</button>
 						<ul class="dropdown-menu">
-							<li><a class="dropdown-item" href="#">주문조회</a></li>
+							<li><a class="dropdown-item" href="${pageContext.request.contextPath}/member/myPageOrderList">주문조회</a></li>
 							<li><a class="dropdown-item" href="#">관심상품</a></li>
 							<li><a class="dropdown-item" href="#">최근 본 상품</a></li>
 							<li><a class="dropdown-item" href="#">적립금</a></li>
