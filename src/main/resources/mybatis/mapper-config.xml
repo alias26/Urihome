@@ -21,6 +21,7 @@
 		<typeAlias type="com.mycompany.urihome_mini_web.dto.OrderHistory" alias="OrderHistory"/>
 		<typeAlias type="com.mycompany.urihome_mini_web.dto.Recipient" alias="Recipient"/>
 		<typeAlias type="com.mycompany.urihome_mini_web.dto.Orderer" alias="Orderer"/>
+		<typeAlias type="com.mycompany.urihome_mini_web.dto.MyPageOrderHistory" alias="MyPageOrderHistory"/>
 		
 	</typeAliases>
 </configuration>

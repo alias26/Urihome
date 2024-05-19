@@ -10,11 +10,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.mycompany.urihome_mini_web.dao.CartDao;
+import com.mycompany.urihome_mini_web.dao.MyPageOrderHistoryDao;
 import com.mycompany.urihome_mini_web.dao.OrderHistoryDao;
 import com.mycompany.urihome_mini_web.dao.OrderItemDao;
 import com.mycompany.urihome_mini_web.dao.OrdererDao;
 import com.mycompany.urihome_mini_web.dao.RecipientDao;
 import com.mycompany.urihome_mini_web.dto.Cart;
+import com.mycompany.urihome_mini_web.dto.MyPageOrderHistory;
 import com.mycompany.urihome_mini_web.dto.Order;
 import com.mycompany.urihome_mini_web.dto.OrderHistory;
 import com.mycompany.urihome_mini_web.dto.OrderItem;
@@ -37,6 +39,8 @@ public class OrderService {
 	private RecipientDao recipientDao;
 	@Autowired
 	private CartDao cartDao;
+	@Autowired
+	private MyPageOrderHistoryDao mypageOrderHistoryDao;
 
 	
 	public List<OrderItemList> getOrderItem(String mid) {
@@ -163,5 +167,12 @@ public class OrderService {
 			}
 		}
 		return orderHistoryPidList;
+	}
+
+
+	public List<MyPageOrderHistory> getmyPageOrderList(String mid) {
+		List<MyPageOrderHistory> mypageOrderList = mypageOrderHistoryDao.getOrderProductHistory(mid);
+		return mypageOrderList;
+		
 	}
 }

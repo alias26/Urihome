@@ -1,6 +1,7 @@
 package com.mycompany.urihome_mini_web.controller;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.validation.Valid;
@@ -20,8 +21,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.mycompany.urihome_mini_web.dto.Member;
 import com.mycompany.urihome_mini_web.dto.MemberValidator;
+import com.mycompany.urihome_mini_web.dto.MyPageOrderHistory;
 import com.mycompany.urihome_mini_web.security.UriHomeUserDetails;
 import com.mycompany.urihome_mini_web.service.MemberService;
+import com.mycompany.urihome_mini_web.service.OrderService;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -31,7 +34,8 @@ import lombok.extern.slf4j.Slf4j;
 public class MemberController {
 	@Autowired
 	private MemberService memberService;
-	
+	@Autowired
+	private OrderService orderService;
 	//아이디 찾기 
 	/*@RequestMapping(value = "/find_id", method = RequestMethod.POST)
 	@ResponseBody
@@ -103,8 +107,13 @@ public class MemberController {
 
 	@GetMapping("/myPageOrderList")
 	@Secured("ROLE_USER")
-	public String mypageOrderList() {
-		return "member/myPageOrderList";
+	public String mypageOrderList(Model model, Authentication authentication ) {
+		UriHomeUserDetails uriHomeUserDetails = (UriHomeUserDetails) authentication.getPrincipal();
+		Member member = uriHomeUserDetails.getMember();
+		String mid = authentication.getName();
+		List<MyPageOrderHistory> myPageOrderList = orderService.getmyPageOrderList(mid);
+	    model.addAttribute("myPageOrderList", myPageOrderList);
+	    return "member/myPageOrderList";
 	}
 
 	@GetMapping("/error403")
