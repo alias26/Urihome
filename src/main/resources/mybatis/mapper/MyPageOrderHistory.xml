@@ -23,18 +23,16 @@
   ORDER BY h.oitemDate DESC
 	</select>
 	
-	<select id="getOnumberOrderHistory" parameterType="String" resultType="OnumberOrderHistory">
+	<select id="getOnumberOrderHistory" parameterType="HashMap" resultType="OnumberOrderHistory">
 	SELECT h.mid, 
          o.onumber, 
          o.pid, 
-         p.pname, 
+         p.pname,
+         o.ptotalPrice,
          h.oitemDate, 
          h.ostatus,
-         o.ptotalPrice
-  FROM orderItem o
-  JOIN orderHistory h ON h.onumber = o.onumber
-  JOIN product p ON p.pid = o.pid
-  WHERE h.mid = #{mid}
-  ORDER BY h.oitemDate DESC
+         h.ototalPrice
+  FROM orderItem o, orderHistory h, product p
+  WHERE h.mid = #{mid} and h.onumber=#{onumber} and h.onumber = o.onumber and p.pid = o.pid
 	</select>
 </mapper>

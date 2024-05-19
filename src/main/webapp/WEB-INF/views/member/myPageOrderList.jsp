@@ -206,9 +206,9 @@
 								<tr>
 									<td style="vertical-align: middle;"> ${orderHistory.onumber}</td>		
 									<td><img
-										src="../product/productImageDownload?pid=${orderHistory.pid}&index=1&pthumbBodyType=thumb""
-										alt="아이템 이미지"></a></td>
-									<td style="vertical-align: middle;"><a href="getOnumberOrderHistory?onumber=${orderHistory.onumber}">${orderHistory.pname} <c:if test="${orderHistory.ocount > 1}" >외 ${orderHistory.ocount-1}</c:if></a></td>
+										src="../product/productImageDownload?pid=${orderHistory.pid}&index=1&pthumbBodyType=thumb"
+										alt="아이템 이미지"></td>
+									<td style="vertical-align: middle;"><a href="orderHistoryDetail?onumber=${orderHistory.onumber}" style="color:black;text-decoration:none;">${orderHistory.pname} <c:if test="${orderHistory.ocount > 1}" >외 ${orderHistory.ocount-1}</c:if></a></td>
 									<td style="vertical-align: middle;">${orderHistory.ototalPrice}</td>
 									<td style="vertical-align: middle;"><fmt:formatDate value="${orderHistory.oitemDate}" pattern="yyyy-MM-dd"/></td>
 									<td style="vertical-align: middle;">${orderHistory.ostatus}<br>

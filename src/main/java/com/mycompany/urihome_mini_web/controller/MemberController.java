@@ -109,9 +109,9 @@ public class MemberController {
 	    return "member/myPageOrderList";
 	}
 	
-	@GetMapping("/getOnumberOrderHistory")
+	@GetMapping("/orderHistoryDetail")
 	@Secured("ROLE_USER")
-	public String getOnumberOrderHistory(int onumber, Model model, Authentication authentication) {
+	public String orderHistoryDetail(int onumber, Model model, Authentication authentication) {
 		UriHomeUserDetails uriHomeUserDetails = (UriHomeUserDetails) authentication.getPrincipal();
 		Member member = uriHomeUserDetails.getMember();
 		String mid = authentication.getName();
@@ -123,7 +123,7 @@ public class MemberController {
 		List<OnumberOrderHistory> myPageOrderList = orderService.getOnumberOrderHistory(param);
 		
 	    model.addAttribute("myPageOrderList", myPageOrderList);
-	    return "member/myPageOrderList";
+	    return "member/orderHistoryDetail";
 	}
 
 	@GetMapping("/error403")
