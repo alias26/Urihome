@@ -27,6 +27,9 @@
 			<!-- 카테고리 -->
 			<div class = "category">
 	   			<ul class="nav flex-column">
+	   			  <li class="nav-item mb-4">
+				    <a class="nav-link" aria-disabled="true" style="font-size: 30px; color: black; font-weight: bold;"
+				    	href="${pageContext.request.contextPath}/member/mypage">마이페이지</a>
 				  <!-- 쇼핑 관련 -->
 				  <li class="nav-item nav-item-category">
 				    <a class="nav-link disabled" aria-disabled="true" style="font-size: 22px; color: black; margin-bottom: 7px; 
