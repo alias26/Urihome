@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.mycompany.urihome_mini_web.dto.Member;
 import com.mycompany.urihome_mini_web.dto.MemberValidator;
@@ -36,15 +37,6 @@ public class MemberController {
 	private MemberService memberService;
 	@Autowired
 	private OrderService orderService;
-	//아이디 찾기 
-	/*@RequestMapping(value = "/find_id", method = RequestMethod.POST)
-	@ResponseBody
-	public String find_id(@RequestParam("name") String name,@RequestParam("phone") String phone) {
-			
-	String result = memberService.find_id(name, phone);
-			
-	return result;
-	}*/
 	
 	@GetMapping("/joinForm")
 	public String joinForm() {
@@ -107,7 +99,7 @@ public class MemberController {
 
 	@GetMapping("/myPageOrderList")
 	@Secured("ROLE_USER")
-	public String mypageOrderList(Model model, Authentication authentication ) {
+	public String mypageOrderList(Model model, Authentication authentication) {
 		UriHomeUserDetails uriHomeUserDetails = (UriHomeUserDetails) authentication.getPrincipal();
 		Member member = uriHomeUserDetails.getMember();
 		String mid = authentication.getName();
@@ -149,6 +141,7 @@ public class MemberController {
 	}
 	
 	@GetMapping("/deleteMember")
+	@ResponseBody
 	public Map<String, String> deleteMember(@RequestParam("mid") String mid) {
 		log.info("" + mid);
 		memberService.deleteMember(mid);

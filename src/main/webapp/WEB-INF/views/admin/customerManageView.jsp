@@ -121,10 +121,11 @@ function toggleAllDetails() {
 <script>
 function deleteMember(mid) {
     if(confirm("정말로 삭제하시겠습니까?")) {
+    	console.log(`${pageContext.request.contextPath}/deleteMember`);
         $.ajax({
             url: `${pageContext.request.contextPath}/member/deleteMember`,
             type: 'GET',
-            data: { mid: mid },
+            data: { mid: mid},
             success: function(response) {
                 // 삭제 성공 시, 해당 행을 테이블에서 제거
                 $('#row-' + mid).remove();
@@ -133,7 +134,6 @@ function deleteMember(mid) {
             error: function(xhr, status, error) {
                 // 오류 처리
                 alert('삭제 중 오류가 발생했습니다.');
-                console.error(error);
             }
         });
     }

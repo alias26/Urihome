@@ -48,7 +48,7 @@ public class MemberService {
 	}	
 
 	public void deleteMember(String mid) {
-		memberDao.deleteByMid(mid);		
+		memberDao.deleteByMid(mid);
 	}
 
 	public Member getMember(String mid) {
