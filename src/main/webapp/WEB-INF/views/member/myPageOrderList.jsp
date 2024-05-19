@@ -185,7 +185,7 @@
 					style="font-size: 30px; font-weight: bold; margin-top: 0px; text-align: center;">
 					주문내역</div>
 				<!-- 테이블을 감싸는 div -->
-				<div class="table-container" style="margin-top: 30px;">
+				<div class="table-container" style="margin-top: 30px; width:80%; margin:0 auto;">
 					<!-- 주문내역 테이블 부분 -->
 					<table class="table" style="text-align: center; margin: 0">
 						<!-- 테이블 안에 들어 -->
@@ -212,7 +212,7 @@
 										alt="아이템 이미지"></td>
 									<td style="vertical-align: middle;">${orderHistory.pname}</td>
 									<td style="vertical-align: middle;">${orderHistory.ptotalPrice}</td>
-									<td style="vertical-align: middle;" >${orderHistory.pbuyAmount }</td>
+									<td style="vertical-align: middle;" >${orderHistory.pbuyAmount}</td>
 									<td style="vertical-align: middle;"><fmt:formatDate value="${orderHistory.oitemDate}" pattern="yyyy-MM-dd"/></td>
 									<td style="vertical-align: middle;">${orderHistory.ostatus}<br>
 										<button class="cancel-btn">주문 취소</button>

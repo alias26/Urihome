@@ -28,36 +28,36 @@
 			<div class = "category">
 	   			<ul class="nav flex-column">
 				  <!-- 쇼핑 관련 -->
-				  <li class="nav-item">
+				  <li class="nav-item nav-item-category">
 				    <a class="nav-link disabled" aria-disabled="true" style="font-size: 22px; color: black; margin-bottom: 7px; 
 				    														font-weight: bold;">쇼핑 관련</a>
 				  </li>
-				  <li class="nav-item">
+				  <li class="nav-item nav-item-category">
 				    <a class="nav-link" href='${pageContext.request.contextPath}/member/myPageOrderList'>주문조회</a>
 				  </li>
-				  <li class="nav-item">
+				  <li class="nav-item nav-item-category">
 				    <a class="nav-link" href="#onclick" style="margin-bottom: 30px;">적립금</a>
 				  </li>
 				  <!-- 나의 활동 -->
-	   			  <li class="nav-item">
+	   			  <li class="nav-item nav-item-category">
 				    <a class="nav-link disabled" aria-disabled="true" style="font-size: 22px; color: black; margin-bottom: 7px;
 				    														font-weight: bold;">나의 활동</a>
 				  </li>
-				  <li class="nav-item">
+				  <li class="nav-item nav-item-category">
 				    <a class="nav-link" href="#onclick">관심상품</a>
 				  </li>
-				  <li class="nav-item">
+				  <li class="nav-item nav-item-category">
 				    <a class="nav-link" href="#onclick" style="margin-bottom: 30px;">게시글 관리</a>
 				  </li>
 				  <!-- 회원 정보 -->
-				  <li class="nav-item">
+				  <li class="nav-item nav-item-category">
 				    <a class="nav-link disabled" aria-disabled="true" style="font-size: 22px; color: black; margin-bottom: 7px;
 				    														font-weight: bold;">회원 정보</a>
 				  </li>  
-				  <li class="nav-item">
+				  <li class="nav-item nav-item-category">
 				    <a class="nav-link" href = '${pageContext.request.contextPath}/member/memberInfo'>회원정보수정</a>
 				  </li>
-				  <li class="nav-item">
+				  <li class="nav-item nav-item-category">
 				    <a class="nav-link" href="#onclick" style="margin-bottom: 30px;">배송주소록</a>
 				</ul>
    			</div>	
