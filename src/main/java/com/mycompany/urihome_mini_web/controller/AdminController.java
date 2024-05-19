@@ -79,13 +79,9 @@ public class AdminController {
 	@GetMapping("/productManageView")
 	public String productManageView(String pageNo, Model model, HttpSession session) {
 		if (pageNo == null) {
-//			pageNo = (String) session.getAttribute("pageNo");
-//			if (pageNo == null) {
-				pageNo = "1";
-//			}
+			pageNo = "1";
 		}
 
-//		session.setAttribute("pageNo", pageNo);
 		model.addAttribute("pageNo", pageNo);
 		
 		int intPageNo = Integer.parseInt(pageNo);
@@ -102,7 +98,6 @@ public class AdminController {
 
 	@GetMapping("/productManageTable")
 	public String productManageTable(String pageNo, Model model, HttpSession session) {
-//		session.setAttribute("pageNo", pageNo);
 		model.addAttribute("pageNo", pageNo);
 
 		int intPageNo = Integer.parseInt(pageNo);
@@ -343,7 +338,6 @@ public class AdminController {
 		JSONObject jsonObject = new JSONObject();
 		jsonObject.append("result", "success");
 		
-		
 		return "redirect:/admin/productManageView";
 	}
 	
@@ -351,13 +345,9 @@ public class AdminController {
 	@GetMapping("/customerManageView")
 	public String customerManageView(String pageNo, Model model, HttpSession session) {
 		if (pageNo == null) {
-//			pageNo = (String) session.getAttribute("pageNo");
-//			if (pageNo == null) {
-				pageNo = "1";
-//			}
+			pageNo = "1";
 		}
 
-//		session.setAttribute("pageNo", pageNo);
 		model.addAttribute("pageNo", pageNo);
 		int intPageNo = Integer.parseInt(pageNo);
 
@@ -377,7 +367,9 @@ public class AdminController {
 		
 		Member userInfo = memberService.getMember(mid); // 실제로는 DB에서 회원 정보를 조회하는 메서드를 호출합니다.
         model.addAttribute("member", userInfo); // 모델에 회원 정보를 추가합니다.
-		
+		model.addAttribute("side", "customerManage");
+
+        
 		return "admin/userInfoView";
 	}	
 
