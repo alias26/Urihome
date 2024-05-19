@@ -52,6 +52,9 @@ public class BoardService {
 		boardDao.deleteByBno(bnumber);
 		
 	}
+	public void setBhitcountUp(Board board) {
+		boardDao.setBhitcountUp(board);
+	}
 
 	
 	

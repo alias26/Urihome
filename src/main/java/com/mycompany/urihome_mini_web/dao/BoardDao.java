@@ -19,5 +19,6 @@ public interface BoardDao {
 	public Board selectAttachData(int bnumber);
 	public int update(Board board);
 	public int deleteByBno(int bnumber);
+	public int setBhitcountUp(Board board);
 
 }

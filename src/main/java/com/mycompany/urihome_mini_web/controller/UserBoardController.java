@@ -69,6 +69,10 @@ public class UserBoardController {
 		model.addAttribute("board", board);
 		model.addAttribute("npage", npage);
 		model.addAttribute("ppage", ppage);
+		
+		board.setBhitcount(board.getBhitcount()+1);
+		service.setBhitcountUp(board);
+		
 		return "board/detailBoard";
 	}
 

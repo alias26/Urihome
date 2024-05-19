@@ -103,5 +103,11 @@
 		delete from board
 		where bnumber=#{bnumber}
 	</delete>
-
+	
+	<update id="setBhitcountUp" parameterType="Board">
+		update board
+		set bhitcount=#{bhitcount}
+		where bnumber=#{bnumber}
+	</update>
+	
 </mapper> 
