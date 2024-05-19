@@ -236,6 +236,11 @@ $(function() {
 		});
 		
 		$("#pay").on("click", function(){
+			var isRightSubmit = orderFormCheckData();
+			if(!isRightSubmit){
+				return;
+			}
+			
 			var oname =$("#oname").val();
 			var oemail = $("#oemail").val();
 			var ozip = $("#ozip").val();
