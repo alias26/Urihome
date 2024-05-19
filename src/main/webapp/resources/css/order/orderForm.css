@@ -52,3 +52,7 @@ button[name=paymentBtn]:hover img, button[name=paymentBtn]:active img{
 .grayscale{
 	filter:grayscale(100%);
 }
+
+#ozip, #oaddress, #rzip, #raddress{
+	background-color: #EBEBE4;
+}
