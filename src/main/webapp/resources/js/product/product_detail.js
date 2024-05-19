@@ -82,9 +82,7 @@ $(function(){
   
   $("#addCart").click(function(){
 	   	var pid = $("#pid").text();
-	   	console.log(pid);
 	   	var pname = $("#pname").text();
-	   	console.log(pname);
 	   	var pprice = $("#pprice").text(); 
 	   	var pbuyAmount = $("#pbuyAmount").val();
 	   	
@@ -118,4 +116,25 @@ $(function(){
 	   	location.href= "../order/orderNowForm?pid="+pid+"&pbuyAmount="+pbuyAmount;
        
 	  });
+	
+		/*var pid = $("#pid").text();
+	  $.ajax({
+		url:"../boardProduct/reviewList?pid=" + pid,
+		method:"get",
+		contentType : "application/json; charset:UTF-8",
+		success: function(data){
+			$("#tab03").remove();
+			$("#tabcontent03").append(data);
+		}
+	});
+	
+	$.ajax({
+		url:"../boardProduct/qnaList?pid=" + pid,
+		method:"get",
+		contentType : "application/json; charset:UTF-8",
+		success: function(data){
+			$("#tab04").remove();
+			$("#tabcontent04").append(data);
+		}
+	});*/
 });
