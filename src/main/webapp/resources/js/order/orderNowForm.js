@@ -81,7 +81,7 @@ function isRightEmail() {
 	var result = true;
 
 	//email 검사
-	var email = $("#email");
+	var email = $("#oemail");
 	var emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
 	var emailResult = emailPattern.test(email.val());
 	var emailSpan = $("#emailSpan");
