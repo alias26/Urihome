@@ -52,7 +52,7 @@
 				<tr height="60px">
 					<td width="10%" class="align-middle">${board.bnumber}</td>
 					<td width="35%" class="align-middle">
-					<a id="btitle" href="detailBoard?bnumber=${board.bnumber}">${board.btitle}</a></td>
+					<a id="btitle" style="color:black" href="detailBoard?bnumber=${board.bnumber}">${board.btitle}</a></td>
 					<td width="25%" class="align-middle">
 					<fmt:formatDate
 							value="${board.bdate}" pattern="yyyy-MM-dd" /></td>
@@ -109,7 +109,7 @@
 		</select>
 		<input 
 		type="text" id="inputSearch" name="inputSearch" placeholder="검색어를 입력해 주세요">
-		<button type="submit" class="btn_submit btn btn-danger btn-sm">검색</button>
+		<button type="submit" class="btn_submit btn btn-dark btn-sm">검색</button>
 	</div>
 
 	<%@ include file="/WEB-INF/views/common/footer.jsp"%>
