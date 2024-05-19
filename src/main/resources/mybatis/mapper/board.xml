@@ -44,34 +44,44 @@
 	<select id="selectByPrevBno" parameterType="int"
 		resultType="Board">
 		select rnum, bnumber, btitle
-		from(
-			select rownum as rnum, bnumber,btitle
-			from board
-			order by bnumber
-		)
-		where rnum=(select rnum
+        from( select rownum as rnum, bnumber, btitle
+            from(
+                select bnumber,btitle
+                from board
+                order by bnumber
+            )
+        )
+		where rnum=(
+            select rnum
+            from(select rownum as rnum, bnumber
 					from (
-						select rownum as rnum,bnumber
+						select bnumber
 						from board
 						order by bnumber
 					)
-					where bnumber=#{bnumber})-1
+                )
+            where bnumber=#{bnumber})-1
 	</select>
 	<select id="selectByNextBno" parameterType="int"
 		resultType="Board">
 		select rnum, bnumber, btitle
-		from(
-			select rownum as rnum, bnumber,btitle
-			from board
-			order by bnumber
-		)
-		where rnum=(select rnum
+        from( select rownum as rnum, bnumber, btitle
+            from(
+                select bnumber,btitle
+                from board
+                order by bnumber
+            )
+        )
+		where rnum=(
+            select rnum
+            from(select rownum as rnum, bnumber
 					from (
-						select rownum as rnum,bnumber
+						select bnumber
 						from board
 						order by bnumber
 					)
-					where bnumber=#{bumber})+1
+                )
+            where bnumber=#{bnumber})+1
 	</select>
 	<select id="selectAttachData" parameterType="int"
 		resultType="Board">
