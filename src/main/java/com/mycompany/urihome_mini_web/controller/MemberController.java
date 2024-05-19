@@ -159,6 +159,7 @@ public class MemberController {
 	}
 	
 	@GetMapping("/deleteMember")
+	@Secured("ROLE_USER")
 	@ResponseBody
 	public Map<String, String> deleteMember(@RequestParam("mid") String mid) {
 		log.info("" + mid);
