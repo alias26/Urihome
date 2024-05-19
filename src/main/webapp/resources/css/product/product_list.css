@@ -95,6 +95,10 @@
 	color: black;
 }
 
+.nav-active{
+	color:black;
+}
+
 .nav-item {
 	margin-bottom: 7px;
 	margin-left: 30px;

@@ -94,20 +94,20 @@
 				<c:forEach var="best" items="${bestList}" varStatus="status">
 					<c:if test="${status.first|| status.index%4==0}">
 						<div name="best" class="carousel-item ${status.index==0?'active':''}">
-						<div class="d-flex">
+							<div class="d-flex ms-auto me-auto">
 					</c:if>
-						<div class="card-wrapper container-md justify-content-around">
-							<div class="card border-0 p-3">
-								<a href="product/product_detail?pid=${best.pid}">
-								<img name="bestseller"
-									src="product/productImageDownload?pid=${best.pid}&index=1&pthumbBodyType=thumb"
-									class="card-img-top" alt="..."
-									style="width: 290px; border-radius: 10px; margin-bottom: 10px;">
-								</a>
+							<div class="card-wrapper container-md justify-content-center">
+								<div class="card border-0 p-3">
+									<a href="product/product_detail?pid=${best.pid}">
+									<img name="bestseller"
+										src="product/productImageDownload?pid=${best.pid}&index=1&pthumbBodyType=thumb"
+										class="card-img-top" alt="..."
+										style="width: 290px; border-radius: 10px; margin-bottom: 10px;">
+									</a>
+								</div>
 							</div>
-						</div>
 				<c:if test="${(status.index+1)%4==0 || status.last}">
-					</div>
+						</div>
 					</div>
 				</c:if>
 			</c:forEach>
@@ -137,16 +137,16 @@
 			<div class="category">
 				<ul class="nav flex-column">
 					<!-- 쇼핑 관련 -->
-					<li class="nav-item"><a class="nav-link"
+					<li class="nav-item nav-item-category"><a class="nav-link"
 						href="javascript:void(0);"
 						onclick="categoryFunction('그릇'); return false;">#잔</a></li>
-					<li class="nav-item"><a class="nav-link"
+					<li class="nav-item nav-item-category"><a class="nav-link"
 						href='${pageContext.request.contextPath}/product/product_list'>#선물</a>
 					</li>
-					<li class="nav-item"><a class="nav-link"
+					<li class="nav-item nav-item-category"><a class="nav-link"
 						href='${pageContext.request.contextPath}/product/product_list'>#마리벨</a>
 					</li>
-					<li class="nav-item"><a class="nav-link"
+					<li class="nav-item nav-item-category"><a class="nav-link"
 						href='${pageContext.request.contextPath}/product/product_list'>#블랑</a>
 					</li>
 				</ul>
@@ -179,6 +179,7 @@
 			</div>
 
 		</div>
+	</div>
 	</div>
 	<!-- famous keyword -->
 

@@ -59,7 +59,6 @@ public class ProductController {
 			List<Product> productList = productService.selectByPcategoryName(pcategoryName);
 			model.addAttribute("productList", productList);
 		}
-		
 		HashMap<String, String> param = new HashMap<>();
 		param.put("pid", pid);
 		
@@ -73,6 +72,12 @@ public class ProductController {
 		
 		HashMap<String, List<String>> productOption = productService.getProductOptionMap(pid);
 		model.addAttribute("productOption", productOption);
+		
+		if(pcategoryName != null) {
+			model.addAttribute("pcategoryName", pcategoryName);
+		}else {
+			model.addAttribute("pcategoryName", "");
+		}
 		
 		return "/product/product_list";
 	}

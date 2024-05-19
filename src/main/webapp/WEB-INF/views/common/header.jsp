@@ -3,7 +3,7 @@
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/header.css" type="text/css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
-<script src="${pageContext.request.contextPath}/resources/js/product/product_list.js" rel="stylesheet"></script>
+<script src="${pageContext.request.contextPath}/resources/js/header.js" rel="stylesheet"></script>
 
 <div id="header" class="header">
 	<nav class="navbar navbar-expand-lg fixed-top bg-light">
@@ -32,20 +32,20 @@
 				</li>
 				<li class="nav-item ms-3 me-3">
 					<a class="btn" id="categoryHeaderBtn" aria-expanded="false"
-						href="${pageContext.request.contextPath}/product/product_list?pcategoryName='그릇'">그릇</a>
+						href="${pageContext.request.contextPath}/product/product_list?pcategoryName=그릇">그릇</a>
 				</li>
 				<li class="nav-item ms-3 me-3">
 					<a class="btn" aria-expanded="false"
-						href="${pageContext.request.contextPath}/product/product_list?pcategoryName='접시'">접시</a>
+						href="${pageContext.request.contextPath}/product/product_list?pcategoryName=접시">접시</a>
 				</li>
 				<li class="nav-item ms-3 me-3">
 					<a class="btn" aria-expanded="false"
-						href="${pageContext.request.contextPath}/product/product_list?pcategoryName='컵'">컵</a>
+						href="${pageContext.request.contextPath}/product/product_list?pcategoryName=컵">컵</a>
 				</li>
 				<li class="nav-item ms-3 me-3">
 					<a class="btn" aria-expanded="false"
 "
-						href="${pageContext.request.contextPath}/product/product_list?pcategoryName='수저세트'">수저세트</a>
+						href="${pageContext.request.contextPath}/product/product_list?pcategoryName=수저세트">수저세트</a>
 				</li>
 				<li class="nav-item dropdown ms-3 me-3">
 					<button class="btn" aria-expanded="false">커뮤니티</button>

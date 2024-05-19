@@ -304,7 +304,7 @@
                      </div>
                   </nav>
                </div>
-
+				
                <!-- 카테고리 -->
                <div id="category">
                   <ul class="nav flex-column" style="margin-top: 20px;">
@@ -312,21 +312,21 @@
                         aria-disabled="true"
                         style="font-size: 22px; color: black; margin-bottom: 10px;"><strong>카테고리</strong></a>
                      </li>
-                     <li class="nav-item"><a class="nav-link active"
+                     <li class="nav-item"><a class="nav-link ${pcategoryName==''? 'nav-active': '' }"
                         aria-current="page" href="javascript:void(0);"
                         onclick="categoryAllFunction(); return false;"><strong>전체</strong></a></li>
-                     <li class="nav-item"><a class="nav-link"
+                     <li class="nav-item"><a class="nav-link ${pcategoryName=='수저세트'? 'nav-active': '' }"
                         href="javascript:void(0);"
                         onclick="categoryFunction('수저세트'); return false;"><strong>수저세트</strong></a></li>
-                     <li class="nav-item"><a class="nav-link"
+                     <li class="nav-item"><a class="nav-link ${pcategoryName=='컵'? 'nav-active': '' }"
                         href="javascript:void(0);"
                         onclick="categoryFunction('컵'); return false;"><strong>컵</strong></a>
                      </li>
-                     <li class="nav-item"><a class="nav-link"
+                     <li class="nav-item"><a class="nav-link ${pcategoryName=='그릇'? 'nav-active': '' }"
                         href="javascript:void(0);"
                         onclick="categoryFunction('그릇'); return false;"><strong>그릇</strong></a>
                      </li>
-                     <li class="nav-item"><a class="nav-link"
+                     <li class="nav-item"><a class="nav-link ${pcategoryName=='접시'? 'nav-active': '' }"
                         href="javascript:void(0);"
                         onclick="categoryFunction('접시'); return false;"><strong>접시</strong></a>
                      </li>
