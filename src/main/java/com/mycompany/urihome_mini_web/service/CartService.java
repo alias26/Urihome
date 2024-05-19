@@ -39,17 +39,11 @@ public class CartService {
 		cartDao.updateCart(cart);
 		
 	}
-	public void removeCart(HashMap<String, String> param) {
-		int row = cartDao.deleteCart(param);
-	}
 	public void updateCartItemAmount(Cart cart) {
 		cart.setPbuyAmount(cart.getPbuyAmount());
 		cartDao.updateCart(cart);
 	}
-
-
-
-
-
-
+	public void removeCart(HashMap<String, String> param) {
+		int row = cartDao.deleteCart(param);
+	}
 }

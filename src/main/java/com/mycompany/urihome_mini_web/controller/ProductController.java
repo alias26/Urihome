@@ -15,8 +15,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.mycompany.urihome_mini_web.dto.Pimage;
 import com.mycompany.urihome_mini_web.dto.Product;
-import com.mycompany.urihome_mini_web.dto.ProductCategory;
-import com.mycompany.urihome_mini_web.dto.ProductOption;
 import com.mycompany.urihome_mini_web.service.ProductService;
 
 import lombok.extern.slf4j.Slf4j;
@@ -87,7 +85,6 @@ public class ProductController {
 	public String getProductListAll(Model model) {
 		List<Product> productList = productService.getProductCategoryListAll();
 		model.addAttribute("productList", productList);
-//		log.info(Integer.toString(productList.size()));
 		return "product/getProductListAllAjax";
 	}
 	
@@ -96,8 +93,6 @@ public class ProductController {
 	public String getProductList(Model model, @RequestParam("pcategoryName") String pcategoryName) {
 		List<Product> productList = productService.selectByPcategoryName(pcategoryName);
 		model.addAttribute("productList", productList);
-//		log.info("productList1: "+productList);
-//		log.info(Integer.toString(productList.size()));
 		return "product/getProductListAjax";
 	}
 	

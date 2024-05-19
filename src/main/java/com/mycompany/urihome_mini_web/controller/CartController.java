@@ -21,7 +21,6 @@ import com.mycompany.urihome_mini_web.dto.Cart;
 import com.mycompany.urihome_mini_web.dto.Member;
 import com.mycompany.urihome_mini_web.security.UriHomeUserDetails;
 import com.mycompany.urihome_mini_web.service.CartService;
-import com.mycompany.urihome_mini_web.service.ProductService;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -40,7 +39,8 @@ public class CartController {
 
 		UriHomeUserDetails uriHomeUserDetails = (UriHomeUserDetails) authentication.getPrincipal();
 		Member member = uriHomeUserDetails.getMember();
-		String mid = authentication.getName();
+		String mid = authentication.getName()
+				;
 		JSONObject jsonData = new JSONObject(cart);
 	    String pid = jsonData.getString("pid");
 		cart.setMid(mid);
@@ -52,7 +52,6 @@ public class CartController {
 		} else {
 			cartService.updateCart(cart);
 		}
-
 		JSONObject jsonObject = new JSONObject();
 		jsonObject.put("result", "success");
 		return jsonObject.toString();
@@ -79,11 +78,8 @@ public class CartController {
 	    String pid = jsonObject.getString("pid");
 	    
 	    cart.setMid(mid);
-		
 		cartService.updateCartItemAmount(cart);
-		
 		jsonObject.put("result", "success");
-		
 		return jsonObject.toString();
 	}
 	

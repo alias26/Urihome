@@ -49,7 +49,6 @@ public class BoardProductController {
 	public String writeReview(BoardProduct boardProduct, Authentication authentication) {
 		// 로그인한 회원의 id 가져오기
 		String mid = authentication.getName();
-		log.info(boardProduct.getBptitle());
 
 		// mid를 회원의 id로 설정
 		boardProduct.setMid(mid);
@@ -90,8 +89,6 @@ public class BoardProductController {
 				rpageNo = "1";
 			}
 		}
-		
-		log.info(rpageNo);
 
 		// 문자열인 pageNo를 int형으로 변환
 		int intPageNo = Integer.parseInt(rpageNo);
@@ -217,8 +214,6 @@ public class BoardProductController {
 	public String writeQna(BoardProduct boardProduct, Authentication authentication) {
 		// 로그인한 회원의 id 가져오기
 		String mid = authentication.getName();
-		log.info(boardProduct.getBptitle());
-
 		// mid를 회원의 id로 설정
 		boardProduct.setMid(mid);
 		// 게시판을 review 타입으로 설정

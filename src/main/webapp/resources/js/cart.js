@@ -11,20 +11,20 @@ $(function() {
 		var totalPrice = $(totalPrice);
 	}); 
 	$("[name=order-checkbox]").click(
-					function() {
-						getTotalPrice();
-						if ($("[name=order-checkbox]:checked").length === $("[name=order-checkbox]").length) {
-							$("#checkAll").prop("checked", true);
-							
-						} else {
-							$("#checkAll").prop("checked", false);
-						}
-					});
-	
+		function() {
+			getTotalPrice();
+			if ($("[name=order-checkbox]:checked").length === $("[name=order-checkbox]").length) {
+				$("#checkAll").prop("checked", true);
+				
+			} else {
+				$("#checkAll").prop("checked", false);
+			}
+		});
+
 	$(".cart-number").on("change", function(){
 		var pid = $(this).parent("div").find("input[name=pid]").val();
 		var pbuyAmount = parseInt($(this).val());
-		var pstock = parseInt($(this).parent("div").find("input[name=pstock]").val());
+		var pstock = parseInt($(this).  parent("div").find("input[name=pstock]").val());
 		
 		var ppriceId= "#pprice"+pid;
 		var pprice = parseInt($(ppriceId).text());
@@ -54,7 +54,6 @@ $(function() {
 				contentType : "application/json",
 				data : JSON.stringify(cart),
 				success : function(data) {
-					console.log(data);
 				}
 		});
 	})
@@ -84,7 +83,6 @@ $(function() {
 				contentType : "application/json",
 				data : JSON.stringify(cart),
 				success : function(data) {
-					console.log(data);
 				}
 			});
 		}
@@ -113,7 +111,6 @@ $(function() {
 				contentType : "application/json",
 				data : JSON.stringify(cart),
 				success : function(data) {
-					console.log(data);
 				}
 			});
 		}

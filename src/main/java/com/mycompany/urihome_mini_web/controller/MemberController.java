@@ -146,7 +146,6 @@ public class MemberController {
 			return "/member/memberInfo";
 		}
 		
-		log.info(member.getMid());
 		memberService.updateMember(member);		
 		
 		//DB 내용을 수정했을 경우 Spring Security 정보도 수정
@@ -162,7 +161,6 @@ public class MemberController {
 	@Secured("ROLE_USER")
 	@ResponseBody
 	public Map<String, String> deleteMember(@RequestParam("mid") String mid) {
-		log.info("" + mid);
 		memberService.deleteMember(mid);
 		Map<String, String> response = new HashMap<>();
         response.put("status", "success");

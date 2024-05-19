@@ -45,9 +45,7 @@ public class BoardController {
 			} catch (Exception e) {
 			}
 		}
-	/*	String btype=request.getParameter("btype");
-		log.info(btype);*/
-		
+
 		service.writeBoard(board);
 		model.addAttribute("side", "boardManage");
 		return "redirect:/admin/adminNotice";
@@ -56,13 +54,9 @@ public class BoardController {
 	@GetMapping("/adminNotice")
 	public String adminNotice(String pageNo, HttpSession session, Model model) {
 		if(pageNo==null) {
-//			pageNo=(String) session.getAttribute("pageNo");
-//			if(pageNo==null) {
 				pageNo="1";
-//			}
 		}
 		int intpageNo=Integer.parseInt(pageNo);
-//		session.setAttribute("pageNo",pageNo);
 		model.addAttribute("pageNo", pageNo);
 		
 		int rowsPagingTarget = service.getTotalRows();
@@ -105,8 +99,6 @@ public class BoardController {
 
 	@PostMapping("/updateBoard")
 	public String updateBoard(Board board) {
-
-		log.info("bno" + board.getBnumber());
 		if (board.getBattach() != null && !board.getBattach().isEmpty()) {
 			board.setBattachoname(board.getBattach().getOriginalFilename());
 			board.setBattachtype(board.getBattach().getContentType());

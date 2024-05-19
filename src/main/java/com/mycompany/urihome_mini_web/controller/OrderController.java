@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.mycompany.urihome_mini_web.dto.Cart;
@@ -25,8 +24,6 @@ import com.mycompany.urihome_mini_web.dto.Order;
 import com.mycompany.urihome_mini_web.dto.OrderItemList;
 import com.mycompany.urihome_mini_web.dto.Product;
 import com.mycompany.urihome_mini_web.security.UriHomeUserDetails;
-import com.mycompany.urihome_mini_web.service.CartService;
-import com.mycompany.urihome_mini_web.service.MemberService;
 import com.mycompany.urihome_mini_web.service.OrderService;
 import com.mycompany.urihome_mini_web.service.ProductService;
 
@@ -37,13 +34,7 @@ import lombok.extern.slf4j.Slf4j;
 @RequestMapping("/order")
 public class OrderController {
 	@Autowired
-	private MemberService memberService;
-
-	@Autowired
 	private ProductService productService;
-
-	@Autowired
-	private CartService cartService;
 
 	@Autowired
 	private OrderService orderService;
