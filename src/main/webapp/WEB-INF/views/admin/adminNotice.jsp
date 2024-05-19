@@ -40,7 +40,7 @@
 			</div>
 			<div class="card" style="width: 95%; margin: 0 auto;">
 				<div class="card-body">
-					<table class="table table-bordered table-striped table-hover">
+					<table class="table table-bordered table-hover">
 						<thead class="table-secondary">
 							<tr>
 								<th width="5%">번호</th>
@@ -56,7 +56,7 @@
 							<c:forEach var="board" items="${notice}">
 								<tr>
 									<td width="5%" >${board.bnumber}</td>
-									<td width="35%" ><a id="btitle"
+									<td width="35%" ><a id="btitle" style="color:black"
 										href="adminNoticeView?bnumber=${board.bnumber}">${board.btitle}</a></td>
 									<td width="20%" >
 									<fmt:formatDate
@@ -65,7 +65,7 @@
 									<td width="10%" >${board.bhitcount}</td>
 									<td width="10%" style="text-align: center;">
 									<a href="boardUpdateForm?bnumber=${board.bnumber}"
-										id="boardUpdateForm" class="btn btn-info btn-sm">수정</a></td>
+										id="boardUpdateForm" class="btn btn-dark btn-sm">수정</a></td>
 									<td width="10%" style="text-align: center;">
 									<a href="deleteBoard?bnumber=${board.bnumber}" id="deleteBoard"
 										class="btn btn-danger btn-sm">삭제</a></td>
@@ -112,7 +112,7 @@
 
 						</ol>
 					</div>
-					<a href="boardWriteForm" class="btn btn-info" id="addNotice">추가</a>
+					<a href="boardWriteForm" class="btn btn-dark" id="addNotice">추가</a>
 
 				</div>
 			</div>

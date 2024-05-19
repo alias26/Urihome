@@ -64,7 +64,7 @@ function toggleAllDetails() {
 			</div>
 			<div class="card" style="width:95%; margin: 0 auto;">
 				<div class="card-body">
-					<table class="table table-bordered table-striped table-hover"
+					<table class="table table-bordered table-hover"
 						id="productInfoTable">
 						<thead class="table-secondary">
 							<tr>
@@ -86,8 +86,8 @@ function toggleAllDetails() {
 	                                    <td>${member.mname}</td>
 	                                    <td><fmt:formatDate value="${member.mdate}" pattern="yyyy-MM-dd"/></td>	                                                                           
 	                                    <td>
-	                                    	<a class="btn btn-primary" href="userInfoView?mid=${member.mid}">모든 정보 보기</a>
-	                                    	<button class="btn btn-danger" onclick="deleteMember('${member.mid}')">삭제</button>	                                    
+	                                    	<a class="btn btn-dark btn-sm" href="userInfoView?mid=${member.mid}">모든 정보 보기</a>
+	                                    	<button class="btn btn-danger btn-sm" onclick="deleteMember('${member.mid}')">삭제</button>	                                    
 	                                    </td>        
 									</tr>
 							</c:forEach>
@@ -102,7 +102,7 @@ function toggleAllDetails() {
 									<li class="page-item"><a class="page-link" href="customerManageView?pageNo=${pager.startPageNo-1}"><</a></li>
 								</c:if>
 								<c:forEach var="i" begin="${pager.startPageNo}" end="${pager.endPageNo}">
-									<li class="page-item">
+									<li class="page-item"> 
 									<a class="page-link ${pager.pageNo==i ?'active':''}" href="customerManageView?pageNo=${i}">${i}</a></li>
 								</c:forEach>
 								<c:if test="${pager.groupNo<pager.totalGroupNo}">
